@@ -24,3 +24,16 @@
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/obj/Debug/netcoreapp3.0/Volo.Ymapp.EntityFrameworkCore.csproj.CopyComplete
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/obj/Debug/netcoreapp3.0/Volo.Ymapp.EntityFrameworkCore.dll
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/obj/Debug/netcoreapp3.0/Volo.Ymapp.EntityFrameworkCore.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.deps.json
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.csprojAssemblyReference.cache
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.AssemblyInfoInputs.cache
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.AssemblyInfo.cs
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.csproj.CopyComplete
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.EntityFrameworkCore\obj\Debug\netcoreapp3.0\Volo.Ymapp.EntityFrameworkCore.pdb

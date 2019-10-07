@@ -20,3 +20,14 @@
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/obj/Debug/netcoreapp3.0/Volo.Ymapp.Domain.csproj.CopyComplete
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/obj/Debug/netcoreapp3.0/Volo.Ymapp.Domain.dll
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/obj/Debug/netcoreapp3.0/Volo.Ymapp.Domain.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.deps.json
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.csprojAssemblyReference.cache
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.AssemblyInfoInputs.cache
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.AssemblyInfo.cs
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.csproj.CopyComplete
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain\obj\Debug\netcoreapp3.0\Volo.Ymapp.Domain.pdb

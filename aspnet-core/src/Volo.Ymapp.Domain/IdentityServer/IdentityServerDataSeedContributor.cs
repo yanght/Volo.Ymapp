@@ -118,24 +118,24 @@ namespace Volo.Ymapp.IdentityServer
                 await CreateClientAsync(
                     webClientId,
                     commonScopes,
-                    new[] { "hybrid" },
+                   new[] { "password", "client_credentials" },
                     (configurationSection["Ymapp_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     redirectUri: $"{webClientRootUrl}signin-oidc",
                     postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
                 );
             }
 
-            //Console Test Client
-            var consoleClientId = configurationSection["Ymapp_App:ClientId"];
-            if (!consoleClientId.IsNullOrWhiteSpace())
-            {
-                await CreateClientAsync(
-                    consoleClientId,
-                    commonScopes,
-                    new[] { "password", "client_credentials" },
-                    (configurationSection["Ymapp_App:ClientSecret"] ?? "1q2w3e*").Sha256()
-                );
-            }
+            ////Console Test Client
+            //var consoleClientId = configurationSection["Ymapp_App:ClientId"];
+            //if (!consoleClientId.IsNullOrWhiteSpace())
+            //{
+            //    await CreateClientAsync(
+            //        consoleClientId,
+            //        commonScopes,
+            //        new[] { "password", "client_credentials" },
+            //        (configurationSection["Ymapp_App:ClientSecret"] ?? "1q2w3e*").Sha256()
+            //    );
+            //}
         }
 
         private async Task<Client> CreateClientAsync(

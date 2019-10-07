@@ -1,29 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj": {}
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj": {}
   },
   "projects": {
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj",
         "projectName": "Volo.Ymapp.Domain.Shared",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -88,7 +92,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

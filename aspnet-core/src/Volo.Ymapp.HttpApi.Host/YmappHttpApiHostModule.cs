@@ -22,6 +22,8 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
 
 namespace Volo.Ymapp
 {
@@ -107,9 +109,20 @@ namespace Volo.Ymapp
             context.Services.AddSwaggerGen(
                 options =>
                 {
-                    options.SwaggerDoc("v1", new  Microsoft.OpenApi.Models.OpenApiInfo {Title = "Ymapp API", Version = "v1"});
+                    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Ymapp API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
+
+                    // Define the BearerAuth scheme that's in use
+                    options.AddSecurityDefinition("bearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
+                    {
+                        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                        Name = "Authorization",
+                        In = ParameterLocation.Header,
+                        Type = SecuritySchemeType.ApiKey
+                    });
+
                 });
+
         }
 
         private void ConfigureLocalization()
@@ -172,7 +185,7 @@ namespace Volo.Ymapp
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ymapp API");
             });
-            
+
 
             app.UseAuditing();
             app.UseMvcWithDefaultRouteAndArea();

@@ -22,6 +22,7 @@ namespace Volo.Ymapp.DbMigrator
             {
                 application.Initialize();
 
+                
                 AsyncHelper.RunSync(
                     () => application
                         .ServiceProvider

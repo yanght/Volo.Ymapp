@@ -14,3 +14,11 @@
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/obj/Debug/netstandard2.0/Volo.Ymapp.Domain.Shared.AssemblyInfo.cs
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/obj/Debug/netstandard2.0/Volo.Ymapp.Domain.Shared.dll
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/obj/Debug/netstandard2.0/Volo.Ymapp.Domain.Shared.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\bin\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.deps.json
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\bin\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\bin\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\obj\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.AssemblyInfoInputs.cache
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\obj\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.AssemblyInfo.cs
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\obj\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.dll
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\obj\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.pdb
+D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.Domain.Shared\obj\Debug\netstandard2.0\Volo.Ymapp.Domain.Shared.csprojAssemblyReference.cache

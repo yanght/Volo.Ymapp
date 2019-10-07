@@ -1,35 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Application.Tests/Volo.Ymapp.Application.Tests.csproj": {}
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Application.Tests\\Volo.Ymapp.Application.Tests.csproj": {}
   },
   "projects": {
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/Volo.Ymapp.Application.Contracts.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\Volo.Ymapp.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/Volo.Ymapp.Application.Contracts.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\Volo.Ymapp.Application.Contracts.csproj",
         "projectName": "Volo.Ymapp.Application.Contracts",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/Volo.Ymapp.Application.Contracts.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\Volo.Ymapp.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj"
               }
             }
           }
@@ -80,39 +84,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/Volo.Ymapp.Application.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\Volo.Ymapp.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/Volo.Ymapp.Application.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\Volo.Ymapp.Application.csproj",
         "projectName": "Volo.Ymapp.Application",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/Volo.Ymapp.Application.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\Volo.Ymapp.Application.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/Volo.Ymapp.Application.Contracts.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application.Contracts/Volo.Ymapp.Application.Contracts.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\Volo.Ymapp.Application.Contracts.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application.Contracts\\Volo.Ymapp.Application.Contracts.csproj"
               },
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj"
               }
             }
           }
@@ -158,34 +166,41 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj",
         "projectName": "Volo.Ymapp.Domain.Shared",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -250,36 +265,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj",
         "projectName": "Volo.Ymapp.Domain",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain.Shared/Volo.Ymapp.Domain.Shared.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain.Shared\\Volo.Ymapp.Domain.Shared.csproj"
               }
             }
           }
@@ -345,40 +364,47 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj",
         "projectName": "Volo.Ymapp.EntityFrameworkCore.DbMigrations",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/Volo.Ymapp.EntityFrameworkCore.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/Volo.Ymapp.EntityFrameworkCore.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\Volo.Ymapp.EntityFrameworkCore.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\Volo.Ymapp.EntityFrameworkCore.csproj"
               }
             }
           }
@@ -408,40 +434,47 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/Volo.Ymapp.EntityFrameworkCore.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\Volo.Ymapp.EntityFrameworkCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/Volo.Ymapp.EntityFrameworkCore.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\Volo.Ymapp.EntityFrameworkCore.csproj",
         "projectName": "Volo.Ymapp.EntityFrameworkCore",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/Volo.Ymapp.EntityFrameworkCore.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\Volo.Ymapp.EntityFrameworkCore.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj"
               }
             }
           }
@@ -503,43 +536,50 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Application.Tests/Volo.Ymapp.Application.Tests.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Application.Tests\\Volo.Ymapp.Application.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Application.Tests/Volo.Ymapp.Application.Tests.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Application.Tests\\Volo.Ymapp.Application.Tests.csproj",
         "projectName": "Volo.Ymapp.Application.Tests",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Application.Tests/Volo.Ymapp.Application.Tests.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Application.Tests/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Application.Tests\\Volo.Ymapp.Application.Tests.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Application.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/Volo.Ymapp.Application.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Application/Volo.Ymapp.Application.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\Volo.Ymapp.Application.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Application\\Volo.Ymapp.Application.csproj"
               },
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/Volo.Ymapp.Domain.Tests.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/Volo.Ymapp.Domain.Tests.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\Volo.Ymapp.Domain.Tests.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\Volo.Ymapp.Domain.Tests.csproj"
               }
             }
           }
@@ -569,40 +609,47 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/Volo.Ymapp.Domain.Tests.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\Volo.Ymapp.Domain.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/Volo.Ymapp.Domain.Tests.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\Volo.Ymapp.Domain.Tests.csproj",
         "projectName": "Volo.Ymapp.Domain.Tests",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/Volo.Ymapp.Domain.Tests.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.Domain.Tests/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\Volo.Ymapp.Domain.Tests.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.Domain.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/Volo.Ymapp.EntityFrameworkCore.Tests.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/Volo.Ymapp.EntityFrameworkCore.Tests.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\Volo.Ymapp.EntityFrameworkCore.Tests.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\Volo.Ymapp.EntityFrameworkCore.Tests.csproj"
               }
             }
           }
@@ -632,43 +679,50 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/Volo.Ymapp.EntityFrameworkCore.Tests.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\Volo.Ymapp.EntityFrameworkCore.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/Volo.Ymapp.EntityFrameworkCore.Tests.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\Volo.Ymapp.EntityFrameworkCore.Tests.csproj",
         "projectName": "Volo.Ymapp.EntityFrameworkCore.Tests",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/Volo.Ymapp.EntityFrameworkCore.Tests.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.EntityFrameworkCore.Tests/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\Volo.Ymapp.EntityFrameworkCore.Tests.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.EntityFrameworkCore.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.EntityFrameworkCore.DbMigrations/Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.EntityFrameworkCore.DbMigrations\\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj"
               },
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/Volo.Ymapp.TestBase.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/Volo.Ymapp.TestBase.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\Volo.Ymapp.TestBase.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\Volo.Ymapp.TestBase.csproj"
               }
             }
           }
@@ -706,40 +760,47 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/Volo.Ymapp.TestBase.csproj": {
+    "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\Volo.Ymapp.TestBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/Volo.Ymapp.TestBase.csproj",
+        "projectUniqueName": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\Volo.Ymapp.TestBase.csproj",
         "projectName": "Volo.Ymapp.TestBase",
-        "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/Volo.Ymapp.TestBase.csproj",
-        "packagesPath": "/Users/yannis/.nuget/packages/",
-        "outputPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/test/Volo.Ymapp.TestBase/obj/",
+        "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\Volo.Ymapp.TestBase.csproj",
+        "packagesPath": "C:\\Users\\yannis\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\test\\Volo.Ymapp.TestBase\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/yannis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\yannis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.uupt.com/nuget/UUPT": {},
+          "https://proget.uupt.com/nuget/UUStunner/": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj": {
-                "projectPath": "/Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.Domain/Volo.Ymapp.Domain.csproj"
+              "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj": {
+                "projectPath": "D:\\project\\Volo.Ymapp\\aspnet-core\\src\\Volo.Ymapp.Domain\\Volo.Ymapp.Domain.csproj"
               }
             }
           }
@@ -801,11 +862,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
