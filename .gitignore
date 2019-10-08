@@ -339,3 +339,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+aspnet-core/src/Volo.Ymapp.HttpApi.Host/Logs/logs.txt
