@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 using Volo.Abp.Authorization.Permissions;
@@ -10,6 +11,7 @@ using Volo.Abp.Guids;
 using Volo.Abp.IdentityServer.ApiResources;
 using Volo.Abp.IdentityServer.Clients;
 using Volo.Abp.IdentityServer.IdentityResources;
+using Volo.Abp.MultiTenancy;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.Uow;
 using ApiResource = Volo.Abp.IdentityServer.ApiResources.ApiResource;
@@ -25,21 +27,28 @@ namespace Volo.Ymapp.IdentityServer
         private readonly IGuidGenerator _guidGenerator;
         private readonly IPermissionDataSeeder _permissionDataSeeder;
         private readonly IConfigurationAccessor _configurationAccessor;
+        protected IPermissionDefinitionManager PermissionDefinitionManager { get; }
+
+        protected ICurrentTenant CurrentTenant { get; }
 
         public IdentityServerDataSeedContributor(
+            IPermissionDefinitionManager permissionDefinitionManager,
             IClientRepository clientRepository,
             IApiResourceRepository apiResourceRepository,
             IIdentityResourceDataSeeder identityResourceDataSeeder,
             IGuidGenerator guidGenerator,
             IPermissionDataSeeder permissionDataSeeder,
-            IConfigurationAccessor configurationAccessor)
+            IConfigurationAccessor configurationAccessor,
+             ICurrentTenant currentTenant)
         {
+            PermissionDefinitionManager = permissionDefinitionManager;
             _clientRepository = clientRepository;
             _apiResourceRepository = apiResourceRepository;
             _identityResourceDataSeeder = identityResourceDataSeeder;
             _guidGenerator = guidGenerator;
             _permissionDataSeeder = permissionDataSeeder;
             _configurationAccessor = configurationAccessor;
+            CurrentTenant = currentTenant;
         }
 
         [UnitOfWork]
@@ -115,13 +124,21 @@ namespace Volo.Ymapp.IdentityServer
                 /* Ymapp_Web client is only needed if you created a tiered
                  * solution. Otherwise, you can delete this client. */
 
+                var multiTenancySide = CurrentTenant.GetMultiTenancySide();
+                var permissionNames = PermissionDefinitionManager
+                    .GetPermissions()
+                    .Where(p => p.MultiTenancySide.HasFlag(multiTenancySide))
+                    .Select(p => p.Name)
+                    .ToArray();
+
                 await CreateClientAsync(
                     webClientId,
                     commonScopes,
                    new[] { "password", "client_credentials" },
                     (configurationSection["Ymapp_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
+                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
+                    permissions: permissionNames
                 );
             }
 

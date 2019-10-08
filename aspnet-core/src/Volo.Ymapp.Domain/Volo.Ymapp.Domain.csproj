@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -6,6 +6,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Volo.Ymapp</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IdentityServer\PermissionDataSeedContributor.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Volo.Ymapp.Domain.Shared\Volo.Ymapp.Domain.Shared.csproj" />

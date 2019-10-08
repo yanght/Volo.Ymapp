@@ -8297,3 +8297,412 @@ System.InvalidOperationException: You must either set Authority or Introspection
 2019-10-07 18:35:37.884 +08:00 [INF] Executed action Volo.Abp.Identity.IdentityUserController.GetAsync (Volo.Abp.Identity.HttpApi) in 73.7536ms
 2019-10-07 18:35:37.884 +08:00 [INF] Executed endpoint 'Volo.Abp.Identity.IdentityUserController.GetAsync (Volo.Abp.Identity.HttpApi)'
 2019-10-07 18:35:37.884 +08:00 [INF] Request finished in 89.6913ms 200 application/json; charset=utf-8
+2019-10-08 11:55:38.977 +08:00 [INF] Starting Volo.Ymapp.HttpApi.Host.
+2019-10-08 11:55:41.230 +08:00 [INF] Loaded ABP modules:
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundJobs.BackgroundJobsDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappDomainSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Users.AbpUsersAbstractionModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappApplicationContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Account.AbpAccountHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappHttpApiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundJobs.BackgroundJobsDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappDomainModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Account.AbpAccountApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappApplicationModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.BackgroundJobs.EntityFrameworkCore.BackgroundJobsEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.EntityFrameworkCore.YmappEntityFrameworkCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.EntityFrameworkCore.YmappEntityFrameworkCoreDbMigrationsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebIdentityServerModule
+2019-10-08 11:55:41.232 +08:00 [INF] - Volo.Ymapp.YmappHttpApiHostModule
+2019-10-08 11:55:41.624 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2019-10-08 11:55:41.652 +08:00 [INF] Starting IdentityServer4 version 3.0.0.0
+2019-10-08 11:55:41.998 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-10-08 11:55:41.998 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-10-08 11:55:41.998 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-10-08 11:55:41.998 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-10-08 11:55:41.998 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-10-08 11:55:41.998 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-10-08 11:55:42.558 +08:00 [INF] Initialized all ABP modules.
+2019-10-08 11:55:42.612 +08:00 [INF] User profile is available. Using 'C:\Users\yannis\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-08 11:55:45.063 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/index.html  
+2019-10-08 11:55:45.171 +08:00 [DBG] Login Url: /Account/Login
+2019-10-08 11:55:45.171 +08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-10-08 11:55:45.171 +08:00 [DBG] Logout Url: /Account/Logout
+2019-10-08 11:55:45.171 +08:00 [DBG] ConsentUrl Url: /consent
+2019-10-08 11:55:45.171 +08:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-10-08 11:55:45.171 +08:00 [DBG] Error Url: /home/error
+2019-10-08 11:55:45.171 +08:00 [DBG] Error Id Parameter: errorId
+2019-10-08 11:55:45.193 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:55:47.127 +08:00 [INF] Request finished in 2067.7940000000003ms 200 text/html;charset=utf-8
+2019-10-08 11:55:47.451 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/v1/swagger.json  
+2019-10-08 11:55:47.460 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:55:47.484 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/favicon-32x32.png  
+2019-10-08 11:55:47.485 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:55:47.496 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-10-08 11:55:47.496 +08:00 [INF] Request finished in 11.805200000000001ms 200 image/png
+2019-10-08 11:55:47.696 +08:00 [INF] Request finished in 245.3428ms 200 application/json;charset=utf-8
+2019-10-08 11:56:03.989 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44304/api/app/book application/json 77
+2019-10-08 11:56:03.997 +08:00 [INF] CORS policy execution failed.
+2019-10-08 11:56:03.997 +08:00 [INF] Request origin http://localhost:44304 does not have permission to access the resource.
+2019-10-08 11:56:03.998 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:56:04.004 +08:00 [INF] No CORS policy found for the specified request.
+2019-10-08 11:56:04.022 +08:00 [INF] Executing endpoint 'Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application)'
+2019-10-08 11:56:04.106 +08:00 [INF] Route matched with {action = "Create", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Volo.Ymapp.Books.BookDto] CreateAsync(Volo.Ymapp.Books.CreateUpdateBookDto) on controller Volo.Ymapp.Books.BookAppService (Volo.Ymapp.Application).
+2019-10-08 11:56:04.271 +08:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+2019-10-08 11:56:04.274 +08:00 [ERR] {
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "validationErrors": null
+}
+2019-10-08 11:56:04.275 +08:00 [ERR] Missing type map configuration or unsupported mapping.
+
+Mapping types:
+CreateUpdateBookDto -> Book
+Volo.Ymapp.Books.CreateUpdateBookDto -> Volo.Ymapp.Books.Book
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+CreateUpdateBookDto -> Book
+Volo.Ymapp.Books.CreateUpdateBookDto -> Volo.Ymapp.Books.Book
+   at lambda_method(Closure , CreateUpdateBookDto , Book , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at Volo.Abp.AutoMapper.AutoMapperObjectMapper.AutoMap[TSource,TDestination](Object source)
+   at Volo.Abp.ObjectMapping.DefaultObjectMapper.Map[TSource,TDestination](TSource source)
+   at Volo.Abp.Application.Services.CrudAppService`7.MapToEntity(TCreateInput createInput)
+   at Castle.Proxies.BookAppServiceProxy.MapToEntity_callback(CreateUpdateBookDto createInput)
+   at Castle.Proxies.Invocations.CrudAppService`7_MapToEntity.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.ProceedInfo.Invoke()
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapter.Proceed()
+   at Volo.Abp.Validation.ValidationInterceptor.Intercept(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.InterceptSyncMethod(IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.ProceedInfo.Invoke()
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapter.Proceed()
+   at Volo.Abp.Auditing.AuditingInterceptor.Intercept(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.InterceptSyncMethod(IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.ProceedInfo.Invoke()
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapter.Proceed()
+   at Volo.Abp.Uow.UnitOfWorkInterceptor.Intercept(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.InterceptSyncMethod(IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BookAppServiceProxy.MapToEntity(CreateUpdateBookDto createInput)
+   at Volo.Abp.Application.Services.CrudAppService`7.CreateAsync(TCreateInput input)
+   at Volo.Abp.Validation.ValidationInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.ExecuteWithReturnValueAsync[T](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Auditing.AuditingInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.ExecuteWithReturnValueAsync[T](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Uow.UnitOfWorkInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpInterceptorAdapter`1.ExecuteWithReturnValueAsync[T](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2019-10-08 11:56:04.281 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2019-10-08 11:56:04.296 +08:00 [INF] Executed action Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application) in 183.80780000000001ms
+2019-10-08 11:56:04.297 +08:00 [INF] Executed endpoint 'Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application)'
+2019-10-08 11:56:05.003 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:56:05.003 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:56:05.007 +08:00 [INF] Request finished in 1018.0272ms 500 application/json; charset=utf-8
+2019-10-08 11:58:48.430 +08:00 [INF] Starting Volo.Ymapp.HttpApi.Host.
+2019-10-08 11:58:50.497 +08:00 [INF] Loaded ABP modules:
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.BackgroundJobs.BackgroundJobsDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Ymapp.YmappDomainSharedModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Users.AbpUsersAbstractionModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Ymapp.YmappApplicationContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Account.AbpAccountHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Ymapp.YmappHttpApiModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2019-10-08 11:58:50.499 +08:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.BackgroundJobs.BackgroundJobsDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Ymapp.YmappDomainModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Identity.AbpIdentityApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Account.AbpAccountApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Ymapp.YmappApplicationModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.BackgroundJobs.EntityFrameworkCore.BackgroundJobsEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Ymapp.EntityFrameworkCore.YmappEntityFrameworkCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Ymapp.EntityFrameworkCore.YmappEntityFrameworkCoreDbMigrationsModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Abp.Account.Web.AbpAccountWebIdentityServerModule
+2019-10-08 11:58:50.500 +08:00 [INF] - Volo.Ymapp.YmappHttpApiHostModule
+2019-10-08 11:58:50.892 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2019-10-08 11:58:50.915 +08:00 [INF] Starting IdentityServer4 version 3.0.0.0
+2019-10-08 11:58:51.170 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-10-08 11:58:51.170 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-10-08 11:58:51.170 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-10-08 11:58:51.170 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-10-08 11:58:51.170 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-10-08 11:58:51.170 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-10-08 11:58:51.692 +08:00 [INF] Initialized all ABP modules.
+2019-10-08 11:58:51.749 +08:00 [INF] User profile is available. Using 'C:\Users\yannis\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-08 11:58:56.167 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/index.html  
+2019-10-08 11:58:56.254 +08:00 [DBG] Login Url: /Account/Login
+2019-10-08 11:58:56.254 +08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-10-08 11:58:56.254 +08:00 [DBG] Logout Url: /Account/Logout
+2019-10-08 11:58:56.254 +08:00 [DBG] ConsentUrl Url: /consent
+2019-10-08 11:58:56.254 +08:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-10-08 11:58:56.254 +08:00 [DBG] Error Url: /home/error
+2019-10-08 11:58:56.254 +08:00 [DBG] Error Id Parameter: errorId
+2019-10-08 11:58:56.278 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:58:57.541 +08:00 [INF] Request finished in 1377.0325ms 200 text/html;charset=utf-8
+2019-10-08 11:58:57.721 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/v1/swagger.json  
+2019-10-08 11:58:57.725 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:58:57.726 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/favicon-32x32.png  
+2019-10-08 11:58:57.727 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:58:57.738 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-10-08 11:58:57.738 +08:00 [INF] Request finished in 12.5981ms 200 image/png
+2019-10-08 11:58:57.916 +08:00 [INF] Request finished in 195.38760000000002ms 200 application/json;charset=utf-8
+2019-10-08 11:59:05.583 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44304/api/app/book application/json 77
+2019-10-08 11:59:05.589 +08:00 [INF] CORS policy execution failed.
+2019-10-08 11:59:05.589 +08:00 [INF] Request origin http://localhost:44304 does not have permission to access the resource.
+2019-10-08 11:59:05.590 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:59:05.594 +08:00 [INF] No CORS policy found for the specified request.
+2019-10-08 11:59:05.607 +08:00 [INF] Executing endpoint 'Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application)'
+2019-10-08 11:59:05.692 +08:00 [INF] Route matched with {action = "Create", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Volo.Ymapp.Books.BookDto] CreateAsync(Volo.Ymapp.Books.CreateUpdateBookDto) on controller Volo.Ymapp.Books.BookAppService (Volo.Ymapp.Application).
+2019-10-08 11:59:06.167 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:06.167 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:06.179 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:06.227 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Ymapp.Books.BookDto'.
+2019-10-08 11:59:06.244 +08:00 [INF] Executed action Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application) in 547.7526ms
+2019-10-08 11:59:06.245 +08:00 [INF] Executed endpoint 'Volo.Ymapp.Books.BookAppService.CreateAsync (Volo.Ymapp.Application)'
+2019-10-08 11:59:06.747 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:06.747 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:06.755 +08:00 [INF] Request finished in 1172.5387ms 200 application/json; charset=utf-8
+2019-10-08 11:59:29.499 +08:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:44304/api/app/book/73FAC0E4-251C-7E7C-6704-39F0BBB21A79  
+2019-10-08 11:59:29.501 +08:00 [INF] CORS policy execution failed.
+2019-10-08 11:59:29.501 +08:00 [INF] Request origin http://localhost:44304 does not have permission to access the resource.
+2019-10-08 11:59:29.502 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:59:29.503 +08:00 [INF] No CORS policy found for the specified request.
+2019-10-08 11:59:29.504 +08:00 [INF] Executing endpoint 'Volo.Ymapp.Books.BookAppService.DeleteAsync (Volo.Ymapp.Application)'
+2019-10-08 11:59:29.510 +08:00 [INF] Route matched with {action = "Delete", controller = "Book", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task DeleteAsync(System.Guid) on controller Volo.Ymapp.Books.BookAppService (Volo.Ymapp.Application).
+2019-10-08 11:59:29.693 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:29.693 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:29.730 +08:00 [INF] Executed action Volo.Ymapp.Books.BookAppService.DeleteAsync (Volo.Ymapp.Application) in 220.7983ms
+2019-10-08 11:59:29.730 +08:00 [INF] Executed endpoint 'Volo.Ymapp.Books.BookAppService.DeleteAsync (Volo.Ymapp.Application)'
+2019-10-08 11:59:29.886 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:29.886 +08:00 [DBG] Added 0 entity changes to the current audit log
+2019-10-08 11:59:29.891 +08:00 [INF] Request finished in 391.5151ms 200 
+2019-10-08 11:59:34.345 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/index.html  
+2019-10-08 11:59:34.347 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:59:34.351 +08:00 [INF] Request finished in 6.4735000000000005ms 200 text/html;charset=utf-8
+2019-10-08 11:59:34.494 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/v1/swagger.json  
+2019-10-08 11:59:34.495 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:59:34.502 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/swagger/favicon-32x32.png  
+2019-10-08 11:59:34.503 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 11:59:34.505 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-10-08 11:59:34.505 +08:00 [INF] Request finished in 3.7016ms 200 image/png
+2019-10-08 11:59:34.536 +08:00 [INF] Request finished in 42.5308ms 200 application/json;charset=utf-8
+2019-10-08 16:21:45.916 +08:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:44304/api/identity/users/ba758077-41cc-0ffc-5235-39f0b7f49b27  
+2019-10-08 16:21:45.929 +08:00 [INF] CORS policy execution successful.
+2019-10-08 16:21:45.936 +08:00 [INF] Request finished in 20.4917ms 204 
+2019-10-08 16:21:45.961 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/api/identity/users/ba758077-41cc-0ffc-5235-39f0b7f49b27 application/json;charset=utf-8 
+2019-10-08 16:21:45.968 +08:00 [INF] CORS policy execution successful.
+2019-10-08 16:21:46.202 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/.well-known/openid-configuration  
+2019-10-08 16:21:46.203 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 16:21:46.207 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-10-08 16:21:48.795 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-10-08 16:21:48.795 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-10-08 16:21:48.796 +08:00 [DBG] Start discovery request
+2019-10-08 16:21:49.326 +08:00 [INF] Request finished in 3123.9009ms 200 application/json; charset=UTF-8
+2019-10-08 16:21:49.367 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44304/.well-known/openid-configuration/jwks  
+2019-10-08 16:21:49.368 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2019-10-08 16:21:49.369 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-10-08 16:21:49.374 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-10-08 16:21:49.374 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-10-08 16:21:49.376 +08:00 [DBG] Start key discovery request
+2019-10-08 16:21:49.394 +08:00 [INF] Request finished in 26.3233ms 200 application/jwk-set+json; charset=UTF-8
+2019-10-08 16:21:49.482 +08:00 [INF] Successfully validated the token.
+2019-10-08 16:21:49.485 +08:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2019-10-08 16:21:49.490 +08:00 [DBG] CORS request made for path: /api/identity/users/ba758077-41cc-0ffc-5235-39f0b7f49b27 from origin: http://localhost:4001 but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-10-08 16:21:49.490 +08:00 [INF] No CORS policy found for the specified request.
+2019-10-08 16:21:49.491 +08:00 [INF] Executing endpoint 'Volo.Abp.Identity.IdentityUserController.GetAsync (Volo.Abp.Identity.HttpApi)'
+2019-10-08 16:21:49.499 +08:00 [INF] Route matched with {area = "identity", controller = "User", action = "Get", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Volo.Abp.Identity.IdentityUserDto] GetAsync(System.Guid) on controller Volo.Abp.Identity.IdentityUserController (Volo.Abp.Identity.HttpApi).
+2019-10-08 16:21:50.968 +08:00 [INF] Authorization was successful.
+2019-10-08 16:21:51.203 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Identity.IdentityUserDto'.
+2019-10-08 16:21:51.212 +08:00 [INF] Executed action Volo.Abp.Identity.IdentityUserController.GetAsync (Volo.Abp.Identity.HttpApi) in 1712.8926000000001ms
+2019-10-08 16:21:51.212 +08:00 [INF] Executed endpoint 'Volo.Abp.Identity.IdentityUserController.GetAsync (Volo.Abp.Identity.HttpApi)'
+2019-10-08 16:21:51.213 +08:00 [INF] Request finished in 5251.9367ms 200 application/json; charset=utf-8

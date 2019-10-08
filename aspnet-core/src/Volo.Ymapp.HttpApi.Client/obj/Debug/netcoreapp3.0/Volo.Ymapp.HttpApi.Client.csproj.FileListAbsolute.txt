@@ -11,16 +11,3 @@
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.HttpApi.Client/obj/Debug/netcoreapp3.0/Volo.Ymapp.HttpApi.Client.csproj.CopyComplete
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.HttpApi.Client/obj/Debug/netcoreapp3.0/Volo.Ymapp.HttpApi.Client.dll
 /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.HttpApi.Client/obj/Debug/netcoreapp3.0/Volo.Ymapp.HttpApi.Client.pdb
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.deps.json
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.dll
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.pdb
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.Application.Contracts.dll
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.dll
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.Application.Contracts.pdb
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\bin\Debug\netcoreapp3.0\Volo.Ymapp.Domain.Shared.pdb
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.csprojAssemblyReference.cache
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.AssemblyInfoInputs.cache
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.AssemblyInfo.cs
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.csproj.CopyComplete
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.dll
-D:\project\Volo.Ymapp\aspnet-core\src\Volo.Ymapp.HttpApi.Client\obj\Debug\netcoreapp3.0\Volo.Ymapp.HttpApi.Client.pdb

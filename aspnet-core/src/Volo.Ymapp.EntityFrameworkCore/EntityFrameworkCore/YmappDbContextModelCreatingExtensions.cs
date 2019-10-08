@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users;
+using Volo.Ymapp.Books;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -19,6 +21,13 @@ namespace Volo.Ymapp.EntityFrameworkCore
 
             //    //...
             //});
+
+            builder.Entity<Book>(b =>
+            {
+                b.ToTable(YmappConsts.DbTablePrefix + "Books", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
         }
 
         public static void ConfigureCustomUserProperties<TUser>(this EntityTypeBuilder<TUser> b)

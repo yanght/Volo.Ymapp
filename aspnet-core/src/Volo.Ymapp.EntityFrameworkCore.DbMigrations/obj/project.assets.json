@@ -2988,7 +2988,10 @@
         },
         "runtime": {
           "bin/placeholder/Volo.Ymapp.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Volo.Ymapp.Domain.Shared/1.0.0": {
         "type": "project",
@@ -3030,7 +3033,10 @@
         },
         "runtime": {
           "bin/placeholder/Volo.Ymapp.EntityFrameworkCore.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -8867,6 +8873,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

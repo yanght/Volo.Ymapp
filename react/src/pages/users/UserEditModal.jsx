@@ -111,14 +111,7 @@ export default class EditModal extends Component {
                                     required
                                 />
                             </Col>
-                            <Col span={span}>
-                                <FormElement
-                                    label="真实姓名"
-                                    field="surname"
-                                    initialValue={data.surname}
-                                    required
-                                />
-                            </Col>
+
                         </Row>
                         <Row>
                             <Col span={span}>

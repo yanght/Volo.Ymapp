@@ -24,6 +24,7 @@ namespace Volo.Ymapp
             Configure<AbpAutoMapperOptions>(options =>
             {
                 options.AddMaps<YmappApplicationModule>();
+                //options.AddProfile<YmappApplicationAutoMapperProfile>();
             });
         }
     }
