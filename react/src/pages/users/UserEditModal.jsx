@@ -111,7 +111,6 @@ export default class EditModal extends Component {
                                     required
                                 />
                             </Col>
-
                         </Row>
                         <Row>
                             <Col span={span}>

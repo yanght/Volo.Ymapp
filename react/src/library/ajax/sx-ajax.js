@@ -62,7 +62,7 @@ export default class SXAjax {
         instance.defaults.baseURL = '/';
         instance.defaults.withCredentials = true; // 跨域携带cookie
         // 在实例已创建后修改默认值
-        console.log(getAccessToken() ?.access_token);
+        //console.log(getAccessToken() ?.access_token);
         instance.defaults.headers.common['Authorization'] = 'Bearer ' + getAccessToken() ?.access_token;
     }
 

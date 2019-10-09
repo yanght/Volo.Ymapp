@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {Modal, Form, Spin, Table, Icon, Row, Col} from 'antd';
+import React, { Component } from 'react';
+import { Modal, Form, Spin, Table, Icon, Row, Col } from 'antd';
 import config from '@/commons/config-hoc';
-import {FormElement} from '@/library/antd';
+import { FormElement } from '@/library/antd';
 import localMenus from "@/menus";
-import {convertToTree, getGenerationKeys} from "@/library/utils/tree-utils";
-import {arrayRemove, arrayPush} from '@/library/utils';
+import { convertToTree, getGenerationKeys } from "@/library/utils/tree-utils";
+import { arrayRemove, arrayPush } from '@/library/utils';
 
 @config({
     ajax: true,
@@ -23,9 +23,9 @@ export default class RoleEdit extends Component {
         {
             title: '名称', dataIndex: 'text', key: 'text', width: 250,
             render: (value, record) => {
-                const {icon} = record;
+                const { icon } = record;
 
-                if (icon) return <span><Icon type={icon}/> {value}</span>;
+                if (icon) return <span><Icon type={icon} /> {value}</span>;
 
                 return value;
             }
@@ -39,9 +39,9 @@ export default class RoleEdit extends Component {
                 return '菜单';
             }
         },
-        {title: 'path', dataIndex: 'path', key: 'path', width: 150},
-        {title: 'url', dataIndex: 'url', key: 'url'},
-        {title: 'target', dataIndex: 'target', key: 'target', width: 100},
+        { title: 'path', dataIndex: 'path', key: 'path', width: 150 },
+        { title: 'url', dataIndex: 'url', key: 'url' },
+        { title: 'target', dataIndex: 'target', key: 'target', width: 100 },
     ];
 
     componentDidMount() {
@@ -50,7 +50,7 @@ export default class RoleEdit extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const {visible, form: {resetFields}} = this.props;
+        const { visible, form: { resetFields } } = this.props;
 
         // 打开弹框
         if (!prevProps.visible && visible) {
@@ -63,39 +63,62 @@ export default class RoleEdit extends Component {
     }
 
     fetchData() {
-        const {roleId} = this.props;
+        const { roleId } = this.props;
 
         if (!roleId) {
             // 添加操作
-            this.setState({data: {}, selectedRowKeys: []});
+            this.setState({ data: {}, selectedRowKeys: [] });
 
         } else {
             // 修改操作
 
             // TODO 根据id 发送ajax请求获取数据
-            this.setState({loading: true});
-            setTimeout(() => {
-                const data = {
-                    id: roleId,
-                    name: `角色名称${roleId}`,
-                    description: `角色描述${roleId}`,
-                    permissions: ['ajax', 'user', 'component', '/example/antd/async-select'],
-                };
+            this.setState({ loading: true });
+            // setTimeout(() => {
+            //     const data = {
+            //         id: roleId,
+            //         name: `角色名称${roleId}`,
+            //         description: `角色描述${roleId}`,
+            //         permissions: ['ajax', 'user', 'component', '/example/antd/async-select'],
+            //     };
 
-                const selectedRowKeys = data.permissions;
+            this.props.ajax.get(`/api/identity/roles/${roleId}`).then(res => {
+                this.setState({ data: res || {} });
+            })
+                .finally(() => this.setState({ loading: false }));
 
-                this.setState({data, selectedRowKeys});
+            // const selectedRowKeys = data.permissions;
 
-                // 如果不是所有的子级都选中，删除父级的key，父级为半选状态
-                this.setSelectedRowKeys(selectedRowKeys);
-                this.setState({loading: false});
+            // this.setState({ data, selectedRowKeys });
 
-            }, 500);
+            // // 如果不是所有的子级都选中，删除父级的key，父级为半选状态
+            // this.setSelectedRowKeys(selectedRowKeys);
+            // this.setState({ loading: false });
+
+            // }, 500);
         }
     }
 
+    getPermissions() {
+        return this.props.ajax.get('/api/abp/permissions', { providerName: 'Role', providerKey: 'admin' }).then(res => {
+            let permissions = [];
+            const { groups } = res;
+            Object.keys(groups).forEach(key => {
+                const tempPermissions = groups[key].permissions;
+                Object.keys(tempPermissions).forEach(key => {
+                    const _key = tempPermissions[key].name;
+                    const _text = tempPermissions[key].displayName;
+                    const parent = tempPermissions[key].parentName;
+                    const permission = { key: _key, text: _text, parentKey: parent, path: '/', local: _key, icon: 'align-left' };
+                    permissions.push(permission);
+                });
+            });
+            return Promise.resolve(permissions);
+        });
+    }
+
     fetchMenus() {
-        localMenus().then(menus => {
+        this.getPermissions().then(menus => {
             // 菜单根据order 排序
             const orderedData = [...menus].sort((a, b) => {
                 const aOrder = a.order || 0;
@@ -111,7 +134,7 @@ export default class RoleEdit extends Component {
 
             const menuTreeData = convertToTree(orderedData);
 
-            this.setState({menuTreeData});
+            this.setState({ menuTreeData });
         });
         /*
         // TODO 获取所有的菜单，不区分用户
@@ -126,16 +149,16 @@ export default class RoleEdit extends Component {
     }
 
     handleOk = () => {
-        const {loading, selectedRowKeys, halfSelectedRowKeys} = this.state;
+        const { loading, selectedRowKeys, halfSelectedRowKeys } = this.state;
         if (loading) return;
-        const {onOk, form: {validateFieldsAndScroll}} = this.props;
+        const { onOk, form: { validateFieldsAndScroll } } = this.props;
 
         validateFieldsAndScroll((err, values) => {
             if (!err) {
                 // 半选、全选都要提交给后端保存
                 const keys = selectedRowKeys.concat(halfSelectedRowKeys);
-                const params = {...values, keys};
-                const {id} = values;
+                const params = { ...values, keys };
+                const { id } = values;
 
                 console.log(params);
 
@@ -143,19 +166,19 @@ export default class RoleEdit extends Component {
 
                 // id存在未修改，不存在未添加
                 const ajax = id ? this.props.ajax.put : this.props.ajax.post;
-
-                this.setState({loading: true});
-                ajax('/roles', params)
+                const url = id ? `/api/identity/roles/${id}` : '/api/identity/roles';
+                this.setState({ loading: true });
+                ajax(url, params)
                     .then(() => {
                         if (onOk) onOk();
                     })
-                    .finally(() => this.setState({loading: false}));
+                    .finally(() => this.setState({ loading: false }));
             }
         });
     };
 
     handleCancel = () => {
-        const {onCancel} = this.props;
+        const { onCancel } = this.props;
         if (onCancel) onCancel();
     };
 
@@ -163,12 +186,12 @@ export default class RoleEdit extends Component {
     setSelectedRowKeys = (srk) => {
         let selectedRowKeys = [...srk];
         let halfSelectedRowKeys = [...this.state.halfSelectedRowKeys];
-        const {menuTreeData} = this.state;
+        const { menuTreeData } = this.state;
 
         const loop = (dataSource) => {
             dataSource.forEach(item => {
-                const {children, key} = item;
-                if (children?.length) {
+                const { children, key } = item;
+                if (children ?.length) {
                     // 所有后代节点
                     const keys = getGenerationKeys(dataSource, key);
                     // 未选中节点
@@ -199,24 +222,24 @@ export default class RoleEdit extends Component {
 
         loop(menuTreeData);
 
-        this.setState({halfSelectedRowKeys, selectedRowKeys});
+        this.setState({ halfSelectedRowKeys, selectedRowKeys });
     };
 
     getCheckboxProps = (record) => {
-        const {halfSelectedRowKeys, selectedRowKeys} = this.state;
-        const {key} = record;
+        const { halfSelectedRowKeys, selectedRowKeys } = this.state;
+        const { key } = record;
 
         // 半选
-        if (halfSelectedRowKeys.includes(key)) return {checked: false, indeterminate: true};
+        if (halfSelectedRowKeys.includes(key)) return { checked: false, indeterminate: true };
 
         // 全选
-        if (selectedRowKeys.includes(key)) return {checked: true, indeterminate: false};
+        if (selectedRowKeys.includes(key)) return { checked: true, indeterminate: false };
 
         return {};
     };
 
     onSelect = (record, selected) => {
-        const {key} = record;
+        const { key } = record;
         let selectedRowKeys = [...this.state.selectedRowKeys];
 
         // 选中、反选所有的子节点
@@ -233,11 +256,11 @@ export default class RoleEdit extends Component {
         })
     };
 
-    FormElement = (props) => <FormElement form={this.props.form} labelWidth={100} {...props}/>;
+    FormElement = (props) => <FormElement form={this.props.form} labelWidth={100} {...props} />;
 
     render() {
-        const {visible} = this.props;
-        const {loading, data, menuTreeData, selectedRowKeys} = this.state;
+        const { visible } = this.props;
+        const { loading, data, menuTreeData, selectedRowKeys } = this.state;
         const FormElement = this.FormElement;
         return (
             <Modal
@@ -251,7 +274,7 @@ export default class RoleEdit extends Component {
             >
                 <Spin spinning={loading}>
                     <Form>
-                        {data.id ? (<FormElement type="hidden" field="id" decorator={{initialValue: data.id}}/>) : null}
+                        {data.id ? (<FormElement type="hidden" field="id" decorator={{ initialValue: data.id }} />) : null}
                         <Row>
                             <Col span={10}>
                                 <FormElement
@@ -260,20 +283,24 @@ export default class RoleEdit extends Component {
                                     decorator={{
                                         initialValue: data.name,
                                         rules: [
-                                            {required: true, message: '请输入角色名称！'}
+                                            { required: true, message: '请输入角色名称！' }
                                         ],
                                     }}
                                 />
                             </Col>
-                            <Col span={14}>
+                            <Col span={2}>
                                 <FormElement
-                                    label="角色描述"
-                                    type="textarea"
-                                    field="description"
-                                    rows={1}
-                                    decorator={{
-                                        initialValue: data.description,
-                                    }}
+                                    label="是否默认"
+                                    field="isDefault"
+                                    type="checkbox"
+                                />
+                            </Col>
+
+                            <Col span={2}>
+                                <FormElement
+                                    label="是否公共"
+                                    field="isPublic"
+                                    type="checkbox"
                                 />
                             </Col>
                         </Row>
@@ -290,7 +317,7 @@ export default class RoleEdit extends Component {
                         }}
                         dataSource={menuTreeData}
                         pagination={false}
-                        scroll={{y: this.windowHeight ? this.windowHeight - 390 : 400}}
+                        scroll={{ y: this.windowHeight ? this.windowHeight - 390 : 400 }}
                     />
                 </Spin>
             </Modal>

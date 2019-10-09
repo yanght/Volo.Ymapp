@@ -18,6 +18,7 @@ namespace Volo.Ymapp.Permissions
             books.AddChild(YmappPermissions.Books.Update, L("Permission:Update"));
             books.AddChild(YmappPermissions.Books.Delete, L("Permission:Delete"));
             books.AddChild(YmappPermissions.Books.ManagePermissions, L("Permission:ManagePermissions"));
+
         }
 
         private static LocalizableString L(string name)
