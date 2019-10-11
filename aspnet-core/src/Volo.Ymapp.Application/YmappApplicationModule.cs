@@ -20,7 +20,7 @@ namespace Volo.Ymapp
     public class YmappApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
-        {
+        {            
             Configure<AbpAutoMapperOptions>(options =>
             {
                 options.AddMaps<YmappApplicationModule>();

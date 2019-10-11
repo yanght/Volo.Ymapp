@@ -34,9 +34,9 @@ namespace Volo.Ymapp
             });
 
             Configure<AbpLocalizationOptions>(options =>
-            {
+            {                
                 options.Resources
-                    .Add<YmappResource>("en")
+                    .Add<YmappResource>("zh-Hans")
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/Ymapp");
             });
