@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Button, Spin } from 'antd';
+import { Form, Row, Col, Button, Spin, Checkbox } from 'antd';
 import _ from 'lodash';
 import { FormElement } from '@/library/antd';
 import PageContent from '@/layouts/page-content';
@@ -10,10 +10,12 @@ import modal from '@/components/modal-hoc';
 @config({ ajax: true })
 @Form.create()
 @modal(props => props.id === null ? '添加用户' : '修改用户')
+
 export default class EditModal extends Component {
     state = {
         loading: false,
         data: {}, // 表单回显数据
+        roles: [],
     };
 
     componentDidMount() {
@@ -28,6 +30,10 @@ export default class EditModal extends Component {
                     this.setState({ data: res || {} });
                 })
                 .finally(() => this.setState({ loading: false }));
+            this.props.ajax.get('/api/identity/roles')
+                .then(res => {
+                    this.setState({ roles: res.items || {} });
+                });
         }
     }
 
@@ -84,6 +90,9 @@ export default class EditModal extends Component {
         const { loading, data } = this.state;
         const span = 8;
         const FormElement = this.FormElement;
+        const CheckboxGroup = Checkbox.Group;
+        const plainOptions = ['Apple', 'Pear', 'Orange'];
+        const defaultCheckedList = ['Apple', 'Orange'];
         return (
             <Spin spinning={loading}>
                 <PageContent footer={false}>
@@ -121,7 +130,15 @@ export default class EditModal extends Component {
                                     required
                                 />
                             </Col>
-
+                        </Row>
+                        <Row>
+                            <Col span={12}>
+                                <CheckboxGroup
+                                    options={plainOptions}
+                                    value={this.state.checkedList}
+                                    onChange={this.onChange}
+                                />
+                            </Col>
                         </Row>
                     </Form>
                 </PageContent>
