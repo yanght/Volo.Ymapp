@@ -4,6 +4,7 @@ import PageContent from '@/layouts/page-content';
 import { Operator, ToolBar } from "@/library/antd";
 import config from '@/commons/config-hoc';
 import RoleEdit from './RoleEdit';
+import PermissionEdit from './PermissionEdit';
 
 @config({
     path: '/roles',
@@ -12,7 +13,10 @@ import RoleEdit from './RoleEdit';
 export default class RoleList extends Component {
     state = {
         roleId: void 0,
+        providerKey: '',
+        providerName: 'Role',
         visible: false,
+        permissionVisible: false,
         total: 0,           // 分页中条数
         pageSize: 10,       // 分页每页显示条数
         pageNum: 1,         // 分页当前页
@@ -30,6 +34,10 @@ export default class RoleList extends Component {
                     {
                         label: '编辑',
                         onClick: () => this.handleEdit(id),
+                    },
+                    {
+                        label: '权限',
+                        onClick: () => this.handlePermissionEdit(name),
                     },
                     {
                         label: '删除',
@@ -89,14 +97,19 @@ export default class RoleList extends Component {
     handleEdit = (roleId) => {
         this.setState({ roleId, visible: true });
     };
-
+    handlePermissionEdit = (providerKey) => {
+        this.setState({ providerKey, permissionVisible: true });
+    }
     render() {
         const {
             dataSource,
             visible,
             roleId,
+            permissionVisible,
+            providerName,
+            providerKey
         } = this.state;
-        console.log('render roles');
+
         return (
             <PageContent>
                 <ToolBar
@@ -116,6 +129,13 @@ export default class RoleList extends Component {
                     visible={visible}
                     onOk={() => this.setState({ visible: false })}
                     onCancel={() => this.setState({ visible: false })}
+                />
+                <PermissionEdit
+                    providerKey={providerKey}
+                    providerName={providerName}
+                    visible={permissionVisible}
+                    onOk={() => this.setState({ permissionVisible: false })}
+                    onCancel={() => this.setState({ permissionVisible: false })}
                 />
             </PageContent>
         );

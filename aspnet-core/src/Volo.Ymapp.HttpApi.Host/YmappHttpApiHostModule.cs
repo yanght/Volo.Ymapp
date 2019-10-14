@@ -149,7 +149,7 @@ namespace Volo.Ymapp
                                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                                 .Select(o => o.RemovePostFix("/"))
                                 .ToArray()
-                        )
+                        ).SetPreflightMaxAge(TimeSpan.FromSeconds(36000))
                         .WithAbpExposedHeaders()
                         .SetIsOriginAllowedToAllowWildcardSubdomains()
                         .AllowAnyHeader()

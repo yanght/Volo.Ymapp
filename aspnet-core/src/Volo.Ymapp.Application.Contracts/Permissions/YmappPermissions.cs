@@ -14,8 +14,7 @@ namespace Volo.Ymapp.Permissions
             public const string Default = GroupName + ".Books";
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
-            public const string Update = Default + ".Update";
-            public const string ManagePermissions = Default + ".ManagePermissions";
+            public const string Update = Default + ".Edit";
         }
         public static string[] GetAll()
         {

@@ -1,5 +1,4 @@
 export default [
-    { key: 'component', local: 'component', text: '组件', icon: 'ant-design', order: 700 },
     {
         key: '/example/antd/async-select',
         parentKey: 'component',
