@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Button, Spin, Checkbox } from 'antd';
+import { Form, Row, Col, Button, Spin, Checkbox, Card } from 'antd';
 import _ from 'lodash';
 import { FormElement } from '@/library/antd';
 import PageContent from '@/layouts/page-content';
@@ -16,6 +16,7 @@ export default class EditModal extends Component {
         loading: false,
         data: {}, // 表单回显数据
         roles: [],
+        selectedRoles: [],
     };
 
     componentDidMount() {
@@ -30,11 +31,23 @@ export default class EditModal extends Component {
                     this.setState({ data: res || {} });
                 })
                 .finally(() => this.setState({ loading: false }));
-            this.props.ajax.get('/api/identity/roles')
-                .then(res => {
-                    this.setState({ roles: res.items || {} });
-                });
+
+            this.props.ajax.get(`/api/identity/users/${id}/roles`).then(res => {
+                let selectedRoles = [];
+                res.items.forEach(item => {
+                    selectedRoles.push(item.name);
+                })
+                this.setState({ selectedRoles: selectedRoles });
+            })
         }
+        this.props.ajax.get('/api/identity/roles')
+            .then(res => {
+                let roles = [];
+                res.items.forEach(item => {
+                    roles.push({ label: item.name, value: item.name });
+                })
+                this.setState({ roles: roles || {} });
+            });
     }
 
 
@@ -86,18 +99,21 @@ export default class EditModal extends Component {
 
     render() {
         const { id } = this.props;
+        const { getFieldDecorator } = this.props.form;
         const isEdit = id !== null;
-        const { loading, data } = this.state;
+        const { loading, data, roles, selectedRoles } = this.state;
         const span = 8;
+        //const selectedRoles = ['admin'];
         const FormElement = this.FormElement;
-        const CheckboxGroup = Checkbox.Group;
-        const plainOptions = ['Apple', 'Pear', 'Orange'];
-        const defaultCheckedList = ['Apple', 'Orange'];
+        function onChange(checkedValues) {
+            console.log('checked = ', checkedValues);
+        }
         return (
             <Spin spinning={loading}>
                 <PageContent footer={false}>
                     <Form onSubmit={this.handleSubmit}>
                         {isEdit ? <FormElement type="hidden" field="id" initialValue={data.id} /> : null}
+                        <FormElement type="hidden" field="concurrencyStamp" initialValue={data.concurrencyStamp} />
                         <Row>
                             <Col span={span}>
                                 <FormElement
@@ -131,15 +147,17 @@ export default class EditModal extends Component {
                                 />
                             </Col>
                         </Row>
-                        <Row>
-                            <Col span={12}>
-                                <CheckboxGroup
-                                    options={plainOptions}
-                                    value={this.state.checkedList}
-                                    onChange={this.onChange}
-                                />
-                            </Col>
-                        </Row>
+                        <Card bordered={false} title="选择角色">
+                            <Form.Item >
+                                {getFieldDecorator('roleNames', { initialValue: selectedRoles })(
+                                    <Checkbox.Group
+                                        options={roles}
+                                        onChange={onChange}
+                                    />
+                                )}
+
+                            </Form.Item>
+                        </Card>
                     </Form>
                 </PageContent>
                 <div className="ant-modal-footer">

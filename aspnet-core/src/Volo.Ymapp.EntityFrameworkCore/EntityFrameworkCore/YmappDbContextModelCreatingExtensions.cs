@@ -4,6 +4,7 @@ using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users;
 using Volo.Ymapp.Books;
+using Volo.Ymapp.Categorys;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -28,12 +29,22 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
+            builder.Entity<Category>(b =>
+            {
+                b.ToTable(YmappConsts.DbTablePrefix + "Categorys", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Name).IsRequired().HasMaxLength(20);
+                b.Property(x => x.ParentId).IsRequired();
+                b.Property(x => x.Sort).IsRequired().HasDefaultValue(0);
+                b.Property(x => x.Type).IsRequired().HasDefaultValue(CategoryType.Undefined);
+            });
         }
 
         public static void ConfigureCustomUserProperties<TUser>(this EntityTypeBuilder<TUser> b)
-            where TUser: class, IUser
+            where TUser : class, IUser
         {
             //b.Property<string>(nameof(AppUser.MyProperty))...
+            
         }
     }
 }

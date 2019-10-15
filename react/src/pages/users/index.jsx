@@ -34,11 +34,11 @@ export default class UserCenter extends Component {
         { title: '昵称', dataIndex: 'name', key: 'name' },
         { title: '邮箱', dataIndex: 'email', key: 'email' },
         // {
-        //     title: '是否激活', dataIndex: 'isActive', key: 'isActive',
+        //     title: '是否公共', dataIndex: 'isPublic', key: 'isPublic',
         //     render: (value, record) => {
-        //         let color = record.isActive ? 'green' : 'geekblue';
-        //         let text = record.isActive ? '是' : '否';
-        //         if (record.isActive)
+        //         let color = record.isPublic ? 'green' : 'geekblue';
+        //         let text = record.isPublic ? '是' : '否';
+        //         if (record.isPublic)
         //             return (
         //                 <Tag color={color} key={text}>
         //                     {text}
