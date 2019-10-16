@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Icon, Modal, Form, Row, Col } from 'antd';
+import { Table, Icon, Modal, Form, Row, Col, TreeSelect } from 'antd';
 import config from '@/commons/config-hoc';
 import PageContent from '@/layouts/page-content';
 import localMenus from '../../menus';
@@ -9,14 +9,14 @@ import IconPicker from "@/components/icon-picker";
 
 @config({
     path: '/categorys',
-    title: { local: 'menus', text: '菜单&权限', icon: 'lock' },
+    title: { local: 'categorys', text: '分类列表', icon: 'lock' },
     ajax: true,
 })
 @Form.create()
 export default class index extends Component {
     state = {
         loading: false,
-        menus: [],
+        treeData: [],
         visible: false,
         record: {},
         iconVisible: false,
@@ -230,6 +230,7 @@ export default class index extends Component {
             visible,
             loading,
             iconVisible,
+            treeData,
         } = this.state;
         const { form, form: { getFieldValue, setFieldsValue } } = this.props;
 
@@ -246,7 +247,7 @@ export default class index extends Component {
                 />
                 <Modal
                     id="menu-modal"
-                    title="菜单&权限"
+                    title="分类编辑"
                     visible={visible}
                     onOk={this.handleSubmit}
                     onCancel={() => this.setState({ visible: false })}
@@ -254,7 +255,7 @@ export default class index extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         <FormElement type="hidden" field="id" />
                         <Row>
-                            <Col span={24}>
+                            <Col span={12}>
                                 <FormElement
                                     label="名称"
                                     field="name"
@@ -263,6 +264,19 @@ export default class index extends Component {
                                             { required: true, message: '请输入名称！' },
                                         ],
                                     }}
+                                />
+                            </Col>
+                            <Col span={12}>
+                                <FormElement
+                                    type="select-tree"
+                                    label="上级分类"
+                                    field="parentId"
+                                    value={this.state.value}
+                                    dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                                    treeData={treeData}
+                                    placeholder="Please select"
+                                    treeDefaultExpandAll
+                                    onChange={this.onChange}
                                 />
                             </Col>
                         </Row>

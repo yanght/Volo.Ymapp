@@ -54,5 +54,12 @@ namespace Volo.Ymapp.Samples
             result.Items.Count.ShouldBeGreaterThanOrEqualTo(0);
 
         }
+
+        [Fact]
+        public async Task GetCategoryTreeData()
+        {
+            var result = await _categoryAppService.GetCategoryTree(new GetCategoryTreeDto() { });
+            result.Count.ShouldBeGreaterThanOrEqualTo(0);
+        }
     }
 }
