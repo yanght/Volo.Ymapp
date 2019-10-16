@@ -12,8 +12,8 @@ namespace Volo.Ymapp.Categorys
            CategoryDto, //Used to show books
            Guid, //Primary key of the book entity
            PagedAndSortedResultRequestDto, //Used for paging/sorting on getting a list of books
-           CreateUpdateCategoryDto, //Used to create a new book
-           CreateUpdateCategoryDto> //Used to update a book
+           CreateCategoryDto, //Used to create a new book
+           UpdateCategoryDto> //Used to update a book
     {
 
     }

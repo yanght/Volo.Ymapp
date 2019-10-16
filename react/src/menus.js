@@ -26,6 +26,7 @@ export default function getMenus(userId) {
         { key: 'ajax', local: 'ajax', text: 'ajax请求', icon: 'api', path: '/example/ajax', order: 998 },
         { key: 'AbpIdentity.Users', local: 'users', text: '用户列表', icon: 'user', path: '/users', order: 900 },
         { key: 'AbpIdentity.Roles', local: 'roles', text: '角色列表 ', icon: 'team', path: '/roles', order: 800 },
+        { key: 'Ymapp.Category', local: 'categorys', text: '分类列表 ', icon: 'team', path: '/categorys', order: 800 },
         { key: 'page404', local: 'page404', text: '404页面不存', icon: 'file-search', path: '/404', order: 700 },
         { key: 'user-center', local: 'user-center', text: '用户中心', icon: 'user', path: '/user-center', order: 600 },
         { key: 'component', local: 'component', text: '组件', icon: 'ant-design', order: 700 },

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Categorys
 {
-    public class CreateUpdateCategoryDto
+    public class CreateUpdateCategoryDtoBase 
     {
         [Required]
         [StringLength(20)]
@@ -16,6 +17,5 @@ namespace Volo.Ymapp.Categorys
         public Guid ParentId { get; set; }
         [Required]
         public int Sort { get; set; }
-
     }
 }
