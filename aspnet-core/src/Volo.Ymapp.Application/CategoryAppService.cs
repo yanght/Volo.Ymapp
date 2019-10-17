@@ -25,13 +25,13 @@ namespace Volo.Ymapp
         {
             var list = await GetListAsync(new PagedAndSortedResultRequestDto() { SkipCount = 0, MaxResultCount = int.MaxValue });
 
-            return CategoryToTreeData(list.Items.ToList());
+            return GetCategoryTree(Guid.Empty, list.Items);
         }
 
-        private List<TreeDataDto> CategoryToTreeData(List<CategoryDto> categorys)
+        private List<TreeDataDto> CategoryToTreeData(List<CategoryDto> categorys, List<TreeDataDto> tree)
         {
-            List<TreeDataDto> tree = new List<TreeDataDto>();
-            foreach (var item in categorys.Where(m => m.ParentId == Guid.Empty))
+            //List<TreeDataDto> tree = new List<TreeDataDto>();
+            foreach (var item in categorys)
             {
                 var children = categorys.Where(m => m.ParentId == item.Id).ToList();
                 tree.Add(new TreeDataDto()
@@ -39,10 +39,28 @@ namespace Volo.Ymapp
                     Title = item.Name,
                     Value = item.Id.ToString(),
                     Key = item.Id.ToString(),
-                    Children = CategoryToTreeData(children)
+                    Children = CategoryToTreeData(children, tree)
                 });
             }
             return tree;
+        }
+        private List<TreeDataDto> GetCategoryTree(Guid parentId, IReadOnlyList<CategoryDto> list)
+        {
+            if (list == null || list.Count == 0) return null;
+            List<TreeDataDto> treeList = new List<TreeDataDto>();
+            var result = list.Where(m => m.ParentId == parentId).ToList();
+            foreach (var item in result)
+            {
+                TreeDataDto model = new TreeDataDto()
+                {
+                    Title = item.Name,
+                    Value = item.Id.ToString(),
+                    Key = item.Id.ToString(),
+                    Children = GetCategoryTree(item.Id, list)
+                };
+                treeList.Add(model);
+            }
+            return treeList.Count() == 0 ? null : treeList;
         }
     }
 }

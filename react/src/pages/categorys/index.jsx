@@ -3,7 +3,7 @@ import { Table, Icon, Modal, Form, Row, Col, TreeSelect } from 'antd';
 import config from '@/commons/config-hoc';
 import PageContent from '@/layouts/page-content';
 import localMenus from '../../menus';
-import { convertToTree } from "@/library/utils/tree-utils";
+import { convertToTree, getNodeByKey } from "@/library/utils/tree-utils";
 import { ToolBar, Operator, FormElement } from '@/library/antd';
 import IconPicker from "@/components/icon-picker";
 
@@ -19,13 +19,15 @@ export default class index extends Component {
         treeData: [],
         visible: false,
         record: {},
+        disabled: false,
+        categorys: [],
         iconVisible: false,
     };
 
     columns = [
         // key 与parentKey自动生成了，不需要展示和编辑
         // {title: 'key', dataIndex: 'key', key: 'key'},
-        // {title: 'parentKey', dataIndex: 'parentKey', key: 'parentKey'},
+        // { title: 'parentKey', dataIndex: 'parentKey', key: 'parentKey' },
         {
             title: '名称', dataIndex: 'text', key: 'text', width: 200,
             render: (value, record) => {
@@ -36,20 +38,15 @@ export default class index extends Component {
                 return value;
             }
         },
-        { title: 'path', dataIndex: 'path', key: 'path', width: 100 },
-        { title: 'url', dataIndex: 'url', key: 'url' },
-        { title: 'target', dataIndex: 'target', key: 'target', width: 60 },
-        { title: '国际化', dataIndex: 'local', key: 'local', width: 60 },
         {
             title: '类型', dataIndex: 'type', key: 'type', width: 60,
             render: value => {
-                if (value === '1') return '菜单';
-                if (value === '2') return '功能';
+                if (value === 1) return '商品';
+                if (value === 2) return '文章';
                 // 默认都为菜单
-                return '菜单';
+                return '未知';
             }
         },
-        { title: '功能编码', dataIndex: 'code', key: 'code', width: 100 },
         { title: '排序', dataIndex: 'order', key: 'order', width: 60 },
         {
             title: '操作', dataIndex: 'operator', key: 'operator', width: 150,
@@ -74,11 +71,7 @@ export default class index extends Component {
                         icon: 'folder-add',
                         onClick: () => this.handleAddSubMenu(record),
                     },
-                    {
-                        label: '添加子功能',
-                        icon: 'file-add',
-                        onClick: () => this.handleAddSubFunction(record),
-                    },
+
                 ];
                 return <Operator items={items} />
             },
@@ -86,38 +79,35 @@ export default class index extends Component {
     ];
 
     componentDidMount() {
-        this.fetchMenus();
+        this.fetchCategorys();
     }
 
-    fetchMenus() {
-        localMenus().then(menus => {
-            // 菜单根据order 排序
-            const orderedData = [...menus].sort((a, b) => {
-                const aOrder = a.order || 0;
-                const bOrder = b.order || 0;
+    fetchCategorys() {
 
-                // 如果order都不存在，根据 text 排序
-                if (!aOrder && !bOrder) {
-                    return a.text > b.text ? 1 : -1;
+        this.props.ajax.get('/api/app/category').then(res => {
+            let categorys = [];
+            res.items.forEach(item => {
+                const node = { concurrencyStamp: item.concurrencyStamp, key: item.id, text: item.name, type: item.type, order: item.sort, icon: 'align-left' };
+                if (item.parentId != '00000000-0000-0000-0000-000000000000') {
+                    node.parentKey = item.parentId
                 }
-
-                return bOrder - aOrder;
-            });
-
-            const menuTreeData = convertToTree(orderedData);
-
-            this.setState({ menus: menuTreeData });
-        });
-        /*
-        // TODO 获取所有的菜单，不区分用户
-        this.setState({loading: true});
-        this.props.ajax
-            .get('/menus')
-            .then(res => {
-                this.setState({menus: res});
+                categorys.push(node);
             })
-            .finally(() => this.setState({loading: false}));
-        */
+            console.log(categorys);
+            const menuTreeData = convertToTree(categorys);
+
+            this.setState({ categorys: menuTreeData });
+        });
+
+        // 获取树形分类
+        this.setState({ loading: true });
+        this.props.ajax
+            .get('/api/app/category/categoryTree')
+            .then(res => {
+                this.setState({ treeData: res });
+            })
+            .finally(() => this.setState({ loading: false }));
+
     }
 
     handleAddTopMenu = () => {
@@ -130,56 +120,48 @@ export default class index extends Component {
 
         resetFields();
         const {
+            concurrencyStamp,
             key,
             parentKey,
             text,
             icon,
-            path,
-            url,
-            target,
-            local,
-            type = '1',
-            code,
-            order,
+            type,
+            sort,
         } = record;
 
         setTimeout(() => {
             setFieldsValue({
+                concurrencyStamp,
                 key,
                 parentKey,
                 text,
                 icon,
-                path,
-                url,
-                target,
-                local,
                 type,
-                code,
-                order,
+                sort,
             })
         });
-        this.setState({ visible: true, record });
+        const { treeData } = this.state;
+        console.log(treeData);
+        const node = this.findTreeNode(treeData, key);
+        console.log(node);
+        node.disabled = true;
+
+
+        this.setState({ treeData, visible: true, record, disabled: false, });
     };
+
+
+
 
     handleAddSubMenu = (record) => {
         const { resetFields, setFieldsValue } = this.props.form;
 
         resetFields();
-
         const parentKey = record.key;
-        setTimeout(() => setFieldsValue({ parentKey, type: '1' }));
+        const type = record.type;
+        setTimeout(() => setFieldsValue({ parentKey, type }));
 
-        this.setState({ visible: true, record });
-    };
-
-    handleAddSubFunction = (record) => {
-        const { resetFields, setFieldsValue } = this.props.form;
-
-        resetFields();
-        const parentKey = record.key;
-        setTimeout(() => setFieldsValue({ parentKey, type: '2' }));
-
-        this.setState({ visible: true, record });
+        this.setState({ visible: true, disabled: true, record });
     };
 
     handleDeleteNode = (record) => {
@@ -188,10 +170,10 @@ export default class index extends Component {
         // TODO
         this.setState({ loading: true });
         this.props.ajax
-            .del(`/menus/${key}`)
+            .del(`/api/app/category/${key}`)
             .then(() => {
                 this.setState({ visible: false });
-                this.fetchMenus();
+                this.fetchCategorys();
             })
             .finally(() => this.setState({ loading: false }));
     };
@@ -201,22 +183,36 @@ export default class index extends Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-
-                // 如果key存在视为修改，其他为添加
-                const { id } = values;
-                const ajax = id ? this.props.ajax.put : this.props.ajax.post;
-
+                const params = {
+                    concurrencyStamp: values.concurrencyStamp,
+                    id: values.key,
+                    name: values.text,
+                    parentId: values.parentKey,
+                    type: values.type,
+                    sort: values.order
+                }
+                // 如果key存在视为修改，其他为添加         
+                const ajax = params.id ? this.props.ajax.put : this.props.ajax.post;
+                const url = params.id ? `/api/app/category/${params.id}` : '/api/app/category';
                 // TODO
                 this.setState({ loading: true });
-                ajax('/api/app/category', values)
+                ajax(url, params)
                     .then(() => {
                         this.setState({ visible: false });
-                        this.fetchMenus();
+                        this.fetchCategorys();
                     })
                     .finally(() => this.setState({ loading: false }));
             }
         });
     };
+    onChange = (value, label, extra) => {
+
+
+        // if (key == value) {
+        //     alert("不能选择同级")
+        //     return false;
+        // }
+    }
 
     handleIconClick = () => {
         this.setState({ iconVisible: true });
@@ -226,14 +222,15 @@ export default class index extends Component {
 
     render() {
         const {
-            menus,
+            categorys,
             visible,
             loading,
             iconVisible,
             treeData,
+            disabled,
         } = this.state;
         const { form, form: { getFieldValue, setFieldsValue } } = this.props;
-
+        const { getFieldDecorator } = this.props.form;
         const FormElement = this.FormElement;
 
         return (
@@ -242,7 +239,7 @@ export default class index extends Component {
                 <Table
                     loading={loading}
                     columns={this.columns}
-                    dataSource={menus}
+                    dataSource={categorys}
                     pagination={false}
                 />
                 <Modal
@@ -253,12 +250,13 @@ export default class index extends Component {
                     onCancel={() => this.setState({ visible: false })}
                 >
                     <Form onSubmit={this.handleSubmit}>
-                        <FormElement type="hidden" field="id" />
+                        <FormElement type="hidden" field="key" />
+                        <FormElement type="hidden" field="concurrencyStamp" />
                         <Row>
                             <Col span={12}>
                                 <FormElement
                                     label="名称"
-                                    field="name"
+                                    field="text"
                                     decorator={{
                                         rules: [
                                             { required: true, message: '请输入名称！' },
@@ -267,17 +265,22 @@ export default class index extends Component {
                                 />
                             </Col>
                             <Col span={12}>
+
                                 <FormElement
                                     type="select-tree"
                                     label="上级分类"
-                                    field="parentId"
-                                    value={this.state.value}
+                                    field="parentKey"
+                                    allowClear={true}
+                                    showSearch={true}
+                                    treeNodeFilterProp="title"
                                     dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
-                                    treeData={treeData}
-                                    placeholder="Please select"
+                                    options={treeData}
+                                    disabled={disabled}
+                                    placeholder="请选择"
                                     treeDefaultExpandAll
                                     onChange={this.onChange}
                                 />
+
                             </Col>
                         </Row>
                         <Row>
@@ -286,32 +289,30 @@ export default class index extends Component {
                                     label="类型"
                                     type="select"
                                     options={[
-                                        { value: '1', label: '商品' },
-                                        { value: '2', label: '文章' },
+                                        { value: 1, label: '商品' },
+                                        { value: 2, label: '文章' },
                                     ]}
                                     field="type"
-                                    decorator={{ initialValue: '1' }}
+                                    disabled={disabled}
+                                    decorator={{
+                                        rules: [
+                                            { required: true, message: '请选择类型' },
+                                        ],
+                                    }}
                                     getPopupContainer={() => document.querySelector('.ant-modal-wrap')}
                                 />
                             </Col>
                             <Col span={12}>
                                 <FormElement
                                     label="排序"
-                                    field="sort"
+                                    field="order"
+                                    type='number'
                                 />
                             </Col>
 
                         </Row>
                     </Form>
                 </Modal>
-                <IconPicker
-                    visible={iconVisible}
-                    onOk={(type) => {
-                        this.setState({ iconVisible: false });
-                        setFieldsValue({ icon: type });
-                    }}
-                    onCancel={() => this.setState({ iconVisible: false })}
-                />
             </PageContent>
         );
     }
