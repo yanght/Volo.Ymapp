@@ -21,6 +21,12 @@ namespace Volo.Ymapp
         {
         }
 
+
+        /// <summary>
+        /// 获取树形分类列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input)
         {
             var list = await GetListAsync(new PagedAndSortedResultRequestDto() { SkipCount = 0, MaxResultCount = int.MaxValue });
@@ -28,22 +34,7 @@ namespace Volo.Ymapp
             return GetCategoryTree(Guid.Empty, list.Items);
         }
 
-        private List<TreeDataDto> CategoryToTreeData(List<CategoryDto> categorys, List<TreeDataDto> tree)
-        {
-            //List<TreeDataDto> tree = new List<TreeDataDto>();
-            foreach (var item in categorys)
-            {
-                var children = categorys.Where(m => m.ParentId == item.Id).ToList();
-                tree.Add(new TreeDataDto()
-                {
-                    Title = item.Name,
-                    Value = item.Id.ToString(),
-                    Key = item.Id.ToString(),
-                    Children = CategoryToTreeData(children, tree)
-                });
-            }
-            return tree;
-        }
+        
         private List<TreeDataDto> GetCategoryTree(Guid parentId, IReadOnlyList<CategoryDto> list)
         {
             if (list == null || list.Count == 0) return null;

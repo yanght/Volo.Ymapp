@@ -158,7 +158,7 @@ export default class RoleEdit extends Component {
                                     }}
                                 />
                             </Col>
-                            <Col span={2}>
+                            <Col span={4}>
                                 <FormElement
                                     label="是否默认"
                                     field="isDefault"
@@ -168,7 +168,7 @@ export default class RoleEdit extends Component {
                                 />
                             </Col>
 
-                            <Col span={2}>
+                            <Col span={4}>
                                 <FormElement
                                     label="是否公共"
                                     field="isPublic"

@@ -3,8 +3,14 @@
  * @module 树操作工具
  */
 
-import {cloneDeep} from 'lodash/lang';
-import {uniqueArray, arrayRemoveAll, arrayRemove} from './index';
+import {
+    cloneDeep
+} from 'lodash/lang';
+import {
+    uniqueArray,
+    arrayRemoveAll,
+    arrayRemove
+} from './index';
 
 /**
  * 将数据转换成tree所需格式
@@ -14,7 +20,11 @@ import {uniqueArray, arrayRemoveAll, arrayRemove} from './index';
  * @returns {{name: *, key: *}}
  */
 export function generateTreeNode(data, keyField = 'id', titleField = 'name') {
-    return {...data, title: data[titleField], key: data[keyField]};
+    return {
+        ...data,
+        title: data[titleField],
+        key: data[keyField]
+    };
 }
 
 /**
@@ -42,6 +52,26 @@ export function setLeaf(treeData, key) {
         for (let item of data) {
             if (item.key === key) {
                 item.isLeaf = true;
+                break;
+            }
+            if (item.children && item.children.length) {
+                loopLeaf(item.children);
+            }
+        }
+    };
+    loopLeaf(treeData);
+}
+
+/**
+ * 根据key禁用node可选
+ * @param {Array} treeData 树的树状结构数据
+ * @param {String} key 节点的key值
+ */
+export function disebleTreeeNode(treeData, key) {
+    const loopLeaf = (data) => {
+        for (let item of data) {
+            if (item.key === key) {
+                item.disabled = true;
                 break;
             }
             if (item.children && item.children.length) {
@@ -211,7 +241,9 @@ export function getNodeByPropertyAndValue(treeData, key, value, compare) {
     const loop = (data) => {
         for (let item of data) {
             if (compare(item[key], value, item)) {
-                node = {...item};
+                node = {
+                    ...item
+                };
                 break;
             }
             if (item.children && item.children.length) {
@@ -243,8 +275,11 @@ export function getGenerationKeys(treeData, key) {
     const node = getNodeByKey(treeData, key);
     const keys = [];
     const loop = (node) => {
-        const {key, children} = node;
-        if (children?.length) {
+        const {
+            key,
+            children
+        } = node;
+        if (children.length) {
             children.forEach(loop);
         } else {
             keys.push(key);
@@ -365,9 +400,13 @@ export function addNodeChildByKey(treeData, key, newNode) {
         for (let item of data) {
             if (item.key === key) {
                 if (item.children) {
-                    item.children.push({...newNode});
+                    item.children.push({
+                        ...newNode
+                    });
                 } else {
-                    item.children = [{...newNode}];
+                    item.children = [{
+                        ...newNode
+                    }];
                 }
                 break;
             }
@@ -416,7 +455,9 @@ export function getTopNodeByNode(treeData, node) {
     const loop = (data) => { // 查找node的父节点
         for (let item of data) {
             if (item.key === node.parentKey) {
-                parentNode = {...item};
+                parentNode = {
+                    ...item
+                };
                 break;
             }
             if (item.children && item.children.length) {

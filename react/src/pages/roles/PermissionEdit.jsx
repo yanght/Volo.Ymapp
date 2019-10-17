@@ -88,11 +88,7 @@ export default class PermissionEdit extends Component {
                     const permission = { key: _key, text: _text, parentKey: parent, path: '/', local: _key, icon: 'align-left' };
                     permissions.push(permission);
                     if (tempPermissions[key].isGranted) {
-                        // if (tempPermissions[key].parentName == null) {
-                        //     harfGranteddPermissions.push(tempPermissions[key].name);
-                        // } else {
                         gtandPermissions.push(tempPermissions[key].name);
-                        // }
                     }
                 });
             });
@@ -113,7 +109,7 @@ export default class PermissionEdit extends Component {
         }
     }
     handleOk = () => {
-        const { loading, selectedRowKeys, halfSelectedRowKeys, menuTreeData, data } = this.state;
+        const { loading, selectedRowKeys, halfSelectedRowKeys, data } = this.state;
         if (loading) return;
         const { onOk, form: { validateFieldsAndScroll } } = this.props;
         validateFieldsAndScroll((err, values) => {

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Table, Icon, Modal, Form, Row, Col, TreeSelect } from 'antd';
+import { Table, Icon, Modal, Form, Row, Col } from 'antd';
 import config from '@/commons/config-hoc';
 import PageContent from '@/layouts/page-content';
-import localMenus from '../../menus';
-import { convertToTree, getNodeByKey } from "@/library/utils/tree-utils";
+import { convertToTree, disebleTreeeNode } from "@/library/utils/tree-utils";
 import { ToolBar, Operator, FormElement } from '@/library/antd';
-import IconPicker from "@/components/icon-picker";
 
 @config({
     path: '/categorys',
@@ -21,7 +19,6 @@ export default class index extends Component {
         record: {},
         disabled: false,
         categorys: [],
-        iconVisible: false,
     };
 
     columns = [
@@ -93,26 +90,22 @@ export default class index extends Component {
                 }
                 categorys.push(node);
             })
-            console.log(categorys);
             const menuTreeData = convertToTree(categorys);
 
             this.setState({ categorys: menuTreeData });
         });
+    }
 
+    handleAddTopMenu = () => {
+        this.props.form.resetFields();
+        this.setState({ visible: true, disabled: false, loading: true, });
         // 获取树形分类
-        this.setState({ loading: true });
         this.props.ajax
             .get('/api/app/category/categoryTree')
             .then(res => {
                 this.setState({ treeData: res });
             })
             .finally(() => this.setState({ loading: false }));
-
-    }
-
-    handleAddTopMenu = () => {
-        this.props.form.resetFields();
-        this.setState({ visible: true });
     };
 
     handleEditNode = (record) => {
@@ -140,18 +133,18 @@ export default class index extends Component {
                 sort,
             })
         });
-        const { treeData } = this.state;
-        console.log(treeData);
-        const node = this.findTreeNode(treeData, key);
-        console.log(node);
-        node.disabled = true;
 
-
-        this.setState({ treeData, visible: true, record, disabled: false, });
+        this.setState({ visible: true, record, disabled: false, });
+        // 获取树形分类
+        this.setState({ loading: true });
+        this.props.ajax
+            .get('/api/app/category/categoryTree')
+            .then(res => {
+                disebleTreeeNode(res, key);
+                this.setState({ treeData: res });
+            })
+            .finally(() => this.setState({ loading: false }));
     };
-
-
-
 
     handleAddSubMenu = (record) => {
         const { resetFields, setFieldsValue } = this.props.form;
@@ -182,7 +175,6 @@ export default class index extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 const params = {
                     concurrencyStamp: values.concurrencyStamp,
                     id: values.key,
@@ -191,7 +183,7 @@ export default class index extends Component {
                     type: values.type,
                     sort: values.order
                 }
-                // 如果key存在视为修改，其他为添加         
+                // 如果key存在视为修改，其他为添加
                 const ajax = params.id ? this.props.ajax.put : this.props.ajax.post;
                 const url = params.id ? `/api/app/category/${params.id}` : '/api/app/category';
                 // TODO
@@ -205,15 +197,6 @@ export default class index extends Component {
             }
         });
     };
-    onChange = (value, label, extra) => {
-
-
-        // if (key == value) {
-        //     alert("不能选择同级")
-        //     return false;
-        // }
-    }
-
     handleIconClick = () => {
         this.setState({ iconVisible: true });
     };
@@ -278,7 +261,6 @@ export default class index extends Component {
                                     disabled={disabled}
                                     placeholder="请选择"
                                     treeDefaultExpandAll
-                                    onChange={this.onChange}
                                 />
 
                             </Col>
