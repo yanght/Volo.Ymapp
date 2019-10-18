@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 
@@ -18,6 +19,10 @@ namespace Volo.Ymapp
             CreateMap<Category, CategoryDto>();
             CreateMap<CreateCategoryDto, Category>();
             CreateMap<UpdateCategoryDto, Category>();
+
+            CreateMap<Article, ArticleDto>();
+            CreateMap<CreateArticleDto, Article>();
+            CreateMap<UpdateArticleDto, Article>();
         }
     }
 }

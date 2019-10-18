@@ -6,6 +6,7 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users.EntityFrameworkCore;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
+using Volo.Ymapp.Articles;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -24,6 +25,7 @@ namespace Volo.Ymapp.EntityFrameworkCore
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categorys { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside YmappDbContextModelCreatingExtensions.ConfigureYmapp

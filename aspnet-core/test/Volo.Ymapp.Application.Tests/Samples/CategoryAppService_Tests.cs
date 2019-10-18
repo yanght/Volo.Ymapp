@@ -35,7 +35,7 @@ namespace Volo.Ymapp.Samples
                 Name = "最新资讯",
                 ParentId = Guid.NewGuid(),
                 Sort = 0,
-                Type = CategoryType.Artical
+                Type = (int)CategoryType.Artical
             };
             var result = await _categoryAppService.CreateAsync(input);
 

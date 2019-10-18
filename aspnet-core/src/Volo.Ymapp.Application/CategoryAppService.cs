@@ -34,7 +34,7 @@ namespace Volo.Ymapp
             return GetCategoryTree(Guid.Empty, list.Items);
         }
 
-        
+
         private List<TreeDataDto> GetCategoryTree(Guid parentId, IReadOnlyList<CategoryDto> list)
         {
             if (list == null || list.Count == 0) return null;
