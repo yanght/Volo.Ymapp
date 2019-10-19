@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Entities;
+using Volo.Ymapp.Categorys;
 
 namespace Volo.Ymapp.Articles
 {
@@ -24,6 +25,10 @@ namespace Volo.Ymapp.Articles
         /// 分类编号
         /// </summary>
         public Guid CategoryId { get; set; }
+        /// <summary>
+        /// 分类
+        /// </summary>
+        public CategoryDto Category { get; set; }
         /// <summary>
         /// 是否推荐
         /// </summary>

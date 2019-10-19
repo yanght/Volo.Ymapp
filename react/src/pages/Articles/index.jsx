@@ -25,17 +25,21 @@ export default class Index extends Component {
         { title: '标题', dataIndex: 'title', key: 'title' },
         {
             title: '分类', dataIndex: 'categoryId', key: 'categoryId', render: (value, record) => {
-
+                return record.category.name;
             }
         },
         { title: '作者', dataIndex: 'author', key: 'author' },
         { title: '来源', dataIndex: 'source', key: 'source' },
-        { title: '是否推荐', dataIndex: 'recommend', key: 'recommend' },
+        {
+            title: '是否推荐', dataIndex: 'recommend', key: 'recommend', render: (value, record) => {
+                return value ? '是' : '否';
+            }
+        },
         { title: '创建时间', dataIndex: 'creationTime', key: 'creationTime' },
         {
             title: '操作', dataIndex: 'operator', key: 'operator',
             render: (value, record) => {
-                const { id, name } = record;
+                const { id, title } = record;
                 const items = [
                     {
                         label: '编辑',
@@ -45,8 +49,8 @@ export default class Index extends Component {
                         label: '删除',
                         color: 'red',
                         confirm: {
-                            title: `您确定删除"${name}"?`,
-                            onConfirm: () => this.handleSearch(),
+                            title: `您确定删除"${title}"?`,
+                            onConfirm: () => this.handleDelete(record),
                         },
                     }
                 ];
@@ -72,7 +76,7 @@ export default class Index extends Component {
                 maxResultCount: maxResultCount,
             };
 
-            this.props.ajax.get('/api/app/article', params)
+            this.props.ajax.get('/api/app/article/articlelist', params)
                 .then(res => {
                     const dataSource = res.items || [];
                     const total = res.totalCount || 0;
@@ -81,6 +85,19 @@ export default class Index extends Component {
                 });
         });
     }
+
+    handleDelete = (record) => {
+        const { id } = record;
+        this.setState({ loading: true });
+        this.props.ajax
+            .del(`/api/app/article/${id}`)
+            .then(() => {
+                this.setState({ visible: false });
+                this.handleSearch();
+            })
+            .finally(() => this.setState({ loading: false }));
+    }
+
     FormElement = (props) => <FormElement form={this.props.form} labelWidth={62} width={300} style={{ paddingLeft: 16 }} {...props} />;
 
     render() {

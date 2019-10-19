@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Button, Spin, Upload, Icon, message } from 'antd';
+import { Form, Row, Col, Button, Spin, Upload, Icon, message, Card } from 'antd';
 import _ from 'lodash';
 import { FormElement } from '@/library/antd';
 import PageContent from '@/layouts/page-content';
 import config from '@/commons/config-hoc';
 import validator from '@/library/utils/validation-rule';
 import modal from '@/components/modal-hoc';
+import BraftEditor from 'braft-editor';
+import 'braft-editor/dist/index.css';
 
 @config({ ajax: true })
 @Form.create()
 @modal(props => props.id === null ? '添加文章' : '修改文章')
-
-
-
 
 export default class EditModal extends Component {
     state = {
@@ -21,6 +20,7 @@ export default class EditModal extends Component {
         roles: [],
         categorys: [],
         imageUrl: '',
+        editorState: null,
     };
 
     componentDidMount() {
@@ -32,7 +32,7 @@ export default class EditModal extends Component {
             this.setState({ loading: true });
             this.props.ajax.get(`/api/app/article/${id}`)
                 .then(res => {
-                    this.setState({ data: res || {} });
+                    this.setState({ data: res || {}, editorState: BraftEditor.createEditorState(res.mainContent) });
                 })
                 .finally(() => this.setState({ loading: false }));
         }
@@ -56,7 +56,8 @@ export default class EditModal extends Component {
 
             const { id } = this.props;
             const isEdit = id !== null;
-
+            const { editorState } = this.state;
+            values.mainContent = editorState.toHTML();
             if (isEdit) {
                 this.setState({ loading: true });
                 this.props.ajax.put(`/api/app/article/${id}`, values, { successTip: '修改成功！' })
@@ -91,7 +92,11 @@ export default class EditModal extends Component {
         this.props.form.resetFields();
     };
 
-
+    handleEditorChange = (editorState) => {
+        this.setState({
+            editorState: editorState
+        })
+    }
 
     // 这样可以保证每次render时，FormElement不是每次都创建，这里可以进行一些共用属性的设置
     FormElement = (props) => <FormElement form={this.props.form} labelWidth={100} disabled={this.props.isDetail} {...props} />;
@@ -100,7 +105,7 @@ export default class EditModal extends Component {
         const { id } = this.props;
         const { getFieldDecorator } = this.props.form;
         const isEdit = id !== null;
-        const { loading, data, categorys, imageUrl } = this.state;
+        const { loading, data, categorys, imageUrl, editorState } = this.state;
         const span = 8;
         const uploadButton = (
             <div>
@@ -124,6 +129,19 @@ export default class EditModal extends Component {
             }
             return isJpgOrPng && isLt2M;
         }
+        const excludeControls = [
+            'letter-spacing',
+            'line-height',
+            'clear',
+            'headings',
+            'list-ol',
+            'list-ul',
+            'remove-styles',
+            'superscript',
+            'subscript',
+            'hr',
+            'text-align'
+        ]
         return (
             <Spin spinning={loading}>
                 <PageContent footer={false}>
@@ -189,7 +207,7 @@ export default class EditModal extends Component {
                                     label="是否推荐"
                                     field="recommend"
                                     type="checkbox"
-                                    checked={data.recommend}
+                                    defaultChecked={data.recommend}
                                 />
                             </Col>
                         </Row>
@@ -212,7 +230,7 @@ export default class EditModal extends Component {
                                 </Upload>
                             </Col>
                         </Row>
-                        <Row>
+                        {/* <Row>
                             <Col span={24}>
                                 <FormElement
                                     label="正文"
@@ -223,6 +241,21 @@ export default class EditModal extends Component {
                                     required
                                 />
                             </Col>
+                        </Row> */}
+                        <Row>
+                            <Col >
+                                <Card title="正文:" bordered={false} >
+                                    <div style={{ border: '1px solid #d1d1d1' }}>
+                                        <BraftEditor
+                                            value={editorState}
+                                            excludeControls={excludeControls}
+                                            onChange={this.handleEditorChange}
+                                            onSave={this.submitContent}
+                                            contentStyle={{ height: 400 }}
+                                        />
+                                    </div>
+                                </Card>
+                            </Col>
                         </Row>
                     </Form>
                 </PageContent>
@@ -231,7 +264,7 @@ export default class EditModal extends Component {
                     <Button onClick={this.handleReset}>重置</Button>
                     <Button onClick={this.handleCancel}>取消</Button>
                 </div>
-            </Spin>
+            </Spin >
         );
     }
 }

@@ -1530,6 +1530,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MainContent")
+                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<string>("PictureUrl")
@@ -1556,6 +1557,8 @@ namespace Volo.Ymapp.Migrations
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("AppArticles");
                 });
@@ -1873,6 +1876,15 @@ namespace Volo.Ymapp.Migrations
                     b.HasOne("Volo.Abp.TenantManagement.Tenant", null)
                         .WithMany("ConnectionStrings")
                         .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Volo.Ymapp.Articles.Article", b =>
+                {
+                    b.HasOne("Volo.Ymapp.Categorys.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
