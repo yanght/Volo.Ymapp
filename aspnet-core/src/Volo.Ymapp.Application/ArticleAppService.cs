@@ -33,8 +33,9 @@ namespace Volo.Ymapp
                    .WhereIf(!input.Title.IsNullOrWhiteSpace(), m => m.Title.Contains(input.Title))
                    .WhereIf(!input.Author.IsNullOrWhiteSpace(), m => m.Author.Contains(input.Author))
                    .WhereIf(!input.CategoryId.Equals(Guid.Empty), m => m.CategoryId == input.CategoryId)
-            .WhereIf(input.StartTime != null, m => m.CreationTime > input.StartTime);
-            //.WhereIf(input.EndTime != null, m => m.CreationTime < input.EndTime);
+                   .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend)
+            .WhereIf(input.StartTime.HasValue, m => m.CreationTime > input.StartTime)
+            .WhereIf(input.EndTime.HasValue, m => m.CreationTime < input.EndTime);
 
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)

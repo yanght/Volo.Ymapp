@@ -16,10 +16,13 @@ export default class Index extends Component {
         collapsed: true,
         visible: false,
         dataSource: [],
+        categorys: [],
         total: 0,
         pageNum: 1,
         pageSize: 10,
-        id: null,           // 需要修改的数据id
+        id: null,
+        startTime: null,
+        endTime: null,
     };
     columns = [
         { title: '标题', dataIndex: 'title', key: 'title' },
@@ -61,6 +64,13 @@ export default class Index extends Component {
     ]
 
     componentDidMount() {
+        // 获取树形分类
+        this.props.ajax
+            .get('/api/app/category/categoryTree')
+            .then(res => {
+                this.setState({ categorys: res });
+            })
+            .finally(() => this.setState({ loading: false }));
         this.handleSearch();
     }
 
@@ -72,6 +82,8 @@ export default class Index extends Component {
             const maxResultCount = this.state.pageSize;
             const params = {
                 ...values,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
                 skipCount: skipCount,
                 maxResultCount: maxResultCount,
             };
@@ -80,7 +92,6 @@ export default class Index extends Component {
                 .then(res => {
                     const dataSource = res.items || [];
                     const total = res.totalCount || 0;
-
                     this.setState({ dataSource, total });
                 });
         });
@@ -98,6 +109,19 @@ export default class Index extends Component {
             .finally(() => this.setState({ loading: false }));
     }
 
+    onChange = (field, value) => {
+        this.setState({
+            [field]: value,
+        });
+    };
+
+    onStartChange = (value, dateString) => {
+        this.onChange('startTime', dateString);
+    };
+
+    onEndChange = (value, dateString) => {
+        this.onChange('endTime', dateString);
+    };
     FormElement = (props) => <FormElement form={this.props.form} labelWidth={62} width={300} style={{ paddingLeft: 16 }} {...props} />;
 
     render() {
@@ -105,6 +129,7 @@ export default class Index extends Component {
             collapsed,
             visible,
             dataSource,
+            categorys,
             total,
             pageNum,
             pageSize,
@@ -130,13 +155,43 @@ export default class Index extends Component {
                             field="author"
                         />
                         <FormElement
+                            type="select-tree"
+                            label="所属分类"
+                            field="categoryId"
+                            allowClear={true}
+                            showSearch={true}
+                            treeNodeFilterProp="title"
+                            dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                            options={categorys}
+                            placeholder="请选择"
+                            treeDefaultExpandAll
+                        />
+                        <FormElement
                             type="select"
                             label="是否推荐"
                             field="recommend"
+                            allowClear={true}
+                            placeholder='请选择'
                             options={[
                                 { value: 'true', label: '是' },
                                 { value: 'false', label: '否' },
                             ]}
+                        />
+                        <FormElement
+                            label="开始时间"
+                            field="startTime"
+                            type='date-time'
+                            format="YYYY-MM-DD HH:mm:ss"
+                            placeholder="开始时间"
+                            onChange={this.onStartChange}
+                        />
+                        <FormElement
+                            label="结束时间"
+                            field="endTime"
+                            type='date-time'
+                            format="YYYY-MM-DD HH:mm:ss"
+                            placeholder="结束时间"
+                            onChange={this.onEndChange}
                         />
                         <FormElement layout width="auto">
                             <Button type="primary" onClick={this.handleSearch}>提交</Button>

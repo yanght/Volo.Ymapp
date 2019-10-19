@@ -23,7 +23,6 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
 
 namespace Volo.Ymapp
 {
@@ -45,7 +44,11 @@ namespace Volo.Ymapp
         {
             var configuration = context.Services.GetConfiguration();
             var hostingEnvironment = context.Services.GetHostingEnvironment();
-
+            context.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new SystemTextJsonConvert.DateTimeConverter());
+                //  options.JsonSerializerOptions.Converters.Add(new SystemTextJsonConvert.DateTimeNullableConverter());
+            });
             ConfigureUrls(configuration);
             ConfigureConventionalControllers();
             ConfigureAuthentication(context, configuration);
