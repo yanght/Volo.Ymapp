@@ -4,22 +4,22 @@ using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Ymapp.CommonEnum;
 
-namespace Volo.Ymapp.Categorys
+namespace Volo.Ymapp.Products
 {
-    public class Category : AuditedAggregateRoot<Guid>
+    public class ProductPicture : FullAuditedAggregateRoot<Guid>
     {
         /// <summary>
-        /// 分类类型
+        /// 图片地址
         /// </summary>
-        public CategoryType Type { get; set; }
+        public string PictureUrl { get; set; }
         /// <summary>
-        /// 分类名称
+        /// 商品编码
         /// </summary>
-        public string Name { get; set; }
+        public Guid ProductId { get; set; }
         /// <summary>
-        /// 上级分类编号
+        /// 商品图片类型
         /// </summary>
-        public Guid ParentId { get; set; }
+        public ProductPictureType Type { get; set; }
         /// <summary>
         /// 排序
         /// </summary>

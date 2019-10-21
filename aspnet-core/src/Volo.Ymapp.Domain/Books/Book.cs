@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Ymapp.Books.CommonEnum;
 
 namespace Volo.Ymapp.Books
 {

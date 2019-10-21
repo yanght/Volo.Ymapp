@@ -2,6 +2,7 @@
 using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
+using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp
 {
@@ -23,6 +24,15 @@ namespace Volo.Ymapp
             CreateMap<Article, ArticleDto>();
             CreateMap<CreateArticleDto, Article>();
             CreateMap<UpdateArticleDto, Article>();
+
+            CreateMap<Product, ProductDto>();
+            CreateMap<CreateProductDto, Product>();
+            CreateMap<UpdateProductDto, Product>();
+
+            CreateMap<ProductPicture, ProductPictureDto>();
+            CreateMap<ProductSpec, ProductSpecDto>();
+            CreateMap<ProductPrice, ProductPriceDto>();
+            CreateMap<ProductStock, ProductStockDto>();
         }
     }
 }

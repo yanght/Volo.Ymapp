@@ -8,6 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191021082011_add-product.cs" />
+    <Compile Remove="Migrations\20191021082011_add-product.Designer.cs" />
+    <Compile Remove="Migrations\20191021082408_add-product-01.cs" />
+    <Compile Remove="Migrations\20191021082408_add-product-01.Designer.cs" />
+    <Compile Remove="Migrations\20191021082554_add-product-02.cs" />
+    <Compile Remove="Migrations\20191021082554_add-product-02.Designer.cs" />
+    <Compile Remove="Migrations\20191021084152_add-product.cs" />
+    <Compile Remove="Migrations\20191021084152_add-product.Designer.cs" />
+    <Compile Remove="Migrations\20191021085258_add-product.cs" />
+    <Compile Remove="Migrations\20191021085258_add-product.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Volo.Ymapp.EntityFrameworkCore\Volo.Ymapp.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

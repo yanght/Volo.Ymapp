@@ -5,26 +5,26 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Entities;
 using Volo.Ymapp.CommonEnum;
 
-namespace Volo.Ymapp.Categorys
+namespace Volo.Ymapp.Products
 {
-    public class CategoryDto : AuditedEntityDto<Guid>, IHasConcurrencyStamp
+    public class ProductPictureDto : AuditedEntityDto<Guid>, IHasConcurrencyStamp
     {
         /// <summary>
-        /// 分类
+        /// 图片地址
         /// </summary>
-        public CategoryType Type { get; set; }
+        public string PictureUrl { get; set; }
         /// <summary>
-        /// 名称
+        /// 商品编码
         /// </summary>
-        public string Name { get; set; }
+        public Guid ProductId { get; set; }
         /// <summary>
-        /// 上级分类编号
+        /// 商品图片类型
         /// </summary>
-        public Guid ParentId { get; set; }
+        public ProductPictureType Type { get; set; }
         /// <summary>
         /// 排序
         /// </summary>
         public int Sort { get; set; }
-        public string ConcurrencyStamp { get; set; }
+        string IHasConcurrencyStamp.ConcurrencyStamp { get; set ; }
     }
 }

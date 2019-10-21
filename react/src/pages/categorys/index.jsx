@@ -218,7 +218,7 @@ export default class index extends Component {
 
         return (
             <PageContent >
-                <ToolBar items={[{ type: 'primary', text: '添加顶级', onClick: this.handleAddTopMenu }]} />
+                <ToolBar items={[{ type: 'primary', text: '添加顶级', icon: 'plus', onClick: this.handleAddTopMenu }]} />
                 <Table
                     loading={loading}
                     columns={this.columns}

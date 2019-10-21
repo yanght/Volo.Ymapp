@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PageContent from '@/layouts/page-content';
 import config from '@/commons/config-hoc';
 import { Button, Form, Table } from 'antd';
@@ -166,33 +166,37 @@ export default class Index extends Component {
                             placeholder="请选择"
                             treeDefaultExpandAll
                         />
-                        <FormElement
-                            type="select"
-                            label="是否推荐"
-                            field="recommend"
-                            allowClear={true}
-                            placeholder='请选择'
-                            options={[
-                                { value: 'true', label: '是' },
-                                { value: 'false', label: '否' },
-                            ]}
-                        />
-                        <FormElement
-                            label="开始时间"
-                            field="startTime"
-                            type='date-time'
-                            format="YYYY-MM-DD HH:mm:ss"
-                            placeholder="开始时间"
-                            onChange={this.onStartChange}
-                        />
-                        <FormElement
-                            label="结束时间"
-                            field="endTime"
-                            type='date-time'
-                            format="YYYY-MM-DD HH:mm:ss"
-                            placeholder="结束时间"
-                            onChange={this.onEndChange}
-                        />
+                        {collapsed ? null : (
+                            <Fragment>
+                                <FormElement
+                                    type="select"
+                                    label="是否推荐"
+                                    field="recommend"
+                                    allowClear={true}
+                                    placeholder='请选择'
+                                    options={[
+                                        { value: 'true', label: '是' },
+                                        { value: 'false', label: '否' },
+                                    ]}
+                                />
+                                <FormElement
+                                    label="开始时间"
+                                    field="startTime"
+                                    type='date-time'
+                                    format="YYYY-MM-DD HH:mm:ss"
+                                    placeholder="开始时间"
+                                    onChange={this.onStartChange}
+                                />
+                                <FormElement
+                                    label="结束时间"
+                                    field="endTime"
+                                    type='date-time'
+                                    format="YYYY-MM-DD HH:mm:ss"
+                                    placeholder="结束时间"
+                                    onChange={this.onEndChange}
+                                />
+                            </Fragment>
+                        )}
                         <FormElement layout width="auto">
                             <Button type="primary" onClick={this.handleSearch}>提交</Button>
                             <Button onClick={() => this.props.form.resetFields()}>重置</Button>
@@ -200,7 +204,7 @@ export default class Index extends Component {
                     </FormRow>
 
                 </QueryBar>
-                <ToolBar items={[{ type: 'primary', text: '添加', onClick: () => this.setState({ visible: true, id: null }) }]} />
+                <ToolBar items={[{ type: 'primary', text: '添加', icon: 'plus', onClick: () => this.setState({ visible: true, id: null }) }]} />
                 <Table
                     columns={this.columns}
                     dataSource={dataSource}

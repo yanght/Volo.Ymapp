@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Volo.Ymapp.Categorys
+namespace Volo.Ymapp.CommonEnum
 {
-    public enum CategoryType
+    public enum ProductState
     {
         /// <summary>
-        /// 未知
+        /// 正常
         /// </summary>
-        Undefined,
+        Normal = 1,
         /// <summary>
-        /// 商品
+        /// 下架
         /// </summary>
-        Product,
+        OffShelf,
         /// <summary>
-        /// 文章
+        /// 停售
         /// </summary>
-        Artical,
+        UnSale
     }
 }
