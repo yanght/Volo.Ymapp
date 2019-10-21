@@ -162,7 +162,6 @@ export default class EditModal extends Component {
                                     label="作者"
                                     field="author"
                                     initialValue={data.author}
-                                    required
                                 />
                             </Col>
                             <Col span={span}>
@@ -170,7 +169,6 @@ export default class EditModal extends Component {
                                     label="来源"
                                     field="source"
                                     initialValue={data.source}
-                                    required
                                 />
                             </Col>
                         </Row>
@@ -182,7 +180,6 @@ export default class EditModal extends Component {
                                     rows={4}
                                     type='textarea'
                                     initialValue={data.describe}
-                                    required
                                 />
                             </Col>
                         </Row>
@@ -200,6 +197,7 @@ export default class EditModal extends Component {
                                     options={categorys}
                                     placeholder="请选择"
                                     treeDefaultExpandAll
+                                    required
                                 />
                             </Col>
                             <Col span={span}>

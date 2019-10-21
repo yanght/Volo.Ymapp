@@ -281,7 +281,7 @@ export default class index extends Component {
                                             { required: true, message: '请选择类型' },
                                         ],
                                     }}
-                                    getPopupContainer={() => document.querySelector('.ant-modal-wrap')}
+                                // getPopupContainer={() => document.querySelector('.ant-modal-wrap')}
                                 />
                             </Col>
                             <Col span={12}>

@@ -160,7 +160,7 @@ export default class UserCenter extends Component {
                             label="年龄"
                             field="age"
                         />
-                       
+
                     </FormRow> */}
                 </QueryBar>
 
