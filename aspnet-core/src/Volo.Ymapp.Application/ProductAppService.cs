@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
@@ -18,19 +19,32 @@ namespace Volo.Ymapp
             IProductAppService
     {
         private readonly ProductManager _productManager;
-        public ProductAppService(IRepository<Product, Guid> repository, ProductManager productManager)
+        public ProductAppService(IRepository<Product, Guid> repository
+            , ProductManager productManager)
         : base(repository)
         {
             _productManager = productManager;
         }
         public PagedResultDto<ProductDto> GetProductList(GetProductListDto input)
         {
-            var query = Repository.WithDetails(m => m.Category);            
+            var query = Repository.WithDetails(m => m.Category)
+                .WhereIf(!input.Name.IsNullOrWhiteSpace(), m => m.Name.Contains(input.Name))
+                .WhereIf(input.CategoryId.HasValue, m => m.CategoryId == input.CategoryId)
+                .WhereIf(!input.Code.IsNullOrWhiteSpace(), m => m.Code == input.Code)
+                .WhereIf(input.State.HasValue, m => m.State == input.State)
+                .WhereIf(input.StartTime.HasValue, m => m.CreationTime > input.StartTime)
+                .WhereIf(input.EndTime.HasValue, m => m.CreationTime < input.EndTime);
+
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)
                        .ToList();
 
             return new PagedResultDto<ProductDto>(count, ObjectMapper.Map<List<Product>, List<ProductDto>>(list));
+        }
+
+        public void UpdateProductSpec()
+        {
+
         }
     }
 }
