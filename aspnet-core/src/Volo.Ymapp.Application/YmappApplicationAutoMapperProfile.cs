@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Volo.Ymapp.Areas;
 using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
@@ -25,14 +26,24 @@ namespace Volo.Ymapp
             CreateMap<CreateArticleDto, Article>();
             CreateMap<UpdateArticleDto, Article>();
 
+            CreateMap<Area, AreaDto>();
+            CreateMap<AreaDto, Area>();
+
             CreateMap<Product, ProductDto>();
             CreateMap<CreateProductDto, Product>();
             CreateMap<UpdateProductDto, Product>();
 
             CreateMap<ProductPicture, ProductPictureDto>();
+            CreateMap<ProductPictureDto, ProductPicture>();
+           
             CreateMap<ProductSpec, ProductSpecDto>();
+            CreateMap<ProductSpecDto, ProductSpec>();
+
             CreateMap<ProductPrice, ProductPriceDto>();
+            CreateMap<ProductPriceDto, ProductPrice>();
+
             CreateMap<ProductStock, ProductStockDto>();
+            CreateMap<ProductStockDto, ProductStock>();
         }
     }
 }

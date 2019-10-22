@@ -7,7 +7,7 @@ using Volo.Ymapp.CommonEnum;
 
 namespace Volo.Ymapp.Products
 {
-    public class ProductPictureDto : AuditedEntityDto<Guid>, IHasConcurrencyStamp
+    public class ProductPictureDto //: AuditedEntityDto<Guid>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 图片地址
@@ -25,6 +25,6 @@ namespace Volo.Ymapp.Products
         /// 排序
         /// </summary>
         public int Sort { get; set; }
-        string IHasConcurrencyStamp.ConcurrencyStamp { get; set ; }
+        //public string ConcurrencyStamp { get; set; }
     }
 }

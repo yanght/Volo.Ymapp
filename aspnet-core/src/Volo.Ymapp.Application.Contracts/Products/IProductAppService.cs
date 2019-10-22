@@ -15,5 +15,6 @@ namespace Volo.Ymapp.Products
             UpdateProductDto> //Used to update a book
     {
 
+        PagedResultDto<ProductDto> GetProductList(GetProductListDto input);
     }
 }

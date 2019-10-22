@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -14,9 +17,20 @@ namespace Volo.Ymapp
             CreateProductDto, UpdateProductDto>,
             IProductAppService
     {
-        public ProductAppService(IRepository<Product, Guid> repository)
+        private readonly ProductManager _productManager;
+        public ProductAppService(IRepository<Product, Guid> repository, ProductManager productManager)
         : base(repository)
         {
+            _productManager = productManager;
+        }
+        public PagedResultDto<ProductDto> GetProductList(GetProductListDto input)
+        {
+            var query = Repository.WithDetails(m => m.Category);            
+            var count = query.Count();
+            var list = query.PageBy(input.SkipCount, input.MaxResultCount)
+                       .ToList();
+
+            return new PagedResultDto<ProductDto>(count, ObjectMapper.Map<List<Product>, List<ProductDto>>(list));
         }
     }
 }

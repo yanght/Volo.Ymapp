@@ -6,5 +6,6 @@ namespace Volo.Ymapp.Products
 {
     public class CreateProductDto : CreateUpdateProductDtoBase
     {
+
     }
 }

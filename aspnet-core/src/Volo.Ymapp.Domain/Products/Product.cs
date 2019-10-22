@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Ymapp.Areas;
 using Volo.Ymapp.Categorys;
@@ -43,7 +44,6 @@ namespace Volo.Ymapp.Products
         /// 商品规格
         /// </summary>
         public virtual List<ProductSpec> ProductSpecs { get; set; }
-
         /// <summary>
         /// 商品描述
         /// </summary>
