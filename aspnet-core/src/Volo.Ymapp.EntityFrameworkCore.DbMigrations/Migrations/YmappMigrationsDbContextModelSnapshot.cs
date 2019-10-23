@@ -1533,12 +1533,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValue(new Guid("00000000-0000-0000-0000-000000000000"));
 
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("AppAreas");
                 });
@@ -1809,6 +1804,50 @@ namespace Volo.Ymapp.Migrations
                     b.ToTable("AppProducts");
                 });
 
+            modelBuilder.Entity("Volo.Ymapp.Products.ProductArea", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AreaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AppProductAreas");
+                });
+
             modelBuilder.Entity("Volo.Ymapp.Products.ProductPicture", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1941,8 +1980,6 @@ namespace Volo.Ymapp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductSpecId");
-
                     b.ToTable("AppProductPrices");
                 });
 
@@ -2003,8 +2040,6 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("AppProductSpecs");
                 });
@@ -2069,8 +2104,6 @@ namespace Volo.Ymapp.Migrations
                         .HasDefaultValue(0);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductSpecId");
 
                     b.ToTable("AppProductStocks");
                 });
@@ -2288,13 +2321,6 @@ namespace Volo.Ymapp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Volo.Ymapp.Areas.Area", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.Product", null)
-                        .WithMany("Areas")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("Volo.Ymapp.Articles.Article", b =>
                 {
                     b.HasOne("Volo.Ymapp.Categorys.Category", "Category")
@@ -2313,38 +2339,20 @@ namespace Volo.Ymapp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Volo.Ymapp.Products.ProductArea", b =>
+                {
+                    b.HasOne("Volo.Ymapp.Products.Product", null)
+                        .WithMany("ProductAreas")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Volo.Ymapp.Products.ProductPicture", b =>
                 {
                     b.HasOne("Volo.Ymapp.Products.Product", null)
                         .WithMany("ProductPictures")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Volo.Ymapp.Products.ProductPrice", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.ProductSpec", null)
-                        .WithMany("ProductPrice")
-                        .HasForeignKey("ProductSpecId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Volo.Ymapp.Products.ProductSpec", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.Product", null)
-                        .WithMany("ProductSpecs")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Volo.Ymapp.Products.ProductStock", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.ProductSpec", null)
-                        .WithMany("ProductStocks")
-                        .HasForeignKey("ProductSpecId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

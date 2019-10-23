@@ -8,6 +8,6 @@ namespace Volo.Ymapp.Products
 {
     public interface IProductRepository : IBasicRepository<Product, Guid>
     {
-        Task<List<Product>> GetProducts();
+      
     }
 }

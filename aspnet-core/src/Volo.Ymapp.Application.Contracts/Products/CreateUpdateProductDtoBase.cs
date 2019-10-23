@@ -33,15 +33,11 @@ namespace Volo.Ymapp.Products
         /// <summary>
         /// 商品图片
         /// </summary>
-        public List<ProductPictureDto> ProductPictures { get; set; }
+        public List<string> ProductPictures { get; set; }
         /// <summary>
         /// 商品区域
         /// </summary>
-        public List<AreaDto> Areas { get; set; }
-        /// <summary>
-        /// 商品规格
-        /// </summary>
-        public List<ProductSpecDto> ProductSpecs { get; set; }
+        public List<Guid> ProductAreas { get; set; }
         /// <summary>
         /// 商品描述
         /// </summary>

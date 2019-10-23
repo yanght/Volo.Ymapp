@@ -33,6 +33,9 @@ namespace Volo.Ymapp
             CreateMap<CreateProductDto, Product>();
             CreateMap<UpdateProductDto, Product>();
 
+            CreateMap<ProductArea, ProductAreaDto>();
+            CreateMap<ProductAreaDto, ProductArea>();
+
             CreateMap<ProductPicture, ProductPictureDto>();
             CreateMap<ProductPictureDto, ProductPicture>();
            

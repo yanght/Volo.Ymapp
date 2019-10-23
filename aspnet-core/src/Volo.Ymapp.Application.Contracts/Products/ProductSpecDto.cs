@@ -20,15 +20,6 @@ namespace Volo.Ymapp.Products
         /// 区域编码
         /// </summary>
         public Guid AreaId { get; set; }
-
-        /// <summary>
-        /// 商品价格
-        /// </summary>
-        public virtual List<ProductPriceDto> ProductPrice { get; set; }
-        /// <summary>
-        /// 商品库存
-        /// </summary>
-        public virtual List<ProductStockDto> ProductStocks { get; set; }
         public string ConcurrencyStamp { get ; set; }
     }
 }

@@ -42,8 +42,18 @@ namespace Volo.Ymapp
             return new PagedResultDto<ProductDto>(count, ObjectMapper.Map<List<Product>, List<ProductDto>>(list));
         }
 
-        public void UpdateProductSpec()
+        public override async Task<ProductDto> CreateAsync(CreateProductDto input)
         {
+            var product = new Product(input.Name, input.Code, input.CategoryId, input.Description);
+            product.SetProductAreas(input.ProductAreas);
+            product.SetProductPictures(input.ProductPictures);
+            var model = await _productManager.CreateProduct(product);
+            return ObjectMapper.Map<Product, ProductDto>(model);
+        }
+
+        public override Task<ProductDto> UpdateAsync(Guid id, UpdateProductDto input)
+        {
+            var product = new Product(input.Name, input.Code, input.CategoryId, input.Description);
 
         }
     }

@@ -78,8 +78,15 @@ namespace Volo.Ymapp.EntityFrameworkCore
             b.Property(x => x.Code).HasMaxLength(20);
             b.Property(x => x.Description).HasColumnType("ntext");
             b.HasMany(x => x.ProductPictures);
-            b.HasMany(x => x.ProductSpecs);
         });
+
+            builder.Entity<ProductArea>(b =>
+            {
+                b.ToTable(YmappConsts.DbTablePrefix + "ProductAreas", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.ProductId).IsRequired();
+                b.Property(x => x.AreaId).IsRequired();
+            });
 
             builder.Entity<ProductPicture>(b =>
             {
@@ -96,8 +103,6 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.Property(x => x.Name).IsRequired().HasMaxLength(20);
                 b.Property(x => x.ProductId).IsRequired();
                 b.Property(x => x.AreaId).IsRequired();
-                b.HasMany(x => x.ProductStocks);
-                b.HasMany(x => x.ProductPrice);
 
             });
 
