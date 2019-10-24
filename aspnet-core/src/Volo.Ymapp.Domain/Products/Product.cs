@@ -15,39 +15,40 @@ namespace Volo.Ymapp.Products
 {
     public class Product : FullAuditedAggregateRoot<Guid>
     {
-        public Product(string name, string code, Guid categoryId, string description)
+        public Product(string name, string code, Guid categoryId, ProductState state, string description)
         {
             ProductPictures = new List<ProductPicture>();
             ProductAreas = new List<ProductArea>();
             Name = name;
             Code = code;
+            State = state;
             CategoryId = categoryId;
             Description = description;
         }
         /// <summary>
         /// 商品名称
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; protected set; }
         /// <summary>
         /// 商品编码
         /// </summary>
-        public string Code { get; set; }
+        public string Code { get; protected set; }
         /// <summary>
         /// 分类编码
         /// </summary>
-        public Guid CategoryId { get; set; }
+        public Guid CategoryId { get; protected set; }
         /// <summary>
         /// 分类
         /// </summary>
-        public virtual Category Category { get; set; }
+        public virtual Category Category { get; protected set; }
         /// <summary>
         /// 商品状态
         /// </summary>
-        public ProductState State { get; set; }
+        public ProductState State { get; protected set; }
         /// <summary>
         /// 商品描述
         /// </summary>
-        public string Description { get; set; }
+        public string Description { get; protected set; }
         /// <summary>
         /// 商品图片
         /// </summary>
@@ -61,6 +62,30 @@ namespace Volo.Ymapp.Products
         {
             Check.NotNullOrWhiteSpace(name, nameof(name));
             Name = name;
+            return this;
+        }
+        public Product SetCategoryId(Guid categoryId)
+        {
+            Check.NotNull(categoryId, nameof(categoryId));
+            CategoryId = categoryId;
+            return this;
+        }
+        public Product SetCode(string code)
+        {
+            Check.NotNull(code, nameof(code));
+            Code = code;
+            return this;
+        }
+        public Product SetState(ProductState state)
+        {
+            Check.NotNull(state, nameof(state));
+            State = state;
+            return this;
+        }
+        public Product SetDescription(string description)
+        {
+            Check.NotNull(description, nameof(description));
+            Description = description;
             return this;
         }
 
@@ -79,7 +104,6 @@ namespace Volo.Ymapp.Products
             foreach (var item in pictures)
             {
                 ProductPictureType type = ProductPictureType.Normal;
-
                 if (index == 0)
                 {
                     type = ProductPictureType.MainPicture;
@@ -117,6 +141,6 @@ namespace Volo.Ymapp.Products
             }
             return this;
         }
-        
+
     }
 }

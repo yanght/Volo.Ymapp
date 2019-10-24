@@ -61,27 +61,15 @@ namespace Volo.Ymapp.Products
 
             await _productPictureRepository.UpdateProductPictures(model.Id, product.ProductPictures);
 
+            model.SetCategoryId(product.CategoryId);
+            model.SetCode(product.Code);
+            model.SetDescription(product.Description);
+            model.SetName(product.Name);
+            model.SetState(product.State);
             model.SetProductAreas(product.ProductAreas.Select(m => m.Id).ToList());
             model.SetProductPictures(product.ProductPictures.Select(m => m.PictureUrl).ToList());
 
             return await _productRepository.UpdateAsync(model);
         }
-
-        public async Task RemoveFromProductPictureAsync(List<ProductPicture> picture)
-        {
-            foreach (var item in picture)
-            {
-                await _productPictureRepository.DeleteAsync(item);
-            }
-        }
-
-        public async Task AddToProductPictureAsync(List<ProductPicture> pictures)
-        {
-            foreach (var item in pictures)
-            {
-                await _productPictureRepository.InsertAsync(item);
-            }
-        }
-
     }
 }

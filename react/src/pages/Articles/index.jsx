@@ -226,7 +226,6 @@ export default class Index extends Component {
                     onCancel={() => this.setState({ visible: false })}
                 />
             </PageContent>
-        )
+        );
     }
-
 }

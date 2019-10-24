@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {compose} from '@/commons'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { compose } from '@/commons'
 import queryHoc from '@/commons/query-hoc';
-import {connect as reduxConnect} from '@/models';
-import {ajaxHoc} from '@/commons/ajax';
+import { connect as reduxConnect } from '@/models';
+import { ajaxHoc } from '@/commons/ajax';
 import pubSubHoc from '@/library/utils/pub-sub-hoc'
 import eventHoc from '@/library/utils/dom-event-hoc';
 import PubSub from 'pubsub-js'
-import {ROUTE_BASE_NAME} from '@/router/AppRouter';
+import { ROUTE_BASE_NAME } from '@/router/AppRouter';
+import { modal as modalHoc } from '@/library/antd';
 
 /**
  * 页面配置高阶组件，整合了多个高阶组件
@@ -32,10 +33,13 @@ export default (options) => {
             ajax = false,           // 是否添加ajax高阶组件，内部可以通过this.props.ajax使用ajax API
             connect = false,        // 是否与redux进行连接，true：只注入了this.props.action相关方法；false：不与redux进行连接；(state) => ({title: state.page.title})：将函数返回的数据注入this.props
             event = false,          // 是否添加event高阶组件，可以使用this.props.addEventListener添加dom事件，并在组件卸载时会自动清理；通过this.props.removeEventListener移出dom事件
-            pubSub = false,         // 是否添加发布订阅高阶组件，可以使用this.props.subscribe(topic, (msg, data) => {...})订阅事件，并在组件卸载时，会自动取消订阅; 通过this.props.publish(topic, data)发布事件
+            pubSub = false,         // 是否添加发布订阅高阶组件，可以使用this.props.subscribe(topic, (msg, data) => {..})订阅事件，并在组件卸载时，会自动取消订阅; 通过this.props.publish(topic, data)发布事件
+            modal = false,          // 当前组件是否是modal
         } = options;
 
         const hocFuncs = [];
+        // 确保modal在第一个
+        if (modal) hocFuncs.push(modalHoc(modal));
 
         if (event) hocFuncs.push(eventHoc());
 
@@ -63,7 +67,7 @@ export default (options) => {
                 super(...args);
                 this.initFrame();
 
-                const {pathname, search} = window.location;
+                const { pathname, search } = window.location;
                 let currentPath = window.decodeURIComponent(`${pathname}${search}`);
                 currentPath = currentPath.replace(ROUTE_BASE_NAME, '');
 
@@ -94,7 +98,7 @@ export default (options) => {
 
             // 设置框架级的一些数据
             initFrame = () => {
-                const {page, side: sideAction, system} = this.props.action;
+                const { page, side: sideAction, system } = this.props.action;
 
                 // 页面标题设置
                 if (title === false) {

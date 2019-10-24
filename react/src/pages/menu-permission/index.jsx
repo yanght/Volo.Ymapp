@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {Table, Icon, Modal, Form, Row, Col} from 'antd';
+import React, { Component } from 'react';
+import { Table, Icon, Modal, Form, Row, Col } from 'antd';
 import config from '@/commons/config-hoc';
 import PageContent from '@/layouts/page-content';
 import localMenus from '../../menus';
-import {convertToTree} from "@/library/utils/tree-utils";
-import {ToolBar, Operator, FormElement} from '@/library/antd';
+import { convertToTree } from "@/library/utils/tree-utils";
+import { ToolBar, Operator, FormElement } from '@/library/antd';
 import IconPicker from "@/components/icon-picker";
 import './style.less';
 
 @config({
     path: '/menu-permission',
-    title: {local: 'menus', text: '菜单&权限', icon: 'lock'},
+    title: { local: 'menus', text: '菜单&权限', icon: 'lock' },
     ajax: true,
 })
 @Form.create()
@@ -30,17 +30,17 @@ export default class index extends Component {
         {
             title: '名称', dataIndex: 'text', key: 'text', width: 200,
             render: (value, record) => {
-                const {icon} = record;
+                const { icon } = record;
 
-                if (icon) return <span><Icon type={icon}/> {value}</span>;
+                if (icon) return <span><Icon type={icon} /> {value}</span>;
 
                 return value;
             }
         },
-        {title: 'path', dataIndex: 'path', key: 'path', width: 100},
-        {title: 'url', dataIndex: 'url', key: 'url'},
-        {title: 'target', dataIndex: 'target', key: 'target', width: 60},
-        {title: '国际化', dataIndex: 'local', key: 'local', width: 60},
+        { title: 'path', dataIndex: 'path', key: 'path', width: 100 },
+        { title: 'url', dataIndex: 'url', key: 'url' },
+        { title: 'target', dataIndex: 'target', key: 'target', width: 60 },
+        { title: '国际化', dataIndex: 'local', key: 'local', width: 60 },
         {
             title: '类型', dataIndex: 'type', key: 'type', width: 60,
             render: value => {
@@ -50,8 +50,8 @@ export default class index extends Component {
                 return '菜单';
             }
         },
-        {title: '功能编码', dataIndex: 'code', key: 'code', width: 100},
-        {title: '排序', dataIndex: 'order', key: 'order', width: 60},
+        { title: '功能编码', dataIndex: 'code', key: 'code', width: 100 },
+        { title: '排序', dataIndex: 'order', key: 'order', width: 60 },
         {
             title: '操作', dataIndex: 'operator', key: 'operator', width: 150,
             render: (value, record) => {
@@ -81,7 +81,7 @@ export default class index extends Component {
                         onClick: () => this.handleAddSubFunction(record),
                     },
                 ];
-                return <Operator items={items}/>
+                return <Operator items={items} />
             },
         },
     ];
@@ -107,7 +107,7 @@ export default class index extends Component {
 
             const menuTreeData = convertToTree(orderedData);
 
-            this.setState({menus: menuTreeData});
+            this.setState({ menus: menuTreeData });
         });
         /*
         // TODO 获取所有的菜单，不区分用户
@@ -123,11 +123,11 @@ export default class index extends Component {
 
     handleAddTopMenu = () => {
         this.props.form.resetFields();
-        this.setState({visible: true});
+        this.setState({ visible: true });
     };
 
     handleEditNode = (record) => {
-        const {resetFields, setFieldsValue} = this.props.form;
+        const { resetFields, setFieldsValue } = this.props.form;
 
         resetFields();
         const {
@@ -159,42 +159,42 @@ export default class index extends Component {
                 order,
             })
         });
-        this.setState({visible: true, record});
+        this.setState({ visible: true, record });
     };
 
     handleAddSubMenu = (record) => {
-        const {resetFields, setFieldsValue} = this.props.form;
+        const { resetFields, setFieldsValue } = this.props.form;
 
         resetFields();
 
         const parentKey = record.key;
-        setTimeout(() => setFieldsValue({parentKey, type: '1'}));
+        setTimeout(() => setFieldsValue({ parentKey, type: '1' }));
 
-        this.setState({visible: true, record});
+        this.setState({ visible: true, record });
     };
 
     handleAddSubFunction = (record) => {
-        const {resetFields, setFieldsValue} = this.props.form;
+        const { resetFields, setFieldsValue } = this.props.form;
 
         resetFields();
         const parentKey = record.key;
-        setTimeout(() => setFieldsValue({parentKey, type: '2'}));
+        setTimeout(() => setFieldsValue({ parentKey, type: '2' }));
 
-        this.setState({visible: true, record});
+        this.setState({ visible: true, record });
     };
 
     handleDeleteNode = (record) => {
-        const {key} = record;
+        const { key } = record;
 
         // TODO
-        this.setState({loading: true});
+        this.setState({ loading: true });
         this.props.ajax
             .del(`/menus/${key}`)
             .then(() => {
-                this.setState({visible: false});
+                this.setState({ visible: false });
                 this.fetchMenus();
             })
-            .finally(() => this.setState({loading: false}));
+            .finally(() => this.setState({ loading: false }));
     };
 
     handleSubmit = (e) => {
@@ -204,26 +204,26 @@ export default class index extends Component {
                 console.log('Received values of form: ', values);
 
                 // 如果key存在视为修改，其他为添加
-                const {key} = values;
+                const { key } = values;
                 const ajax = key ? this.props.ajax.post : this.props.ajax.put;
 
                 // TODO
-                this.setState({loading: true});
+                this.setState({ loading: true });
                 ajax('/menus', values)
                     .then(() => {
-                        this.setState({visible: false});
+                        this.setState({ visible: false });
                         this.fetchMenus();
                     })
-                    .finally(() => this.setState({loading: false}));
+                    .finally(() => this.setState({ loading: false }));
             }
         });
     };
 
     handleIconClick = () => {
-        this.setState({iconVisible: true});
+        this.setState({ iconVisible: true });
     };
 
-    FormElement = (props) => <FormElement form={this.props.form} labelWidth={70} {...props}/>;
+    FormElement = (props) => <FormElement form={this.props.form} labelWidth={70} {...props} />;
 
     render() {
         const {
@@ -232,13 +232,13 @@ export default class index extends Component {
             loading,
             iconVisible,
         } = this.state;
-        const {form, form: {getFieldValue, setFieldsValue}} = this.props;
+        const { form, form: { getFieldValue, setFieldsValue } } = this.props;
 
         const FormElement = this.FormElement;
 
         return (
             <PageContent styleName="root">
-                <ToolBar items={[{type: 'primary', text: '添加顶级', onClick: this.handleAddTopMenu}]}/>
+                <ToolBar items={[{ type: 'primary', text: '添加顶级', onClick: this.handleAddTopMenu }]} />
                 <Table
                     loading={loading}
                     columns={this.columns}
@@ -250,11 +250,11 @@ export default class index extends Component {
                     title="菜单&权限"
                     visible={visible}
                     onOk={this.handleSubmit}
-                    onCancel={() => this.setState({visible: false})}
+                    onCancel={() => this.setState({ visible: false })}
                 >
                     <Form onSubmit={this.handleSubmit}>
-                        <FormElement type="hidden" field="key"/>
-                        <FormElement type="hidden" field="parentKey"/>
+                        <FormElement type="hidden" field="key" />
+                        <FormElement type="hidden" field="parentKey" />
                         <Row>
                             <Col span={12}>
                                 <FormElement
@@ -262,7 +262,7 @@ export default class index extends Component {
                                     field="text"
                                     decorator={{
                                         rules: [
-                                            {required: true, message: '请输入名称！'},
+                                            { required: true, message: '请输入名称！' },
                                         ],
                                     }}
                                 />
@@ -271,7 +271,7 @@ export default class index extends Component {
                                 <FormElement
                                     label="图标"
                                     field="icon"
-                                    addonAfter={<Icon style={{cursor: 'pointer'}} onClick={this.handleIconClick} type={getFieldValue('icon') || 'search'}/>}
+                                    addonAfter={<Icon style={{ cursor: 'pointer' }} onClick={this.handleIconClick} type={getFieldValue('icon') || 'search'} />}
                                 />
                             </Col>
                         </Row>
@@ -281,11 +281,11 @@ export default class index extends Component {
                                     label="类型"
                                     type="select"
                                     options={[
-                                        {value: '1', label: '菜单'},
-                                        {value: '2', label: '功能'},
+                                        { value: '1', label: '菜单' },
+                                        { value: '2', label: '功能' },
                                     ]}
                                     field="type"
-                                    decorator={{initialValue: '1'}}
+                                    decorator={{ initialValue: '1' }}
                                     getPopupContainer={() => document.querySelector('.ant-modal-wrap')}
                                 />
                             </Col>
@@ -340,10 +340,10 @@ export default class index extends Component {
                 <IconPicker
                     visible={iconVisible}
                     onOk={(type) => {
-                        this.setState({iconVisible: false});
-                        setFieldsValue({icon: type});
+                        this.setState({ iconVisible: false });
+                        setFieldsValue({ icon: type });
                     }}
-                    onCancel={() => this.setState({iconVisible: false})}
+                    onCancel={() => this.setState({ iconVisible: false })}
                 />
             </PageContent>
         );

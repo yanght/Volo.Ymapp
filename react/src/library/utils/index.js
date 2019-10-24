@@ -1,4 +1,4 @@
-import {cloneDeep} from 'lodash/lang';
+import { cloneDeep } from 'lodash/lang';
 
 /**
  * 通用的一些工具方法
@@ -399,7 +399,7 @@ export function getWindowSize() {
     const g = d.getElementsByTagName('body')[0];
     const width = w.innerWidth || e.clientWidth || g.clientWidth;
     const height = w.innerHeight || e.clientHeight || g.clientHeight;
-    return {width, height};
+    return { width, height };
 }
 
 /**
@@ -448,8 +448,8 @@ export function removeEventListener(element, type, handler) {
  * @type String
  */
 export function formatCurrency(num, options = {}) {
-    let {decimalNum, splitSymbol} = options;
-    const {prefix = '￥'} = options;
+    let { decimalNum, splitSymbol } = options;
+    const { prefix = '￥' } = options;
     let centsPercent = 100;
     if (splitSymbol === undefined) splitSymbol = ',';
     if (decimalNum !== 0 && decimalNum !== 1 && decimalNum !== 2) decimalNum = 2;
@@ -474,4 +474,42 @@ export function formatCurrency(num, options = {}) {
         return prefix + sign + num;
     }
     return `${prefix}${sign}${num}.${cents}`;
+}
+
+
+/**
+ * 获取一个元素距离浏览器顶部高度
+ * @param element
+ * @returns {number | Requireable<number>}
+ */
+export function getElementTop(element) {
+    let actualTop = element.offsetTop;
+    let current = element.offsetParent;
+
+    while (current !== null) {
+        actualTop += current.offsetTop;
+        current = current.offsetParent;
+    }
+
+    return actualTop;
+}
+
+
+/**
+ * 根据className 获取父级元素
+ * @param el
+ * @param parentClassName
+ * @returns {*}
+ */
+export function getParentByClassName(el, parentClassName) {
+    const parentNode = el.parentNode;
+    if (!parentNode) return null;
+
+    const classList = Array.from(parentNode.classList || []);
+
+    if (classList ?.length && classList.includes(parentClassName)) {
+        return parentNode;
+    } else {
+        return getParentByClassName(parentNode, parentClassName);
+    }
 }
