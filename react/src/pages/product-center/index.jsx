@@ -11,6 +11,7 @@ import {
 } from "@/library/antd";
 import PageContent from '@/layouts/page-content';
 import config from '@/commons/config-hoc';
+import ProductEditModal from "./ProductEditModal";
 
 @config({
     path: '/productlist',
@@ -55,7 +56,7 @@ export default class ProductList extends React.Component {
             text: '添加',
             icon: 'plus',
             onClick: () => {
-                // TODO
+                this.setState({ visible: true, id: null })
             },
         },
     ];
@@ -73,49 +74,45 @@ export default class ProductList extends React.Component {
     ];
 
     columns = [
+        // { title: '编号', dataIndex: 'id' },
+        { title: '商品名', dataIndex: 'name' },
+        { title: '状态', dataIndex: 'state' },
         {
-            title: '主图', render: (text, record) => (
-                <img src={record.MasterPic} width='100px' height='75px'>
-                </img>
-            ),
+            title: '分类', dataIndex: 'categoryId', key: 'categoryId', render: (value, record) => {
+                return record.category.name;
+            }
         },
-        { title: '编号', dataIndex: 'GoodsID' },
-        { title: '商品名', dataIndex: 'GoodsName' },
-        { title: '状态', dataIndex: 'State' },
-        { title: '商品分类', dataIndex: 'GoodsType' },
-        { title: '供货商拿货', dataIndex: 'SupplierId' },
-        { title: '推荐', dataIndex: 'RecommendType' },
         {
             title: '操作',
             key: 'operator',
-            // render: (text, record) => {
-            //     const { id, customerNo } = record;
-            //     const successTip = `删除“${customerNo}”成功！`;
-            //     const items = [
-            //         {
-            //             label: '修改',
-            //             onClick: () => {
-            //                 this.handleEdit(id);
-            //             },
-            //         },
-            //         {
-            //             label: '删除',
-            //             color: 'red',
-            //             confirm: {
-            //                 title: `您确定要删除“${customerNo}”？`,
-            //                 onConfirm: () => {
-            //                     this.setState({ loading: true });
-            //                     this.props.ajax
-            //                         .del(`/user-center/${id}`, null, { successTip })
-            //                         .then(() => this.handleSearch())
-            //                         .finally(() => this.setState({ loading: false }));
-            //                 },
-            //             },
-            //         },
-            //     ];
+            render: (text, record) => {
+                const { id, customerNo } = record;
+                const successTip = `删除“${customerNo}”成功！`;
+                const items = [
+                    {
+                        label: '修改',
+                        onClick: () => {
+                            this.handleEdit(id);
+                        },
+                    },
+                    {
+                        label: '删除',
+                        color: 'red',
+                        confirm: {
+                            title: `您确定要删除“${customerNo}”？`,
+                            onConfirm: () => {
+                                this.setState({ loading: true });
+                                this.props.ajax
+                                    .del(`/user-center/${id}`, null, { successTip })
+                                    .then(() => this.handleSearch())
+                                    .finally(() => this.setState({ loading: false }));
+                            },
+                        },
+                    },
+                ];
 
-            //     return (<Operator items={items} />);
-            // },
+                return (<Operator items={items} />);
+            },
         },
     ];
 
@@ -125,20 +122,16 @@ export default class ProductList extends React.Component {
 
     handleSearch = () => {
         const { params, pageIndex, pageSize } = this.state;
-
+        const skipCount = (this.state.pageIndex - 1) * this.state.pageSize;
+        const maxResultCount = this.state.pageSize;
         this.setState({ loading: true });
         this.props.ajax
-            .post('/DriverMallCity/Goods/FilterGoodsList', { ...params, pageIndex, pageSize })
+            .get('/api/app/product/ProductList', { ...params, skipCount, maxResultCount })
             .then(res => {
-                console.log(res);
-                if (res.Success) {
-                    const { list: dataSource, total } = res.Data;
-
-                    this.setState({
-                        dataSource: res.Data.List,
-                        total: res.Data.Count,
-                    });
-                }
+                this.setState({
+                    dataSource: res.items,
+                    total: res.totalCount,
+                });
             })
             .finally(() => this.setState({ loading: false }));
     };
@@ -188,16 +181,15 @@ export default class ProductList extends React.Component {
                     onPageNumChange={pageIndex => this.setState({ pageIndex }, this.handleSearch)}
                     onPageSizeChange={pageSize => this.setState({ pageSize, pageIndex: 1 }, this.handleSearch)}
                 />
-                <FixBottom>
-                    <ToolItem items={this.bottomToolItems} />
-                </FixBottom>
-
-                {/* <UserCenterEdit
+                <ProductEditModal
                     id={id}
                     visible={visible}
                     onOk={() => this.setState({ visible: false })}
                     onCancel={() => this.setState({ visible: false })}
-                /> */}
+                />
+                <FixBottom>
+                    <ToolItem items={this.bottomToolItems} />
+                </FixBottom>
             </PageContent>
         );
     }
