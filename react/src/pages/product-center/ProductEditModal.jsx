@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Button, Spin, Checkbox, Card, Tabs } from 'antd';
+import { Form, Row, Col, Button, Spin, Upload, Icon, Card, Tabs, Modal } from 'antd';
 import _ from 'lodash';
 import { FormElement } from '@/library/antd';
 import PageContent from '@/layouts/page-content';
@@ -7,6 +7,7 @@ import config from '@/commons/config-hoc';
 import modal from '@/components/modal-hoc';
 import BraftEditor from 'braft-editor';
 import 'braft-editor/dist/index.css';
+import ProductPicture from './ProductPictures'
 
 
 const { TabPane } = Tabs;
@@ -14,12 +15,16 @@ const { TabPane } = Tabs;
 @Form.create()
 @modal(props => props.id === null ? '添加用户' : '修改用户')
 
+
 export default class EditModal extends Component {
     state = {
         loading: false,
         data: {}, // 表单回显数据
         categorys: [],
         editorState: null,
+        previewVisible: false,
+        previewImage: '',
+        fileList: [],
     };
 
     componentDidMount() {
@@ -95,6 +100,30 @@ export default class EditModal extends Component {
             editorState: editorState
         })
     }
+    handleCancel = () => this.setState({ previewVisible: false });
+    getBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
+
+    // handlePreview = async file => {
+    //     if (!file.url && !file.preview) {
+    //         file.preview = await getBase64(file.originFileObj);
+    //     }
+
+    //     this.setState({
+    //         previewImage: file.url || file.preview,
+    //         previewVisible: true,
+    //     });
+    // };
+
+
+
+    handleChange = ({ fileList }) => this.setState({ fileList });
 
     // 这样可以保证每次render时，FormElement不是每次都创建，这里可以进行一些共用属性的设置
     FormElement = (props) => <FormElement form={this.props.form} labelWidth={100} disabled={this.props.isDetail} {...props} />;
@@ -123,6 +152,16 @@ export default class EditModal extends Component {
         function onChange(checkedValues) {
             console.log('checked = ', checkedValues);
         }
+
+
+
+        const { previewVisible, previewImage, fileList } = this.state;
+        const uploadButton = (
+            <div>
+                <Icon type="plus" />
+                <div className="ant-upload-text">Upload</div>
+            </div>
+        );
         return (
             <Spin spinning={loading}>
                 <PageContent footer={false}>
@@ -191,8 +230,8 @@ export default class EditModal extends Component {
                                 </Row>
                             </TabPane>
                             <TabPane tab="图片" key="2">
-                                Content of Tab Pane 2
-    </TabPane>
+
+                            </TabPane>
                             <TabPane tab="规格" key="3">
                                 Content of Tab Pane 3
     </TabPane>
