@@ -72,7 +72,6 @@ namespace Volo.Ymapp.Products
         }
         public Product SetCode(string code)
         {
-            Check.NotNull(code, nameof(code));
             Code = code;
             return this;
         }
