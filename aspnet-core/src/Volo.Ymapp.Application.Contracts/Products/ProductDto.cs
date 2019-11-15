@@ -31,15 +31,6 @@ namespace Volo.Ymapp.Products
         /// 商品状态
         /// </summary>
         public ProductState State { get; set; }
-
-        /// <summary>
-        /// 商品图片
-        /// </summary>
-        public List<ProductPictureDto> ProductPictures { get; set; }
-        /// <summary>
-        /// 商品区域
-        /// </summary>
-        public List<ProductAreaDto> ProductAreas { get; set; }
         /// <summary>
         /// 商品描述
         /// </summary>

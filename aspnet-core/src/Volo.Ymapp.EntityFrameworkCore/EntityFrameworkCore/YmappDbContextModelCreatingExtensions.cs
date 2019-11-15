@@ -77,7 +77,6 @@ namespace Volo.Ymapp.EntityFrameworkCore
             b.Property(x => x.CategoryId).IsRequired();
             b.Property(x => x.Code).HasMaxLength(20);
             b.Property(x => x.Description).HasColumnType("ntext");
-            b.HasMany(x => x.ProductPictures);
         });
 
             builder.Entity<ProductArea>(b =>

@@ -22,9 +22,6 @@ export default class EditModal extends Component {
         data: {}, // 表单回显数据
         categorys: [],
         editorState: null,
-        previewVisible: false,
-        previewImage: '',
-        fileList: [],
     };
 
     componentDidMount() {
@@ -100,30 +97,6 @@ export default class EditModal extends Component {
             editorState: editorState
         })
     }
-    handleCancel = () => this.setState({ previewVisible: false });
-    getBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
-    }
-
-    // handlePreview = async file => {
-    //     if (!file.url && !file.preview) {
-    //         file.preview = await getBase64(file.originFileObj);
-    //     }
-
-    //     this.setState({
-    //         previewImage: file.url || file.preview,
-    //         previewVisible: true,
-    //     });
-    // };
-
-
-
-    handleChange = ({ fileList }) => this.setState({ fileList });
 
     // 这样可以保证每次render时，FormElement不是每次都创建，这里可以进行一些共用属性的设置
     FormElement = (props) => <FormElement form={this.props.form} labelWidth={100} disabled={this.props.isDetail} {...props} />;
@@ -149,19 +122,7 @@ export default class EditModal extends Component {
         ]
         //const selectedRoles = ['admin'];
         const FormElement = this.FormElement;
-        function onChange(checkedValues) {
-            console.log('checked = ', checkedValues);
-        }
 
-
-
-        const { previewVisible, previewImage, fileList } = this.state;
-        const uploadButton = (
-            <div>
-                <Icon type="plus" />
-                <div className="ant-upload-text">Upload</div>
-            </div>
-        );
         return (
             <Spin spinning={loading}>
                 <PageContent footer={false}>
@@ -230,7 +191,7 @@ export default class EditModal extends Component {
                                 </Row>
                             </TabPane>
                             <TabPane tab="图片" key="2">
-
+                                <ProductPicture fileList={fileList}/>
                             </TabPane>
                             <TabPane tab="规格" key="3">
                                 Content of Tab Pane 3

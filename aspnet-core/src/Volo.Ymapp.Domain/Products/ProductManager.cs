@@ -41,35 +41,13 @@ namespace Volo.Ymapp.Products
         /// <returns></returns>
         public async Task<Product> CreateProduct(Product product)
         {
-            var prouctInfo = await _productRepository.InsertAsync(product);
-
-            foreach (var item in product.ProductAreas)
-            {
-                await _productAreaRepository.InsertAsync(item);
-            }
-
-            foreach (var item in product.ProductPictures)
-            {
-                await _productPictureRepository.InsertAsync(item);
-            }
+            var prouctInfo = await _productRepository.InsertAsync(product);          
             return prouctInfo;
         }
 
         public async Task<Product> UpdateProduct(Guid id, Product product)
         {
-            var model = await _productRepository.FindAsync(id);
-
-            await _productPictureRepository.UpdateProductPictures(model.Id, product.ProductPictures);
-
-            model.SetCategoryId(product.CategoryId);
-            model.SetCode(product.Code);
-            model.SetDescription(product.Description);
-            model.SetName(product.Name);
-            model.SetState(product.State);
-            model.SetProductAreas(product.ProductAreas.Select(m => m.Id).ToList());
-            model.SetProductPictures(product.ProductPictures.Select(m => m.PictureUrl).ToList());
-
-            return await _productRepository.UpdateAsync(model);
+            return await _productRepository.UpdateAsync(product);
         }
     }
 }

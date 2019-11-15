@@ -1843,8 +1843,6 @@ namespace Volo.Ymapp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
                     b.ToTable("AppProductAreas");
                 });
 
@@ -1908,8 +1906,6 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("AppProductPictures");
                 });
@@ -2335,24 +2331,6 @@ namespace Volo.Ymapp.Migrations
                     b.HasOne("Volo.Ymapp.Categorys.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Volo.Ymapp.Products.ProductArea", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.Product", null)
-                        .WithMany("ProductAreas")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Volo.Ymapp.Products.ProductPicture", b =>
-                {
-                    b.HasOne("Volo.Ymapp.Products.Product", null)
-                        .WithMany("ProductPictures")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
