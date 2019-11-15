@@ -14,10 +14,11 @@ namespace Volo.Ymapp.ApiTransfer.Controllers
     public class TransferController : Controller
     {
         private HttpClient client = new HttpClient();
-
+        private readonly string host = "https://tispapitest.utourworld.com/";
         [HttpGet]
         public string Get(string url)
         {
+            if (string.IsNullOrWhiteSpace(url)) return "";
             var response = client.GetAsync(url).Result.EnsureSuccessStatusCode();//请求转发
             if (response.IsSuccessStatusCode)
             {
@@ -31,12 +32,14 @@ namespace Volo.Ymapp.ApiTransfer.Controllers
         }
 
         [HttpPost]
-        public string Post([FromBody] string url, object datajson)
+        public string Post(string url, string datajson)
         {
+            if (string.IsNullOrWhiteSpace(url)) return "";
+           
             return HttpClientPost(url, datajson);
         }
 
-        private static string HttpClientPost(string url, object datajson)
+        private static string HttpClientPost(string url, string datajson)
         {
             HttpClient httpClient = new HttpClient();//http对象
             //表头参数
@@ -44,7 +47,7 @@ namespace Volo.Ymapp.ApiTransfer.Controllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             //转为链接需要的格式
-            HttpContent httpContent = new JsonContent(datajson);
+            HttpContent httpContent = new StringContent(datajson);
             //请求
             HttpResponseMessage response = httpClient.PostAsync(url, httpContent).Result;
             if (response.IsSuccessStatusCode)
@@ -57,11 +60,5 @@ namespace Volo.Ymapp.ApiTransfer.Controllers
             }
             return "";
         }
-    }
-    public class JsonContent : StringContent
-    {
-        public JsonContent(object obj) :
-           base(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json")
-        { }
     }
 }
