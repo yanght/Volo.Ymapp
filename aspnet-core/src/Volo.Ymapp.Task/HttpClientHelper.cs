@@ -1,32 +1,117 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Volo.Ymapp.Task
 {
-    public static  class HttpClientHelper
+    public static class HttpClientHelper
     {
-        public  static string Post(string url, string datajson)
+        /// <summary>
+        /// 发起POST同步请求
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="postData"></param>
+        /// <param name="contentType">application/xml、application/json、application/text、application/x-www-form-urlencoded</param>
+        /// <param name="headers">填充消息头</param>        
+        /// <returns></returns>
+        public static string HttpPost(string url, string postData = null, string contentType = null, int timeOut = 30, Dictionary<string, string> headers = null)
         {
-            HttpClient httpClient = new HttpClient();//http对象
-            //表头参数
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //转为链接需要的格式
-            HttpContent httpContent = new StringContent(datajson);
-            //请求
-            HttpResponseMessage response = httpClient.PostAsync(url, httpContent).Result;
-            if (response.IsSuccessStatusCode)
+            postData = postData ?? "";
+            using (HttpClient client = new HttpClient())
             {
-                Task<string> t = response.Content.ReadAsStringAsync();
-                if (t != null)
+                if (headers != null)
                 {
-                    return t.Result;
+                    foreach (var header in headers)
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+                using (HttpContent httpContent = new StringContent(postData, Encoding.UTF8))
+                {
+                    if (contentType != null)
+                        httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
+
+                    HttpResponseMessage response = client.PostAsync(url, httpContent).Result;
+                    return response.Content.ReadAsStringAsync().Result;
                 }
             }
-            return "";
         }
+
+
+        /// <summary>
+        /// 发起POST异步请求
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="postData"></param>
+        /// <param name="contentType">application/xml、application/json、application/text、application/x-www-form-urlencoded</param>
+        /// <param name="headers">填充消息头</param>        
+        /// <returns></returns>
+        public static async Task<string> HttpPostAsync(string url, string postData = null, string contentType = null, int timeOut = 30, Dictionary<string, string> headers = null)
+        {
+            postData = postData ?? "";
+            using (HttpClient client = new HttpClient())
+            {
+                client.Timeout = new TimeSpan(0, 0, timeOut);
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+                using (HttpContent httpContent = new StringContent(postData, Encoding.UTF8))
+                {
+                    if (contentType != null)
+                        httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
+
+                    HttpResponseMessage response = await client.PostAsync(url, httpContent);
+                    return await response.Content.ReadAsStringAsync();
+                }
+            }
+        }
+
+
+        /// 发起GET同步请求
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="headers"></param>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
+        public static string HttpGet(string url, Dictionary<string, string> headers = null)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+                HttpResponseMessage response = client.GetAsync(url).Result;
+                return response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
+        /// <summary>
+        /// 发起GET异步请求
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="headers"></param>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
+        public static async Task<string> HttpGetAsync(string url, Dictionary<string, string> headers = null)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+                HttpResponseMessage response = await client.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+
     }
 }

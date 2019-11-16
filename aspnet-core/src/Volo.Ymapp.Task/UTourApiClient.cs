@@ -5,11 +5,11 @@ namespace Volo.Ymapp.Task
 {
     public static class UTourApiClient
     {
-        private static readonly string host = "https://tispapitest.utourworld.com/";
+        private static readonly string host = "http://129.204.184.147:8002/";
         private static readonly string visitCode = "HMYD";
         private static readonly string signKey = "ff316yyeafaxd53ba033x06x11e7xade";
         private static readonly string userCode = "AGENT201908091643194";
-        private static readonly string token = "agentTest ";
+        private static readonly string token = "agentTest";
 
         /// <summary>
         /// 分销用户公共验证
@@ -41,21 +41,21 @@ namespace Volo.Ymapp.Task
         {
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
-            request.key = MD5Help.Get16MD5(request.date + signKey).ToLower();
-            request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}") };
+            request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
+            request.param = new { userCode = userCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}") };
             var jsondata = JsonConvert.SerializeObject(request);
-            string response = HttpClientHelper.Post(host + getUserLoginVerificationUrl, jsondata);
+            string response = HttpClientHelper.HttpPost(host + getUserLoginVerificationUrl, jsondata, "application/json");
             return response;
         }
 
-        public static string productList(string productCode, string teamId)
+        public static string getTeamInfoByCodeOrId(string productCode, string teamId)
         {
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
-            request.key = MD5Help.Get16MD5(request.date + signKey).ToLower();
+            request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
             request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
-            string response = HttpClientHelper.Post(host + getTeamInfoByCodeOrIdUrl, jsondata);
+            string response = HttpClientHelper.HttpPost(host + getTeamInfoByCodeOrIdUrl, jsondata, "application/json");
             return response;
         }
 
@@ -63,10 +63,10 @@ namespace Volo.Ymapp.Task
         {
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
-            request.key = MD5Help.Get16MD5(request.date + signKey).ToLower();
+            request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
             request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
-            string response = HttpClientHelper.Post(host + getRealTimeTeamStockNumUrl, jsondata);
+            string response = HttpClientHelper.HttpPost(host + getRealTimeTeamStockNumUrl, jsondata, "application/json");
             return response;
         }
 
@@ -74,10 +74,10 @@ namespace Volo.Ymapp.Task
         {
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
-            request.key = MD5Help.Get16MD5(request.date + signKey).ToLower();
+            request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
             request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
-            string response = HttpClientHelper.Post(host + getRealTimeTeamPriceUrl, jsondata);
+            string response = HttpClientHelper.HttpPost(host + getRealTimeTeamPriceUrl, jsondata, "application/json");
             return response;
         }
 

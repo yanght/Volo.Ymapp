@@ -34,6 +34,7 @@ namespace Volo.Ymapp.ApiTransfer
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpContextMiddleware(); //引入自定义的HtppContextMiddleware中间件
 
             app.UseRouting();
 
