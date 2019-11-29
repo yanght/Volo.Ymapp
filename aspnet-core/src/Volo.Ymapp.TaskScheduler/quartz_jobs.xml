@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+    <processing-directives>
+        <overwrite-existing-data>true</overwrite-existing-data>
+    </processing-directives>
+    <schedule>
+        <job>
+            <name>SyncJob</name>
+            <group>SyncGroup</group>
+            <description>数据同步任务</description>
+            <job-type>Volo.Ymapp.TaskScheduler.SyncJob, Volo.Ymapp.TaskScheduler</job-type>
+            <durable>true</durable>
+            <recover>false</recover>
+        </job>
+        <trigger>
+            <cron>
+                <name>SyncTrigger</name>
+                <group>SyncGroup</group>
+                <description>同步触发器</description>
+                <job-name>SyncJob</job-name>
+                <job-group>SyncGroup</job-group>
+                <!--每晚23：50跑一次，具体参见cron表达式-->
+                <cron-expression>0/3 * * * * ? *</cron-expression>
+            </cron>
+        </trigger>
+        <!--<trigger>
+      <simple>
+        <name>SyncTrigger</name>
+        <group>SyncGroup</group>
+        <description>数据同步触发器</description>
+        <job-name>SyncJob</job-name>
+        <job-group>SyncGroup</job-group>
+        <repeat-count>-1</repeat-count>
+        2s跑一次
+        <repeat-interval>2000</repeat-interval>
+      </simple>
+    </trigger>-->
+    </schedule>
+</job-scheduling-data>

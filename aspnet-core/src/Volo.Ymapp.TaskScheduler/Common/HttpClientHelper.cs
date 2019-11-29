@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Volo.Ymapp.Task
+namespace Volo.Ymapp.TaskScheduler.Common
 {
     public static class HttpClientHelper
     {
@@ -131,7 +130,7 @@ namespace Volo.Ymapp.Task
             encoding = encoding ?? Encoding.UTF8;
             var myWebRequest = (HttpWebRequest)WebRequest.Create(url);
             myWebRequest.ContentType = contentType;
-            myWebRequest.Accept = "text/html,text/xml,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3";
+            myWebRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3";
             myWebRequest.Method = method;
             if (!string.IsNullOrWhiteSpace(userAgent))
             {

@@ -80,5 +80,9 @@ namespace Volo.Ymapp.kh10086
         /// 大众常规 奇迹旅行 境外参团 特价 自由行
         /// </summary>
         public string Function { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FirstLineImg { get; set; }
     }
 }
