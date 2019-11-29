@@ -8,6 +8,7 @@ using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.Articles;
 using Volo.Ymapp.Products;
+using Volo.Ymapp.kh10086;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -23,6 +24,8 @@ namespace Volo.Ymapp.EntityFrameworkCore
     [ConnectionStringName("Default")]
     public class YmappDbContext : AbpDbContext<YmappDbContext>
     {
+        #region  Common DbSet
+
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categorys { get; set; }
@@ -33,6 +36,22 @@ namespace Volo.Ymapp.EntityFrameworkCore
         public DbSet<ProductSpec> ProductSpescs { get; set; }
         public DbSet<ProductPrice> ProductPrices { get; set; }
         public DbSet<ProductStock> ProductStocks { get; set; }
+
+        #endregion
+
+        #region  Kh10086 DbSet
+
+        public DbSet<Line> Lines { get; set; }
+        public DbSet<LineDay> LineDays { get; set; }
+        public DbSet<LineDayTraffic> LineDayTraffics { get; set; }
+        public DbSet<LineDaySelf> LineDaySelfs { get; set; }
+        public DbSet<LineDayShop> LineDayShops { get; set; }
+        public DbSet<LineDayImage> LineDayImages { get; set; }
+        public DbSet<LineIntro> LineIntro { get; set; }
+        public DbSet<LineRouteDate> LineRouteDates { get; set; }
+
+        #endregion 
+
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside YmappDbContextModelCreatingExtensions.ConfigureYmapp

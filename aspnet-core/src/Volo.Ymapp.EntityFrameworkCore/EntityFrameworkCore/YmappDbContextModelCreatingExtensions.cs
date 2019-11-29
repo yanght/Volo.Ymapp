@@ -9,6 +9,7 @@ using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.CommonEnum;
+using Volo.Ymapp.kh10086;
 using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp.EntityFrameworkCore
@@ -27,6 +28,9 @@ namespace Volo.Ymapp.EntityFrameworkCore
 
             //    //...
             //});
+
+
+            #region Common Model Config
 
             builder.Entity<Book>(b =>
             {
@@ -125,6 +129,105 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.Property(x => x.Price).HasColumnType("decimal(18,2)").IsRequired().HasDefaultValue(0);
                 b.Property(x => x.OrignPrice).HasColumnType("decimal(18,2)").IsRequired().HasDefaultValue(0);
             });
+
+            #endregion
+
+            #region
+            builder.Entity<Line>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "Lines", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Continent).HasMaxLength(100);
+                b.Property(x => x.Country).HasMaxLength(200);
+                b.Property(x => x.CustomTitle).HasMaxLength(200);
+                b.Property(x => x.Function).HasMaxLength(50);
+                b.Property(x => x.ImgCity).HasMaxLength(2000);
+                b.Property(x => x.ImgCode).HasMaxLength(2000);
+                b.Property(x => x.ImgContinent).HasMaxLength(2000);
+                b.Property(x => x.ImgCountry).HasMaxLength(2000);
+                b.Property(x => x.LineCode).HasMaxLength(50);
+                b.Property(x => x.LineType).HasMaxLength(50);
+                b.Property(x => x.PlaceLeave).HasMaxLength(50);
+                b.Property(x => x.PlaceReturn).HasMaxLength(50);
+                b.Property(x => x.Sight).HasMaxLength(50);
+                b.Property(x => x.Title).HasMaxLength(200);
+                b.Property(x => x.TxtTransitCity).HasMaxLength(200);
+                b.Property(x => x.Visa).HasMaxLength(200);
+            });
+            builder.Entity<LineDay>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineDays", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Breakfast).HasMaxLength(50);
+                b.Property(x => x.CityEnglish).HasMaxLength(50);
+                b.Property(x => x.DayHotel).HasMaxLength(50);
+                b.Property(x => x.DayTraffic).HasMaxLength(50);
+                b.Property(x => x.Describe).HasColumnType("ntext");
+                b.Property(x => x.Lunch).HasMaxLength(50);
+                b.Property(x => x.ScityDistance).HasMaxLength(50);
+                b.Property(x => x.TrafficName).HasMaxLength(200);
+            });
+            builder.Entity<LineDayTraffic>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineDayTraffics", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.TrafficCo).HasMaxLength(50);
+                b.Property(x => x.TrafficNo).HasMaxLength(50);
+                b.Property(x => x.TrafficTimeEnd).HasMaxLength(50);
+                b.Property(x => x.TrafficTimeStart).HasMaxLength(50);
+            });
+            builder.Entity<LineDaySelf>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineDaySelfs", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.CityName).HasMaxLength(50);
+                b.Property(x => x.Content).HasColumnType("ntext");
+                b.Property(x => x.CountryName).HasMaxLength(50);
+                b.Property(x => x.Intro).HasColumnType("ntext");
+                b.Property(x => x.Name).HasMaxLength(50);
+                b.Property(x => x.Price).HasMaxLength(50);
+            });
+            builder.Entity<LineDayShop>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineDayShops", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Name).HasMaxLength(50);
+                b.Property(x => x.Intro).HasColumnType("ntext");
+                b.Property(x => x.CityName).HasMaxLength(50);
+                b.Property(x => x.ActivityTime).HasMaxLength(50);
+            });
+            builder.Entity<LineDayImage>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineDayImages", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.City).HasMaxLength(50);
+                b.Property(x => x.Continent).HasMaxLength(50);
+                b.Property(x => x.Country).HasMaxLength(50);
+                b.Property(x => x.ImgCode).HasMaxLength(50);
+                b.Property(x => x.ImgPath).HasMaxLength(200);
+                b.Property(x => x.Sight).HasMaxLength(200);
+            });
+            builder.Entity<LineIntro>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineIntros", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.ChannelType).HasMaxLength(50);
+                b.Property(x => x.Describe).HasColumnType("ntext");
+                b.Property(x => x.Title).HasMaxLength(50);
+            });
+            builder.Entity<LineRouteDate>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineRouteDates", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.AdultPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.AgentPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.ChildPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.ProductCode).HasMaxLength(50);
+                b.Property(x => x.TeamId).HasMaxLength(50);
+                b.Property(x => x.WebsiteTags).HasMaxLength(50);
+                b.Property(x => x.OverseasJoinPrice).HasColumnType("decimal(18,2)");
+            });
+            #endregion
 
         }
 
