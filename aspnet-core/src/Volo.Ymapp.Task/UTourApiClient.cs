@@ -53,7 +53,7 @@ namespace Volo.Ymapp.Task
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
             request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
-            request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
+            request.param = new { userCode = userCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
             string response = HttpClientHelper.HttpPost(host + getTeamInfoByCodeOrIdUrl, jsondata, "application/json");
             return response;
@@ -64,7 +64,7 @@ namespace Volo.Ymapp.Task
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
             request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
-            request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
+            request.param = new { userCode = userCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
             string response = HttpClientHelper.HttpPost(host + getRealTimeTeamStockNumUrl, jsondata, "application/json");
             return response;
@@ -75,7 +75,7 @@ namespace Volo.Ymapp.Task
             RequestModel request = new RequestModel();
             request.visitCode = visitCode;
             request.key = MD5Help.Get32MD5(request.date + signKey).ToLower();
-            request.param = new { userCode = visitCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
+            request.param = new { userCode = userCode, token = token, objStr = MD5Help.Get32MD5($"{userCode}|{token}"), productCode = productCode, teamId = teamId };
             var jsondata = JsonConvert.SerializeObject(request);
             string response = HttpClientHelper.HttpPost(host + getRealTimeTeamPriceUrl, jsondata, "application/json");
             return response;
