@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
-    /// <summary>
-    /// 团子节点
-    /// </summary>
-    public class LineRouteDate : FullAuditedAggregateRoot<long>
+    public class LineRouteDateDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -75,6 +73,7 @@ namespace Volo.Ymapp.Kh10086
         /// 下架日期
         /// </summary>
         public DateTime DateOffline { get; set; }
+        public string ConcurrencyStamp { get; set; }
 
         #region 暂不解析
         /*

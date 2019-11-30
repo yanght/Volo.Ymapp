@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
-    /// <summary>
-    /// 线路
-    /// </summary>
-    public class Line : FullAuditedAggregateRoot<long>
+    public class LineDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 行程编号
@@ -84,6 +82,9 @@ namespace Volo.Ymapp.Kh10086
         /// 
         /// </summary>
         public string FirstLineImg { get; set; }
+        public string ConcurrencyStamp { get; set; }
+        public List<LineTeamDto> LineTeams { get; set; }
+        public List<LineIntroDto> LineIntros { get; set; }
+        public List<LineDayDto> LineDays { get; set; }
     }
-       
 }

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using Volo.Ymapp.kh10086;
+using Volo.Ymapp.Kh10086;
 using Volo.Ymapp.TaskScheduler.Common;
 
 namespace Volo.Ymapp.TaskScheduler.Utour
@@ -13,74 +14,119 @@ namespace Volo.Ymapp.TaskScheduler.Utour
         /// 解析线路列表
         /// </summary>
         /// <returns></returns>
-        public static List<Line> ParseLineList()
+        public static XmlDocument ParseLineList(string url)
         {
-            List<Line> list = new List<Line>();
-            string url = "https://tispfile.utourworld.com/upload/op/xml/agentLine/index.xml";
-            //string response = HttpClientHelper.HttpRequest(url);
             string response = HttpClientHelper.HttpRequest(url, encoding: Encoding.GetEncoding("GBK"));
             var doc = new XmlDocument();
             doc.LoadXml(response);
-
-            Dictionary<string, string> lineDic = new Dictionary<string, string>();
-
-            var lineList = doc.SelectNodes("routes/line");
-
-            foreach (XmlNode node in lineList)
-            {
-                string lineCode = node.Attributes["lineCode"].Value;
-                XmlNode teamNode = node.SelectSingleNode("team/teamData");
-                string teamId = teamNode.Attributes["teamId"].Value;
-                list.Add(new Line()
-                {
-                    LineCode = lineCode,
-                    FirstLineImg = node.Attributes["firstLineImg"].Value,
-                    CustomTitle= node.Attributes["CustomTitle"].Value,
-                });
-            }
-
-            return lineDic;
+            return doc;
         }
 
-        public static Line ParseLineDetail(string lineCode, string teamId)
+        public static List<LineDto> GetLine(string url, XmlNodeList nodeList)
         {
-            string url = string.Format("https://tispfile.utourworld.com/upload/op/xml/agentLine/{0}.xml", lineCode);
+            List<LineDto> list = new List<LineDto>();
+            if (nodeList == null || nodeList.Count == 0) return list;
+            int index = 0;
+            foreach (XmlNode node in nodeList)
+            {
+                index++;
+                string lineCode = node.Attributes["lineCode"].Value;
+                 url = string.Format(url, lineCode);
+                var lineDetail = ParseLineDetail(url, lineCode);
+                lineDetail.LineTeams = GetLineTeams(node.SelectNodes("team/teamData"));
+                lineDetail.FirstLineImg = node.Attributes["firstLineImg"].Value;
+                lineDetail.LineDays = GetLineDays(node.SelectNodes("lineDays/itineraryDays"));
+                list.Add(lineDetail);
+                Log.Information($"第{index}条线路解析完毕");
+            }
+            return list;
+        }
+
+        public static List<LineTeamDto> GetLineTeams(XmlNodeList nodeList)
+        {
+            List<LineTeamDto> list = new List<LineTeamDto>();
+            if (nodeList == null || nodeList.Count == 0) return list;
+            foreach (XmlNode node in nodeList)
+            {
+                list.Add(new LineTeamDto()
+                {
+                    AgentPrice = decimal.Parse(node.Attributes["agentPrice"].Value),
+                    AirCompany = node.Attributes["airCompany"].Value,
+                    AirShortName = node.Attributes["airShortName"].Value,
+                    ChildPrice = decimal.Parse(node.Attributes["childPrice"].Value),
+                    Continent = node.Attributes["continent"].Value,
+                    CustomerPrice = decimal.Parse(node.Attributes["customerPrice"].Value),
+                    DateFinish = node.Attributes["dateFinish"].Value,
+                    DateOffline = node.Attributes["dateOffline"].Value,
+                    DateStart = node.Attributes["dateStart"].Value,
+                    DayNum = int.Parse(node.Attributes["dayNum"].Value),
+                    Deposit = decimal.Parse(node.Attributes["deposit"].Value),
+                    DeptCode = node.Attributes["deptCode"].Value,
+                    DeptName = node.Attributes["deptName"].Value,
+                    FreeNum = int.Parse(node.Attributes["freeNum"].Value),
+                    Function = node.Attributes["function"].Value,
+                    OverseasJoinPrice = decimal.Parse(node.Attributes["overseasJoinPrice"].Value),
+                    PlaceLeave = node.Attributes["placeLeave"].Value,
+                    PlaceReturn = node.Attributes["placeReturn"].Value,
+                    PlanNum = int.Parse(node.Attributes["planNum"].Value),
+                    ProductCode = node.Attributes["productCode"].Value,
+                    ProductName = node.Attributes["productName"].Value,
+                    SingleRoom = decimal.Parse(node.Attributes["singleRoom"].Value),
+                    TeamId = node.Attributes["teamId"].Value,
+                    WebsiteTags = node.Attributes["websiteTags"].Value,
+                    PostersData = node.SelectSingleNode("/postersData ").InnerText,
+                    PostersImg = node.SelectSingleNode("/postersData ").Attributes["postersImg"].Value,
+                });
+            }
+            return list;
+        }
+
+        public static LineDto ParseLineDetail(string url, string lineCode)
+        {
             string response = HttpClientHelper.HttpRequest(url, encoding: Encoding.GetEncoding("GBK"));
             var doc = new XmlDocument();
             doc.LoadXml(response);
             var node = doc.SelectSingleNode("routes/item");
-            Line line = new Line()
+            var line = GetLine(node);
+            line.LineIntros = GetLineIntros(node.SelectNodes("lineIntros/lineIntro"));
+            line.LineDays = GetLineDays(node.SelectNodes("lineDays/itineraryDays"));
+            return line;
+        }
+
+        public static LineDto GetLine(XmlNode node)
+        {
+            if (node == null) return null;
+            LineDto line = new LineDto()
             {
-                Continent = node.Attributes["continent"].Value,
-                Country = node.Attributes["country"].Value,
-                CustomTitle = "",
-                FirstLineImg = "",
-                Function = node.Attributes["function"].Value,
-                ImgCity = node.Attributes["imgCity"].Value,
-                ImgCode = node.Attributes["imgCity"].Value,
-                ImgContinent = node.Attributes["imgContinent"].Value,
-                ImgCountry = node.Attributes["imgCountry"].Value,
                 LineCode = node.Attributes["lineCode"].Value,
-                LineType = node.Attributes["lineType"].Value,
+                Title = node.Attributes["title"].Value,
+                CustomTitle = "",//node.Attributes["customerTitle"].Value,
+                Continent = node.Attributes["Continent"].Value,
+                Country = node.Attributes["Country"].Value,
+                TxtTransitCity = node.Attributes["txtTransitCity"].Value,
+                Sight = node.Attributes["Sight"].Value,
                 NumDay = int.Parse(node.Attributes["NumDay"].Value),
                 NumNight = int.Parse(node.Attributes["NumNight"].Value),
+                Visa = "",//node.Attributes["visa"].Value,
+                ImgContinent = node.Attributes["imgContinent"].Value,
+                ImgCountry = node.Attributes["imgCountry"].Value,
+                ImgCity = node.Attributes["imgCity"].Value,
                 PlaceLeave = node.Attributes["placeLeave"].Value,
                 PlaceReturn = node.Attributes["placeReturn"].Value,
-                Sight = node.Attributes["sight"].Value,
-                Title = node.Attributes["title"].Value,
-                TxtTransitCity = "",
-                Visa = node.Attributes["visa"].Value,
+                Function = node.Attributes["function"].Value,
+                LineType = node.Attributes["lineType"].Value,
+                ImgCode = node.Attributes["imgCode"].Value,
             };
             return line;
         }
 
-        public static List<LineIntro> GetLineIntros(XmlNodeList nodeList)
+        public static List<LineIntroDto> GetLineIntros(XmlNodeList nodeList)
         {
-            List<LineIntro> list = new List<LineIntro>();
+            List<LineIntroDto> list = new List<LineIntroDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
             foreach (XmlNode node in nodeList)
             {
-                list.Add(new LineIntro()
+                list.Add(new LineIntroDto()
                 {
                     ChannelType = node.Attributes["channelType"].Value,
                     Describe = node.InnerText,
@@ -91,15 +137,14 @@ namespace Volo.Ymapp.TaskScheduler.Utour
             return list;
         }
 
-        public static List<LineDay> GetLineDays(XmlNodeList nodeList)
+        public static List<LineDayDto> GetLineDays(XmlNodeList nodeList)
         {
-            List<LineDay> list = new List<LineDay>();
+            List<LineDayDto> list = new List<LineDayDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
             foreach (XmlNode node in nodeList)
             {
-
-                var dayNode = node.SelectSingleNode("/itineraryDay");
-                list.Add(new LineDay
+                var dayNode = node.SelectSingleNode("itineraryDay");
+                list.Add(new LineDayDto
                 {
                     Breakfast = node.Attributes["Breakfast"].Value,
                     DayNumber = int.Parse(node.Attributes["dayNumber"].Value),
@@ -108,21 +153,23 @@ namespace Volo.Ymapp.TaskScheduler.Utour
                     Dinner = node.Attributes["Dinner"].Value,
                     DayTraffic = node.Attributes["dayTraffic"].Value,
                     CityEnglish = dayNode.Attributes["cityEnglish"].Value,
-                    Describe = dayNode.SelectSingleNode("/sightIntro").InnerText,
+                    Describe = dayNode.SelectSingleNode("sightIntro").InnerText,
                     TrafficName = dayNode.Attributes["trafficName"].Value,
                     ScityDistance = dayNode.Attributes["scitydistance"].Value,
+                    LineDayImages = GetLineDayImsges(node.SelectNodes("img/imgUrl")),
+                    LineDayTraffics = GetLineTraffics(node.SelectNodes("traffics/traffic ")),
                 });
             }
             return list;
         }
 
-        public static List<LineDayTraffic> GetLineTraffics(XmlNodeList nodeList)
+        public static List<LineDayTrafficDto> GetLineTraffics(XmlNodeList nodeList)
         {
-            List<LineDayTraffic> list = new List<LineDayTraffic>();
+            List<LineDayTrafficDto> list = new List<LineDayTrafficDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
             foreach (XmlNode node in nodeList)
             {
-                list.Add(new LineDayTraffic()
+                list.Add(new LineDayTrafficDto()
                 {
                     TrafficCo = node.Attributes["TrafficCo"].Value,
                     TrafficTimeEnd = node.Attributes["TrafficTimeEnd"].Value,
@@ -133,20 +180,20 @@ namespace Volo.Ymapp.TaskScheduler.Utour
             return list;
         }
 
-        public static List<LineDayImage> GetLineDayImsges(XmlNodeList nodeList)
+        public static List<LineDayImageDto> GetLineDayImsges(XmlNodeList nodeList)
         {
-            List<LineDayImage> list = new List<LineDayImage>();
+            List<LineDayImageDto> list = new List<LineDayImageDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
             foreach (XmlNode node in nodeList)
             {
-                list.Add(new LineDayImage()
+                list.Add(new LineDayImageDto()
                 {
                     City = node.Attributes["City"].Value,
                     Continent = node.Attributes["Continent"].Value,
                     Country = node.Attributes["Country"].Value,
                     ImgCode = node.Attributes["imgCode"].Value,
                     ImgPath = node.Attributes["imgPath"].Value,
-                    Sight = node.SelectSingleNode("/sightIntroduce").InnerText
+                    Sight = node.SelectSingleNode("sightIntroduce").InnerText
                 });
             }
             return list;

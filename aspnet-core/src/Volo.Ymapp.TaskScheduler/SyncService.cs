@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
 using Serilog;
+using Volo.Ymapp.TaskScheduler.Jobs;
 
 namespace Volo.Ymapp.TaskScheduler
 {
@@ -38,7 +40,7 @@ namespace Volo.Ymapp.TaskScheduler
             #region 
 
             services.AddScoped<SyncService>();
-            //services.AddDbContext<DataContext>(opt => opt.UseMySql(configuration.GetConnectionString("ConnStr")));
+            services.AddDbContext<DbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
             //services.AddScoped<IService, Service>();
 
             #endregion
@@ -56,6 +58,7 @@ namespace Volo.Ymapp.TaskScheduler
                 return scheduler;
             });
             services.AddScoped<SyncJob>();
+            services.AddScoped<ParseLineJob>();
             //此处不能写成services.AddScoped<IJob,SyncJob>(); 会造成在找不到SyncJob
 
             #endregion

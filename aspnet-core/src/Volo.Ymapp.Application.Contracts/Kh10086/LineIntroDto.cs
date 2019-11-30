@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
-    public class LineIntro : FullAuditedAggregateRoot<long>
+    public class LineIntroDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -30,5 +31,6 @@ namespace Volo.Ymapp.Kh10086
         /// 排序号 也可作为识别号
         /// </summary>
         public int OrderNum { get; set; }
+        public string ConcurrencyStamp { get; set ; }
     }
 }

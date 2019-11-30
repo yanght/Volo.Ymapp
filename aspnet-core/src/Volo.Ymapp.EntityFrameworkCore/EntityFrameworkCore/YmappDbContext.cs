@@ -8,7 +8,7 @@ using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.Articles;
 using Volo.Ymapp.Products;
-using Volo.Ymapp.kh10086;
+using Volo.Ymapp.Kh10086;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -49,6 +49,7 @@ namespace Volo.Ymapp.EntityFrameworkCore
         public DbSet<LineDayImage> LineDayImages { get; set; }
         public DbSet<LineIntro> LineIntro { get; set; }
         public DbSet<LineRouteDate> LineRouteDates { get; set; }
+        public DbSet<LineTeam> LineTeams { get; set; }
 
         #endregion 
 

@@ -9,7 +9,7 @@ using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.CommonEnum;
-using Volo.Ymapp.kh10086;
+using Volo.Ymapp.Kh10086;
 using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp.EntityFrameworkCore

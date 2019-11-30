@@ -3,6 +3,7 @@ using Volo.Ymapp.Areas;
 using Volo.Ymapp.Articles;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
+using Volo.Ymapp.Kh10086;
 using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp
@@ -47,6 +48,33 @@ namespace Volo.Ymapp
 
             CreateMap<ProductStock, ProductStockDto>();
             CreateMap<ProductStockDto, ProductStock>();
+
+            CreateMap<LineTeam, LineTeamDto>();
+            CreateMap<LineTeamDto, LineTeam>();
+
+            CreateMap<Line, LineDto>();
+            CreateMap<LineDto, Line>();
+
+            CreateMap<LineDay, LineDayDto>();
+            CreateMap<LineDayDto, LineDay>();
+
+            CreateMap<LineDayImage, LineDayImageDto>();
+            CreateMap<LineDayImageDto, LineDayImage>();
+
+            CreateMap<LineDaySelf, LineDaySelfDto>();
+            CreateMap<LineDaySelfDto, LineDaySelf>();
+
+            CreateMap<LineDayShop, LineDayShopDto>();
+            CreateMap<LineDayShopDto, LineDayShop>();
+
+            CreateMap<LineDayTraffic, LineDayTrafficDto>();
+            CreateMap<LineDayTrafficDto, LineDayTraffic>();
+
+            CreateMap<LineRouteDate, LineRouteDateDto>();
+            CreateMap<LineRouteDateDto, LineRouteDate>();
+
+            CreateMap<LineIntro, LineIntroDto>();
+            CreateMap<LineIntroDto, LineIntro>();
         }
     }
 }

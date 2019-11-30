@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
-    /// <summary>
-    /// 每日产品节点
-    /// </summary>
-    public class LineDay : FullAuditedAggregateRoot<long>
+    public class LineDayDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -65,12 +63,18 @@ namespace Volo.Ymapp.Kh10086
         /// 产品介绍
         /// </summary>
         public string Describe { get; set; }
+        public string ConcurrencyStamp { get; set; }
+
+        public List<LineDayTrafficDto> LineDayTraffics { get; set; }
+        public List<LineDayImageDto> LineDayImages { get; set; }
+        public List<LineDaySelfDto> LineDaySelfs { get; set; }
+        public List<LineDayShopDto> LineDayShops { get; set; }
     }
 
     /// <summary>
     /// 航班节点
     /// </summary>
-    public class LineDayTraffic : FullAuditedAggregateRoot<long>
+    public class LineDayTrafficDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -96,13 +100,14 @@ namespace Volo.Ymapp.Kh10086
         /// 起飞时间
         /// </summary>
         public string TrafficTimeStart { get; set; }
+        public string ConcurrencyStamp { get; set; }
     }
 
     /// <summary>
     /// 自费节点
     /// 当channelType为“自费”的时候才生成    countrynameSel节点
     /// </summary>
-    public class LineDaySelf : FullAuditedAggregateRoot<long>
+    public class LineDaySelfDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -136,13 +141,14 @@ namespace Volo.Ymapp.Kh10086
         /// 价格
         /// </summary>
         public string Price { get; set; }
+        public string ConcurrencyStamp { get; set; }
     }
 
     /// <summary>
     /// 商店节点
     /// 当channelType为“商店”的时候才生成countrynameShop节点
     /// </summary>
-    public class LineDayShop : FullAuditedAggregateRoot<long>
+    public class LineDayShopDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -172,12 +178,13 @@ namespace Volo.Ymapp.Kh10086
         /// 停留时间
         /// </summary>
         public string ActivityTime { get; set; }
+        public string ConcurrencyStamp { get; set; }
     }
 
     /// <summary>
     /// 每日产品配图节点
     /// </summary>
-    public class LineDayImage : FullAuditedAggregateRoot<long>
+    public class LineDayImageDto : AuditedEntityDto<long>, IHasConcurrencyStamp
     {
         /// <summary>
         /// 线路Id
@@ -211,5 +218,6 @@ namespace Volo.Ymapp.Kh10086
         /// 图片地址
         /// </summary>
         public string ImgPath { get; set; }
+        public string ConcurrencyStamp { get; set; }
     }
 }

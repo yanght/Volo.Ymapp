@@ -1,29 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
-    <processing-directives>
-        <overwrite-existing-data>true</overwrite-existing-data>
-    </processing-directives>
-    <schedule>
-        <job>
-            <name>SyncJob</name>
-            <group>SyncGroup</group>
-            <description>数据同步任务</description>
-            <job-type>Volo.Ymapp.TaskScheduler.SyncJob, Volo.Ymapp.TaskScheduler</job-type>
-            <durable>true</durable>
-            <recover>false</recover>
-        </job>
-        <trigger>
-            <cron>
-                <name>SyncTrigger</name>
-                <group>SyncGroup</group>
-                <description>同步触发器</description>
-                <job-name>SyncJob</job-name>
-                <job-group>SyncGroup</job-group>
-                <!--每晚23：50跑一次，具体参见cron表达式-->
-                <cron-expression>0/3 * * * * ? *</cron-expression>
-            </cron>
-        </trigger>
-        <!--<trigger>
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <!--<job>
+      <name>SyncJob</name>
+      <group>SyncGroup</group>
+      <description>数据同步任务</description>
+      <job-type>Volo.Ymapp.TaskScheduler.SyncJob, Volo.Ymapp.TaskScheduler</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>SyncTrigger</name>
+        <group>SyncGroup</group>
+        <description>同步触发器</description>
+        <job-name>SyncJob</job-name>
+        <job-group>SyncGroup</job-group>
+        --><!--每晚23：50跑一次，具体参见cron表达式--><!--
+        <cron-expression>0/3 * * * * ? *</cron-expression>
+        --><!--<start-time>2012-01-22T00:00:00+08:00</start-time>
+        <cron-expression>0 0 1 * * ?</cron-expression>--><!--
+      </cron>
+    </trigger>-->
+    <!--<trigger>
       <simple>
         <name>SyncTrigger</name>
         <group>SyncGroup</group>
@@ -35,5 +37,29 @@
         <repeat-interval>2000</repeat-interval>
       </simple>
     </trigger>-->
-    </schedule>
+
+
+    <job>
+      <name>ParseLineJob</name>
+      <group>ParseLineGroup</group>
+      <description>数据同步任务</description>
+      <job-type>Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob, Volo.Ymapp.TaskScheduler</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>ParseLineTrigger</name>
+        <group>ParseLineGroup</group>
+        <description>同步触发器</description>
+        <job-name>ParseLineJob</job-name>
+        <job-group>ParseLineGroup</job-group>
+        <!--每晚23：50跑一次，具体参见cron表达式-->
+        <!--<cron-expression>0/3 * * * * ? *</cron-expression>-->
+        <start-time>2012-01-22T00:00:00+08:00</start-time>
+        <cron-expression>0 0 1 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    
+  </schedule>
 </job-scheduling-data>
