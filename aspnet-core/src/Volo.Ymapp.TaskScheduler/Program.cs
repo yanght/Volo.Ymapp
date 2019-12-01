@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 using Topshelf;
 using Volo.Abp;
+using Volo.Abp.Threading;
+using Volo.Ymapp.Kh10086;
+using Volo.Ymapp.TaskScheduler.Jobs;
 
 namespace Volo.Ymapp.TaskScheduler
 {
@@ -11,11 +15,11 @@ namespace Volo.Ymapp.TaskScheduler
     {
         public static void Main(string[] args)
         {
-
-            using (var app = AbpApplicationFactory.Create<TaskSchedulerModule>())
+            using (var application = AbpApplicationFactory.Create<TaskSchedulerModule>(options =>
             {
-                app.Initialize();
-
+                options.UseAutofac(); //Autofac integration
+            }))
+            {
                 //注册编码提供程序
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 InstanceLog();
@@ -25,7 +29,7 @@ namespace Volo.Ymapp.TaskScheduler
                     {
                         s.ConstructUsing(name => new SyncService());
                         s.WhenStarted(async tc => await tc.StartAsync()); //调用此方法前勿有太多操作，会造成服务启动失败
-                        s.WhenStopped(async tc => await tc.StopAsync());
+                    s.WhenStopped(async tc => await tc.StopAsync());
                     });
                     x.RunAsLocalSystem();
 
@@ -36,7 +40,6 @@ namespace Volo.Ymapp.TaskScheduler
                 var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
                 Environment.ExitCode = exitCode;
             }
-           
         }
 
         private static void InstanceLog()

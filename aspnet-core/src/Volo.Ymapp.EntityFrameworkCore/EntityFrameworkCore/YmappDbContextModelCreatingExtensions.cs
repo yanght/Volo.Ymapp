@@ -227,6 +227,30 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.Property(x => x.WebsiteTags).HasMaxLength(50);
                 b.Property(x => x.OverseasJoinPrice).HasColumnType("decimal(18,2)");
             });
+            builder.Entity<LineTeam>(b =>
+            {
+                b.ToTable(YmappConsts.Kh10086DbTablePrefix + "LineTeams", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                b.Property(x => x.Continent).HasMaxLength(200);
+                b.Property(x => x.AgentPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.ChildPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.ProductCode).HasMaxLength(50);
+                b.Property(x => x.TeamId).HasMaxLength(50);
+                b.Property(x => x.Deposit).HasColumnType("decimal(18,2)");
+                b.Property(x => x.WebsiteTags).HasMaxLength(50);
+                b.Property(x => x.OverseasJoinPrice).HasColumnType("decimal(18,2)");
+                b.Property(x => x.DeptCode).HasMaxLength(50);
+                b.Property(x => x.DeptName).HasMaxLength(50);
+                b.Property(x => x.Function).HasMaxLength(50);
+                b.Property(x => x.PlaceLeave).HasMaxLength(50);
+                b.Property(x => x.PlaceReturn).HasMaxLength(50);
+                b.Property(x => x.PostersData).HasColumnType("ntext");
+                b.Property(x => x.PostersImg).HasMaxLength(200);
+                b.Property(x => x.ProductCode).HasMaxLength(50);
+                b.Property(x => x.ProductName).HasMaxLength(50);
+                b.Property(x => x.SingleRoom).HasColumnType("decimal(18,2)");
+                b.Property(x => x.TeamId).HasMaxLength(50);
+            });
             #endregion
 
         }

@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Xml;
+using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Serilog;
 using Volo.Abp;
+using Volo.Abp.DependencyInjection;
 using Volo.Ymapp.Kh10086;
 using Volo.Ymapp.TaskScheduler.Utour;
 
 namespace Volo.Ymapp.TaskScheduler.Jobs
 {
-    public class ParseLineJob : IJob
+    public class ParseLineJob : IJob,ITransientDependency
     {
-        private ILineAppService _lineApp = null;
-        public ParseLineJob(ILineAppService lineApp)
+        private readonly IServiceProvider _serviceProvider;
+        private ILineAppService _lineApp;
+
+        public ParseLineJob(IServiceProvider serviceProvider)
         {
-            _lineApp = lineApp;
+            _serviceProvider = serviceProvider;
+            _lineApp = _serviceProvider.GetService<ILineAppService>();
         }
         public async Task Execute(IJobExecutionContext context)
         {

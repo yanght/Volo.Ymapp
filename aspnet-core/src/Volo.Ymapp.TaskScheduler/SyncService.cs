@@ -62,7 +62,7 @@ namespace Volo.Ymapp.TaskScheduler
             //此处不能写成services.AddScoped<IJob,SyncJob>(); 会造成在找不到SyncJob
 
             #endregion
-
+            
             var provider = services.BuildServiceProvider();
             return provider;
         }

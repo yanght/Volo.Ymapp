@@ -1,0 +1,393 @@
+22:23:36 [INF] 配置依赖注入...
+22:23:36 [INF] 配置Quartz...
+22:23:37 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:23:37 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:23:37 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:23:37 [INF] Registering Quartz Job Initialization Plug-in.
+22:23:37 [INF] RAMJobStore initialized.
+22:23:37 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:23:37 [INF] Quartz scheduler 'Job' initialized
+22:23:37 [INF] Quartz scheduler version: 3.0.7.0
+22:23:37 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:23:37 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:23:37 [INF] Adding 1 jobs, 1 triggers.
+22:23:37 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:23:37 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:23:37 [INF] Quartz调度已启动...
+22:23:37 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:23:37 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:24:29 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:24:29 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:24:29 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:24:29 [INF] Quartz调度结束...
+22:24:58 [INF] 配置依赖注入...
+22:24:58 [INF] 配置Quartz...
+22:24:58 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:24:58 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:24:58 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:24:58 [INF] Registering Quartz Job Initialization Plug-in.
+22:24:58 [INF] RAMJobStore initialized.
+22:24:58 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:24:58 [INF] Quartz scheduler 'Job' initialized
+22:24:58 [INF] Quartz scheduler version: 3.0.7.0
+22:24:58 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:24:58 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:24:59 [INF] Adding 1 jobs, 1 triggers.
+22:24:59 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:24:59 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:24:59 [INF] Quartz调度已启动...
+22:24:59 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:24:59 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:25:50 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:25:50 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:25:50 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:25:50 [INF] Quartz调度结束...
+22:25:54 [INF] 配置依赖注入...
+22:25:54 [INF] 配置Quartz...
+22:25:54 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:25:54 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:25:54 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:25:54 [INF] Registering Quartz Job Initialization Plug-in.
+22:25:54 [INF] RAMJobStore initialized.
+22:25:54 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:25:54 [INF] Quartz scheduler 'Job' initialized
+22:25:54 [INF] Quartz scheduler version: 3.0.7.0
+22:25:54 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:25:54 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:25:54 [INF] Adding 1 jobs, 1 triggers.
+22:25:54 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:25:54 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:25:54 [INF] Quartz调度已启动...
+22:25:54 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:25:54 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:26:55 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:26:55 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:26:55 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:26:55 [INF] Quartz调度结束...
+22:27:00 [INF] 配置依赖注入...
+22:27:00 [INF] 配置Quartz...
+22:27:00 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:27:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:27:00 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:27:00 [INF] Registering Quartz Job Initialization Plug-in.
+22:27:00 [INF] RAMJobStore initialized.
+22:27:00 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:27:00 [INF] Quartz scheduler 'Job' initialized
+22:27:00 [INF] Quartz scheduler version: 3.0.7.0
+22:27:00 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:27:00 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:27:00 [INF] Adding 1 jobs, 1 triggers.
+22:27:00 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:27:00 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:27:00 [INF] Quartz调度已启动...
+22:27:00 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:27:00 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.ArgumentNullException: Value cannot be null. (Parameter 'provider')
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 21
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:28:27 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:28:27 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:28:27 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:28:27 [INF] Quartz调度结束...
+22:28:31 [INF] 配置依赖注入...
+22:28:31 [INF] 配置Quartz...
+22:28:31 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:28:31 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:28:31 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:28:31 [INF] Registering Quartz Job Initialization Plug-in.
+22:28:31 [INF] RAMJobStore initialized.
+22:28:31 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:28:31 [INF] Quartz scheduler 'Job' initialized
+22:28:31 [INF] Quartz scheduler version: 3.0.7.0
+22:28:31 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:28:31 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:28:32 [INF] Adding 1 jobs, 1 triggers.
+22:28:32 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:28:32 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:28:32 [INF] Quartz调度已启动...
+22:28:32 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.InvalidOperationException: No service for type 'Volo.Ymapp.Kh10086.LineAppService' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 25
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:28:32 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.InvalidOperationException: No service for type 'Volo.Ymapp.Kh10086.LineAppService' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 25
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.InvalidOperationException: No service for type 'Volo.Ymapp.Kh10086.LineAppService' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 25
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:29:42 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:29:42 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:29:42 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:29:42 [INF] Quartz调度结束...
+22:29:47 [INF] 配置依赖注入...
+22:29:47 [INF] 配置Quartz...
+22:29:47 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:29:47 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:29:47 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:29:47 [INF] Registering Quartz Job Initialization Plug-in.
+22:29:47 [INF] RAMJobStore initialized.
+22:29:47 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:29:47 [INF] Quartz scheduler 'Job' initialized
+22:29:47 [INF] Quartz scheduler version: 3.0.7.0
+22:29:47 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:29:47 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:29:47 [INF] Adding 1 jobs, 1 triggers.
+22:29:47 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:29:47 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:29:47 [INF] Quartz调度已启动...
+22:29:48 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:29:48 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+22:30:32 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+22:30:32 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+22:30:32 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+22:30:32 [INF] Quartz调度结束...
+22:30:54 [INF] 配置依赖注入...
+22:30:54 [INF] 配置Quartz...
+22:30:54 [WRN] Thread priority is no longer supported for thread pool, ignoring
+22:30:54 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+22:30:54 [INF] Quartz Scheduler v."3.0.7.0" created.
+22:30:55 [INF] Registering Quartz Job Initialization Plug-in.
+22:30:55 [INF] RAMJobStore initialized.
+22:30:55 [INF] Scheduler meta-data: Quartz Scheduler (v3.0.7.0) 'Job' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.DefaultThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+22:30:55 [INF] Quartz scheduler 'Job' initialized
+22:30:55 [INF] Quartz scheduler version: 3.0.7.0
+22:30:55 [INF] JobFactory set to: Volo.Ymapp.TaskScheduler.JobFactory
+22:30:55 [INF] Parsing XML file: "quartz_jobs.xml" with systemId: "quartz_jobs.xml"
+22:30:55 [INF] Adding 1 jobs, 1 triggers.
+22:30:55 [INF] Adding job: ParseLineGroup.ParseLineJob
+22:30:55 [INF] Scheduler Job_$_NON_CLUSTERED started.
+22:30:55 [INF] Quartz调度已启动...
+22:30:55 [ERR] Job ParseLineGroup.ParseLineJob threw an unhandled Exception: 
+System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+22:30:55 [ERR] Job ParseLineGroup.ParseLineJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+   --- End of inner exception stack trace --- [See nested exception: System.TypeLoadException: Could not load type 'Volo.Abp.EventBus.Distributed.DistributedEventBusOptions' from assembly 'Volo.Abp.EventBus, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null'.
+   at Volo.Abp.Identity.AbpIdentityDomainModule.ConfigureServices(ServiceConfigurationContext context)
+   at Volo.Abp.Modularity.ModuleLoader.ConfigureServices(List`1 modules, IServiceCollection services)
+   at Volo.Abp.Modularity.ModuleLoader.LoadModules(IServiceCollection services, Type startupModuleType, PlugInSourceList plugInSources)
+   at Volo.Abp.AbpApplicationBase.LoadModules(IServiceCollection services, AbpApplicationCreationOptions options)
+   at Volo.Abp.AbpApplicationBase..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, IServiceCollection services, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationWithInternalServiceProvider..ctor(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create(Type startupModuleType, Action`1 optionsAction)
+   at Volo.Abp.AbpApplicationFactory.Create[TStartupModule](Action`1 optionsAction)
+   at Volo.Ymapp.TaskScheduler.Jobs.ParseLineJob.Execute(IJobExecutionContext context) in /Users/yannis/Documents/GitHub/Volo.Ymapp/aspnet-core/src/Volo.Ymapp.TaskScheduler/Jobs/ParseLineJob.cs:line 20
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)]
+23:23:11 [INF] Scheduler "Job_$_NON_CLUSTERED" shutting down.
+23:23:11 [INF] Scheduler Job_$_NON_CLUSTERED paused.
+23:23:11 [INF] Scheduler Job_$_NON_CLUSTERED Shutdown complete.
+23:23:11 [INF] Quartz调度结束...

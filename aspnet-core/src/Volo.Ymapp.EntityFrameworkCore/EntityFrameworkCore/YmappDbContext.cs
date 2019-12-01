@@ -47,7 +47,7 @@ namespace Volo.Ymapp.EntityFrameworkCore
         public DbSet<LineDaySelf> LineDaySelfs { get; set; }
         public DbSet<LineDayShop> LineDayShops { get; set; }
         public DbSet<LineDayImage> LineDayImages { get; set; }
-        public DbSet<LineIntro> LineIntro { get; set; }
+        public DbSet<LineIntro> LineIntros { get; set; }
         public DbSet<LineRouteDate> LineRouteDates { get; set; }
         public DbSet<LineTeam> LineTeams { get; set; }
 

@@ -23,4 +23,7 @@
     <Content Remove="Localization\Ymapp\*.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
 </Project>
