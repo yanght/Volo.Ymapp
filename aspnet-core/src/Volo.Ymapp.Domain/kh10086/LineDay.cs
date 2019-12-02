@@ -15,6 +15,10 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public long LineId { get; set; }
         /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
         /// 第几天
         /// </summary>
         public int DayNumber { get; set; }
@@ -77,6 +81,14 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public long LineId { get; set; }
         /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
+        /// 第几天
+        /// </summary>
+        public int DayNumber { get; set; }
+        /// <summary>
         /// 每日产品节点Id
         /// </summary>
         public long LineDayId { get; set; }
@@ -108,6 +120,14 @@ namespace Volo.Ymapp.Kh10086
         /// 线路Id
         /// </summary>
         public long LineId { get; set; }
+        /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
+        /// 第几天
+        /// </summary>
+        public int DayNumber { get; set; }
         /// <summary>
         /// 每日产品节点Id
         /// </summary>
@@ -149,6 +169,14 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public long LineId { get; set; }
         /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
+        /// 第几天
+        /// </summary>
+        public int DayNumber { get; set; }
+        /// <summary>
         /// 每日产品节点Id
         /// </summary>
         public long LineDayId { get; set; }
@@ -183,6 +211,14 @@ namespace Volo.Ymapp.Kh10086
         /// 线路Id
         /// </summary>
         public long LineId { get; set; }
+        /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
+        /// 第几天
+        /// </summary>
+        public int DayNumber { get; set; }
         /// <summary>
         /// 每日产品节点Id
         /// </summary>

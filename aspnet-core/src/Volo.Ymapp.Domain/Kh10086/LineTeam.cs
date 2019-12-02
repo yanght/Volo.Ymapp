@@ -8,6 +8,10 @@ namespace Volo.Ymapp.Kh10086
     public class LineTeam : FullAuditedAggregateRoot<long>
     {
         public long LineId { get; set; }
+        /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
         public string TeamId { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }

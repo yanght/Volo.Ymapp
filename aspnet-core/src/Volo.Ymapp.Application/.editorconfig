@@ -5,3 +5,6 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:non
 
 # CA2007: Consider calling ConfigureAwait on the awaited task
 dotnet_diagnostic.CA2007.severity = none
+
+# CA1031: Do not catch general exception types
+dotnet_diagnostic.CA1031.severity = none

@@ -34,7 +34,7 @@ namespace Volo.Ymapp.TaskScheduler.Jobs
                 {
                     lineList.ForEach(async (line) =>
                     {
-                        await _lineApp.InsertLine(line);
+                        await _lineApp.AddOrUpdateLine(line);
                     });
                 }
             }

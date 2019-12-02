@@ -1745,12 +1745,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Continent")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnName("CreationTime")
@@ -1761,8 +1759,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CustomTitle")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
@@ -1780,24 +1777,19 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Function")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgCity")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgCode")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgContinent")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgCountry")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -1814,12 +1806,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LineCode")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LineType")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumDay")
                         .HasColumnType("int");
@@ -1828,28 +1818,22 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PlaceLeave")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PlaceReturn")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sight")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TxtTransitCity")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Visa")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1864,12 +1848,10 @@ namespace Volo.Ymapp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Breakfast")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CityEnglish")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1885,15 +1867,13 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DayHotel")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DayNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("DayTraffic")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
@@ -1904,7 +1884,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Describe")
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dinner")
                         .HasColumnType("nvarchar(max)");
@@ -1927,20 +1907,20 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Lunch")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ScityDistance")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrafficName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1955,8 +1935,7 @@ namespace Volo.Ymapp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1964,12 +1943,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Continent")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnName("CreationTime")
@@ -1978,6 +1955,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnName("CreatorId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DayNumber")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
@@ -1992,12 +1972,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgCode")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgPath")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -2013,6 +1991,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineDayId")
                         .HasColumnType("bigint");
 
@@ -2020,8 +2001,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Sight")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2036,8 +2016,7 @@ namespace Volo.Ymapp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CityName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -2045,11 +2024,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Content")
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnName("CreationTime")
@@ -2058,6 +2036,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnName("CreatorId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DayNumber")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
@@ -2072,7 +2053,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Intro")
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -2088,6 +2069,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineDayId")
                         .HasColumnType("bigint");
 
@@ -2095,12 +2079,10 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Price")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2115,12 +2097,10 @@ namespace Volo.Ymapp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ActivityTime")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CityName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -2138,6 +2118,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("CreatorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("DayNumber")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
                         .HasColumnType("uniqueidentifier");
@@ -2151,7 +2134,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Intro")
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -2167,6 +2150,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineDayId")
                         .HasColumnType("bigint");
 
@@ -2174,8 +2160,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2202,6 +2187,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("CreatorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("DayNumber")
+                        .HasColumnType("int");
+
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
                         .HasColumnType("uniqueidentifier");
@@ -2228,6 +2216,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineDayId")
                         .HasColumnType("bigint");
 
@@ -2235,20 +2226,16 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("TrafficCo")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrafficNo")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrafficTimeEnd")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrafficTimeStart")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2263,8 +2250,7 @@ namespace Volo.Ymapp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ChannelType")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -2288,7 +2274,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Describe")
-                        .HasColumnType("ntext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ExtraProperties")
                         .HasColumnName("ExtraProperties")
@@ -2308,6 +2294,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineId")
                         .HasColumnType("bigint");
 
@@ -2315,8 +2304,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2406,8 +2394,7 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProductCode")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RetainCount")
                         .HasColumnType("nvarchar(max)");
@@ -2416,16 +2403,149 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TeamId")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WebsiteTags")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("KH_LineRouteDates");
+                });
+
+            modelBuilder.Entity("Volo.Ymapp.Kh10086.LineTeam", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("AgentPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("AirCompany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AirShortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ChildPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Continent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("CustomerPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("DateFinish")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateOffline")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateStart")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DayNum")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnName("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnName("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Deposit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("DeptCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeptName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("FreeNum")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("LineId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("OverseasJoinPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("PlaceLeave")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceReturn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PlanNum")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("PostersData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostersImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SingleRoom")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WebsiteTags")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KH_LineTeams");
                 });
 
             modelBuilder.Entity("Volo.Ymapp.Products.Product", b =>

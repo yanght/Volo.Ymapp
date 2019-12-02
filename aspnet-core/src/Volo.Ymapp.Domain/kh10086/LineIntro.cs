@@ -12,6 +12,10 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public long LineId { get; set; }
         /// <summary>
+        /// 线路编号
+        /// </summary>
+        public string LineCode { get; set; }
+        /// <summary>
         /// 模块名称
         /// 贴心好礼 行程特色 酒店安排 团队餐食 交通工具 相关网站 保险条款 最低成团人数 服务项目 不含项目 服务标准说明 温馨提示 购物补充说明 自费项目补充说明 活动图片附加条款 促销语 子行程电商名称 签证须知 预定须知 行程亮点 一般精包配图 秒杀精包配图 每单购买人数 
         /// </summary>
