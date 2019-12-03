@@ -82,7 +82,7 @@ namespace Volo.Ymapp.Kh10086
             int index = 1;
             foreach (XmlNode node in nodeList)
             {
-                if (index > 1) break;
+                //if (index > 1) break;
                 string lineCode = node.Attributes["lineCode"].Value;
                 try
                 {
@@ -112,7 +112,6 @@ namespace Volo.Ymapp.Kh10086
                     Log.Error($"第{index}条数据解析失败,【{lineCode}】,{ex.ToString()}");
                 }
 
-                index++;
             }
             return list;
         }
