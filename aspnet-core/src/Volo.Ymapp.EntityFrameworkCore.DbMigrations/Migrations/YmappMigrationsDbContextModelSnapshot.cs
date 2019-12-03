@@ -2384,6 +2384,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("LineId")
                         .HasColumnType("bigint");
 
@@ -2396,8 +2399,8 @@ namespace Volo.Ymapp.Migrations
                     b.Property<string>("ProductCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RetainCount")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("RetainCount")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("SingleRoom")
                         .HasColumnType("decimal(18,2)");

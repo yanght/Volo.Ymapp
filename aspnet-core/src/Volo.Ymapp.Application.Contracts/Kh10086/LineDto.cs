@@ -86,5 +86,6 @@ namespace Volo.Ymapp.Kh10086
         public List<LineTeamDto> LineTeams { get; set; }
         public List<LineIntroDto> LineIntros { get; set; }
         public List<LineDayDto> LineDays { get; set; }
+        public List<LineRouteDateDto> LineRouteDates { get; set; }
     }
 }

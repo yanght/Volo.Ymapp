@@ -64,7 +64,7 @@ namespace Volo.Ymapp.Kh10086
         /// 境外参团价
         /// </summary>
         public decimal OverseasJoinPrice { get; set; }
-        public string RetainCount { get; set; }
+        public int RetainCount { get; set; }
         /// <summary>
         /// 余位
         /// </summary>

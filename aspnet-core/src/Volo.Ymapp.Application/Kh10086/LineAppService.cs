@@ -233,8 +233,9 @@ namespace Volo.Ymapp.Kh10086
                     LineDayImages = GetLineDayImsges(node.SelectNodes("img/imgUrl")),
                     LineDayTraffics = GetLineTraffics(node.SelectNodes("traffics/traffic")),
                     LineDaySelfs = GetLineDaySelfs(node.SelectNodes("countrynameSelf/self")),
-                    LineDayShops = GetLineDayShop(node.SelectNodes("countrynameShop/shop")),
-                }); ;
+                    LineDayShops = GetLineDayShops(node.SelectNodes("countrynameShop/shop")),
+                    LineRouteDates = GetLineRouteDates(node.SelectNodes("routeDates/routeDate "))
+                }); ; ;
             }
             return list;
         }
@@ -286,7 +287,7 @@ namespace Volo.Ymapp.Kh10086
                     CountryName = node.Attributes["countryname"].Value,
                     CityName = node.Attributes["cityname"].Value,
                     Content = node.Attributes["content"].Value,
-                    Intro = node.InnerText,
+                    Intro = node.Attributes["intro"].Value,
                     Name = node.Attributes["name"].Value,
                     Price = decimal.Parse(node.Attributes["price"].Value),
 
@@ -295,7 +296,7 @@ namespace Volo.Ymapp.Kh10086
             return list;
         }
 
-        private static List<LineDayShopDto> GetLineDayShop(XmlNodeList nodeList)
+        private static List<LineDayShopDto> GetLineDayShops(XmlNodeList nodeList)
         {
             List<LineDayShopDto> list = new List<LineDayShopDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
@@ -305,10 +306,39 @@ namespace Volo.Ymapp.Kh10086
                 {
                     CountryName = node.Attributes["countryname"].Value,
                     CityName = node.Attributes["cityname"].Value,
-                    ActivityTime = node.Attributes["ActivityTime"].Value,
-                    Intro = node.InnerText,
+                    ActivityTime = node.Attributes["activityTime"].Value,
+                    Intro = node.Attributes["intro"].Value,
                     Name = node.Attributes["name"].Value,
                 });
+            }
+            return list;
+        }
+
+        private static List<LineRouteDateDto> GetLineRouteDates(XmlNodeList nodeList)
+        {
+            List<LineRouteDateDto> list = new List<LineRouteDateDto>();
+            if (nodeList == null || nodeList.Count == 0) return list;
+            foreach (XmlNode node in nodeList)
+            {
+                list.Add(new LineRouteDateDto()
+                {
+                    AdultPrice = decimal.Parse(node.Attributes["adultPrice"].Value),
+                    ChildPrice = decimal.Parse(node.Attributes["childPrice"].Value),
+                    AgentPrice = decimal.Parse(node.Attributes["agentPrice"].Value),
+                    DateFinish = DateTime.Parse(node.Attributes["dateFinish"].Value),
+                    DateOffline = DateTime.Parse(node.Attributes["dateOffline"].Value),
+                    DateStart = DateTime.Parse(node.Attributes["datestart"].Value),
+                    Deposit = decimal.Parse(node.Attributes["deposit"].Value),
+                    JieShouRiQi = DateTime.Parse(node.Attributes["JieShouRiQi"].Value),
+                    OverseasJoinPrice = decimal.Parse(node.Attributes["overseasJoinPrice"].Value),
+                    FreeNum = int.Parse(node.Attributes["freeNum"].Value),
+                    PlanNum = int.Parse(node.Attributes["planNum"].Value),
+                    ProductCode = node.Attributes["productCode"].Value,
+                    RetainCount = int.Parse(node.Attributes["retainCount"].Value),
+                    SingleRoom = decimal.Parse(node.Attributes["singleRoom"].Value),
+                    TeamId = node.Attributes["teamId"].Value,
+                    WebsiteTags = node.Attributes["websiteTags"].Value,
+                }); ;
             }
             return list;
         }
@@ -488,7 +518,6 @@ namespace Volo.Ymapp.Kh10086
                 line.Visa = dto.Visa;
                 await _lineRepository.UpdateAsync(line);
             }
-
             if (dto.LineIntros != null & dto.LineIntros.Count > 0)
             {
                 dto.LineIntros.ForEach(async (m) =>
@@ -628,6 +657,25 @@ namespace Volo.Ymapp.Kh10086
                         });
                     }
 
+                });
+            }
+
+            if (dto.LineRouteDates != null && dto.LineRouteDates.Count > 0)
+            {
+                dto.LineRouteDates.ForEach(async (m) =>
+                {
+                    var lineRoute = m.MapTo<LineRouteDateDto, LineRouteDate>();
+                    var model = _lineRouteDateRepository.FirstOrDefault(item => item.LineCode == dto.LineCode && item.ProductCode == m.ProductCode);
+                    if (model == null)
+                    {
+                        lineRoute.LineId = line.Id;
+                        lineRoute.LineCode = line.LineCode;
+                        await _lineRouteDateRepository.InsertAsync(lineRoute);
+                    }
+                    else
+                    {
+                        await _lineRouteDateRepository.UpdateAsync(model);
+                    }
                 });
             }
         }

@@ -69,6 +69,7 @@ namespace Volo.Ymapp.Kh10086
         public List<LineDayImageDto> LineDayImages { get; set; }
         public List<LineDaySelfDto> LineDaySelfs { get; set; }
         public List<LineDayShopDto> LineDayShops { get; set; }
+        public List<LineRouteDateDto> LineRouteDates { get; set; }
     }
 
     /// <summary>
