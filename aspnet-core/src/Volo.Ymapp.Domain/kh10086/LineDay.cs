@@ -155,7 +155,7 @@ namespace Volo.Ymapp.Kh10086
         /// <summary>
         /// 价格
         /// </summary>
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 
     /// <summary>

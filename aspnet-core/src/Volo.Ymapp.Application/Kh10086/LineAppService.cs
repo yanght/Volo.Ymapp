@@ -61,28 +61,6 @@ namespace Volo.Ymapp.Kh10086
             Log.Information($"共获取到{nodeList.Count}条线路");
             var lineList = await GetLineList(lineDetailUrl, nodeList);
             Log.Information($"结束线路数据解析");
-
-            //if (lineList != null && lineList.Count > 0)
-            //{
-            //    int index = 1;
-            //    lineList.ForEach((line) =>
-            //   {
-            //       AsyncHelper.RunSync(async () =>
-            //       {
-            //           try
-            //           {
-            //               Log.Information($"开始入库第{index}条数据");
-            //               await InsertLine(line);
-            //               Log.Information($"结束入库第{index}条数据");
-            //           }
-            //           catch (Exception ex)
-            //           {
-            //               Log.Error($"第{index}条数据入库失败,{ex.ToString()}");
-            //           }
-            //           index++;
-            //       });
-            //   });
-            //}
         }
 
         /// <summary>
@@ -255,7 +233,9 @@ namespace Volo.Ymapp.Kh10086
                     ScityDistance = dayNode.Attributes["scitydistance"].Value,
                     LineDayImages = GetLineDayImsges(node.SelectNodes("img/imgUrl")),
                     LineDayTraffics = GetLineTraffics(node.SelectNodes("traffics/traffic")),
-                });
+                    LineDaySelfs = GetLineDaySelfs(node.SelectNodes("countrynameSelf/self")),
+                    LineDayShops = GetLineDayShop(node.SelectNodes("countrynameShop/shop")),
+                }); ;
             }
             return list;
         }
@@ -291,6 +271,44 @@ namespace Volo.Ymapp.Kh10086
                     ImgCode = node.Attributes["imgCode"].Value,
                     ImgPath = node.Attributes["imgPath"].Value,
                     Sight = node.SelectSingleNode("sightIntroduce").InnerText
+                });
+            }
+            return list;
+        }
+
+        private static List<LineDaySelfDto> GetLineDaySelfs(XmlNodeList nodeList)
+        {
+            List<LineDaySelfDto> list = new List<LineDaySelfDto>();
+            if (nodeList == null || nodeList.Count == 0) return list;
+            foreach (XmlNode node in nodeList)
+            {
+                list.Add(new LineDaySelfDto()
+                {
+                    CountryName = node.Attributes["countryname"].Value,
+                    CityName = node.Attributes["cityname"].Value,
+                    Content = node.Attributes["content"].Value,
+                    Intro = node.InnerText,
+                    Name = node.Attributes["name"].Value,
+                    Price = decimal.Parse(node.Attributes["price"].Value),
+
+                });
+            }
+            return list;
+        }
+
+        private static List<LineDayShopDto> GetLineDayShop(XmlNodeList nodeList)
+        {
+            List<LineDayShopDto> list = new List<LineDayShopDto>();
+            if (nodeList == null || nodeList.Count == 0) return list;
+            foreach (XmlNode node in nodeList)
+            {
+                list.Add(new LineDayShopDto()
+                {
+                    CountryName = node.Attributes["countryname"].Value,
+                    CityName = node.Attributes["cityname"].Value,
+                    ActivityTime = node.Attributes["ActivityTime"].Value,
+                    Intro = node.InnerText,
+                    Name = node.Attributes["name"].Value,
                 });
             }
             return list;

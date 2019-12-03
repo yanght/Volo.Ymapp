@@ -2081,8 +2081,8 @@ namespace Volo.Ymapp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -2484,8 +2484,8 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("ExtraProperties")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("FreeNum")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("FreeNum")
+                        .HasColumnType("int");
 
                     b.Property<string>("Function")
                         .HasColumnType("nvarchar(max)");
@@ -2519,8 +2519,8 @@ namespace Volo.Ymapp.Migrations
                     b.Property<string>("PlaceReturn")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("PlanNum")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("PlanNum")
+                        .HasColumnType("int");
 
                     b.Property<string>("PostersData")
                         .HasColumnType("nvarchar(max)");

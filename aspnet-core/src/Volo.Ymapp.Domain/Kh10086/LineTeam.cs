@@ -30,8 +30,8 @@ namespace Volo.Ymapp.Kh10086
         public decimal SingleRoom { get; set; }
         public decimal OverseasJoinPrice { get; set; }
         public decimal Deposit { get; set; }
-        public decimal PlanNum { get; set; }
-        public decimal FreeNum { get; set; }
+        public int PlanNum { get; set; }
+        public int FreeNum { get; set; }
         public string WebsiteTags { get; set; }
         public string DateOffline { get; set; }
         public string DeptCode { get; set; }
