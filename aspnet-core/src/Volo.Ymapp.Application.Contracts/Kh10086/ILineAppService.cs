@@ -9,8 +9,12 @@ namespace Volo.Ymapp.Kh10086
 {
     public interface ILineAppService : IApplicationService
     {
-        Task ParseLineData(ParseLineDataDto dto);
+        void ParseLineData(ParseLineDataDto dto);
 
-        Task AddOrUpdateLine(LineDto dto);
+        Task InsertOrUpdateLine(LineDto dto);
+
+        Task<LineDto> GetLineByLineId(long lineId);
+        Task<LineDto> GetLineByLineCode(string lineCode);
+        Task<LineDto> GetLineByProductCode(string productCode);
     }
 }

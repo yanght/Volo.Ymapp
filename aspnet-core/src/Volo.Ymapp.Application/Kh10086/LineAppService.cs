@@ -49,7 +49,7 @@ namespace Volo.Ymapp.Kh10086
             _lineRouteDateRepository = lineRouteDateRepository;
             _lineTeamRepository = lineTeamRepository;
         }
-        public async Task ParseLineData(ParseLineDataDto dto)
+        public void ParseLineData(ParseLineDataDto dto)
         {
             Log.Information($"开始获取解析线路数据。。。");
             string lineListurl = dto.LineListUrl;// "https://tispfile.utourworld.com/upload/op/xml/agentLine/index.xml";
@@ -59,7 +59,7 @@ namespace Volo.Ymapp.Kh10086
             doc.LoadXml(response);
             XmlNodeList nodeList = doc.SelectNodes("routes/line");
             Log.Information($"共获取到{nodeList.Count}条线路");
-            var lineList = await GetLineList(lineDetailUrl, nodeList);
+            var lineList = GetLineList(lineDetailUrl, nodeList);
             Log.Information($"结束线路数据解析");
         }
 
@@ -75,7 +75,7 @@ namespace Volo.Ymapp.Kh10086
             return doc;
         }
 
-        private async Task<List<LineDto>> GetLineList(string url, XmlNodeList nodeList)
+        private List<LineDto> GetLineList(string url, XmlNodeList nodeList)
         {
             List<LineDto> list = new List<LineDto>();
             if (nodeList == null || nodeList.Count == 0) return list;
@@ -87,7 +87,7 @@ namespace Volo.Ymapp.Kh10086
                 try
                 {
                     Log.Information($"开始解析第{index}条数据,【{lineCode}】");
-                    var lineDetail = ParseLineDetail(string.Format(url, lineCode), lineCode);
+                    var lineDetail = ParseLineDetail(string.Format(url, lineCode));
                     lineDetail.LineTeams = GetLineTeams(node.SelectNodes("team/teamData"));
                     lineDetail.FirstLineImg = node.Attributes["firstLineImg"].Value;
                     list.Add(lineDetail);
@@ -97,7 +97,7 @@ namespace Volo.Ymapp.Kh10086
                         try
                         {
                             Log.Information($"开始入库第{index}条数据");
-                            await AddOrUpdateLine(lineDetail);
+                            await InsertOrUpdateLine(lineDetail);
                             Log.Information($"结束入库第{index}条数据");
                         }
                         catch (Exception ex)
@@ -155,7 +155,7 @@ namespace Volo.Ymapp.Kh10086
             return list;
         }
 
-        private static LineDto ParseLineDetail(string url, string lineCode)
+        private static LineDto ParseLineDetail(string url)
         {
             string response = HttpClientHelper.HttpRequest(url, encoding: Encoding.GetEncoding("GBK"));
             var doc = new XmlDocument();
@@ -234,8 +234,8 @@ namespace Volo.Ymapp.Kh10086
                     LineDayTraffics = GetLineTraffics(node.SelectNodes("traffics/traffic")),
                     LineDaySelfs = GetLineDaySelfs(node.SelectNodes("countrynameSelf/self")),
                     LineDayShops = GetLineDayShops(node.SelectNodes("countrynameShop/shop")),
-                    LineRouteDates = GetLineRouteDates(node.SelectNodes("routeDates/routeDate "))
-                }); ; ;
+                    LineRouteDates = GetLineRouteDates(node.SelectNodes("routeDates/routeDate"))
+                });
             }
             return list;
         }
@@ -466,7 +466,7 @@ namespace Volo.Ymapp.Kh10086
         //    }
         //}
 
-        public async Task AddOrUpdateLine(LineDto dto)
+        public async Task InsertOrUpdateLine(LineDto dto)
         {
             var line = _lineRepository.FirstOrDefault(m => m.LineCode == dto.LineCode);
             if (line == null)
@@ -678,6 +678,51 @@ namespace Volo.Ymapp.Kh10086
                     }
                 });
             }
+        }
+
+        public async Task<LineDto> GetLineByLineId(long lineId)
+        {
+            LineDto model = new LineDto();
+            var line = await _lineRepository.FindAsync(lineId);
+            model = line.MapTo<Line, LineDto>();
+            var lineTeams = _lineTeamRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineDays = _lineDayRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineRoutes = _lineRouteDateRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineIntros = _lineIntroRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            model.LineTeams = lineTeams.MapToList<LineTeam, LineTeamDto>().ToList();
+            model.LineIntros = lineIntros.MapToList<LineIntro, LineIntroDto>().ToList();
+            model.LineRouteDates = lineRoutes.MapToList<LineRouteDate, LineRouteDateDto>().ToList();
+            List<LineDayDto> lineDayDtos = new List<LineDayDto>();
+            if (lineDays != null && lineDays.Count > 0)
+            {
+                lineDays.ForEach(item =>
+                {
+                    var lineDayImages = _lineDayImageRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDayTraffics = _lineDayTrafficRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDaySelfs = _lineDaySelfRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDayShops = _lineDayShopRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDay = item.MapTo<LineDay, LineDayDto>();
+                    lineDay.LineDayImages = lineDayImages.MapToList<LineDayImage, LineDayImageDto>().ToList();
+                    lineDay.LineDayTraffics = lineDayTraffics.MapToList<LineDayTraffic, LineDayTrafficDto>().ToList();
+                    lineDay.LineDaySelfs = lineDaySelfs.MapToList<LineDaySelf, LineDaySelfDto>().ToList();
+                    lineDay.LineDayShops = lineDayShops.MapToList<LineDayShop, LineDayShopDto>().ToList();
+                    lineDayDtos.Add(lineDay);
+                });
+            }
+            model.LineDays = lineDayDtos;
+            return model;
+        }
+
+        public async Task<LineDto> GetLineByLineCode(string lineCode)
+        {
+            var line = _lineRepository.SingleOrDefault(m => m.LineCode == lineCode);
+            return await GetLineByLineId(line.Id);
+        }
+
+        public async Task<LineDto> GetLineByProductCode(string productCode)
+        {
+            var lineTeam = _lineTeamRepository.SingleOrDefault(m => m.ProductCode == productCode);
+            return await GetLineByLineCode(lineTeam.LineCode);
         }
     }
 }
