@@ -22,10 +22,10 @@ using Volo.Ymapp.MultiTenancy;
 namespace KH10086.WebApp
 {
     [DependsOn(
-       typeof(YmappHttpApiModule),
+       //typeof(YmappHttpApiModule),
        typeof(AbpAutofacModule),
        //typeof(AbpAspNetCoreMultiTenancyModule),
-       typeof(YmappApplicationModule),
+       //typeof(YmappApplicationModule),
         typeof(AbpAspNetCoreMvcModule)
        //typeof(YmappEntityFrameworkCoreDbMigrationsModule),
        //typeof(AbpAspNetCoreMvcUiBasicThemeModule),
