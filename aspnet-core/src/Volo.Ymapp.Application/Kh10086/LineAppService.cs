@@ -1,18 +1,14 @@
-﻿using AutoMapper;
-using Serilog;
+﻿using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Threading;
-using Volo.Ymapp.JobTask;
 using Volo.Ymapp.Utils;
-using System.Linq;
 
 namespace Volo.Ymapp.Kh10086
 {
@@ -61,6 +57,30 @@ namespace Volo.Ymapp.Kh10086
             Log.Information($"共获取到{nodeList.Count}条线路");
             var lineList = GetLineList(lineDetailUrl, nodeList);
             Log.Information($"结束线路数据解析");
+        }
+
+        /// <summary>
+        /// 获取所有洲的集合
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetContinents()
+        {
+            List<string> list = new List<string>();
+            var lineContinents = _lineRepository.Select(m => m.Continent).Distinct().ToList();
+            foreach (var item in lineContinents)
+            {
+                if (string.IsNullOrEmpty(item)) continue;
+                var arrs = item.Split(',');
+                for (int i = 0; i < arrs.Length; i++)
+                {
+                    if (string.IsNullOrEmpty(arrs[i])) continue;
+                    if (!list.Contains(arrs[i]))
+                    {
+                        list.Add(arrs[i]);
+                    }
+                }
+            }
+            return list;
         }
 
         /// <summary>
@@ -466,7 +486,7 @@ namespace Volo.Ymapp.Kh10086
         //    }
         //}
 
-        public async Task InsertOrUpdateLine(LineDto dto)
+        private async Task InsertOrUpdateLine(LineDto dto)
         {
             var line = _lineRepository.FirstOrDefault(m => m.LineCode == dto.LineCode);
             if (line == null)

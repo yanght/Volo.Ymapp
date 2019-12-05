@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>蓝精灵旅游</title>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/swiper.min.css" rel="stylesheet">
+    <link href="css/htmleaf-demo.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker3.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script type="text/javascript" src="pie/PIE.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (window.PIE) {
+                $('.sm').each(function () {
+                    PIE.attach(this);
+                });
+            }
+        });
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="blueDialog"></div>
+
+<!-- header start -->
+<header>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-md-2 col-xs-4">
+                <a class="logo" href="javascript:;"><img src="img/logo.png" alt=""></a>
+            </div>
+            <div class="col-md-8 col-xs-8 col-md-offset-2 text-right">
+                +010 8476 6802
+                <button class="btn btn-lan" data-lan="1">En</button>
+                <a href="javascript:;" class="btn btn-custom" data-toggle="modal" data-target="#testModal">一键定制</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- nav start -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="blue_nav">
+                    <ul class="nav navbar-nav col-md-12 col-sm-12">
+                        <li class="col-md-nav"><a href="#">首页</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                目的地 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-list">
+                                <div class="dropdown-list-bg"></div>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-1">非洲</dt>
+                                        <dd><a href="#">乌干达</a></dd>
+                                        <dd><a href="#">肯尼亚</a></dd>
+                                        <dd><a href="#">南非</a></dd>
+                                        <dd><a href="#">博茨瓦纳</a></dd>
+                                        <dd><a href="#">纳美比亚</a></dd>
+                                        <dd><a href="#">赞比亚</a></dd>
+                                        <dd><a href="#">摩洛哥</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-2">亚洲</dt>
+                                        <dd><a href="#">中国</a></dd>
+                                        <dd><a href="#">越难</a></dd>
+                                        <dd><a href="#">缅甸</a></dd>
+                                        <dd><a href="#">泰国</a></dd>
+                                        <dd><a href="#">老挝</a></dd>
+                                        <dd><a href="#">不丹</a></dd>
+                                        <dd><a href="#">柬埔寨</a></dd>
+                                        <dd><a href="#">马来西亚</a></dd>
+                                        <dd><a href="#">印度尼西亚</a></dd>
+                                        <dd><a href="#">日本</a></dd>
+                                        <dd><a href="#">菲律宾</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-3">澳洲</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-4">加勒比</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-5">欧洲</dt>
+                                        <dd><a href="#">冰岛</a></dd>
+                                        <dd><a href="#">法国</a></dd>
+                                        <dd><a href="#">德国</a></dd>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">希腊</a></dd>
+                                        <dd><a href="#">西班牙</a></dd>
+                                        <dd><a href="#">葡萄牙</a></dd>
+                                        <dd><a href="#">芬兰</a></dd>
+                                        <dd><a href="#">瑞士</a></dd>
+                                        <dd><a href="#">挪威</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-6">北美洲</dt>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">美国</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-7">南极洲</dt>
+                                        <dd><a href="#">南极</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-8">南美洲</dt>
+                                        <dd><a href="#">阿根廷</a></dd>
+                                        <dd><a href="#">智利</a></dd>
+                                        <dd><a href="#">玻利维亚</a></dd>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">巴西</a></dd>
+                                        <dd><a href="#">哥伦比亚</a></dd>
+                                        <dd><a href="#">秘鲁</a></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                我们的旅程 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2">
+                                <li><a href="#">探险</a></li>
+                                <li><a href="#">海滩度假</a></li>
+                                <li><a href="#">城市印象</a></li>
+                                <li><a href="#">游轮</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">家庭旅游</a></li>
+                                <li><a href="#">蜜月</a></li>
+                                <li><a href="#">个人旅游</a></li>
+                                <li><a href="#">Safari</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav"><a href="#">精选酒店</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                关于我们 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2 dropdown-menu-3">
+                                <li><a href="#">我们的故事</a></li>
+                                <li><a href="#">优秀团队</a></li>
+                                <li><a href="#">客户评价</a></li>
+                                <li><a href="#">合作伙伴</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control input_search" placeholder="搜索">
+                        <span class="input-group-btn">
+                            <button class="btn btn-search" type="button"><i
+                                class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- nav end -->
+</header>
+<!-- header end -->
+
+<section class="container blue_page_banner">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/greece.jpg" alt="">
+                <div class="carousel-caption">
+                    <div class="blue_country_title">
+                        <p>Wonders of Ancient Greece</p>
+                        <h2>神秘古希腊之旅</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/greece.jpg" alt="">
+                <div class="carousel-caption">
+                    <div class="blue_country_title">
+                        <p>Wonders of Ancient Greece</p>
+                        <h2>神秘古希腊之旅</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="blue_nav_menu">
+        <li class="col-md-2 col-xs-2"><a data-index="1" href="javascript:void(0);">行程亮点</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="2" href="javascript:void(0);">具体行程</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="3" href="javascript:void(0);">行程费用</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="4" href="javascript:void(0);">住宿</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="5" href="javascript:void(0);">图片</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="6" href="javascript:void(0);">更多</a></li>
+    </ul>
+</section>
+
+<section class="container blue_page_menu">
+    <a href="#">首页</a><a href="#">目的地</a><a href="#">意大利豪华之旅</a><a class="active" href="#">量身定制的阿尔卑斯山：从巴伐利亚科莫湖</a>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-9 col-xs-8">
+            <article class="blue_page_article blue_trip_article">
+                <p>与此豪华量身定制的旅程，离开你的私人聚会旅行，当你选择，并与专家的当地导游的带领下，你甚至可以自定义行程到你的利益。</p>
+                <p>探索壮丽的巴伐利亚，听力在慕尼黑钟琴，并采取在锯齿状的山峰和瑞士的阿尔卑斯山冰川，包括免费车辆采尔马特; 然后，在风景优美的科莫湖宁静的海岸放松 - 从繁华的米兰只有一箭之遥。</p>
+                <!--<p>与此豪华量身定制的旅程，离开你的私人聚会旅行，当你选择，并与专家的当地导游的带领下，你甚至可以自定义行程到你的利益。</p>-->
+                <!--<p>探索壮丽的巴伐利亚，听力在慕尼黑钟琴，并采取在锯齿状的山峰和瑞士的阿尔卑斯山冰川，包括免费车辆采尔马特; 然后，在风景优美的科莫湖宁静的海岸放松 - 从繁华的米兰只有一箭之遥。</p>-->
+            </article>
+        </div>
+        <div class="col-md-2 col-xs-3 col-md-offset-1 col-xs-offset-1 blue_greece_group">
+            <p>
+                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModal1">预订</button>
+            </p>
+            <p>
+                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModa2">完整行程信息</button>
+            </p>
+        </div>
+    </div>
+    <div class="row" id="1">
+        <div class="col-md-7 col-xs-12">
+            <h2 class="blue_trip_title">行程亮点</h2>
+            <ul class="blue_trip_list">
+                <li>从北非谍影里走出来的卡萨布兰卡</li>
+                <li>摩洛哥的都城-拉巴特</li>
+                <li>摩洛哥最大和保存最完好的罗马帝国遗址-沃利比利斯废墟摩洛哥最大和保存最完好的罗马帝国遗址-沃利比利斯废墟</li>
+                <li>在梅克内斯的巴布·曼苏尔门外感受历史的沧桑</li>
+                <li>漫步在非斯老城，探访古老的皮革染坊</li>
+                <li>撒哈拉沙漠露营，在夜晚仰望璀璨的星空</li>
+                <li>在瓦尔扎扎特探访摩洛哥最美的村庄</li>
+                <li>漫步在有漂亮花园，文明古迹，也有热闹夜市的马拉喀什</li>
+                <li>充满着浓郁的摩洛哥风情的海边小城-索维拉</li>
+            </ul>
+        </div>
+        <div class="col-md-4 col-xs-8 col-md-offset-1">
+            <div class="blue_trip_map">
+                <div class="col-md-4 col-xs-4">
+                    <div class="blue_trip_label">
+                        <p>旅行天数</p>
+                        <p><span>13天</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <div class="blue_trip_label">
+                        <p>精品小团</p>
+                        <p>私人订制</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <div class="blue_trip_label">
+                        <p>类型</p>
+                        <p><span>城市/自然</span></p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <img src="img/trip-map.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="2">
+        <h2 class="blue_trip_title mt">具体行程</h2>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+        <div class="blue_trip_line">
+            <div class="blue_trip_line_title">
+                <span class="blue_trip_before">起点</span>
+                从中国出发
+                <span class="blue_trip_after" data-flag="0"></span>
+            </div>
+            <div class="blue_trip_text">
+                <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                <ul class="blue_trip_item">
+                    <li>住宿：卡萨布兰卡</li>
+                    <li>餐食：晚</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="3">
+        <h2 class="blue_trip_title">行程费用</h2>
+        <div class="blue_trip_price">
+            <p><span>最低</span></p>
+            <p>￥10,800 <span>人起</span></p>
+        </div>
+        <div class="blue_trip_article">
+            <p>价格包含：</p>
+            <ul class="blue_trip_item fz14">
+                <li>各个出发城市/到达城市私人往返机场接送机/火车/轮船</li>
+                <li>往返含税国际机票</li>
+                <li>行程中所列的住宿（价格基于两人住一间房，如果需要单独的房间需补交单房差）</li>
+                <li>整个行程所提及的餐食，早-早餐，午-午餐，晚-晚餐</li>
+                <li>全程只供您单独使用的舒适旅行车，以及行程中所涉及的目的地国家国内机票，船票和火车票（如没有涉及则不包含）</li>
+                <li>专业的英文导游</li>
+                <li>行程中所涉及到的景点门票</li>
+                <li>签证费</li>
+                <li>有效期覆盖您的整个旅行的旅游保险</li>
+                <li>整个旅行期间所需要的所有旅行文件（机票行程单，酒店确认单，行程确认单）以及目的地信息，地图等</li>
+                <li>24小时的及时应答和服务</li>
+                <li>服务费和所涉及到的政府税费</li>
+            </ul>
+            <p>价格不包含：</p>
+            <ul class="blue_trip_item fz14">
+                <li>任何性质的个人花费</li>
+                <li>导游及司机的小费</li>
+                <li>行程中所提及的可选择的活动项目</li>
+                <li>行程中不包含的旅行项目</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" id="4">
+        <h2 class="blue_trip_title mt">住宿</h2>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_trip_hotel blue_item_bg">
+                    <img src="img/trip-hotel.jpg" alt="">
+                    <p>威尔逊总统酒店</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_trip_hotel blue_item_bg">
+                    <img src="img/trip-hotel.jpg" alt="">
+                    <p>威尔逊总统酒店</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_trip_hotel blue_item_bg">
+                    <img src="img/trip-hotel.jpg" alt="">
+                    <p>威尔逊总统酒店</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="5">
+        <h2 class="blue_trip_title mt">图片</h2>
+        <div class="row blue_trip_img">
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+            <div class="col-md-3 col-xs-6 blue_dialog_img">
+                <img src="img/trip-img.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="row" id="6">
+        <h2 class="blue_trip_title">更多</h2>
+        <div class="blue_trip_article blue_p_title">
+            <p>冲浪：</p>
+            <h3>摩洛哥还是一个最佳的冲浪基地，从Tangier 到Dakhla,沿着大西洋绵延1000公里的海岸线为您提供了最佳的放松之地</h3>
+            <p>购物：</p>
+            <h3>
+                如果你想要体验真正的摩洛哥购物，那么Souk是一个有着丰富货品的室内传统市场。蜿蜒的走廊里排列着各式各样的摊位，从蔬菜到颜色鲜艳的香料再到令人惊叹的手工染色织物。这个市场保留着它的传统魅力，深受当地人的喜爱，所以不要害怕讨价还价</h3>
+            <p>放松：</p>
+            <h3>去摩洛哥度假是可以回忆一辈子的经历。这个美丽的王国，在非洲和欧洲的连接点上，是体验真正的和平与安宁的理想之地</h3>
+            <p>音乐：</p>
+            <h3>摩洛哥是一个音乐王国。你总是可以从出租车、商店和咖啡馆的收音机里听到与西方流行音乐类似的Chaabi音乐，同时也会听到异国情调的Gnaoua和古典阿拉伯音乐。在日常生活中，音乐在庆典和仪式中扮演着重要的角色，例如在婚礼和葬礼上。</h3>
+            <h3>如果你喜欢音乐，那么你必须参加阿加迪尔的Timitar节。Timitar节因其对柏柏尔人音乐、艺术和舞蹈的强烈关注而与许多其他节日不同。每年夏天，来自世界各地的音乐家聚集在这里，进行文化和音乐交流。</h3>
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="blue_trip_title mt">推荐行程</h2>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_img_3 blue_img_bg">
+                    <div class="blue_img_3_img">
+                        <img src="img/t_img_1.jpg" alt="">
+                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                    </div>
+                    <div class="blue_img_3_day">
+                        <span class="pull-left">7天</span>
+                        <span class="pull-right">RMB 15800起</span>
+                    </div>
+                    <div class="blue_img_3_text">
+                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_img_3 blue_img_bg">
+                    <div class="blue_img_3_img">
+                        <img src="img/t_img_1.jpg" alt="">
+                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                    </div>
+                    <div class="blue_img_3_day">
+                        <span class="pull-left">7天</span>
+                        <span class="pull-right">RMB 15800起</span>
+                    </div>
+                    <div class="blue_img_3_text">
+                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_img_3 blue_img_bg">
+                    <div class="blue_img_3_img">
+                        <img src="img/t_img_1.jpg" alt="">
+                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                    </div>
+                    <div class="blue_img_3_day">
+                        <span class="pull-left">7天</span>
+                        <span class="pull-right">RMB 15800起</span>
+                    </div>
+                    <div class="blue_img_3_text">
+                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="container-fluid blue_bg blue_footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">蓝精灵旅游</div>
+                <div class="row blue_footer_list">
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">目的地</a></li>
+                        <li><a href="#">我们的旅程</a></li>
+                        <li><a href="#">竞选酒店</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">客人评价</a></li>
+                        <li><a href="#">宣传手册</a></li>
+                        <li><a href="#">优惠特选</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">条款条件</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">订阅</div>
+                <div class="col-md-8 col-xs-12 blue_footer_take">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="填写邮箱地址">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">发送</button>
+                        </span>
+                    </div>
+                    <p>发送邮箱订阅我们，我们会根据您的喜好来进行定制旅程</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">联系我们</div>
+                <div class="blue_footer_tel">
+                    <p>地址: 北京市朝阳区望京园402号楼<br>东亚望京中心B座3802</p>
+                    <p>电话: +86-010-8476-6802</p>
+                    <p>邮箱: contactus@bluespiritvoyages.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="row blue_link">
+            <div class="col-md-8 col-xs-12">
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6 blue_code">
+                <div class="col-md-3 col-xs-12">
+                    <img src="img/code_1.jpg" alt="">
+                    <p>官方公众号</p>
+                    <p>Blue Spirit</p>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <img src="img/code_2.jpg" alt="">
+                    <p>官方微博</p>
+                    <p>@Blue Spirit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="blue_copy">
+    <div class="container">© 2017 YOUR COMPANY. DESIGNED BY EVEN DESIGN STUDIO</div>
+</section>
+
+
+<!-- 预订 -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabe1">&nbsp;</h4>
+            </div>
+            <div class="modal-body blue_model_submit blue_modal_hotel">
+                <div class="row">
+                    <div class="col-md-8 col-xs-12 col-md-offset-2">
+                        <div class="blue_model_submit_title">
+                            <p><span>用户申请预订</span></p>
+                            <p>除姓名、电话、邮箱外，其他所有信息将为您保存</p>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                <span>*</span>姓名：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <input class="form-control" type="text" placeholder="ep:陈某某">
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                <span>*</span>电话：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <input class="form-control" type="text" placeholder="ep:13120529630">
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                <span>*</span>邮箱：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <input class="form-control" type="text" placeholder="ep:52961637@qq.com">
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                <span>*</span>旅行日期：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group date datepicker">
+                                    <input type="text" class="form-control" placeholder="ep:2017年11月15号">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th "></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                <span>*</span>旅行人数：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group blue_sel_group">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default btn-text">成人</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle btn-icon"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="glyphicon glyphicon-menu-down blue_sel_icon"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu blue_sel_option">
+                                            <li><a href="javascript:void(0);">1</a></li>
+                                            <li><a href="javascript:void(0);">2</a></li>
+                                            <li><a href="javascript:void(0);">3</a></li>
+                                            <li><a href="javascript:void(0);">4</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default btn-text">儿童</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle btn-icon"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="glyphicon glyphicon-menu-down blue_sel_icon"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu blue_sel_option">
+                                            <li><a href="javascript:void(0);">1</a></li>
+                                            <li><a href="javascript:void(0);">2</a></li>
+                                            <li><a href="javascript:void(0);">3</a></li>
+                                            <li><a href="javascript:void(0);">4</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 text-right">
+                                其他信息：
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <textarea class="form-control" name="" id=""></textarea>
+                            </div>
+                        </div>
+                        <div class="row blue_model_submit_line">
+                            <div class="col-md-4 col-xs-4 col-md-offset-4 col-xs-offset-4">
+                                <button class="btn btn_country btn_hotel">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 打印 -->
+<div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabe2">
+                    <div class="col-md-2 col-xs-2"><img src="img/logo-black.png" alt=""></div>
+                </h4>
+            </div>
+            <div class="modal-body blue_model_country blue_model_print">
+                <div class="row">
+                    <div class="col-md-2 col-xs-4 col-md-offset-8 col-xs-4">
+                        <button class="btn btn_country btn-block">打印</button>
+                    </div>
+                    <div class="col-md-2 col-xs-4">
+                        <button class="btn btn_country btn-block">取消</button>
+                    </div>
+                </div>
+                <div class="row blue_print_text">
+                    <h2 class="blue_trip_title">天方夜谭之摩洛哥</h2>
+                    <p>自从免签之后，摩洛哥就得到众多旅行者的青睐，在这13天的旅程中我们为您安排了摩洛哥最经典的城市和最不能错过的体验。</p>
+                    <p>我们的旅程将包括-</p>
+                    <h2>行程亮点：</h2>
+                    <p>- 从北非谍影里走出来的卡萨布兰卡</p>
+                    <p>- 摩洛哥的都城-拉巴特</p>
+                    <p>- 摩洛哥最大和保存最完好的罗马帝国遗址-沃利比利斯废墟</p>
+                    <p>- 在梅克内斯的巴布·曼苏尔门外感受历史的沧桑</p>
+                    <p>- 漫步在非斯老城，探访古老的皮革染坊</p>
+                    <p>- 撒哈拉沙漠露营，在夜晚仰望璀璨的星空</p>
+                    <p>- 在瓦尔扎扎特探访摩洛哥最美的村庄</p>
+                    <p>- 漫步在有漂亮花园，文明古迹，也有热闹夜市的马拉喀什</p>
+                    <p>- 充满着浓郁的摩洛哥风情的海边小城-索维拉</p>
+                    <p>- 联系我们，了解更多</p>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6 col-md-offset-4 col-xs-offset-3 blue_print_map">
+                            <img src="img/print-map.jpg" alt="">
+                        </div>
+                    </div>
+                    <h2>具体行程：</h2>
+                    <p>从中国出发</p>
+                    <p>- 为您安排VIP送机</p>
+                    <p>- 全程协助办理登机手续</p><br>
+                    <p>第一天 - 到达卡拉布兰卡</p>
+                    <p>乘飞机到达卡萨布兰卡，VIP私人旅行用车接机，前往酒店休息。</p>
+                    <p>如果时间允许的话我们的向导会带您漫步在卡萨布兰卡的街头，晚上去Ain Diab的海边吹吹海风，熟悉一下这个离我们有点遥远的国度，为接下来的行程做预热</p>
+                    <p>住宿：卡萨布兰卡</p>
+                    <p>餐食：晚</p><br>
+                    <p>第二天 - 卡萨布兰卡-拉巴特</p>
+                    <p>早上我们将我们开始我们的拉萨布兰卡之旅：从非穆斯林可以进入的最大清真寺-哈桑二世清真寺到穆罕默德五世广场，我们还会经过Anfa居民区，近距离的接触和了解这个城市</p>
+                    <p>下午乘车前往拉巴特，四大皇城之一，也是摩洛哥现在的首都，在这里最不能错过的是乌达雅堡，哈桑塔以及穆罕默德五十陵墓。我们还会参观围绕着拉巴特皇宫的舍拉废墟遗址。</p>
+                    <p>晚上漫步在拉巴特麦地那，这里是阿拉伯人聚居区，浓浓的民族风，没有大城市的繁华，却流露着生活的平凡和安逸</p>
+                    <p>住宿：拉巴特</p>
+                    <p>餐食:早/晚</p><br>
+                    <p>第三天 - 拉巴特-梅克内斯-非斯</p>
+                    <p>
+                        早上出发前往梅克内斯，17-18世纪为摩洛哥的都城，直到现在依旧散发着独特的魅力。参观巴布·曼苏尔门，这是古时进入梅克内斯皇宫的通道，现在已经不对外开放，但是依旧可以在这里感受一下历史的沧桑感</p>
+                    <p>下午参观离梅克内斯不远的沃利比利斯废墟（Volubilis），这里是摩洛哥最大和保存最完好的罗马帝国遗址，我们的向导还会您参观这里一个当地的伊斯兰村庄，然后驱车前往非斯。</p>
+                    <p>住宿：非斯</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第四天 - 非斯</p>
+                    <p>今天我们将有一天的时间参观非斯，四大皇城里最古老的一座，无可争议地成为摩洛哥的象征中心。</p>
+                    <p>
+                        首先来到菲斯麦地那，典型的依旧保存着浓郁中世纪风格的老城，不光有游客，当地人也在这里生活，城内到处都是染色作坊、皮革加工厂、各种手工作坊等传统手工加工店，那里的工匠们依旧延续着古老的东方传统工艺，这里是买纪念品的好地方。但是这里的小巷曲折杂乱，恍如迷宫，最好是有向导带领。</p>
+                    <p>下午参观非斯的新城Fes Jdid，穆罕默德六世国王的皇宫就在这里，皇宫还在使用，但是不对外开放</p>
+                    <p>住宿：非斯</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第五天 - 非斯 - 米得勒特-伊尔富德</p>
+                    <p>早上出发前往伊尔富德，我们会途径伊夫兰，一个滑雪胜地；还有艾兹鲁（Azrou），一个以地毯和木雕文明的村庄。</p>
+                    <p>中午在米得勒特停留用午餐</p>
+                    <p>然后经过Ziz山谷到达伊尔富德</p>
+                    <p>住宿：伊尔富德</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第六天 - 伊尔富德-梅尔祖卡沙漠</p>
+                    <p>
+                        今天我们将开始我们的撒哈拉沙漠探险之旅，早上乘坐越野车从伊尔富德出发前往梅尔祖卡沙漠，众多旅游者进入撒哈拉沙漠的首选之地。晚上在沙漠里露营，我们的工作人员会提前支好帐篷，并为您准备晚餐。晚饭后躺在沙子里仰望璀璨的星空，早上骑着骆驼看日出，这大概是一生中最美好的体验了。</p>
+                    <p>住宿：梅尔祖卡沙漠</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第七天 - 梅尔祖卡-伊尔富德- Tinghir</p>
+                    <p>早上我们将从沙漠出发前往参观Todrha Canyons，这是Todra地区最高的和最狭窄的峡谷，整个峡谷被葱郁的棕榈树覆盖，您可以在这里享受一些休闲时光，还可以徒步探索这个美丽的地方</p>
+                    <p>住宿：Tinghir</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第八天 - Tinghir-瓦尔扎扎特</p>
+                    <p>驱车前往瓦尔扎扎特，我们会经过Dades 山谷，这是一个徒步的好地方，整个峡谷显现出生动的颜色，每走一步都是不同的景色，所以一定要确保您的相机有足够的电量来拍摄如此美丽的景色</p>
+                    <p>这里还因为种植了大量的玫瑰而被称为“玫瑰谷”，如果来的是正确的季节的话，将会看到大片的玫瑰散落在路边</p>
+                    <p>住宿：瓦尔扎扎特</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第九天 - 瓦尔扎扎特-马拉喀什</p>
+                    <p>早上我们将前往距离瓦尔扎扎特有30公里的阿伊特本哈杜筑垒村（Aït
+                        Benhaddou），是摩洛哥柏柏尔人最具代表性的古村落，被认为是摩洛哥最美丽的村庄之一。1987年联合国教科文组织将其载入《世界遗产名录》。它也是诸多好莱坞导演倾向的拍摄地方，在此拍摄了20多部好莱坞大片，如《阿拉伯的劳伦斯》，《尼罗河的宝藏》，《木乃伊》等</p>
+                    <p>然后前往马拉喀什</p>
+                    <p>住宿：马拉喀什</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第十天 - 马拉喀什</p>
+                    <p>马拉喀什是摩洛哥第二古老的皇城，坐落在贯穿摩洛哥的阿特拉斯山脚下，有“南方的珍珠”之称。</p>
+                    <p>今天我们的游览包括-</p>
+                    <p>巴伊亚王宫，建于十九世纪末，在当时是摩洛哥最大最宏伟的宫殿建筑</p>
+                    <p>马若雷勒花园，一座以蓝色和黄色为主的花园，里面摆满了仙人掌，强烈的颜色对比让您流连忘返。这是YSL
+                        的创始人伊夫圣罗兰在摩洛哥的家，里面包括了伊夫圣罗兰先生个人珍藏的北美纺织品，此外还有大量陶瓷、珠宝和绘画</p>
+                    <p>从外面参观库图比亚清真亚</p>
+                    <p>下午漫步在德吉玛广场，广场位于老城区，既是市场也是广场，在这里可以淘到价钱公道质量很好的盘子和地毯</p>
+                    <p>住宿：马拉喀什</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第十一天 - 马拉喀什-索维拉</p>
+                    <p>索维拉是具有鲜明摩洛哥特色的海边小城，浓郁的摩尔风情，非常美味而廉价的海鲜，古堡，炮台，小巷，柏柏尔人的鼓声，都给人留下深刻的印象</p>
+                    <p>住宿：索维拉</p>
+                    <p>餐食：早/晚</p><br>
+                    <p>第十二天 - 索维拉-卡拉布兰卡</p>
+                    <p>早上从索维拉出发前往safi，欧洲最古老的港口之一，紧接着经过葡萄牙时代的城堡和陶瓷山(买陶瓷的号地方)，最后到达Oualidia用午餐，这里最有名的就是牡蛎了。</p>
+                    <p>到达卡萨布兰卡之前我们还会参观杰迪代，十六世纪初葡萄牙人始建,曾是重要的商业港口，2004年入选世界文化遗产</p>
+                    <p>住宿：卡萨布兰卡</p>
+                    <p>餐食：早</p><br>
+                    <p>第十三天 - 卡萨布兰卡-离开</p>
+                    <p>享受一段休闲时光，VIP送机，全程协助办理登机手续，乘机前往下一个目的地</p>
+                    <p>餐食：早</p>
+                    <h2>价格：</h2>
+                    <div class="row">
+                        <div class="blue_trip_price">
+                            <p><span>最低</span></p>
+                            <p>￥10,800 <span>人起</span></p>
+                        </div>
+                    </div>
+                    <h3>价格包含</h3>
+                    <p>- 各个出发城市/到达城市私人往返机场接送机/火车/轮船</p>
+                    <p>- 往返含税国际机票</p>
+                    <p>- 行程中所列的住宿（价格基于两人住一间房，如果需要单独的房间需补交单房差）</p>
+                    <p>- 整个行程所提及的餐食，早-早餐，午-午餐，晚-晚餐</p>
+                    <p>- 全程只供您单独使用的舒适旅行车，以及行程中所涉及的目的地国家国内机票，船票和火车票（如没有涉及则不包含）</p>
+                    <p>- 专业的英文导游</p>
+                    <p>- 行程中所涉及到的景点门票</p>
+                    <p>- 签证费</p>
+                    <p>- 有效期覆盖您的整个旅行的旅游保险</p>
+                    <p>- 整个旅行期间所需要的所有旅行文件（机票行程单，酒店确认单，行程确认单）以及目的地信息，地图等</p>
+                    <p>- 24小时的及时应答和服务</p>
+                    <p>- 服务费和所涉及到的政府税费</p>
+                    <h3>价格不包含</h3>
+                    <p>- 任何性质的个人花费</p>
+                    <p>- 导游及司机的小费</p>
+                    <p>- 行程中所提及的可选择的活动项目</p>
+                    <p>- 行程中不包含的旅行项目</p>
+                    <h2>更多：</h2>
+                    <p>冲浪</p>
+                    <p>摩洛哥还是一个最佳的冲浪基地，从Tangier 到Dakhla,沿着大西洋绵延1000公里的海岸线为您提供了最佳的放松之地</p>
+                    <br>
+                    <p>购物</p>
+                    <p>
+                        如果你想要体验真正的摩洛哥购物，那么Souk是一个有着丰富货品的室内传统市场。蜿蜒的走廊里排列着各式各样的摊位，从蔬菜到颜色鲜艳的香料再到令人惊叹的手工染色织物。这个市场保留着它的传统魅力，深受当地人的喜爱，所以不要害怕讨价还价</p>
+                    <br>
+                    <p>放松</p>
+                    <p>去摩洛哥度假是可以回忆一辈子的经历。这个美丽的王国，在非洲和欧洲的连接点上，是体验真正的和平与安宁的理想之地</p>
+                    <br>
+                    <p>音乐</p>
+                    <p>
+                        摩洛哥是一个音乐王国。你总是可以从出租车、商店和咖啡馆的收音机里听到与西方流行音乐类似的Chaabi音乐，同时也会听到异国情调的Gnaoua和古典阿拉伯音乐。在日常生活中，音乐在庆典和仪式中扮演着重要的角色，例如在婚礼和葬礼上。</p>
+                    <p>
+                        如果你喜欢音乐，那么你必须参加阿加迪尔的Timitar节。Timitar节因其对柏柏尔人音乐、艺术和舞蹈的强烈关注而与许多其他节日不同。每年夏天，来自世界各地的音乐家聚集在这里，进行文化和音乐交流。</p>
+                    <br>
+                    <p>奢华</p>
+                    <p>同住宿一样，卡萨布兰卡可以提供大量的奢华活动让您的生活更加丰富多彩，奢侈华丽的温泉浴室,世界级的高尔夫球场和许多美食餐厅,以及非洲最大的购物中心和最好的珠宝商</p>
+                    <h2>基本信息：</h2>
+                    <p>最佳旅行时间</p>
+                    <p>每年3月中-6月中，9月中-10月中是摩洛哥旅行的最佳时间。</p>
+                    <p>3月中-6月中，9月中-10月中：摩洛哥的春秋两季气温适中，晴朗天气居多，是摩洛哥旅游的最佳季节。</p>
+                    <p>6月中-9月中：摩洛哥的夏季炎热干燥，如果行程中安排了撒哈拉沙漠地区，这种炎热和干燥会被放大很多。夏季来摩洛哥旅行，一定要做好遮阳与防晒工作。</p>
+                    <p>10月-次年3月： 摩洛哥的冬季，也是沿海地区的雨季，这时的摩洛哥较为湿冷，不利于出行。并且圣诞、新年期间又是摩洛哥的旅游高峰期，消费价格会上涨。</p>
+                    <br>
+                    <p>货币</p>
+                    <p>人民币与摩洛哥迪拉姆无法直接兑换，需要在国内先将人民币换成欧元或者美元，到了当地机场或银行再将欧元换成摩洛哥迪拉姆，汇率是全国统一的。</p>
+                    <br>
+                    <p>时差</p>
+                    <p>摩洛哥地处零时区，与中国时差八小时，即中国比摩洛哥快8小时。摩洛哥的早晨8点，就是中国的下午16点。夏令时时，摩洛哥与中国时差缩短为7小时，斋月时又会回到8小时。</p>
+                    <br>
+                    <p>电压</p>
+                    <p>摩洛哥的电压是220V，与中国完全一样，但是插座多为圆形，建议带上全球通用的电源转换器</p>
+                    <br>
+                    <p>语言</p>
+                    <p>摩洛哥的官方语言是阿拉伯语，通用语言还有法语和西班牙语。但是在城市中，生意人和年轻人也会讲英语。到摩洛哥旅游，如果掌握英语日常对话也是可以走下来的</p>
+                    <br>
+                    <p>电话</p>
+                    <p>可以在机场到达大厅或市里路边商店购买当地手机卡，如本土的摩洛哥电信（Maroc Telecom），每张卡大约20-30迪拉姆。想要手机上网的话，需要开通3G业务，有类似国内的流量套餐.</p>
+                    <br>
+                    <p>网络</p>
+                    <p>摩洛哥WiFi还算普及，好一些的餐厅都可以提供免费WiFi，部分酒店也是有免费WiFi的，但多数酒店还是需要自己花钱购</p>
+                    <br>
+                    <p>风俗禁忌</p>
+                    <p>伊斯兰教在摩洛哥影响深远，教规众多。在旅游时一定要注意了解当地风俗和尊重穆斯林的宗教习惯。</p>
+                    <p>
+                        穆斯林都认为“右比左好”，右是吉祥的，做事要从右手和右脚开始，握手、用餐、递送东西必须用右手。所以当与当地人交往时一定要要用右手握手、接东西，用左手与他握手或递东西是极不礼貌的，甚至被视为污辱性的。</p>
+                    <p>
+                        男士不要主动和当地妇女攀谈，不要夸女孩身材苗条，未经允许不得给女性拍照。不要随便和当地人谈论宗教纠纷，中东政局及男女关系。不要称道对方的东西，否则会认为你在向他索要。穆斯林是禁酒禁食猪肉的，与当地人聊天时也不要提及“猪”这个词。</p>
+                    <p>进入清真寺参观时要注意着装，不可以穿着过于随便、暴露的衣服。女士需要穿长裤长袖，头发也要用纱巾遮住；男士需要穿半袖长裤。进入清真寺时需要拖鞋摘帽，以示尊重。</p>
+                    <p>摩洛哥人非常重视婚礼，一般都要尽其所有把婚礼办的风风光光。婚礼多在晚间举行，会连办三天。家境殷实的家庭宴席往往会有上百桌，新娘在婚礼上要穿上精致的阿拉伯长袍，戴上价值不菲的金饰</p>
+                    <br>
+                    <p>护照和签证</p>
+                    <p>
+                        签证是个人旅行者的责任。入口要求随时可以改变，所以检查最新的信息是很重要的。请访问你访问的国家或国家的相关领事网站，了解你的国籍的详细和最新的签证信息。你的顾问也会很高兴地向你指出正确的方向，获得签证。签证可能需要几周的时间来处理，所以一旦你预定了你的旅行，你就需要熟悉任何要求。</p>
+                
+                </div>
+            </div>
+            <div class="modal-footer blue_model_print_footer">
+                <p>地址: 北京市朝阳区望京园402号楼东亚望京中心B座3802</p>
+                <p>电话: +86-010-8476-6802</p>
+                <p>邮箱: contactus@bluespiritvoyages.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blue_img_dialog">
+    <div class="blue_img_dialog_bg"></div>
+    <div class="blue_img_dialog_content">
+        <span class="glyphicon glyphicon-remove blue_img_dialog_close"></span>
+        <p><img src="" alt=""></p>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+<script src="js/bootstrap-datepicker.zh-CN.min.js" charset="UTF-8"></script>
+<script>
+    $(function(){
+        $('.datepicker').datepicker({
+            language: 'zh-CN'
+        });
+    })
+</script>
+<script src="js/page.js"></script>
+<script src="js/dialog.js"></script>
+<script>
+    $(function () {
+        var tTop = $('.blue_page_menu').offset().top;
+        $(window).scroll(function () {
+            var sTop = $(window).scrollTop();
+            if (sTop >= (tTop - 160)) {
+                $('.blue_nav_menu').addClass('active');
+            } else {
+                $('.blue_nav_menu').removeClass('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

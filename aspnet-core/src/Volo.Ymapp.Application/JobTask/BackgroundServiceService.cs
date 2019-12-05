@@ -31,5 +31,17 @@ namespace Volo.Ymapp.JobTask
             }
         );
         }
+
+        /// <summary>
+        /// 同步线路分类
+        /// </summary>
+        /// <returns></returns>
+        public async Task CategorySync()
+        {
+            await _backgroundJobManager.EnqueueAsync(new CategorySyncArgs()
+            {
+
+            });
+        }
     }
 }

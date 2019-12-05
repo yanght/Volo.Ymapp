@@ -24,7 +24,7 @@ namespace Volo.Ymapp.JobTask
                     LineDetailUrl = args.LineDetailUrl,
                     LineListUrl = args.LineListUrl,
                     UtourApiUrl = args.UtourApiUrl
-                }).GetAwaiter().GetResult();
+                });
 
                 Log.Information($"结束执行优耐得数据同步任务。。。");
             }

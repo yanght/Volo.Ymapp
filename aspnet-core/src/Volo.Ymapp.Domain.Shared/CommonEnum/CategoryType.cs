@@ -18,5 +18,9 @@ namespace Volo.Ymapp.CommonEnum
         /// 文章
         /// </summary>
         Artical,
+        /// <summary>
+        /// 线路
+        /// </summary>
+        Line,
     }
 }

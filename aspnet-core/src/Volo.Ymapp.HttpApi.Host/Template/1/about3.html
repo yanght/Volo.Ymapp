@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>蓝精灵旅游</title>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/swiper.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script type="text/javascript" src="pie/PIE.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (window.PIE) {
+                $('.sm').each(function () {
+                    PIE.attach(this);
+                });
+            }
+        });
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="blueDialog"></div>
+
+<!-- header start -->
+<header>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-md-2 col-xs-4">
+                <a class="logo" href="javascript:;"><img src="img/logo.png" alt=""></a>
+            </div>
+            <div class="col-md-8 col-xs-8 col-md-offset-2 text-right">
+                +010 8476 6802
+                <button class="btn btn-lan" data-lan="1">En</button>
+                <a href="javascript:;" class="btn btn-custom" data-toggle="modal" data-target="#testModal">一键定制</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- nav start -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="blue_nav">
+                    <ul class="nav navbar-nav col-md-12 col-sm-12">
+                        <li class="col-md-nav"><a href="#">首页</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                目的地 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-list">
+                                <div class="dropdown-list-bg"></div>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-1">非洲</dt>
+                                        <dd><a href="#">乌干达</a></dd>
+                                        <dd><a href="#">肯尼亚</a></dd>
+                                        <dd><a href="#">南非</a></dd>
+                                        <dd><a href="#">博茨瓦纳</a></dd>
+                                        <dd><a href="#">纳美比亚</a></dd>
+                                        <dd><a href="#">赞比亚</a></dd>
+                                        <dd><a href="#">摩洛哥</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-2">亚洲</dt>
+                                        <dd><a href="#">中国</a></dd>
+                                        <dd><a href="#">越难</a></dd>
+                                        <dd><a href="#">缅甸</a></dd>
+                                        <dd><a href="#">泰国</a></dd>
+                                        <dd><a href="#">老挝</a></dd>
+                                        <dd><a href="#">不丹</a></dd>
+                                        <dd><a href="#">柬埔寨</a></dd>
+                                        <dd><a href="#">马来西亚</a></dd>
+                                        <dd><a href="#">印度尼西亚</a></dd>
+                                        <dd><a href="#">日本</a></dd>
+                                        <dd><a href="#">菲律宾</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-3">澳洲</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-4">加勒比</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-5">欧洲</dt>
+                                        <dd><a href="#">冰岛</a></dd>
+                                        <dd><a href="#">法国</a></dd>
+                                        <dd><a href="#">德国</a></dd>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">希腊</a></dd>
+                                        <dd><a href="#">西班牙</a></dd>
+                                        <dd><a href="#">葡萄牙</a></dd>
+                                        <dd><a href="#">芬兰</a></dd>
+                                        <dd><a href="#">瑞士</a></dd>
+                                        <dd><a href="#">挪威</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-6">北美洲</dt>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">美国</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-7">南极洲</dt>
+                                        <dd><a href="#">南极</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-8">南美洲</dt>
+                                        <dd><a href="#">阿根廷</a></dd>
+                                        <dd><a href="#">智利</a></dd>
+                                        <dd><a href="#">玻利维亚</a></dd>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">巴西</a></dd>
+                                        <dd><a href="#">哥伦比亚</a></dd>
+                                        <dd><a href="#">秘鲁</a></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                我们的旅程 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2">
+                                <li><a href="#">探险</a></li>
+                                <li><a href="#">海滩度假</a></li>
+                                <li><a href="#">城市印象</a></li>
+                                <li><a href="#">游轮</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">家庭旅游</a></li>
+                                <li><a href="#">蜜月</a></li>
+                                <li><a href="#">个人旅游</a></li>
+                                <li><a href="#">Safari</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav"><a href="#">精选酒店</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                关于我们 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2 dropdown-menu-3">
+                                <li><a href="#">我们的故事</a></li>
+                                <li><a href="#">优秀团队</a></li>
+                                <li><a href="#">客户评价</a></li>
+                                <li><a href="#">合作伙伴</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control input_search" placeholder="搜索">
+                        <span class="input-group-btn">
+                            <button class="btn btn-search" type="button"><i
+                                class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- nav end -->
+</header>
+<!-- header end -->
+
+<section class="container blue_about_title">
+    <h1>舒适交通</h1>
+</section>
+
+<section class="container blue_page_banner">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/about-3.png" alt="">
+                <div class="carousel-caption">
+                    <div class="blue_country_title">
+                        <p>Comfortable Accommodation</p>
+                        <h2>舒适交通</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/about-3.png" alt="">
+                <div class="carousel-caption">
+                    <div class="blue_country_title">
+                        <p>Comfortable Accommodation</p>
+                        <h2>舒适交通</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container blue_page_menu">
+    <a href="#">首页</a><a class="active" href="#">舒适交通</a>
+</section>
+
+<section class="container">
+    <article class="blue_page_article">
+        <p>通过与我们的当地合作伙伴的战略联盟合作，我们能够为您提供完整的、有组织的、高质量的交通，为您安排前往任何目的地的私人旅游或短途旅行，始终把专业和独特的风格放在我们服务的第一位。</p>
+        <p>我们有一支由各种豪华车组成的车队，可提供VIP /私人交通，包括梅赛德斯-奔驰轿车，宝马等各种船只和豪华游艇可供租用和游览，以及各种适合私人出游和聚会的的游艇私人直升机:乘直升飞机飞行很有趣，他们带您和您的朋友家人，直接到达您需要的豪华舒适的地方</p>
+        <p><button class="btn btn_country btn_about" data-toggle="modal" data-target="#testModal">定制您的旅程</button></p>
+    </article>
+</section>
+
+<footer class="container-fluid blue_bg blue_footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">蓝精灵旅游</div>
+                <div class="row blue_footer_list">
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">目的地</a></li>
+                        <li><a href="#">我们的旅程</a></li>
+                        <li><a href="#">竞选酒店</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">客人评价</a></li>
+                        <li><a href="#">宣传手册</a></li>
+                        <li><a href="#">优惠特选</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">条款条件</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">订阅</div>
+                <div class="col-md-8 col-xs-12 blue_footer_take">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="填写邮箱地址">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">发送</button>
+                        </span>
+                    </div>
+                    <p>发送邮箱订阅我们，我们会根据您的喜好来进行定制旅程</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">联系我们</div>
+                <div class="blue_footer_tel">
+                    <p>地址: 北京市朝阳区望京园402号楼<br>东亚望京中心B座3802</p>
+                    <p>电话: +86-010-8476-6802</p>
+                    <p>邮箱: contactus@bluespiritvoyages.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="row blue_link">
+            <div class="col-md-8 col-xs-12">
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6 blue_code">
+                <div class="col-md-3 col-xs-12">
+                    <img src="img/code_1.jpg" alt="">
+                    <p>官方公众号</p>
+                    <p>Blue Spirit</p>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <img src="img/code_2.jpg" alt="">
+                    <p>官方微博</p>
+                    <p>@Blue Spirit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="blue_copy">
+    <div class="container">© 2017 YOUR COMPANY. DESIGNED BY EVEN DESIGN STUDIO</div>
+</section>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/page.js"></script>
+<script src="js/dialog.js"></script>
+</body>
+</html>

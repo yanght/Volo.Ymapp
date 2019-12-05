@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>蓝精灵旅游</title>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/swiper.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script type="text/javascript" src="pie/PIE.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (window.PIE) {
+                $('.sm').each(function () {
+                    PIE.attach(this);
+                });
+            }
+        });
+    </script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="blueDialog"></div>
+
+<!-- header start -->
+<header>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-md-2 col-xs-4">
+                <a class="logo" href="javascript:;"><img src="img/logo.png" alt=""></a>
+            </div>
+            <div class="col-md-8 col-xs-8 col-md-offset-2 text-right">
+                +010 8476 6802
+                <button class="btn btn-lan" data-lan="1">En</button>
+                <a href="javascript:;" class="btn btn-custom" data-toggle="modal" data-target="#testModal">一键定制</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- nav start -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="blue_nav">
+                    <ul class="nav navbar-nav col-md-12 col-sm-12">
+                        <li class="col-md-nav"><a href="#">首页</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                目的地 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-list">
+                                <div class="dropdown-list-bg"></div>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-1">非洲</dt>
+                                        <dd><a href="#">乌干达</a></dd>
+                                        <dd><a href="#">肯尼亚</a></dd>
+                                        <dd><a href="#">南非</a></dd>
+                                        <dd><a href="#">博茨瓦纳</a></dd>
+                                        <dd><a href="#">纳美比亚</a></dd>
+                                        <dd><a href="#">赞比亚</a></dd>
+                                        <dd><a href="#">摩洛哥</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-2">亚洲</dt>
+                                        <dd><a href="#">中国</a></dd>
+                                        <dd><a href="#">越难</a></dd>
+                                        <dd><a href="#">缅甸</a></dd>
+                                        <dd><a href="#">泰国</a></dd>
+                                        <dd><a href="#">老挝</a></dd>
+                                        <dd><a href="#">不丹</a></dd>
+                                        <dd><a href="#">柬埔寨</a></dd>
+                                        <dd><a href="#">马来西亚</a></dd>
+                                        <dd><a href="#">印度尼西亚</a></dd>
+                                        <dd><a href="#">日本</a></dd>
+                                        <dd><a href="#">菲律宾</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-3">澳洲</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-4">加勒比</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-5">欧洲</dt>
+                                        <dd><a href="#">冰岛</a></dd>
+                                        <dd><a href="#">法国</a></dd>
+                                        <dd><a href="#">德国</a></dd>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">希腊</a></dd>
+                                        <dd><a href="#">西班牙</a></dd>
+                                        <dd><a href="#">葡萄牙</a></dd>
+                                        <dd><a href="#">芬兰</a></dd>
+                                        <dd><a href="#">瑞士</a></dd>
+                                        <dd><a href="#">挪威</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-6">北美洲</dt>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">美国</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-7">南极洲</dt>
+                                        <dd><a href="#">南极</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-8">南美洲</dt>
+                                        <dd><a href="#">阿根廷</a></dd>
+                                        <dd><a href="#">智利</a></dd>
+                                        <dd><a href="#">玻利维亚</a></dd>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">巴西</a></dd>
+                                        <dd><a href="#">哥伦比亚</a></dd>
+                                        <dd><a href="#">秘鲁</a></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                我们的旅程 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2">
+                                <li><a href="#">探险</a></li>
+                                <li><a href="#">海滩度假</a></li>
+                                <li><a href="#">城市印象</a></li>
+                                <li><a href="#">游轮</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">家庭旅游</a></li>
+                                <li><a href="#">蜜月</a></li>
+                                <li><a href="#">个人旅游</a></li>
+                                <li><a href="#">Safari</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-md-nav"><a href="#">精选酒店</a></li>
+                        <li class="col-md-nav dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                关于我们 <span class="glyphicon glyphicon-menu-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-2 dropdown-menu-3">
+                                <li><a href="#">我们的故事</a></li>
+                                <li><a href="#">优秀团队</a></li>
+                                <li><a href="#">客户评价</a></li>
+                                <li><a href="#">合作伙伴</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control input_search" placeholder="搜索">
+                        <span class="input-group-btn">
+                            <button class="btn btn-search" type="button"><i
+                                class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- nav end -->
+</header>
+<!-- header end -->
+
+<section class="container blue_page_menu">
+    <a href="#">首页</a><a class="active" href="#">条款条件</a>
+</section>
+
+<section class="container blue_about_title">
+    <h1>条款条件</h1>
+</section>
+
+<section class="container">
+    <article class="blue_page_article blue_about_article">
+        <h2>1.特别提示：</h2>
+        <p>1.1 为获得有画网www.youhuaaa.com(以下简称有画网)提供基于互联网的相关服务，服务使用人(以下称“用户”)必须同意本协议的全部条款并按照页面上的提示完成注册程序。如果用户在注册程序过程中勾选“ 我已认真阅读并同意遵守以上用户协议”按钮即表示用户完全接受本协议项下的全部条款，您在使用有画网提供的各项服务之前，应仔细阅读本服务协议。如您不同意本服务协议及/或随时对其的修改，您可以主动取消有画网提供的服务；您一旦使用有画网提供的服务，即视为您已了解并完全同意本服务协议各项内容，包括有画网对服务协议随时所做的任何修改，并成为有画网用户。</p>
+        <p>1.2 有画网帐号（即有画网用户ID）的所有权归有画网，用户完成注册申请手续后，获得有画网帐号的使用权。用户应提供及时、详尽及准确的个人资料，并不断更新注册资料，符合及时、详尽准确的要求。所有原始键入的资料将引用为注册资料。如果因注册信息不真实而引起的问题，并对问题发生所带来的后果，有画网不负任何责任。用户应当对以其用户帐号进行的所有活动和事件负法律责任。</p>
+        <p>1.3 禁止用户将其帐号、密码转让或出借予他人使用，如用户发现其帐号遭他人非法使用，应立即通知有画网。因黑客行为或用户的保管疏忽导致帐号、密码遭他人非法使用，有画网不承担任何责任。</p>
+        <p>1.4 会员注册用户名时请勿使用敏感词汇，（包括但不限于：不雅词汇、涉及政治、法律等词汇以及含有有画、youhua、youhuaaa、版主、管理员、网站等词汇）。有画网有权删除此类账户，无需通知第三方。</p>
+        <h2>2. 服务内容：</h2>
+        <p>2.1 有画网为专业艺术人员、美术爱好者、摄影爱好者、设计爱好者等广大网友提供一个欣赏作品、艺术作品分享、学习、交流的平台。有画网网络服务的具体内容由有画网根据实际情况提供，例如个人主页，图片收藏夹，,绘画作品、摄影作品、设计作品等艺术作品的上传发布,原创作品搜索下载等。</p>
+        <p>3. 服务变更、中断或终止</p>
+        <p>3.1鉴于网络服务的特殊性，用户同意有画网有权随时变更、中断或终止部分或全部的网络服务。</p>
+        <p>3.1.1如变更、中断或终止的网络服务属于免费网络服务，有画网无需通知用户，也无需对任何用户或任何第三方承担任何责任，当有画网变更、中断或终止全部的网络服务时，有画网无须为会员在有画网获得的各种积分、共享分（包括赞助有画网获得的共享分）提供赔偿、退款服务；</p>
+        <p>3.1.2如变更、中断或终止的网络服务涉及包含“有画积分”的收费网络服务，有画网应当按照该用户实际使用相应收费网络服务的情况扣除相应服务费之后将剩余的服务费退还给该用户。</p>
+        <p>3.2有画网需要定期或不定期地对提供网络服务的平台（如互联网网站等）或相关的设备进行检修或者维护，如因此类情况而造成收费网络服务在合理时间内的中断，有画网无需为此承担任何责任，但有画网应尽可能事先进行通告。</p>
+        <p>3.3您同意有画网基于其自行之考虑，因任何理由，包含但不限于长时间未使用，或有画网认为您已经违反本服务协议的文字及精神，无需进行事先通知即可中断或终止，终止您的密码、帐号或本服务之使用（或服务之任何部分）。您承认并同意，有画网可立即关闭或删除您的帐号及您帐号中所有相关信息及文件，及/或禁止继续使用前述文件或本服务。此外，您同意若本服务之使用被中断或终止或您的帐号及相关信息和文件被关闭或删除，有画网对您或任何第三人均不承担任何责任。</p>
+        <p>3.4如发生下列任何一种情形，有画网无需进行事先通知即可随时中断或终止向用户提供本协议项下的网络服务（包括收费网络服务）而无需对用户或任何第三方承担任何责任，有画网可立即关闭或删除您的帐号及您帐号中所有相关信息及文件：</p>
+        <p>3.4.1 用户提供的个人资料不真实；</p>
+        <p>3.4.2 用户违反本协议中规定的使用规则；</p>
+        <p>3.4.3用户有侵害有画网的行为；</p>
+        <p>3.4.4用户违反有画网发布的各种规定；</p>
+        <p>3.5如用户注册的免费网络服务的帐号在任何连续180日内未实际使用，则有画网有权删除该帐号并停止为该用户提供相关的网络服务。</p>
+        <p>3.6有画网设置的各种积分制度是为了调动网站用户的参与积极性，有画网有权随时修改积分制度，调整用户的相关积分属性，未经有画网许可会员禁止以任何形式出售积分。</p>
+        <p>3.7有画网有权在有画网网站的任意网页位置、任意时间投放各种广告，广告内容必须符合相关法律法规且不影响网站注册用户正常使用网站各项功能。</p>
+    </article>
+</section>
+
+<footer class="container-fluid blue_bg blue_footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">蓝精灵旅游</div>
+                <div class="row blue_footer_list">
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">目的地</a></li>
+                        <li><a href="#">我们的旅程</a></li>
+                        <li><a href="#">竞选酒店</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">客人评价</a></li>
+                        <li><a href="#">宣传手册</a></li>
+                        <li><a href="#">优惠特选</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                    <ul class="col-md-4 col-xs-4">
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">条款条件</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">订阅</div>
+                <div class="col-md-8 col-xs-12 blue_footer_take">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="填写邮箱地址">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">发送</button>
+                        </span>
+                    </div>
+                    <p>发送邮箱订阅我们，我们会根据您的喜好来进行定制旅程</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="blue_footer_title">联系我们</div>
+                <div class="blue_footer_tel">
+                    <p>地址: 北京市朝阳区望京园402号楼<br>东亚望京中心B座3802</p>
+                    <p>电话: +86-010-8476-6802</p>
+                    <p>邮箱: contactus@bluespiritvoyages.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="row blue_link">
+            <div class="col-md-8 col-xs-12">
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+                <div class="blue_footer_link">
+                    <a href="#"><img src="img/link-logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6 blue_code">
+                <div class="col-md-3 col-xs-12">
+                    <img src="img/code_1.jpg" alt="">
+                    <p>官方公众号</p>
+                    <p>Blue Spirit</p>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <img src="img/code_2.jpg" alt="">
+                    <p>官方微博</p>
+                    <p>@Blue Spirit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="blue_copy">
+    <div class="container">© 2017 YOUR COMPANY. DESIGNED BY EVEN DESIGN STUDIO</div>
+</section>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/page.js"></script>
+<script src="js/dialog.js"></script>
+</body>
+</html>
