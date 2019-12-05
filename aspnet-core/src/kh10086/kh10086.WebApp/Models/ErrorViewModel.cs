@@ -1,6 +1,6 @@
 using System;
 
-namespace kh10086.WebApp.Models
+namespace KH10086.WebApp.Models
 {
     public class ErrorViewModel
     {

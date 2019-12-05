@@ -11,50 +11,28 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
-namespace kh10086.WebApp
+namespace KH10086.WebApp
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static void Main(string[] args)
         {
+            /*
+                https://github.com/aspnet/AspNetCore/issues/4206#issuecomment-445612167
+                CurrentDirectoryHelpers 文件位于: \framework\src\Volo.Abp.AspNetCore.Mvc\Microsoft\AspNetCore\InProcess\CurrentDirectoryHelpers.cs
+                当升级到ASP.NET Core 3.0的时候将会删除这个类.
+            */
             CurrentDirectoryHelpers.SetCurrentDirectory();
 
-            Log.Logger = new LoggerConfiguration()
-#if DEBUG
-                .MinimumLevel.Debug()
-#else
-                .MinimumLevel.Information()
-#endif
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Async(c => c.File("Logs/logs.txt"))
-                .CreateLogger();
-
-            try
-            {
-                Log.Information("Starting Volo.Ymapp.HttpApi.Host.");
-                BuildWebHostInternal(args).Run();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly!");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
+            BuildWebHostInternal(args).Run();
         }
-
         public static IWebHost BuildWebHostInternal(string[] args) =>
-            new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIIS()
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseSerilog()
-                .Build();
+           new WebHostBuilder()
+               .UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseIIS()
+               .UseIISIntegration()
+               .UseStartup<Startup>()
+               .Build();
     }
 }

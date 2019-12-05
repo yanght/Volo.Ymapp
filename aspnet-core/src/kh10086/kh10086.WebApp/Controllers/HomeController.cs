@@ -5,25 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using kh10086.WebApp.Models;
-using Volo.Abp.AspNetCore.Mvc;
-using Volo.Ymapp.Kh10086;
+using KH10086.WebApp.Models;
 
-namespace kh10086.WebApp.Controllers
+namespace KH10086.WebApp.Controllers
 {
-    public class HomeController : AbpController
+    public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ILineAppService _lineApp;
-        public HomeController(ILogger<HomeController> logger, ILineAppService lineApp)
+
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _lineApp = lineApp;
         }
 
         public IActionResult Index()
         {
-            var list = _lineApp.GetContinents();
             return View();
         }
 

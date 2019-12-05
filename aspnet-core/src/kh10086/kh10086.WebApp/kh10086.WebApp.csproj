@@ -4,19 +4,32 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore" Version="0.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="0.21.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="0.21.0" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="0.21.0" />
     <PackageReference Include="Volo.Abp.Autofac" Version="0.21.0" />
-    <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="0.21.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="0.21.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\Volo.Ymapp.Application\Volo.Ymapp.Application.csproj" />
-    <ProjectReference Include="..\..\Volo.Ymapp.EntityFrameworkCore.DbMigrations\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj" />
-    <ProjectReference Include="..\..\Volo.Ymapp.HttpApi\Volo.Ymapp.HttpApi.csproj" />
+    <ProjectReference Include="..\..\Volo.Ymapp.Application\Volo.Ymapp.Application.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Volo.Ymapp.HttpApi\Volo.Ymapp.HttpApi.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
-
 </Project>

@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using Volo.Ymapp.EntityFrameworkCore;
 using Volo.Ymapp.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
