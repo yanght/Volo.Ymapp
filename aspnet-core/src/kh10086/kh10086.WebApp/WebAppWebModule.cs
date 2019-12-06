@@ -1,41 +1,28 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
-using Volo.Abp.IdentityServer.Jwt;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.UI.Navigation.Urls;
-using Volo.Abp.VirtualFileSystem;
 using Volo.Ymapp;
-using Volo.Ymapp.MultiTenancy;
+using Volo.Ymapp.EntityFrameworkCore;
 
 namespace KH10086.WebApp
 {
-    [DependsOn(
-       //typeof(YmappHttpApiModule),
-       typeof(AbpAutofacModule),
-       //typeof(AbpAspNetCoreMultiTenancyModule),
-       //typeof(YmappApplicationModule),
-        typeof(AbpAspNetCoreMvcModule)
-       //typeof(YmappEntityFrameworkCoreDbMigrationsModule),
-       //typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-       //typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-       //typeof(AbpAccountWebIdentityServerModule)
-       )]
-    public class WebAppWebModule:AbpModule
+    [DependsOn(typeof(AbpAspNetCoreMvcModule)
+        , typeof(AbpAutofacModule)// 在模块上添加依赖AbpAutofacModule
+        , typeof(YmappApplicationModule)
+        , typeof(YmappEntityFrameworkCoreDbMigrationsModule)
+        )]
+    public class WebAppWebModule : AbpModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
+
             var app = context.GetApplicationBuilder();
             var env = context.GetEnvironment();
 
@@ -44,7 +31,7 @@ namespace KH10086.WebApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
         }
     }
 }

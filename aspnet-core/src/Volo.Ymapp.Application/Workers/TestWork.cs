@@ -12,7 +12,7 @@ namespace Volo.Ymapp.Workers
     {
         public TestWork(AbpTimer timer) : base(timer)
         {
-            timer.Period = 5000;
+            timer.Period = 50000;
         }
         protected override void DoWork()
         {

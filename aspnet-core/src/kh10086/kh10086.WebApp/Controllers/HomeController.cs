@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using KH10086.WebApp.Models;
+using Volo.Ymapp.Kh10086;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace KH10086.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AbpController
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILineAppService _lineApp;
+        public HomeController(ILogger<HomeController> logger, ILineAppService lineApp)
         {
             _logger = logger;
+            _lineApp = lineApp;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _lineApp.GetLineByLineId(1);
             return View();
         }
 

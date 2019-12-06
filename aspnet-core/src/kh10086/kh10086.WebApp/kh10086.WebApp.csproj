@@ -4,32 +4,225 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-
   <ItemGroup>
+    <Content Remove="wwwroot\css\bootstrap-datepicker3.css" />
+    <Content Remove="wwwroot\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\css\htmleaf-demo.css" />
+    <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\style.css" />
+    <Content Remove="wwwroot\css\swiper.min.css" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Remove="wwwroot\img\about-1.png" />
+    <Content Remove="wwwroot\img\about-2.png" />
+    <Content Remove="wwwroot\img\about-3.png" />
+    <Content Remove="wwwroot\img\about-4.png" />
+    <Content Remove="wwwroot\img\about-5.png" />
+    <Content Remove="wwwroot\img\about-6.png" />
+    <Content Remove="wwwroot\img\add.png" />
+    <Content Remove="wwwroot\img\adorn.png" />
+    <Content Remove="wwwroot\img\all-country.jpg" />
+    <Content Remove="wwwroot\img\banner-phone.jpg" />
+    <Content Remove="wwwroot\img\banner.jpg" />
+    <Content Remove="wwwroot\img\bg.jpg" />
+    <Content Remove="wwwroot\img\city.jpg" />
+    <Content Remove="wwwroot\img\close.png" />
+    <Content Remove="wwwroot\img\code_1.jpg" />
+    <Content Remove="wwwroot\img\code_2.jpg" />
+    <Content Remove="wwwroot\img\country-icon-1.png" />
+    <Content Remove="wwwroot\img\country-icon-2.png" />
+    <Content Remove="wwwroot\img\country-icon-3.png" />
+    <Content Remove="wwwroot\img\country-img-1.jpg" />
+    <Content Remove="wwwroot\img\country-img.jpg" />
+    <Content Remove="wwwroot\img\country-map.jpg" />
+    <Content Remove="wwwroot\img\country.jpg" />
+    <Content Remove="wwwroot\img\fixed.png" />
+    <Content Remove="wwwroot\img\greece.jpg" />
+    <Content Remove="wwwroot\img\hotel.jpg" />
+    <Content Remove="wwwroot\img\icon-mail-hover.png" />
+    <Content Remove="wwwroot\img\icon-mail.png" />
+    <Content Remove="wwwroot\img\icon-wx-hover.png" />
+    <Content Remove="wwwroot\img\icon-wx.png" />
+    <Content Remove="wwwroot\img\link-logo.png" />
+    <Content Remove="wwwroot\img\link_1.jpg" />
+    <Content Remove="wwwroot\img\link_2.jpg" />
+    <Content Remove="wwwroot\img\link_3.jpg" />
+    <Content Remove="wwwroot\img\link_4.jpg" />
+    <Content Remove="wwwroot\img\logo-black.png" />
+    <Content Remove="wwwroot\img\logo.png" />
+    <Content Remove="wwwroot\img\min.png" />
+    <Content Remove="wwwroot\img\offer-icon.png" />
+    <Content Remove="wwwroot\img\offer.jpg" />
+    <Content Remove="wwwroot\img\page-list-bg.png" />
+    <Content Remove="wwwroot\img\photo.jpg" />
+    <Content Remove="wwwroot\img\print-map.jpg" />
+    <Content Remove="wwwroot\img\p_img_1.jpg" />
+    <Content Remove="wwwroot\img\p_img_2.jpg" />
+    <Content Remove="wwwroot\img\p_img_3.jpg" />
+    <Content Remove="wwwroot\img\p_img_4.jpg" />
+    <Content Remove="wwwroot\img\p_img_5.jpg" />
+    <Content Remove="wwwroot\img\p_img_6.jpg" />
+    <Content Remove="wwwroot\img\p_img_7.jpg" />
+    <Content Remove="wwwroot\img\p_img_8.jpg" />
+    <Content Remove="wwwroot\img\share-wx.png" />
+    <Content Remove="wwwroot\img\share.png" />
+    <Content Remove="wwwroot\img\still_1.jpg" />
+    <Content Remove="wwwroot\img\still_2.jpg" />
+    <Content Remove="wwwroot\img\still_3.jpg" />
+    <Content Remove="wwwroot\img\still_4.jpg" />
+    <Content Remove="wwwroot\img\travel.jpg" />
+    <Content Remove="wwwroot\img\trip-hotel.jpg" />
+    <Content Remove="wwwroot\img\trip-img.jpg" />
+    <Content Remove="wwwroot\img\trip-map.jpg" />
+    <Content Remove="wwwroot\img\trip.jpg" />
+    <Content Remove="wwwroot\img\type_1.jpg" />
+    <Content Remove="wwwroot\img\type_2.jpg" />
+    <Content Remove="wwwroot\img\type_3.jpg" />
+    <Content Remove="wwwroot\img\type_4.jpg" />
+    <Content Remove="wwwroot\img\type_5.jpg" />
+    <Content Remove="wwwroot\img\type_6.jpg" />
+    <Content Remove="wwwroot\img\t_img_1.jpg" />
+    <Content Remove="wwwroot\img\t_img_2.jpg" />
+    <Content Remove="wwwroot\img\t_img_3.jpg" />
+    <Content Remove="wwwroot\img\t_img_4.jpg" />
+    <Content Remove="wwwroot\img\t_img_5.jpg" />
+    <Content Remove="wwwroot\img\t_img_6.jpg" />
+    <Content Remove="wwwroot\img\user.jpg" />
+    <Content Remove="wwwroot\js\bootstrap-datepicker.min.js" />
+    <Content Remove="wwwroot\js\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Remove="wwwroot\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\js\click.js" />
+    <Content Remove="wwwroot\js\dialog.js" />
+    <Content Remove="wwwroot\js\html5shiv.min.js" />
+    <Content Remove="wwwroot\js\jquery-1.11.3.min.js" />
+    <Content Remove="wwwroot\js\main.js" />
+    <Content Remove="wwwroot\js\page.js" />
+    <Content Remove="wwwroot\js\respond.min.js" />
+    <Content Remove="wwwroot\js\swiper.min.js" />
+    <Content Remove="wwwroot\pie\PIE.htc" />
+    <Content Remove="wwwroot\pie\PIE.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="0.21.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="0.21.0" />
+    <None Include="wwwroot\css\bootstrap-datepicker3.css" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
+    <None Include="wwwroot\css\htmleaf-demo.css" />
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\swiper.min.css" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\img\about-1.png" />
+    <None Include="wwwroot\img\about-2.png" />
+    <None Include="wwwroot\img\about-3.png" />
+    <None Include="wwwroot\img\about-4.png" />
+    <None Include="wwwroot\img\about-5.png" />
+    <None Include="wwwroot\img\about-6.png" />
+    <None Include="wwwroot\img\add.png" />
+    <None Include="wwwroot\img\adorn.png" />
+    <None Include="wwwroot\img\all-country.jpg" />
+    <None Include="wwwroot\img\banner-phone.jpg" />
+    <None Include="wwwroot\img\banner.jpg" />
+    <None Include="wwwroot\img\bg.jpg" />
+    <None Include="wwwroot\img\city.jpg" />
+    <None Include="wwwroot\img\close.png" />
+    <None Include="wwwroot\img\code_1.jpg" />
+    <None Include="wwwroot\img\code_2.jpg" />
+    <None Include="wwwroot\img\country-icon-1.png" />
+    <None Include="wwwroot\img\country-icon-2.png" />
+    <None Include="wwwroot\img\country-icon-3.png" />
+    <None Include="wwwroot\img\country-img-1.jpg" />
+    <None Include="wwwroot\img\country-img.jpg" />
+    <None Include="wwwroot\img\country-map.jpg" />
+    <None Include="wwwroot\img\country.jpg" />
+    <None Include="wwwroot\img\fixed.png" />
+    <None Include="wwwroot\img\greece.jpg" />
+    <None Include="wwwroot\img\hotel.jpg" />
+    <None Include="wwwroot\img\icon-mail-hover.png" />
+    <None Include="wwwroot\img\icon-mail.png" />
+    <None Include="wwwroot\img\icon-wx-hover.png" />
+    <None Include="wwwroot\img\icon-wx.png" />
+    <None Include="wwwroot\img\link-logo.png" />
+    <None Include="wwwroot\img\link_1.jpg" />
+    <None Include="wwwroot\img\link_2.jpg" />
+    <None Include="wwwroot\img\link_3.jpg" />
+    <None Include="wwwroot\img\link_4.jpg" />
+    <None Include="wwwroot\img\logo-black.png" />
+    <None Include="wwwroot\img\logo.png" />
+    <None Include="wwwroot\img\min.png" />
+    <None Include="wwwroot\img\offer-icon.png" />
+    <None Include="wwwroot\img\offer.jpg" />
+    <None Include="wwwroot\img\page-list-bg.png" />
+    <None Include="wwwroot\img\photo.jpg" />
+    <None Include="wwwroot\img\print-map.jpg" />
+    <None Include="wwwroot\img\p_img_1.jpg" />
+    <None Include="wwwroot\img\p_img_2.jpg" />
+    <None Include="wwwroot\img\p_img_3.jpg" />
+    <None Include="wwwroot\img\p_img_4.jpg" />
+    <None Include="wwwroot\img\p_img_5.jpg" />
+    <None Include="wwwroot\img\p_img_6.jpg" />
+    <None Include="wwwroot\img\p_img_7.jpg" />
+    <None Include="wwwroot\img\p_img_8.jpg" />
+    <None Include="wwwroot\img\share-wx.png" />
+    <None Include="wwwroot\img\share.png" />
+    <None Include="wwwroot\img\still_1.jpg" />
+    <None Include="wwwroot\img\still_2.jpg" />
+    <None Include="wwwroot\img\still_3.jpg" />
+    <None Include="wwwroot\img\still_4.jpg" />
+    <None Include="wwwroot\img\travel.jpg" />
+    <None Include="wwwroot\img\trip-hotel.jpg" />
+    <None Include="wwwroot\img\trip-img.jpg" />
+    <None Include="wwwroot\img\trip-map.jpg" />
+    <None Include="wwwroot\img\trip.jpg" />
+    <None Include="wwwroot\img\type_1.jpg" />
+    <None Include="wwwroot\img\type_2.jpg" />
+    <None Include="wwwroot\img\type_3.jpg" />
+    <None Include="wwwroot\img\type_4.jpg" />
+    <None Include="wwwroot\img\type_5.jpg" />
+    <None Include="wwwroot\img\type_6.jpg" />
+    <None Include="wwwroot\img\t_img_1.jpg" />
+    <None Include="wwwroot\img\t_img_2.jpg" />
+    <None Include="wwwroot\img\t_img_3.jpg" />
+    <None Include="wwwroot\img\t_img_4.jpg" />
+    <None Include="wwwroot\img\t_img_5.jpg" />
+    <None Include="wwwroot\img\t_img_6.jpg" />
+    <None Include="wwwroot\img\user.jpg" />
+    <None Include="wwwroot\js\bootstrap-datepicker.min.js" />
+    <None Include="wwwroot\js\bootstrap-datepicker.zh-CN.min.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\click.js" />
+    <None Include="wwwroot\js\dialog.js" />
+    <None Include="wwwroot\js\html5shiv.min.js" />
+    <None Include="wwwroot\js\jquery-1.11.3.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\page.js" />
+    <None Include="wwwroot\js\respond.min.js" />
+    <None Include="wwwroot\js\swiper.min.js" />
+    <None Include="wwwroot\pie\PIE.htc" />
+    <None Include="wwwroot\pie\PIE.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="0.21.0" />
     <PackageReference Include="Volo.Abp.Autofac" Version="0.21.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="0.21.0" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Serilog" Version="2.9.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\Volo.Ymapp.Application\Volo.Ymapp.Application.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Volo.Ymapp.HttpApi\Volo.Ymapp.HttpApi.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <ProjectReference Include="..\..\Volo.Ymapp.Application\Volo.Ymapp.Application.csproj" />
+    <ProjectReference Include="..\..\Volo.Ymapp.EntityFrameworkCore.DbMigrations\Volo.Ymapp.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\..\Volo.Ymapp.HttpApi\Volo.Ymapp.HttpApi.csproj" />
   </ItemGroup>
+
 </Project>

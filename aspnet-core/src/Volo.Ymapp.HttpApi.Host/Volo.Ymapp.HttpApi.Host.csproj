@@ -38,8 +38,4 @@
     <None Remove="Logs\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Template\1\" />
-  </ItemGroup>
-
 </Project>
