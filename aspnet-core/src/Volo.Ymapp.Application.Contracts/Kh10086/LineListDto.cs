@@ -6,14 +6,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
-    public class GetLineListDto: PagedAndSortedResultRequestDto
-    {
-        //public Guid CategoryId { get; set; }
-        public string Continent { get; set; }
-        public string Country { get; set; }
-    }
-
-    public class LineDto : AuditedEntityDto<long>, IHasConcurrencyStamp
+    public class LineListDto : AuditedEntityDto<long>
     {
         /// <summary>
         /// 行程编号
@@ -89,11 +82,5 @@ namespace Volo.Ymapp.Kh10086
         /// 
         /// </summary>
         public string FirstLineImg { get; set; }
-        public string ConcurrencyStamp { get; set; }
-        public List<LineTeamDto> LineTeams { get; set; }
-        public List<LineIntroDto> LineIntros { get; set; }
-        public List<LineDayImageDto> LineDayImages { get; set; }
-        public List<LineDayDto> LineDays { get; set; }
-        public List<LineRouteDateDto> LineRouteDates { get; set; }
     }
 }

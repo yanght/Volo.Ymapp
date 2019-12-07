@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 .mt{
     margin-top: 40px !important;
 }
@@ -1017,6 +1017,7 @@
 .blue_p_title p{
     margin-bottom: 12px;
     margin-top: 25px;
+   line-height:1.5;
 }
 .blue_dialog_img{
     cursor: pointer;

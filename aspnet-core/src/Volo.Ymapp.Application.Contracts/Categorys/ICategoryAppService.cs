@@ -17,7 +17,6 @@ namespace Volo.Ymapp.Categorys
            CreateCategoryDto, //Used to create a new book
            UpdateCategoryDto> //Used to update a book
     {
-        Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input);
-
+        Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input);        
     }
 }

@@ -196,6 +196,10 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public long LineDayId { get; set; }
         /// <summary>
+        /// 第几天
+        /// </summary>
+        public int DayNumber { get; set; }
+        /// <summary>
         /// 图片编码
         /// </summary>
         public string ImgCode { get; set; }

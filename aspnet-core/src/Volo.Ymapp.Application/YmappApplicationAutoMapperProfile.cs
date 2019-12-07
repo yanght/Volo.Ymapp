@@ -55,6 +55,9 @@ namespace Volo.Ymapp
             CreateMap<Line, LineDto>();
             CreateMap<LineDto, Line>();
 
+            CreateMap<Line, LineListDto>();
+            CreateMap<LineListDto, Line>();
+
             CreateMap<LineDay, LineDayDto>();
             CreateMap<LineDayDto, LineDay>();
 

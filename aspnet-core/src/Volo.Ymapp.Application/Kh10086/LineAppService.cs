@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Threading;
@@ -82,6 +83,26 @@ namespace Volo.Ymapp.Kh10086
             }
             return list;
         }
+
+        public List<string >GetCountrys()
+        {
+            var countryList = _lineRepository.Select(m => m.Country).Distinct().ToList();
+            List<string> countrys = new List<string>();
+            foreach (var item in countryList)
+            {
+                var arr = item.Split(',');
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var name = arr[i];
+                    if (!countrys.Contains(name))
+                    {
+                        countrys.Add(name);
+                    }
+                }
+            }
+            return countrys;
+        }
+        
 
         /// <summary>
         /// 解析线路列表
@@ -743,6 +764,16 @@ namespace Volo.Ymapp.Kh10086
         {
             var lineTeam = _lineTeamRepository.SingleOrDefault(m => m.ProductCode == productCode);
             return await GetLineByLineCode(lineTeam.LineCode);
+        }
+
+        public async Task<PagedResultDto<LineListDto>> GetLineList(GetLineListDto input)
+        {
+            var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
+                .WhereIf(string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country));
+            var count = query.Count();
+            var list = query.PageBy(input.SkipCount, input.MaxResultCount)
+                       .ToList();
+            return new PagedResultDto<LineListDto>(count, ObjectMapper.Map<List<Line>, List<LineListDto>>(list));
         }
     }
 }

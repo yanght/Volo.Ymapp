@@ -6,6 +6,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Ymapp.Categorys;
+using Volo.Ymapp.CommonEnum;
 using Volo.Ymapp.Dtos;
 
 namespace Volo.Ymapp
@@ -29,13 +30,14 @@ namespace Volo.Ymapp
         /// <returns></returns>
         public async Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input)
         {
-            var list = await GetListAsync(new PagedAndSortedResultRequestDto() { SkipCount = 0, MaxResultCount = int.MaxValue });
-
-            return GetCategoryTree(Guid.Empty, list.Items);
+            var result = Repository.WhereIf(input.Type != CategoryType.Undefined, m => m.Type == input.Type).ToList();
+            //var list = await GetListAsync(new PagedAndSortedResultRequestDto() { SkipCount = 0, MaxResultCount = int.MaxValue });
+            var list = result.MapToList<Category, CategoryDto>().ToList();
+            return GetCategoryTree(Guid.Empty, list);
         }
 
 
-        private List<TreeDataDto> GetCategoryTree(Guid parentId, IReadOnlyList<CategoryDto> list)
+        private List<TreeDataDto> GetCategoryTree(Guid parentId, List<CategoryDto> list)
         {
             if (list == null || list.Count == 0) return null;
             List<TreeDataDto> treeList = new List<TreeDataDto>();
