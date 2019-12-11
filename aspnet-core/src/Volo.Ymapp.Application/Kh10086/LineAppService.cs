@@ -769,7 +769,7 @@ namespace Volo.Ymapp.Kh10086
         public async Task<PagedResultDto<LineListDto>> GetLineList(GetLineListDto input)
         {
             var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
-                .WhereIf(string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country));
+                .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country));
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)
                        .ToList();

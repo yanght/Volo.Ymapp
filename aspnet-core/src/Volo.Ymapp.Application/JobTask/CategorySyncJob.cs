@@ -58,16 +58,16 @@ namespace Volo.Ymapp.JobTask
             foreach (var item in countrys)
             {
                 var countryMap = mapList.FirstOrDefault(m => m.country_cname == item);
-                var catgory = _categoryRepository.FirstOrDefault(m => m.Name == countryMap.continent_cname);
+                if (countryMap == null) continue;
+                var catgory = _categoryApp.GetCategoryByName(countryMap.continent_cname);
 
-                _categoryRepository.Insert(new Category()
+                _categoryApp.CreateAsync(new CreateCategoryDto()
                 {
                     Name = item,
                     ParentId = catgory.Id,
-                    Type = CategoryType.Line,
+                    Type = (int)CategoryType.Line,
                     Sort = 0
-                });
-
+                }).GetAwaiter().GetResult();
             }
         }
     }

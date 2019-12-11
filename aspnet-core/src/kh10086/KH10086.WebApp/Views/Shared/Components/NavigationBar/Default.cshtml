@@ -1,0 +1,161 @@
+﻿@model KH10086.WebApp.Models.Partial.NavigationViewModel;
+@{
+    var countryCategorys = Model.CountryCategorys;
+}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="blue_nav">
+                <ul class="nav navbar-nav col-md-12 col-sm-12">
+                    <li class="col-md-nav"><a href="#">首页</a></li>
+                    <li class="col-md-nav dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            目的地 <span class="glyphicon glyphicon-menu-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-list">
+                            <div class="dropdown-list-bg"></div>
+                            @foreach (var item in countryCategorys)
+                            {
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-1">@item.Title</dt>
+                                        @if (item.Children != null)
+                                        {
+                                            foreach (var child in item.Children)
+                                            {
+                                                <dd><a href="/line/list/@(child.Value).html">@child.Title</a></dd>
+                                            }
+                                        }
+                                    </dl>
+                                </li>
+                            }
+
+                            @*<li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-2">亚洲</dt>
+                                        <dd><a href="#">中国</a></dd>
+                                        <dd><a href="#">越难</a></dd>
+                                        <dd><a href="#">缅甸</a></dd>
+                                        <dd><a href="#">泰国</a></dd>
+                                        <dd><a href="#">老挝</a></dd>
+                                        <dd><a href="#">不丹</a></dd>
+                                        <dd><a href="#">柬埔寨</a></dd>
+                                        <dd><a href="#">马来西亚</a></dd>
+                                        <dd><a href="#">印度尼西亚</a></dd>
+                                        <dd><a href="#">日本</a></dd>
+                                        <dd><a href="#">菲律宾</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-3">澳洲</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-4">加勒比</dt>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">哥斯达黎加</a></dd>
+                                        <dd><a href="#">牙买加</a></dd>
+                                        <dd><a href="#">巴巴多斯</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-5">欧洲</dt>
+                                        <dd><a href="#">冰岛</a></dd>
+                                        <dd><a href="#">法国</a></dd>
+                                        <dd><a href="#">德国</a></dd>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">希腊</a></dd>
+                                        <dd><a href="#">西班牙</a></dd>
+                                        <dd><a href="#">葡萄牙</a></dd>
+                                        <dd><a href="#">芬兰</a></dd>
+                                        <dd><a href="#">瑞士</a></dd>
+                                        <dd><a href="#">挪威</a></dd>
+                                    </dl>
+                                </li>
+                                <li class="dropdown-item col-md-nav col-xs-4">
+                                    <dl>
+                                        <dt class="color-6">北美洲</dt>
+                                        <dd><a href="#">意大利</a></dd>
+                                        <dd><a href="#">美国</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-7">南极洲</dt>
+                                        <dd><a href="#">南极</a></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="color-8">南美洲</dt>
+                                        <dd><a href="#">阿根廷</a></dd>
+                                        <dd><a href="#">智利</a></dd>
+                                        <dd><a href="#">玻利维亚</a></dd>
+                                        <dd><a href="#">古巴</a></dd>
+                                        <dd><a href="#">巴西</a></dd>
+                                        <dd><a href="#">哥伦比亚</a></dd>
+                                        <dd><a href="#">秘鲁</a></dd>
+                                    </dl>
+                                </li>*@
+                        </ul>
+                    </li>
+                    <li class="col-md-nav dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            我们的旅程 <span class="glyphicon glyphicon-menu-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-2">
+                            <li><a href="#">探险</a></li>
+                            <li><a href="#">海滩度假</a></li>
+                            <li><a href="#">城市印象</a></li>
+                            <li><a href="#">游轮</a></li>
+                            <li><a href="#">教育</a></li>
+                            <li><a href="#">家庭旅游</a></li>
+                            <li><a href="#">蜜月</a></li>
+                            <li><a href="#">个人旅游</a></li>
+                            <li><a href="#">Safari</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-md-nav"><a href="#">精选酒店</a></li>
+                    <li class="col-md-nav dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            关于我们 <span class="glyphicon glyphicon-menu-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-2 dropdown-menu-3">
+                            <li><a href="#">我们的故事</a></li>
+                            <li><a href="#">优秀团队</a></li>
+                            <li><a href="#">客户评价</a></li>
+                            <li><a href="#">合作伙伴</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <form class="navbar-form navbar-right">
+                <div class="input-group">
+                    <input type="text" class="form-control input_search" placeholder="搜索">
+                    <span class="input-group-btn">
+                        <button class="btn btn-search" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

@@ -36,6 +36,12 @@ namespace Volo.Ymapp
             return GetCategoryTree(Guid.Empty, list);
         }
 
+        public CategoryDto GetCategoryByName(string categoryName)
+        {
+            var result = Repository.FirstOrDefault(m => m.Name == categoryName);
+            return result.MapTo<Category, CategoryDto>();
+        }
+
 
         private List<TreeDataDto> GetCategoryTree(Guid parentId, List<CategoryDto> list)
         {
@@ -55,5 +61,6 @@ namespace Volo.Ymapp
             }
             return treeList.Count() == 0 ? null : treeList;
         }
+
     }
 }

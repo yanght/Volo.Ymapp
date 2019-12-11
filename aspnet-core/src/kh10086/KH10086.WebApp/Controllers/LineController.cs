@@ -19,7 +19,7 @@ namespace KH10086.WebApp.Controllers
             _lineApp = lineApp;
             _categoryApp = categoryApp;
         }
-        [Route("Line/List/{categoryId?}.html")]
+        [Route("Line/List/{categoryId}.html")]
         public async Task<IActionResult> List(Guid categoryId, int pageIndex = 1)
         {
             int pageSize = 9;

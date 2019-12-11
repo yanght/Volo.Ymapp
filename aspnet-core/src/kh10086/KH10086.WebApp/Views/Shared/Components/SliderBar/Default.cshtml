@@ -1,0 +1,23 @@
+﻿@model KH10086.WebApp.Models.Partial.NavigationViewModel;
+@{
+    var countryCategorys = Model.CountryCategorys;
+}
+<div class="col-md-3 col-xs-4">
+    <div class="blue_page_list">
+        <h2>目的地</h2>
+
+        @foreach (var item in countryCategorys)
+        {
+            if (item.Children != null && item.Children.Count > 0)
+            {
+                <dl>
+                    <dt data-flag="0">@item.Title</dt>
+                    @foreach (var child in item.Children)
+                    {
+                        <dd><a href="/line/list/@(child.Value).html">@child.Title</a></dd>
+                    }
+                </dl>
+            }
+        }
+    </div>
+</div>

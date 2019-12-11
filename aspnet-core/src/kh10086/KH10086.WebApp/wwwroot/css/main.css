@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 * {
     font-family: "Microsoft YaHei",'微软雅黑';
 }
@@ -370,6 +370,7 @@ header .btn-custom:hover {
 
 .blue_img_3_text {
     padding: 10px 20px;
+    min-height:100px;
 }
 
 .blue_img_3_text p {

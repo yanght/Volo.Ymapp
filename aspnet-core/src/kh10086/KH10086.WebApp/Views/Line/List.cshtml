@@ -21,77 +21,9 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-3 col-xs-4">
-            <div class="blue_page_list">
-                <h2>目的地</h2>
-                <dl>
-                    <dt data-flag="0">非洲</dt>
-                    <dd><a href="#">乌干达</a></dd>
-                    <dd><a href="#">肯尼亚</a></dd>
-                    <dd><a href="#">南非</a></dd>
-                    <dd><a href="#">博茨瓦纳</a></dd>
-                    <dd><a href="#">纳美比亚</a></dd>
-                    <dd><a href="#">赞比亚</a></dd>
-                    <dd><a href="#">摩洛哥</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">亚洲</dt>
-                    <dd><a href="#">中国</a></dd>
-                    <dd><a href="#">越难</a></dd>
-                    <dd><a href="#">缅甸</a></dd>
-                    <dd><a href="#">泰国</a></dd>
-                    <dd><a href="#">老挝</a></dd>
-                    <dd><a href="#">不丹</a></dd>
-                    <dd><a href="#">柬埔寨</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">澳洲</dt>
-                    <dd><a href="#">古巴</a></dd>
-                    <dd><a href="#">哥斯达黎加</a></dd>
-                    <dd><a href="#">牙买加</a></dd>
-                    <dd><a href="#">巴巴多斯</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">加勒比</dt>
-                    <dd><a href="#">古巴</a></dd>
-                    <dd><a href="#">哥斯达黎加</a></dd>
-                    <dd><a href="#">牙买加</a></dd>
-                    <dd><a href="#">巴巴多斯</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">欧洲</dt>
-                    <dd><a href="#">冰岛</a></dd>
-                    <dd><a href="#">法国</a></dd>
-                    <dd><a href="#">德国</a></dd>
-                    <dd><a href="#">意大利</a></dd>
-                    <dd><a href="#">希腊</a></dd>
-                    <dd><a href="#">西班牙</a></dd>
-                    <dd><a href="#">葡萄牙</a></dd>
-                    <dd><a href="#">芬兰</a></dd>
-                    <dd><a href="#">瑞士</a></dd>
-                    <dd><a href="#">挪威</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">北美洲</dt>
-                    <dd><a href="#">意大利</a></dd>
-                    <dd><a href="#">美国</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">南极洲</dt>
-                    <dd><a href="#">南极</a></dd>
-                </dl>
-                <dl>
-                    <dt data-flag="0">南美洲</dt>
-                    <dd><a href="#">阿根廷</a></dd>
-                    <dd><a href="#">智利</a></dd>
-                    <dd><a href="#">玻利维亚</a></dd>
-                    <dd><a href="#">古巴</a></dd>
-                    <dd><a href="#">巴西</a></dd>
-                    <dd><a href="#">哥伦比亚</a></dd>
-                    <dd><a href="#">秘鲁</a></dd>
-                </dl>
-            </div>
-        </div>
+
+        @await Component.InvokeAsync("SliderBar")
+
         <div class="col-md-9 col-xs-8 blue_page_content">
             @foreach (var item in lines)
             {
