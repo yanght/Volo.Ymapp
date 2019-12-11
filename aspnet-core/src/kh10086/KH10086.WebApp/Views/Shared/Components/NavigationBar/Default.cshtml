@@ -27,90 +27,43 @@
                         </a>
                         <ul class="dropdown-menu dropdown-list">
                             <div class="dropdown-list-bg"></div>
+                            @{
+                                int index = 1;
+                            }
                             @foreach (var item in countryCategorys)
                             {
-                                <li class="dropdown-item col-md-nav col-xs-4">
-                                    <dl>
-                                        <dt class="color-1">@item.Title</dt>
-                                        @if (item.Children != null)
-                                        {
-                                            foreach (var child in item.Children)
-                                            {
-                                                <dd><a href="/line/list/@(child.Value).html">@child.Title</a></dd>
-                                            }
-                                        }
-                                    </dl>
-                                </li>
+                                @if (item.Children != null)
+                                {
+                                    if (item.Title == "欧洲")
+                                    {
+                                        var childList = item.Children;
+                                        childList = item.Children.Take(20).ToList();
+                                        <li class="dropdown-item col-md-nav col-xs-4">
+                                            <dl>
+                                                <dt class="color-@(index)">@item.Title</dt>
+                                                @foreach (var child in childList)
+                                                {
+                                                    <dd><a href="/line/list/@(child.Value).html">@child.Title</a></dd>
+                                                }
+                                            </dl>
+                                        </li>
+                                        item.Children = item.Children.Skip(20).ToList();
+                                    }
+                                    if (item.Children.Count > 0)
+                                    {
+                                        <li class="dropdown-item col-md-nav col-xs-4">
+                                            <dl>
+                                                <dt class="color-@(index)">@item.Title</dt>
+                                                @foreach (var child in item.Children)
+                                                {
+                                                    <dd><a href="/line/list/@(child.Value).html">@child.Title</a></dd>
+                                                }
+                                            </dl>
+                                        </li>
+                                    }
+                                    index++;
+                                }
                             }
-
-                            @*<li class="dropdown-item col-md-nav col-xs-4">
-                                    <dl>
-                                        <dt class="color-2">亚洲</dt>
-                                        <dd><a href="#">中国</a></dd>
-                                        <dd><a href="#">越难</a></dd>
-                                        <dd><a href="#">缅甸</a></dd>
-                                        <dd><a href="#">泰国</a></dd>
-                                        <dd><a href="#">老挝</a></dd>
-                                        <dd><a href="#">不丹</a></dd>
-                                        <dd><a href="#">柬埔寨</a></dd>
-                                        <dd><a href="#">马来西亚</a></dd>
-                                        <dd><a href="#">印度尼西亚</a></dd>
-                                        <dd><a href="#">日本</a></dd>
-                                        <dd><a href="#">菲律宾</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="dropdown-item col-md-nav col-xs-4">
-                                    <dl>
-                                        <dt class="color-3">澳洲</dt>
-                                        <dd><a href="#">古巴</a></dd>
-                                        <dd><a href="#">哥斯达黎加</a></dd>
-                                        <dd><a href="#">牙买加</a></dd>
-                                        <dd><a href="#">巴巴多斯</a></dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="color-4">加勒比</dt>
-                                        <dd><a href="#">古巴</a></dd>
-                                        <dd><a href="#">哥斯达黎加</a></dd>
-                                        <dd><a href="#">牙买加</a></dd>
-                                        <dd><a href="#">巴巴多斯</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="dropdown-item col-md-nav col-xs-4">
-                                    <dl>
-                                        <dt class="color-5">欧洲</dt>
-                                        <dd><a href="#">冰岛</a></dd>
-                                        <dd><a href="#">法国</a></dd>
-                                        <dd><a href="#">德国</a></dd>
-                                        <dd><a href="#">意大利</a></dd>
-                                        <dd><a href="#">希腊</a></dd>
-                                        <dd><a href="#">西班牙</a></dd>
-                                        <dd><a href="#">葡萄牙</a></dd>
-                                        <dd><a href="#">芬兰</a></dd>
-                                        <dd><a href="#">瑞士</a></dd>
-                                        <dd><a href="#">挪威</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="dropdown-item col-md-nav col-xs-4">
-                                    <dl>
-                                        <dt class="color-6">北美洲</dt>
-                                        <dd><a href="#">意大利</a></dd>
-                                        <dd><a href="#">美国</a></dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="color-7">南极洲</dt>
-                                        <dd><a href="#">南极</a></dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="color-8">南美洲</dt>
-                                        <dd><a href="#">阿根廷</a></dd>
-                                        <dd><a href="#">智利</a></dd>
-                                        <dd><a href="#">玻利维亚</a></dd>
-                                        <dd><a href="#">古巴</a></dd>
-                                        <dd><a href="#">巴西</a></dd>
-                                        <dd><a href="#">哥伦比亚</a></dd>
-                                        <dd><a href="#">秘鲁</a></dd>
-                                    </dl>
-                                </li>*@
                         </ul>
                     </li>
                     <li class="col-md-nav dropdown">

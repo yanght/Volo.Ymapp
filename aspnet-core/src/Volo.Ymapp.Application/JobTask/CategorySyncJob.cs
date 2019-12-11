@@ -37,20 +37,21 @@ namespace Volo.Ymapp.JobTask
             var mapList = JsonConvert.DeserializeObject<List<ContinentCountry>>(jsondata);
 
 
-            //List<string> continents = _lineApp.GetContinents();
-            //continents.ForEach((item) =>
-            //{
-            //    if (_categoryRepository.Where(m => m.Name == item).Count() == 0)
-            //    {
-            //        _categoryApp.CreateAsync(new CreateCategoryDto()
-            //        {
-            //            Name = item.Trim(),
-            //            ParentId = Guid.Empty,
-            //            Sort = 0,
-            //            Type = (int)CategoryType.Line
-            //        }).GetAwaiter().GetResult();
-            //    }
-            //});
+            List<string> continents = _lineApp.GetContinents();
+            continents.ForEach((item) =>
+            {
+                var oldcat = _categoryApp.GetCategoryByName(item);
+                if (oldcat == null)
+                {
+                    _categoryApp.CreateAsync(new CreateCategoryDto()
+                    {
+                        Name = item.Trim(),
+                        ParentId = Guid.Empty,
+                        Sort = 0,
+                        Type = (int)CategoryType.Line
+                    }).GetAwaiter().GetResult();
+                }
+            });
 
 
             var countrys = _lineApp.GetCountrys();
@@ -60,7 +61,8 @@ namespace Volo.Ymapp.JobTask
                 var countryMap = mapList.FirstOrDefault(m => m.country_cname == item);
                 if (countryMap == null) continue;
                 var catgory = _categoryApp.GetCategoryByName(countryMap.continent_cname);
-
+                var oldcat = _categoryApp.GetCategoryByName(item);
+                if (oldcat != null) continue;
                 _categoryApp.CreateAsync(new CreateCategoryDto()
                 {
                     Name = item,
