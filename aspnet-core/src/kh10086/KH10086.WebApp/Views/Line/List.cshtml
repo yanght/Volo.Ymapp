@@ -1,4 +1,7 @@
 ﻿@model KH10086.WebApp.Models.Line.LinelistViewModel
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common;
 @{
     var lines = Model.Lines;
     ViewData["Title"] = "List";
@@ -45,17 +48,18 @@
                 </div>
             }
             <div class="col-md-12 col-xs-12 text-center">
-                <table class="blue_page_total">
-                    <tr>
-                        <td><</td>
-                        <td>1</td>
-                        <td class="active">2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>></td>
-                    </tr>
-                </table>
+                @*<table class="blue_page_total">
+                        <tr>
+                            <td><</td>
+                            <td>1</td>
+                            <td class="active">2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>></td>
+                        </tr>
+                    </table>*@
+                @Html.PagedListPager((IPagedList)ViewBag.Pager, page => Url.Action("List", new { pageIndex = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", MaximumPageNumbersToDisplay = 5, DisplayItemSliceAndTotal = false })
             </div>
         </div>
     </div>

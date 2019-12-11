@@ -217,6 +217,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="0.21.0" />
     <PackageReference Include="Volo.Abp.Autofac" Version="0.21.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
+    <PackageReference Include="X.PagedList.Web.Common" Version="7.9.1" />
   </ItemGroup>
 
   <ItemGroup>

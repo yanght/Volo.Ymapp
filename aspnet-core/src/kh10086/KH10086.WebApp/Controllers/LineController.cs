@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.Kh10086;
+using X.PagedList;
 
 namespace KH10086.WebApp.Controllers
 {
@@ -41,8 +42,11 @@ namespace KH10086.WebApp.Controllers
                 SkipCount = (pageIndex - 1) * pageSize,
                 MaxResultCount = pageSize
             });
+
             model.Lines = result.Items.ToList();
             model.TotalCount = result.TotalCount;
+            var usersAsIPagedList = new StaticPagedList<LineListDto>(model.Lines, pageIndex, pageSize, (int)model.TotalCount);
+            ViewBag.Pager = usersAsIPagedList;
             return View(model);
         }
 
