@@ -8,7 +8,6 @@ using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
 using Serilog;
-using Volo.Ymapp.TaskScheduler.Jobs;
 
 namespace Volo.Ymapp.TaskScheduler
 {
@@ -58,7 +57,6 @@ namespace Volo.Ymapp.TaskScheduler
                 return scheduler;
             });
             services.AddScoped<SyncJob>();
-            services.AddScoped<ParseLineJob>();
             //此处不能写成services.AddScoped<IJob,SyncJob>(); 会造成在找不到SyncJob
 
             #endregion

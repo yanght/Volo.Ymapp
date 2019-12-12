@@ -22,5 +22,9 @@ namespace Volo.Ymapp.CommonEnum
         /// 线路
         /// </summary>
         Line,
+        /// <summary>
+        /// 线路类型
+        /// </summary>
+        LineType
     }
 }

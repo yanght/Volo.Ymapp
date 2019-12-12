@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Ymapp.Categorys;
+using Volo.Ymapp.CommonEnum;
 using Volo.Ymapp.Dtos;
 
 namespace Volo.Ymapp.Categorys
@@ -19,5 +20,6 @@ namespace Volo.Ymapp.Categorys
     {
         Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input);
         CategoryDto GetCategoryByName(string categoryName);
+        List<CategoryDto> GetCategoryListByType(CategoryType type);
     }
 }

@@ -1,0 +1,224 @@
+﻿@model KH10086.WebApp.Models.Line.LinelistViewModel
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common;
+@{
+    var lines = Model.Lines;
+    ViewData["Title"] = "List";
+}
+
+@*<section class="container">
+        <article class="blue_page_article">
+            <h2>意大利</h2>
+            <p>
+                烹饪震中，时尚之都，历史悠久的绝技-意大利可以很容易地描述为所有这些事情等等。在蓝精灵的旅程，这个诱人的目的地，探索意大利的许多面孔和推出它的灵魂，发现真正意义上甜蜜的生活。无论你是新来意大利的魅力还是一个虔诚的频繁旅行使另一个朝圣这个令人难以置信的国家，让蓝精灵带你去你最真实的旅程呢。
+            </p>
+            <p>
+                烹饪震中，时尚之都，历史悠久的绝技-意大利可以很容易地描述为所有这些事情等等。在蓝精灵的旅程，这个诱人的目的地，探索意大利的许多面孔和推出它的灵魂，发现真正意义上甜蜜的生活。无论你是新来意大利的魅力还是一个虔诚的频繁旅行使另一个朝圣这个令人难以置信的国家，让蓝精灵带你去你最真实的旅程呢。
+            </p>
+            <p>
+                <button class="btn btn_country btn_country_message" data-toggle="modal" data-target="#myModal">国家信息</button>
+            </p>
+        </article>
+    </section>*@
+
+<section class="container">
+    <div class="row">
+
+        @await Component.InvokeAsync("SliderBar")
+
+        <div class="col-md-9 col-xs-8 blue_page_content">
+            @foreach (var item in lines)
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="blue_img_3 blue_img_bg">
+                        <div class="blue_img_3_img">
+                            <img src="@(string.IsNullOrEmpty(item.FirstLineImg)?"https://img0.uzaicdn.com/ba/sightGallery/ATT0000815493.jpg":item.FirstLineImg)" alt="">
+                            <p>@item.Country</p>
+                        </div>
+                        <div class="blue_img_3_day">
+                            <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
+                            <span class="pull-right">RMB 15000起</span>
+                        </div>
+                        <div class="blue_img_3_text">
+                            <p title="@item.Title">@item.Title</p>
+                            <a class="btn btn_detail pull-right" href="/line/@(item.Id).html" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-12 col-xs-12 text-center">
+                @*<table class="blue_page_total">
+                        <tr>
+                            <td><</td>
+                            <td>1</td>
+                            <td class="active">2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>></td>
+                        </tr>
+                    </table>*@
+                @Html.PagedListPager((IPagedList)ViewBag.Pager, page => Url.Action("List", new { pageIndex = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", MaximumPageNumbersToDisplay = 5, DisplayItemSliceAndTotal = false })
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
+            </div>
+            <div class="modal-body blue_model_country blue_modal_country">
+                <div class="row">
+                    <h2>不丹：</h2>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="col-md-6 col-xs-6">
+                            <div class="blue_model_country_img">
+                                <img src="~/img/country-img.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 blue_model_country_message">
+                            <p>首都: 廷布</p>
+                            <p>货币:努扎姆, 通印度卢比按照1:1的汇率来计算</p>
+                            <p>面积: 47,000平方公里</p>
+                            <p>人口: 76万人</p>
+                            <p>语言: 宗卡语，英语</p>
+                            <p>宗教信仰:74.7%的人信仰藏传佛教, 22.6%的信仰印度教</p>
+                            <p>国家区号：+975</p>
+                            <p>时区：东六区，比中国早2个小时</p>
+                            <p>电压: 220V, 50Hz. 常用的电源插座如下</p>
+                            <p>
+                                <img src="~/img/country-icon-1.png" alt="">
+                                <img src="~/img/country-icon-2.png" alt="">
+                                <img src="~/img/country-icon-3.png" alt="">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="blue_model_country_map"><img src="~/img/country-map.jpg" alt=""></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <article class="blue_model_country_article">
+                            <h2>气候：</h2>
+                            <p>不丹的天气取决于海拔高度。在山区的北部地区，气候条件类似于北极。向南靠近印度，夏天天气炎热潮湿，冬天凉爽。冬天是游览不丹低海拔地区的好时间，但是高海拔的地区就会很冷。</p>
+                            <p>游览不丹的最佳时间是春季(3月-5月)和秋天(9月下旬到11月)，天气温暖，干燥，阳光明媚，但当你去不丹旅行时，还是要常备几件暖和的衣服。</p>
+                            <h2>文化：</h2>
+                            <ul>
+                                <li>
+                                    作为一个人口稀少的国家，同印度北部和中国南方接壤，不丹依靠地理上的隔离来保护自己不受外来文化的影响。只有在20世纪的最后几十年里，外国人才可以访问这个国家，而且只有有限的数量。通过这种方式，不丹成功地保留了其文化的许多方面，有些文化可以直接追溯到17世纪中期.
+                                </li>
+                                <li>不丹文化和佛教的影响力是紧密相连的。宗教的影响在每一天都是很明显的，也是不丹精神和文化遗产的主要原因.</li>
+                                <li>许多宗教仪式都会定期举行，这些仪式都对生命充满敬畏。</li>
+                                <li>虽然现代生活方式正在慢慢地发展，但大多数不丹人仍然生活在小村庄里，他们的主要职业是务农.</li>
+                            </ul>
+                            <h2>紧急联系方式：</h2>
+                            <p>火警：110</p>
+                            <p>救护车: 112</p>
+                            <p>Police: 113</p>
+                            <h2>关于不丹你一定要知道的：</h2>
+                            <ul>
+                                <li>不丹名字的由来可能源于梵语的Bhotanta，意为“西藏的终结”，或者是梵语的bhu- attan，意为“高地”。</li>
+                                <li>它的首都是Thimpu，是世界上唯一没有红绿灯的首都.</li>
+                                <li>在不丹，成年人和年轻人的识字率分别为54.3%和76.2%.</li>
+                                <li>1974年，第一批外国游客被允许进入不丹</li>
+                                <li>不丹拥有世界上最高的未攀爬峰——Gangkhar Puensum，它是不丹人的圣地，现在不丹政府已禁止攀登这座山.</li>
+                                <li>不丹是唯一一个最大的出口是可再生能源的国家.</li>
+                                <li>该国72%的地区被森林覆盖.</li>
+                                <li>任何被抓到杀害濒危物种的人都将面临终身监禁.<br>农业是它的主要产业，有大米、水果和乳制品</li>
+                                <li>不丹没有将GDP作为经济指标，而是通过四个支柱来衡量其整体的“健康”:可持续发展、环境保护、文化保护和良好治理，这些共同构成国民幸福总值(GNH).</li>
+                                <li>自1999年起，不丹就禁止使用塑料袋.</li>
+                                <li>不丹是唯一取缔烟草的国家(2004年生效).</li>
+                                <li>“takin”是一种山羊羚羊，是不丹的国家动物</li>
+                                <li>这个国家的两项全国性运动是射箭和飞镖</li>
+                                <li>在元旦那天，所有的公民都正式变老了一岁。这样，没有人会忘记任何人的生日</li>
+                                <li>不丹拥有世界上排名第17的大佛.</li>
+                                <li>不丹是世界上第一个以宪法义务保护环境的国家.</li>
+                                <li>不丹人接受政府的免费教育，重点放在佛教教义上.</li>
+                                <li>罕见的喜马拉雅蓝罂粟。它是不丹的国花.</li>
+                                <li>世界上只有九名飞行员有资格在不丹的机场进行降落操作,飞行员必须在降落或起飞前在山谷中进行一系列的急转弯.</li>
+                                <li>不丹有强制性的国家着装规定。男性穿及膝的传统服装，女性必须穿长度为脚踝的裙子。颜色是由社会阶层和地位决定的.</li>
+                                <li>
+                                    不丹的传统，遗传(土地、房屋和动物)一般传给大女儿而不是长子。一个男人经常搬到他新妻子的家里，直到他能挣到他的生活费为止。在不丹，一夫多妻制是合法的，虽然这种做法并不常见.
+                                </li>
+                                <li>不丹人被禁止与外国人结婚.</li>
+                                <li>同性恋在这里是违法的，会受到法律制裁，但是一夫多妻制是被允许的</li>
+                                <li>不丹人在参观政府办公室时不允许穿裤子，在官方和宗教活动期间也不允许穿裤子.</li>
+                            </ul>
+                            <h2>值得一尝的美食：</h2>
+                            <ul>
+                                <li>Ema Datshi –起司辣椒</li>
+                                <li>Jasha Maroo or Maru –一种带辣味的鸡肉</li>
+                                <li>Phaksha Paa-猪肉和红辣椒</li>
+                                <li>Momos –饺子</li>
+                            </ul>
+                            <h2>签证要求：</h2>
+                            <p>
+                                所有外国人(除了孟加拉国、印度和马尔代夫的公民)都必须在访问不丹之前获得签证。如果获得批准，他们将获得签证信，并必须在入境口岸出示，然后签证会被印在护照上。外国游客必须使用有资质的不丹旅行社或他们的国际伙伴之一来预先安排他们的签证和其他一切旅行所必须的要素，包括机票，住宿，导游等，每天的旅行费用也是政府统一规定的，对于大多数外国游客来说，在旅游旺季，每天的费用是250美元，淡季是200美元。中国公民同样适用以上政策。
+                            </p>
+                            <h2>行程推荐：</h2>
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="blue_img_3 blue_img_bg">
+                                        <div class="blue_img_3_img">
+                                            <img src="~/img/t_img_1.jpg" alt="">
+                                            <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                                        </div>
+                                        <div class="blue_img_3_day">
+                                            <span class="pull-left">7天</span>
+                                            <span class="pull-right">RMB 15800起</span>
+                                        </div>
+                                        <div class="blue_img_3_text">
+                                            <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                                            <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="blue_img_3 blue_img_bg">
+                                        <div class="blue_img_3_img">
+                                            <img src="~/img/t_img_1.jpg" alt="">
+                                            <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                                        </div>
+                                        <div class="blue_img_3_day">
+                                            <span class="pull-left">7天</span>
+                                            <span class="pull-right">RMB 15800起</span>
+                                        </div>
+                                        <div class="blue_img_3_text">
+                                            <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                                            <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="blue_img_3 blue_img_bg">
+                                        <div class="blue_img_3_img">
+                                            <img src="~/img/t_img_1.jpg" alt="">
+                                            <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
+                                        </div>
+                                        <div class="blue_img_3_day">
+                                            <span class="pull-left">7天</span>
+                                            <span class="pull-right">RMB 15800起</span>
+                                        </div>
+                                        <div class="blue_img_3_text">
+                                            <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
+                                            <a class="btn btn_detail pull-right" href="#">查看详情</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

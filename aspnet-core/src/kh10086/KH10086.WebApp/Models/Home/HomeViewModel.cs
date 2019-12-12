@@ -1,13 +1,19 @@
 ﻿using System.Collections.Generic;
+using Volo.Ymapp.Categorys;
 using Volo.Ymapp.Dtos;
+using Volo.Ymapp.Kh10086;
 
 namespace KH10086.WebApp.Models.Home
 {
     public class HomeViewModel
     {
         /// <summary>
-        /// 地区分类
+        /// 线路类型
         /// </summary>
-        public List<TreeDataDto> AreaCategorys { get; set; }
+        public List<CategoryDto> LineTypeList { get; set; }
+        /// <summary>
+        /// 推荐列表
+        /// </summary>
+        public List<LineListDto> RecommendList { get; set; }
     }
 }

@@ -7,7 +7,6 @@ using Topshelf;
 using Volo.Abp;
 using Volo.Abp.Threading;
 using Volo.Ymapp.Kh10086;
-using Volo.Ymapp.TaskScheduler.Jobs;
 
 namespace Volo.Ymapp.TaskScheduler
 {

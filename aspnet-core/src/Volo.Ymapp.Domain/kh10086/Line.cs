@@ -84,6 +84,17 @@ namespace Volo.Ymapp.Kh10086
         /// 
         /// </summary>
         public string FirstLineImg { get; set; }
+        /// <summary>
+        /// 分类编号
+        /// </summary>
+        public Guid CategoryId { get; set; }
+        /// <summary>
+        /// 是否推荐
+        /// </summary>
+        public int Recommend { get; set; }
+        /// <summary>
+        /// 线路分类类型  多个以,分隔
+        /// </summary>
+        public string LineCategoryType { get; set; }
     }
-       
 }

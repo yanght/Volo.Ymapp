@@ -22,6 +22,10 @@ namespace Volo.Ymapp.Categorys
         /// </summary>
         public Guid ParentId { get; set; }
         /// <summary>
+        /// 分类图片
+        /// </summary>
+        public string PictureUrl { get; set; }
+        /// <summary>
         /// 排序
         /// </summary>
         public int Sort { get; set; }

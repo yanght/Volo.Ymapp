@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -84,7 +85,7 @@ namespace Volo.Ymapp.Kh10086
             return list;
         }
 
-        public List<string >GetCountrys()
+        public List<string> GetCountrys()
         {
             var countryList = _lineRepository.Select(m => m.Country).Distinct().ToList();
             List<string> countrys = new List<string>();
@@ -102,7 +103,7 @@ namespace Volo.Ymapp.Kh10086
             }
             return countrys;
         }
-        
+
 
         /// <summary>
         /// 解析线路列表
@@ -766,10 +767,13 @@ namespace Volo.Ymapp.Kh10086
             return await GetLineByLineCode(lineTeam.LineCode);
         }
 
-        public async Task<PagedResultDto<LineListDto>> GetLineList(GetLineListDto input)
+        public PagedResultDto<LineListDto> GetLineList(GetLineListDto input)
         {
             var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
-                .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country));
+                .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country))
+                .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend.Value)
+                .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType);
+
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)
                        .ToList();

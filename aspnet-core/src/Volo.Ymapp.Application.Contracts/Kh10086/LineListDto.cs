@@ -6,6 +6,15 @@ using Volo.Abp.Domain.Entities;
 
 namespace Volo.Ymapp.Kh10086
 {
+    public class GetLineListDto : PagedAndSortedResultRequestDto
+    {
+        public Guid CategoryId { get; set; }
+        public string Continent { get; set; }
+        public string Country { get; set; }
+        public string LineCategoryType { get; set; }
+        public int? Recommend { get; set; }
+    }
+
     public class LineListDto : AuditedEntityDto<long>
     {
         /// <summary>

@@ -26,6 +26,10 @@ namespace Volo.Ymapp.Categorys
         [DefaultValue("00000000-0000-0000-0000-000000000000")]
         public Guid ParentId { get; set; }
         /// <summary>
+        /// 分类图片
+        /// </summary>
+        public string PictureUrl { get; set; }
+        /// <summary>
         /// 排序
         /// </summary>
         [Required]

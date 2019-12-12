@@ -1717,6 +1717,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<Guid>("ParentId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Sort")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -1738,6 +1741,9 @@ namespace Volo.Ymapp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1805,6 +1811,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("LineCategoryType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LineCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -1822,6 +1831,9 @@ namespace Volo.Ymapp.Migrations
 
                     b.Property<string>("PlaceReturn")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Recommend")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sight")
                         .HasColumnType("nvarchar(max)");

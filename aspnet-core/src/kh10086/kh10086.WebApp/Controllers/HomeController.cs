@@ -27,11 +27,13 @@ namespace KH10086.WebApp.Controllers
             _categoryApp = categoryApp;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             HomeViewModel viewModel = new HomeViewModel();
-            var areaCategorys = await _categoryApp.GetCategoryTree(new GetCategoryTreeDto() { Type = CategoryType.Line });
-            viewModel.AreaCategorys = areaCategorys;
+            var recommendList = _lineApp.GetLineList(new GetLineListDto() { Recommend = 1, SkipCount = 0, MaxResultCount = int.MaxValue });
+            var lineTypeList = _categoryApp.GetCategoryListByType(CategoryType.LineType);
+            viewModel.RecommendList = recommendList.Items.ToList();
+            viewModel.LineTypeList = lineTypeList;
             return View(viewModel);
         }
 

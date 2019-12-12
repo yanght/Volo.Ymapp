@@ -20,8 +20,28 @@ namespace KH10086.WebApp.Controllers
             _lineApp = lineApp;
             _categoryApp = categoryApp;
         }
-        [Route("Line/List/{categoryId}.html")]
-        public async Task<IActionResult> List(Guid categoryId, int pageIndex = 1)
+
+        [Route("Line/LineType/{lineType}.html")]
+        public IActionResult LineTypeList(Guid lineType, int pageIndex = 1)
+        {
+            int pageSize = 9;
+            LinelistViewModel model = new LinelistViewModel();
+            var result = _lineApp.GetLineList(new GetLineListDto()
+            {
+                LineCategoryType = lineType.ToString(),
+                SkipCount = (pageIndex - 1) * pageSize,
+                MaxResultCount = pageSize
+            });
+
+            model.Lines = result.Items.ToList();
+            model.TotalCount = result.TotalCount;
+            var usersAsIPagedList = new StaticPagedList<LineListDto>(model.Lines, pageIndex, pageSize, (int)model.TotalCount);
+            ViewBag.Pager = usersAsIPagedList;
+            return View(model);
+        }
+
+        [Route("Line/Country/{categoryId}.html")]
+        public async Task<IActionResult> LineCountryList(Guid categoryId, int pageIndex = 1)
         {
             int pageSize = 9;
             LinelistViewModel model = new LinelistViewModel();
@@ -35,8 +55,9 @@ namespace KH10086.WebApp.Controllers
             {
                 country = category.Name;
             }
-            var result = await _lineApp.GetLineList(new GetLineListDto()
+            var result = _lineApp.GetLineList(new GetLineListDto()
             {
+                CategoryId = categoryId,
                 Continent = continent,
                 Country = country,
                 SkipCount = (pageIndex - 1) * pageSize,

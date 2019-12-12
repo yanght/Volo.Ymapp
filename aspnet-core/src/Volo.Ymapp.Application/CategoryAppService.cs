@@ -42,6 +42,11 @@ namespace Volo.Ymapp
             return result.MapTo<Category, CategoryDto>();
         }
 
+        public List<CategoryDto> GetCategoryListByType(CategoryType type)
+        {
+            var result = Repository.WhereIf(type != CategoryType.Undefined, m => m.Type == type).ToList();
+            return result.MapToList<Category, CategoryDto>().ToList();
+        }
 
         private List<TreeDataDto> GetCategoryTree(Guid parentId, List<CategoryDto> list)
         {
@@ -61,6 +66,8 @@ namespace Volo.Ymapp
             }
             return treeList.Count() == 0 ? null : treeList;
         }
+
+
 
     }
 }
