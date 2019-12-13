@@ -21,7 +21,8 @@ namespace KH10086.WebApp.Views.Shared.Components
         {
             NavigationViewModel model = new NavigationViewModel();
             var result = await _categoryApp.GetCategoryTree(new GetCategoryTreeDto() { Type = CategoryType.Line });
-            model.CountryCategorys = result;            
+            model.CountryCategorys = result;
+            model.LineTypeList = _categoryApp.GetCategoryListByType(CategoryType.LineType);
             return View(model);
         }
     }

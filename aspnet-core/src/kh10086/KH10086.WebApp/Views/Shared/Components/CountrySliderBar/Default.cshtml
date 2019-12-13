@@ -14,7 +14,9 @@
                     <dt data-flag="0">@item.Title</dt>
                     @foreach (var child in item.Children)
                     {
-                        <dd><a href="/line/country/@(child.Value).html">@child.Title</a></dd>
+                        <dd>
+                            @Html.ActionLink(child.Title, "CountryList", "Line", new { categoryId = child.Value })
+                        </dd>
                     }
                 </dl>
             }

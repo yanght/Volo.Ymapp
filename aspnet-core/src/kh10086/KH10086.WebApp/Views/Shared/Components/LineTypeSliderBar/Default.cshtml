@@ -1,0 +1,18 @@
+﻿@model List<Volo.Ymapp.Categorys.CategoryDto>
+@if (Model != null && Model.Count > 0)
+{
+    <div class="col-md-3 col-xs-4">
+        <div class="blue_city_list">
+            <h2>我们的旅程</h2>
+            @foreach (var item in Model)
+            {
+                <dl>
+                    <dt>
+                        @Html.ActionLink(item.Name, "TypeList", "Line", new { lineType = item.Id })
+
+                    </dt>
+                </dl>
+            }
+        </div>
+    </div>
+}

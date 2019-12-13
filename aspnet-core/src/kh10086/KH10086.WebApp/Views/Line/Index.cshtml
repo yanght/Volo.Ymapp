@@ -12,24 +12,6 @@
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            @*<div class="item active">
-                        <img src="~/img/trip.jpg" alt="">
-                        <div class="carousel-caption">
-                            <div class="blue_country_title">
-                                <p>Wonders of Ancient Greece</p>
-                                <h2>神秘古希腊之旅</h2>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="item">
-                    <img src="~/img/trip.jpg" alt="">
-                    <div class="carousel-caption">
-                        <div class="blue_country_title">
-                            <p>Wonders of Ancient Greece</p>
-                            <h2>神秘古希腊之旅</h2>
-                        </div>
-                    </div>
-                </div>*@
             @{
                 List<string> images = line.ImgCode.Split(',').ToList();
                 for (int i = 0; i < images.Count; i++)
@@ -66,10 +48,6 @@
         <div class="col-md-9 col-xs-8">
             <article class="blue_page_article blue_trip_article">
                 @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "行程亮点")?.Describe ?? "")
-                @*<p>与此豪华量身定制的旅程，离开你的私人聚会旅行，当你选择，并与专家的当地导游的带领下，你甚至可以自定义行程到你的利益。</p>
-                    <p>探索壮丽的巴伐利亚，听力在慕尼黑钟琴，并采取在锯齿状的山峰和瑞士的阿尔卑斯山冰川，包括免费车辆采尔马特; 然后，在风景优美的科莫湖宁静的海岸放松 - 从繁华的米兰只有一箭之遥。</p>*@
-                <!--<p>与此豪华量身定制的旅程，离开你的私人聚会旅行，当你选择，并与专家的当地导游的带领下，你甚至可以自定义行程到你的利益。</p>-->
-                <!--<p>探索壮丽的巴伐利亚，听力在慕尼黑钟琴，并采取在锯齿状的山峰和瑞士的阿尔卑斯山冰川，包括免费车辆采尔马特; 然后，在风景优美的科莫湖宁静的海岸放松 - 从繁华的米兰只有一箭之遥。</p>-->
             </article>
         </div>
         <div class="col-md-2 col-xs-3 col-md-offset-1 col-xs-offset-1">
@@ -107,8 +85,8 @@
                     </div>
                 </div>
                 @*<div class="col-md-12 col-xs-12">
-            <img src="~/img/trip-map.jpg" alt="">
-        </div>*@
+                        <img src="~/img/trip-map.jpg" alt="">
+                    </div>*@
             </div>
         </div>
     </div>
@@ -142,7 +120,7 @@
         <h2 class="blue_trip_title">行程费用</h2>
         <div class="blue_trip_price">
             <p><span>最低</span></p>
-            <p>￥10,800 <span>人起</span></p>
+            <p>￥@(line.CustomerPrice.ToString("f0")) <span>人起</span></p>
         </div>
         <div class="blue_trip_article">
             <p>价格包含：</p>
@@ -174,24 +152,6 @@
         <div class="row">
             @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "参考酒店")?.Describe ?? "")
             @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "酒店安排")?.Describe ?? "")
-            @*<div class="col-md-4 col-xs-12">
-                    <div class="blue_trip_hotel blue_item_bg">
-                        <img src="~/img/trip-hotel.jpg" alt="">
-                        <p>威尔逊总统酒店</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="blue_trip_hotel blue_item_bg">
-                        <img src="~/img/trip-hotel.jpg" alt="">
-                        <p>威尔逊总统酒店</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="blue_trip_hotel blue_item_bg">
-                        <img src="~/img/trip-hotel.jpg" alt="">
-                        <p>威尔逊总统酒店</p>
-                    </div>
-                </div>*@
         </div>
     </div>
     <div class="row" id="5">
@@ -227,54 +187,7 @@
     <div class="row">
         <h2 class="blue_trip_title mt">推荐行程</h2>
         <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <div class="blue_img_3 blue_img_bg">
-                    <div class="blue_img_3_img">
-                        <img src="~/img/t_img_1.jpg" alt="">
-                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
-                    </div>
-                    <div class="blue_img_3_day">
-                        <span class="pull-left">7天</span>
-                        <span class="pull-right">RMB 15800起</span>
-                    </div>
-                    <div class="blue_img_3_text">
-                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
-                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-xs-12">
-                <div class="blue_img_3 blue_img_bg">
-                    <div class="blue_img_3_img">
-                        <img src="~/img/t_img_1.jpg" alt="">
-                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
-                    </div>
-                    <div class="blue_img_3_day">
-                        <span class="pull-left">7天</span>
-                        <span class="pull-right">RMB 15800起</span>
-                    </div>
-                    <div class="blue_img_3_text">
-                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
-                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-xs-12">
-                <div class="blue_img_3 blue_img_bg">
-                    <div class="blue_img_3_img">
-                        <img src="~/img/t_img_1.jpg" alt="">
-                        <p>托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡纳艳阳下托斯卡</p>
-                    </div>
-                    <div class="blue_img_3_day">
-                        <span class="pull-left">7天</span>
-                        <span class="pull-right">RMB 15800起</span>
-                    </div>
-                    <div class="blue_img_3_text">
-                        <p>托斯卡纳位于意大利的中部，是意大利最美的大区，这里美丽的风景让人流连忘返...</p>
-                        <a class="btn btn_detail pull-right" href="#">查看详情</a>
-                    </div>
-                </div>
-            </div>
+            @await Component.InvokeAsync("LineList", new { number = 4 })
         </div>
     </div>
 </section>

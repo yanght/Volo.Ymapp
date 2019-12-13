@@ -129,7 +129,7 @@
             <div class="row">
                 @foreach (var item in recommendList)
                 {
-                    <div class="col-md-4 col-xs-12">
+                    <div class="col-md-3 col-xs-12">
                         <div class="blue_img_3">
                             <div class="blue_img_3_img">
                                 <img src="@(string.IsNullOrEmpty(item.FirstLineImg)?"https://img0.uzaicdn.com/ba/sightGallery/ATT0000815493.jpg":item.FirstLineImg)" alt="">
@@ -137,11 +137,11 @@
                             </div>
                             <div class="blue_img_3_day">
                                 <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
-                                <span class="pull-right">RMB 15800起</span>
+                                <span class="pull-right">RMB @(item.CustomerPrice)起</span>
                             </div>
                             <div class="blue_img_3_text">
                                 <p>@item.Title</p>
-                                <a class="btn btn_detail pull-right" href="/line/@(item.Id).html">查看详情</a>
+                                <a class="btn btn_detail pull-right" href="/line/@(item.Id)">查看详情</a>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                         @foreach (var item in lineTypeList)
                         {
                             <div class="swiper-slide">
-                                <a href="/line/linetype/@(item.Id).html">
+                                <a href="@Url.Action("TypeList","Line",new { lineType=item.Id})">
                                     <div class="blue_img">
                                         <img src="@item.PictureUrl" alt="">
                                     </div>
@@ -178,46 +178,6 @@
                                 </a>
                             </div>
                         }
-                        @*<div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="blue_img">
-                                        <img src="img/type_2.jpg" alt="">
-                                    </div>
-                                    <p>个人旅游</p>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="blue_img">
-                                        <img src="img/type_3.jpg" alt="">
-                                    </div>
-                                    <p>探险</p>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="blue_img">
-                                        <img src="img/type_4.jpg" alt="">
-                                    </div>
-                                    <p>蜜月度假</p>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="blue_img">
-                                        <img src="img/type_5.jpg" alt="">
-                                    </div>
-                                    <p>蜜月</p>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="blue_img">
-                                        <img src="img/type_6.jpg" alt="">
-                                    </div>
-                                    <p>城市</p>
-                                </a>
-                            </div>*@
                     </div>
                 </div>
                 <div class="swiper-button swiper-button-prev"><span class="glyphicon glyphicon-menu-left"></span></div>

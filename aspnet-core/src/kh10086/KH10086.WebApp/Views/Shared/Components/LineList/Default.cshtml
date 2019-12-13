@@ -1,0 +1,23 @@
+﻿@model List<Volo.Ymapp.Kh10086.LineListDto>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-3 col-xs-12">
+        <div class="blue_img_3">
+            <a href="/line/@(item.Id).html" target="_blank">
+                <div class="blue_img_3_img">
+                    <img src="@(string.IsNullOrEmpty(item.FirstLineImg)?"https://img0.uzaicdn.com/ba/sightGallery/ATT0000815493.jpg":item.FirstLineImg)" alt="">
+                    <p>@item.Country</p>
+                </div>
+                <div class="blue_img_3_day">
+                    <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
+                    <span class="pull-right">RMB @(item.CustomerPrice)起</span>
+                </div>
+                <div class="blue_img_3_text">
+                    <p>@item.Title</p>
+                    <a class="btn btn_detail pull-right" href="/line/@(item.Id)">查看详情</a>
+                </div>
+            </a>
+        </div>
+    </div>
+}

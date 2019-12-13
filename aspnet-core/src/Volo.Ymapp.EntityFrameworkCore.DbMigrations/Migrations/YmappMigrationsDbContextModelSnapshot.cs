@@ -1742,8 +1742,14 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("AgentPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("ChildPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1767,6 +1773,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<string>("CustomTitle")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("CustomerPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
                         .HasColumnType("uniqueidentifier");
@@ -1774,6 +1783,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnName("DeletionTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Deposit")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ExtraProperties")
                         .HasColumnName("ExtraProperties")
@@ -1826,6 +1838,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<int>("NumNight")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("OverseasJoinPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("PlaceLeave")
                         .HasColumnType("nvarchar(max)");
 
@@ -1837,6 +1852,9 @@ namespace Volo.Ymapp.Migrations
 
                     b.Property<string>("Sight")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SingleRoom")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");

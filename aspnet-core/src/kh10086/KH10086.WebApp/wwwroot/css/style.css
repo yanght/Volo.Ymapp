@@ -563,6 +563,7 @@
     border-radius: 8px;
     behavior: url(../pie/PIE.htc);
     margin-bottom: 20px;
+    height:200px;
 }
 
 .blue_trip_article h3 {

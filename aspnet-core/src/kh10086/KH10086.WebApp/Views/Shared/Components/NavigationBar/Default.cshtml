@@ -1,6 +1,7 @@
 ﻿@model KH10086.WebApp.Models.Partial.NavigationViewModel;
 @{
     var countryCategorys = Model.CountryCategorys;
+    var lineTypeList = Model.LineTypeList;
 }
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -43,7 +44,9 @@
                                                 <dt class="color-@(index)">@item.Title</dt>
                                                 @foreach (var child in childList)
                                                 {
-                                                    <dd><a href="/line/country/@(child.Value).html">@child.Title</a></dd>
+                                                    <dd>
+                                                        @Html.ActionLink(child.Title, "CountryList", "Line", new { categoryId = child.Value })
+                                                    </dd>
                                                 }
                                             </dl>
                                         </li>
@@ -56,7 +59,9 @@
                                                 <dt class="color-@(index)">@item.Title</dt>
                                                 @foreach (var child in item.Children)
                                                 {
-                                                    <dd><a href="/line/country/@(child.Value).html">@child.Title</a></dd>
+                                                    <dd>
+                                                        @Html.ActionLink(child.Title, "CountryList", "Line", new { categoryId = child.Value })
+                                                    </dd>
                                                 }
                                             </dl>
                                         </li>
@@ -72,15 +77,12 @@
                             我们的旅程 <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-2">
-                            <li><a href="#">探险</a></li>
-                            <li><a href="#">海滩度假</a></li>
-                            <li><a href="#">城市印象</a></li>
-                            <li><a href="#">游轮</a></li>
-                            <li><a href="#">教育</a></li>
-                            <li><a href="#">家庭旅游</a></li>
-                            <li><a href="#">蜜月</a></li>
-                            <li><a href="#">个人旅游</a></li>
-                            <li><a href="#">Safari</a></li>
+                            @foreach (var item in lineTypeList)
+                            {
+                                <li>
+                                    @Html.ActionLink(item.Name, "TypeList", "Line", new { lineType = item.Id })
+                                </li>
+                            }
                         </ul>
                     </li>
                     <li class="col-md-nav"><a href="#">精选酒店</a></li>

@@ -43,5 +43,10 @@ namespace Volo.Ymapp.JobTask
 
             });
         }
+
+        public async Task AddLinePriceSyncJob()
+        {
+            await _backgroundJobManager.EnqueueAsync(new LinePriceSyncJobArgs() { });
+        }
     }
 }

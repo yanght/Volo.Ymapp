@@ -17,5 +17,6 @@ namespace Volo.Ymapp.Kh10086
         Task<LineDto> GetLineByLineCode(string lineCode);
         Task<LineDto> GetLineByProductCode(string productCode);
         PagedResultDto<LineListDto> GetLineList(GetLineListDto input);
+        Task LinePriceAsync();
     }
 }

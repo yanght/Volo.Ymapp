@@ -91,5 +91,12 @@ namespace Volo.Ymapp.Kh10086
         /// 
         /// </summary>
         public string FirstLineImg { get; set; }
+
+        public decimal CustomerPrice { get; set; }
+        public decimal AgentPrice { get; set; }
+        public decimal ChildPrice { get; set; }
+        public decimal SingleRoom { get; set; }
+        public decimal OverseasJoinPrice { get; set; }
+        public decimal Deposit { get; set; }
     }
 }

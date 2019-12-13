@@ -47,6 +47,7 @@ namespace Volo.Ymapp.Kh10086
             _lineRouteDateRepository = lineRouteDateRepository;
             _lineTeamRepository = lineTeamRepository;
         }
+
         public void ParseLineData(ParseLineDataDto dto)
         {
             Log.Information($"开始获取解析线路数据。。。");
@@ -61,6 +62,18 @@ namespace Volo.Ymapp.Kh10086
             Log.Information($"结束线路数据解析");
         }
 
+        public PagedResultDto<LineListDto> GetLineList(GetLineListDto input)
+        {
+            var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
+                .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country))
+                .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend.Value)
+                .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType);
+
+            var count = query.Count();
+            var list = query.PageBy(input.SkipCount, input.MaxResultCount)
+                       .ToList();
+            return new PagedResultDto<LineListDto>(count, ObjectMapper.Map<List<Line>, List<LineListDto>>(list));
+        }
         /// <summary>
         /// 获取所有洲的集合
         /// </summary>
@@ -104,7 +117,70 @@ namespace Volo.Ymapp.Kh10086
             return countrys;
         }
 
+        public async Task<LineDto> GetLineByLineId(long lineId)
+        {
+            LineDto model = new LineDto();
+            var line = await _lineRepository.FindAsync(lineId);
+            model = line.MapTo<Line, LineDto>();
+            var lineTeams = _lineTeamRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineDays = _lineDayRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineRoutes = _lineRouteDateRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            var lineIntros = _lineIntroRepository.Where(m => m.LineCode == line.LineCode).ToList();
+            model.LineTeams = lineTeams.MapToList<LineTeam, LineTeamDto>().ToList();
+            model.LineIntros = lineIntros.MapToList<LineIntro, LineIntroDto>().ToList();
+            model.LineRouteDates = lineRoutes.MapToList<LineRouteDate, LineRouteDateDto>().ToList();
+            List<LineDayDto> lineDayDtos = new List<LineDayDto>();
+            if (lineDays != null && lineDays.Count > 0)
+            {
+                lineDays.ForEach(item =>
+                {
+                    var lineDayImages = _lineDayImageRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDayTraffics = _lineDayTrafficRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDaySelfs = _lineDaySelfRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDayShops = _lineDayShopRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
+                    var lineDay = item.MapTo<LineDay, LineDayDto>();
+                    lineDay.LineDayImages = lineDayImages.MapToList<LineDayImage, LineDayImageDto>().ToList();
+                    lineDay.LineDayTraffics = lineDayTraffics.MapToList<LineDayTraffic, LineDayTrafficDto>().ToList();
+                    lineDay.LineDaySelfs = lineDaySelfs.MapToList<LineDaySelf, LineDaySelfDto>().ToList();
+                    lineDay.LineDayShops = lineDayShops.MapToList<LineDayShop, LineDayShopDto>().ToList();
+                    lineDayDtos.Add(lineDay);
+                });
+            }
+            model.LineDays = lineDayDtos;
+            return model;
+        }
 
+        public async Task<LineDto> GetLineByLineCode(string lineCode)
+        {
+            var line = _lineRepository.SingleOrDefault(m => m.LineCode == lineCode);
+            return await GetLineByLineId(line.Id);
+        }
+
+        public async Task<LineDto> GetLineByProductCode(string productCode)
+        {
+            var lineTeam = _lineTeamRepository.SingleOrDefault(m => m.ProductCode == productCode);
+            return await GetLineByLineCode(lineTeam.LineCode);
+        }
+        /// <summary>
+        /// 同步线路的最低价格
+        /// </summary>
+        /// <param name="lineId"></param>
+        /// <returns></returns>
+        public async Task LinePriceAsync()
+        {
+            var lines = await _lineRepository.GetListAsync();
+            foreach (var line in lines)
+            {
+                var lineTeam = _lineTeamRepository.Where(m => m.LineCode == line.LineCode).OrderBy(m => m.CustomerPrice).FirstOrDefault();
+                line.CustomerPrice = lineTeam.CustomerPrice;
+                line.AgentPrice = lineTeam.AgentPrice;
+                line.ChildPrice = lineTeam.ChildPrice;
+                line.OverseasJoinPrice = lineTeam.OverseasJoinPrice;
+                await _lineRepository.UpdateAsync(line);
+            }
+        }
+
+        #region 内部方法
         /// <summary>
         /// 解析线路列表
         /// </summary>
@@ -385,129 +461,6 @@ namespace Volo.Ymapp.Kh10086
             return list;
         }
 
-        //public async Task InsertLine(LineDto dto)
-        //{
-        //    var line = await _lineRepository.InsertAsync(new Line()
-        //    {
-        //        Continent = dto.Continent,
-        //        Country = dto.Country,
-        //        CustomTitle = dto.CustomTitle,
-        //        FirstLineImg = dto.FirstLineImg,
-        //        Function = dto.Function,
-        //        ImgCity = dto.ImgCity,
-        //        ImgCode = dto.ImgCode,
-        //        ImgContinent = dto.ImgContinent,
-        //        ImgCountry = dto.ImgCountry,
-        //        LineCode = dto.LineCode,
-        //        LineType = dto.LineType,
-        //        NumDay = dto.NumDay,
-        //        NumNight = dto.NumNight,
-        //        PlaceLeave = dto.PlaceLeave,
-        //        PlaceReturn = dto.PlaceReturn,
-        //        Sight = dto.Sight,
-        //        Title = dto.Title,
-        //        TxtTransitCity = dto.TxtTransitCity,
-        //        Visa = dto.Visa,
-        //    });
-
-        //    if (dto.LineIntros != null & dto.LineIntros.Count > 0)
-        //    {
-        //        dto.LineIntros.ForEach(async (m) =>
-        //        {
-        //            var lineIntro = m.MapTo<LineIntroDto, LineIntro>();
-        //            lineIntro.LineId = line.Id;
-        //            lineIntro.LineCode = line.LineCode;
-        //            await _lineIntroRepository.InsertAsync(lineIntro);
-        //        });
-        //    }
-
-        //    if (dto.LineTeams != null && dto.LineTeams.Count > 0)
-        //    {
-        //        dto.LineTeams.ForEach(async (m) =>
-        //        {
-        //            var lineTeam = m.MapTo<LineTeamDto, LineTeam>();
-        //            lineTeam.LineId = line.Id;
-        //            lineTeam.LineCode = line.LineCode;
-        //            await _lineTeamRepository.InsertAsync(lineTeam);
-        //        });
-        //    }
-
-        //    if (dto.LineDays != null && dto.LineDays.Count > 0)
-        //    {
-        //        dto.LineDays.ForEach(async (m) =>
-        //        {
-        //            var lineDay = await _lineDayRepository.InsertAsync(new LineDay()
-        //            {
-        //                LineCode = dto.LineCode,
-        //                Breakfast = m.Breakfast,
-        //                CityEnglish = m.CityEnglish,
-        //                DayHotel = m.DayHotel,
-        //                DayNumber = m.DayNumber,
-        //                DayTraffic = m.DayTraffic,
-        //                Describe = m.Describe,
-        //                Dinner = m.Dinner,
-        //                LineId = line.Id,
-        //                Lunch = m.Lunch,
-        //                ScityDistance = m.ScityDistance,
-        //                TrafficName = m.TrafficName,
-        //            });
-
-        //            if (m.LineDayImages != null && m.LineDayImages.Count > 0)
-        //            {
-        //                m.LineDayImages.ForEach(async (img) =>
-        //                {
-        //                    var image = img.MapTo<LineDayImageDto, LineDayImage>();
-        //                    image.LineDayId = lineDay.Id;
-        //                    image.LineId = line.Id;
-        //                    image.LineCode = dto.LineCode;
-        //                    image.DayNumber = m.DayNumber;
-        //                    await _lineDayImageRepository.InsertAsync(image);
-        //                });
-        //            }
-
-        //            if (m.LineDaySelfs != null && m.LineDaySelfs.Count > 0)
-        //            {
-        //                m.LineDaySelfs.ForEach(async (self) =>
-        //                {
-        //                    var daySelf = self.MapTo<LineDaySelfDto, LineDaySelf>();
-        //                    daySelf.LineId = line.Id;
-        //                    daySelf.LineDayId = lineDay.Id;
-        //                    daySelf.LineCode = dto.LineCode;
-        //                    daySelf.DayNumber = m.DayNumber;
-        //                    await _lineDaySelfRepository.InsertAsync(daySelf);
-        //                });
-        //            }
-
-        //            if (m.LineDayShops != null && m.LineDayShops.Count > 0)
-        //            {
-        //                m.LineDayShops.ForEach(async (shop) =>
-        //                {
-        //                    var dayShop = shop.MapTo<LineDayShopDto, LineDayShop>();
-        //                    dayShop.LineId = line.Id;
-        //                    dayShop.LineDayId = lineDay.Id;
-        //                    dayShop.LineCode = dto.LineCode;
-        //                    dayShop.DayNumber = m.DayNumber;
-        //                    await _lineDayShopRepository.InsertAsync(dayShop);
-        //                });
-        //            }
-
-        //            if (m.LineDayTraffics != null && m.LineDayTraffics.Count > 0)
-        //            {
-        //                m.LineDayTraffics.ForEach(async (traffic) =>
-        //                {
-        //                    var dayTraffic = traffic.MapTo<LineDayTrafficDto, LineDayTraffic>();
-        //                    dayTraffic.LineId = line.Id;
-        //                    dayTraffic.LineDayId = lineDay.Id;
-        //                    dayTraffic.LineCode = dto.LineCode;
-        //                    dayTraffic.DayNumber = m.DayNumber;
-        //                    await _lineDayTrafficRepository.InsertAsync(dayTraffic);
-        //                });
-        //            }
-
-        //        });
-        //    }
-        //}
-
         private async Task InsertOrUpdateLine(LineDto dto)
         {
             var line = _lineRepository.FirstOrDefault(m => m.LineCode == dto.LineCode);
@@ -722,62 +675,6 @@ namespace Volo.Ymapp.Kh10086
             }
         }
 
-        public async Task<LineDto> GetLineByLineId(long lineId)
-        {
-            LineDto model = new LineDto();
-            var line = await _lineRepository.FindAsync(lineId);
-            model = line.MapTo<Line, LineDto>();
-            var lineTeams = _lineTeamRepository.Where(m => m.LineCode == line.LineCode).ToList();
-            var lineDays = _lineDayRepository.Where(m => m.LineCode == line.LineCode).ToList();
-            var lineRoutes = _lineRouteDateRepository.Where(m => m.LineCode == line.LineCode).ToList();
-            var lineIntros = _lineIntroRepository.Where(m => m.LineCode == line.LineCode).ToList();
-            model.LineTeams = lineTeams.MapToList<LineTeam, LineTeamDto>().ToList();
-            model.LineIntros = lineIntros.MapToList<LineIntro, LineIntroDto>().ToList();
-            model.LineRouteDates = lineRoutes.MapToList<LineRouteDate, LineRouteDateDto>().ToList();
-            List<LineDayDto> lineDayDtos = new List<LineDayDto>();
-            if (lineDays != null && lineDays.Count > 0)
-            {
-                lineDays.ForEach(item =>
-                {
-                    var lineDayImages = _lineDayImageRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
-                    var lineDayTraffics = _lineDayTrafficRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
-                    var lineDaySelfs = _lineDaySelfRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
-                    var lineDayShops = _lineDayShopRepository.Where(m => m.LineCode == line.LineCode && m.DayNumber == item.DayNumber).ToList();
-                    var lineDay = item.MapTo<LineDay, LineDayDto>();
-                    lineDay.LineDayImages = lineDayImages.MapToList<LineDayImage, LineDayImageDto>().ToList();
-                    lineDay.LineDayTraffics = lineDayTraffics.MapToList<LineDayTraffic, LineDayTrafficDto>().ToList();
-                    lineDay.LineDaySelfs = lineDaySelfs.MapToList<LineDaySelf, LineDaySelfDto>().ToList();
-                    lineDay.LineDayShops = lineDayShops.MapToList<LineDayShop, LineDayShopDto>().ToList();
-                    lineDayDtos.Add(lineDay);
-                });
-            }
-            model.LineDays = lineDayDtos;
-            return model;
-        }
-
-        public async Task<LineDto> GetLineByLineCode(string lineCode)
-        {
-            var line = _lineRepository.SingleOrDefault(m => m.LineCode == lineCode);
-            return await GetLineByLineId(line.Id);
-        }
-
-        public async Task<LineDto> GetLineByProductCode(string productCode)
-        {
-            var lineTeam = _lineTeamRepository.SingleOrDefault(m => m.ProductCode == productCode);
-            return await GetLineByLineCode(lineTeam.LineCode);
-        }
-
-        public PagedResultDto<LineListDto> GetLineList(GetLineListDto input)
-        {
-            var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
-                .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country))
-                .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend.Value)
-                .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType);
-
-            var count = query.Count();
-            var list = query.PageBy(input.SkipCount, input.MaxResultCount)
-                       .ToList();
-            return new PagedResultDto<LineListDto>(count, ObjectMapper.Map<List<Line>, List<LineListDto>>(list));
-        }
+        #endregion
     }
 }
