@@ -6,11 +6,18 @@
     var lines = Model.Lines;
     var category = Model.Category;
 }
-
-<section class="container blue_page_menu">
-    <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("CountryList","Line",new { categoryId=category.Id})">@category.Name</a>
-</section>
-
+@if (category != null)
+{
+    <section class="container blue_page_menu">
+        <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("CountryList","Line",new { categoryId=category.Id})">@category.Name</a>
+    </section>
+}
+else
+{
+    <section class="container blue_page_menu">
+        <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("CountryList","Line")">全部行程</a>
+    </section>
+}
 <section class="container">
     <div class="row">
 
@@ -19,7 +26,7 @@
         <div class="col-md-9 col-xs-8 blue_page_content">
             @foreach (var item in lines)
             {
-                <div class="col-md-4 col-xs-12">
+                <div class="col-md-3 col-xs-12">
                     <a href="/line/@(item.Id).html" target="_blank">
                         <div class="blue_img_3 blue_img_bg">
                             <div class="blue_img_3_img">
@@ -28,7 +35,7 @@
                             </div>
                             <div class="blue_img_3_day">
                                 <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
-                                <span class="pull-right">RMB @(item.CustomerPrice)起</span>
+                                <span class="pull-right"> ￥@(item.CustomerPrice.ToString("f0"))起</span>
                             </div>
                             <div class="blue_img_3_text">
                                 <p title="@item.Title">@item.Title</p>

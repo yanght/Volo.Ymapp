@@ -91,6 +91,14 @@ namespace Volo.Ymapp.Kh10086
         public decimal SingleRoom { get; set; }
         public decimal OverseasJoinPrice { get; set; }
         public decimal Deposit { get; set; }
+        /// <summary>
+        /// 最早出团日期
+        /// </summary>
+        public DateTime DateStart { get; set; }
+        /// <summary>
+        /// 最晚截止下单日期，即下架日期
+        /// </summary>
+        public DateTime DateOffline { get; set; }
 
         /// <summary>
         /// 分类编号

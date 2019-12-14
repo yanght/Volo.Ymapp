@@ -45,7 +45,7 @@ namespace Volo.Ymapp.JobTask
                         Name = item.Trim(),
                         ParentId = Guid.Empty,
                         Sort = 0,
-                        Type = (int)CategoryType.Line
+                        Type = (int)CategoryType.LineCountry
                     }).GetAwaiter().GetResult();
                 }
             });
@@ -63,7 +63,7 @@ namespace Volo.Ymapp.JobTask
                 {
                     Name = item,
                     ParentId = catgory.Id,
-                    Type = (int)CategoryType.Line,
+                    Type = (int)CategoryType.LineCountry,
                     Sort = 0
                 }).GetAwaiter().GetResult();
             }

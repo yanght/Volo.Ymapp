@@ -1701,6 +1701,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("ExtraProperties")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IsRecommend")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
                         .HasColumnType("datetime2");
@@ -1775,6 +1778,12 @@ namespace Volo.Ymapp.Migrations
 
                     b.Property<decimal>("CustomerPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DateOffline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("DeleterId")
                         .HasColumnName("DeleterId")
@@ -2484,14 +2493,14 @@ namespace Volo.Ymapp.Migrations
                     b.Property<decimal>("CustomerPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("DateFinish")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateFinish")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("DateOffline")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOffline")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("DateStart")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DayNum")
                         .HasColumnType("int");

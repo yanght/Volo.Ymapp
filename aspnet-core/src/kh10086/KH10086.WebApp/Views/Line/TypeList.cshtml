@@ -6,10 +6,18 @@
     var lines = Model.Lines;
     var category = Model.Category;
 }
-
-<section class="container blue_page_menu">
-    <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("TypeList","Line",new { lineType=category.Id})">@category.Name</a>
-</section>
+@if (category != null)
+{
+    <section class="container blue_page_menu">
+        <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("TypeList","Line",new { lineType=category.Id})">@category.Name</a>
+    </section>
+}
+else
+{
+    <section class="container blue_page_menu">
+        <a href="/">首页</a><a href="#">目的地</a><a class="active" href="@Url.Action("TypeList","Line",new { lineType=Guid.Empty})">全部行程</a>
+    </section>
+}
 
 <section class="container">
     <div class="row">
@@ -17,7 +25,7 @@
         <div class="col-md-9 col-xs-8 blue_page_content">
             @foreach (var item in lines)
             {
-                <div class="col-md-4 col-xs-12">
+                <div class="col-md-3 col-xs-12">
                     <a href="/line/@(item.Id).html" target="_blank">
                         <div class="blue_img_3 blue_img_bg">
                             <div class="blue_img_3_img">
@@ -26,7 +34,7 @@
                             </div>
                             <div class="blue_img_3_day">
                                 <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
-                                <span class="pull-right">RMB @(item.CustomerPrice)起</span>
+                                <span class="pull-right"> ￥@(item.CustomerPrice.ToString("f0"))起</span>
                             </div>
                             <div class="blue_img_3_text">
                                 <p title="@item.Title">@item.Title</p>
@@ -37,7 +45,7 @@
                 </div>
             }
             <div class="col-md-12 col-xs-12 text-center">
-                @Html.PagedListPager((IPagedList)ViewBag.Pager, page => Url.Action("country", new { lineType = ViewContext.HttpContext.Request.Query["lineType"].ToString(), pageIndex = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", MaximumPageNumbersToDisplay = 5, DisplayItemSliceAndTotal = false })
+                @Html.PagedListPager((IPagedList)ViewBag.Pager, page => Url.Action("typelist", new { lineType = ViewContext.HttpContext.Request.Query["lineType"].ToString(), pageIndex = page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToNextPageFormat = "下一页", LinkToPreviousPageFormat = "上一页", LinkToLastPageFormat = "末页", MaximumPageNumbersToDisplay = 5, DisplayItemSliceAndTotal = false })
             </div>
         </div>
     </div>

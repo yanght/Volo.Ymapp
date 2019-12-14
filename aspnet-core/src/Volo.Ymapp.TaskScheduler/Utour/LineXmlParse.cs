@@ -31,7 +31,7 @@ namespace Volo.Ymapp.TaskScheduler.Utour
             {
                 index++;
                 string lineCode = node.Attributes["lineCode"].Value;
-                 url = string.Format(url, lineCode);
+                url = string.Format(url, lineCode);
                 var lineDetail = ParseLineDetail(url, lineCode);
                 lineDetail.LineTeams = GetLineTeams(node.SelectNodes("team/teamData"));
                 lineDetail.FirstLineImg = node.Attributes["firstLineImg"].Value;
@@ -56,9 +56,9 @@ namespace Volo.Ymapp.TaskScheduler.Utour
                     ChildPrice = decimal.Parse(node.Attributes["childPrice"].Value),
                     Continent = node.Attributes["continent"].Value,
                     CustomerPrice = decimal.Parse(node.Attributes["customerPrice"].Value),
-                    DateFinish = node.Attributes["dateFinish"].Value,
-                    DateOffline = node.Attributes["dateOffline"].Value,
-                    DateStart = node.Attributes["dateStart"].Value,
+                    DateFinish = DateTime.Parse(node.Attributes["dateFinish"].Value),
+                    DateOffline = DateTime.Parse(node.Attributes["dateOffline"].Value),
+                    DateStart = DateTime.Parse(node.Attributes["dateStart"].Value),
                     DayNum = int.Parse(node.Attributes["dayNum"].Value),
                     Deposit = decimal.Parse(node.Attributes["deposit"].Value),
                     DeptCode = node.Attributes["deptCode"].Value,

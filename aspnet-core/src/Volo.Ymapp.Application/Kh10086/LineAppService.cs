@@ -67,7 +67,8 @@ namespace Volo.Ymapp.Kh10086
             var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
                 .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country))
                 .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend.Value)
-                .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType);
+                .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType)
+                .Where(m => m.DateOffline > DateTime.Now && m.DateStart > DateTime.Now);
 
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)
@@ -171,11 +172,16 @@ namespace Volo.Ymapp.Kh10086
             var lines = await _lineRepository.GetListAsync();
             foreach (var line in lines)
             {
-                var lineTeam = _lineTeamRepository.Where(m => m.LineCode == line.LineCode).OrderBy(m => m.CustomerPrice).FirstOrDefault();
+                var lineTeams = _lineTeamRepository.Where(m => m.LineCode == line.LineCode);
+                var lineTeam = lineTeams.OrderBy(m => m.CustomerPrice).FirstOrDefault();
                 line.CustomerPrice = lineTeam.CustomerPrice;
                 line.AgentPrice = lineTeam.AgentPrice;
                 line.ChildPrice = lineTeam.ChildPrice;
                 line.OverseasJoinPrice = lineTeam.OverseasJoinPrice;
+                lineTeam = lineTeams.OrderBy(m => m.DateStart).FirstOrDefault();
+                line.DateStart = lineTeam.DateStart;
+                lineTeam = lineTeams.OrderByDescending(m => m.DateOffline).FirstOrDefault();
+                line.DateOffline = lineTeam.DateOffline;
                 await _lineRepository.UpdateAsync(line);
             }
         }
@@ -248,9 +254,9 @@ namespace Volo.Ymapp.Kh10086
                     ChildPrice = decimal.Parse(node.Attributes["childPrice"].Value),
                     Continent = node.Attributes["continent"].Value,
                     CustomerPrice = decimal.Parse(node.Attributes["customerPrice"].Value),
-                    DateFinish = node.Attributes["dateFinish"].Value,
-                    DateOffline = node.Attributes["dateOffline"].Value,
-                    DateStart = node.Attributes["dateStart"].Value,
+                    DateFinish = DateTime.Parse(node.Attributes["dateFinish"].Value),
+                    DateOffline = DateTime.Parse(node.Attributes["dateOffline"].Value),
+                    DateStart = DateTime.Parse(node.Attributes["dateStart"].Value),
                     DayNum = int.Parse(node.Attributes["dayNum"].Value),
                     Deposit = decimal.Parse(node.Attributes["deposit"].Value),
                     DeptCode = node.Attributes["deptCode"].Value,

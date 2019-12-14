@@ -21,7 +21,7 @@ namespace Volo.Ymapp.CommonEnum
         /// <summary>
         /// 线路
         /// </summary>
-        Line,
+        LineCountry,
         /// <summary>
         /// 线路类型
         /// </summary>

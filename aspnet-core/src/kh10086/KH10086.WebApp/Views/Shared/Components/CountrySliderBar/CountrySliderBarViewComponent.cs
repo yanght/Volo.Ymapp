@@ -20,7 +20,7 @@ namespace KH10086.WebApp.Views.Shared.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             NavigationViewModel model = new NavigationViewModel();
-            var result = await _categoryApp.GetCategoryTree(new GetCategoryTreeDto() { Type = CategoryType.Line });
+            var result = await _categoryApp.GetCategoryTree(new GetCategoryTreeDto() { Type = CategoryType.LineCountry });
             model.CountryCategorys = result;            
             return View(model);
         }

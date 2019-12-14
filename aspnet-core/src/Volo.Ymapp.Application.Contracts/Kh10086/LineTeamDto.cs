@@ -16,8 +16,8 @@ namespace Volo.Ymapp.Kh10086
         public string Continent { get; set; }
         public string PlaceLeave { get; set; }
         public string PlaceReturn { get; set; }
-        public string DateStart { get; set; }
-        public string DateFinish { get; set; }
+        public DateTime DateStart { get; set; }
+        public DateTime DateFinish { get; set; }
         public int DayNum { get; set; }
         public string AirCompany { get; set; }
         public string AirShortName { get; set; }
@@ -30,7 +30,7 @@ namespace Volo.Ymapp.Kh10086
         public int PlanNum { get; set; }
         public int FreeNum { get; set; }
         public string WebsiteTags { get; set; }
-        public string DateOffline { get; set; }
+        public DateTime DateOffline { get; set; }
         public string DeptCode { get; set; }
         public string DeptName { get; set; }
         public string PostersImg { get; set; }

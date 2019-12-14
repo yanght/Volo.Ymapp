@@ -44,7 +44,13 @@ namespace Volo.Ymapp
 
         public List<CategoryDto> GetCategoryListByType(CategoryType type)
         {
-            var result = Repository.WhereIf(type != CategoryType.Undefined, m => m.Type == type).ToList();
+            var result = Repository.WhereIf(type != CategoryType.Undefined, m => m.Type == type).OrderBy(m => m.Sort).ToList();
+            return result.MapToList<Category, CategoryDto>().ToList();
+        }
+
+        public List<CategoryDto> GetLineCountrys(bool isRecommend)
+        {
+            var result = Repository.Where(m => m.Type == CategoryType.LineCountry && m.ParentId != Guid.Empty && m.IsRecommend == (isRecommend ? 1 : 0)).OrderBy(m => m.Sort).ToList();
             return result.MapToList<Category, CategoryDto>().ToList();
         }
 

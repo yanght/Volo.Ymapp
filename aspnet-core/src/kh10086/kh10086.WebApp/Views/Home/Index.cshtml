@@ -2,6 +2,7 @@
 @{
     var recommendList = Model.RecommendList;
     var lineTypeList = Model.LineTypeList;
+    var lineCountryList = Model.LineCountryList;
 }
 
 <!-- banner start -->
@@ -27,98 +28,48 @@
             </div>
         </div>
 
-        <!-- Controls -->
-        <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
-        <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Previous</span>-->
-        <!--</a>-->
-        <!--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
-        <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Next</span>-->
-        <!--</a>-->
+        @*Controls*@
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </section>
 <!-- banner end -->
 
-<div class="container-fluid blue_point">
-    <div class="blue_title text-center">
-        <span>目的地</span>
-    </div>
+@if (lineCountryList != null && lineCountryList.Count > 0)
+{
+    <div class="container-fluid blue_point">
+        <div class="blue_title text-center">
+            <span>目的地</span>
+        </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_1.jpg" alt="">
-                        <div class="blue_img_4_title">希腊</div>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in lineCountryList)
+                {
+                    <div class="col-md-2 col-xs-6">
+                        <a href="@Url.Action("CountryList","Line",new { categoryId=item.Id})" target="_blank">
+                            <div class="blue_img_4">
+                                <img src="@(item.PictureUrl)" alt="">
+                                <div class="blue_img_4_title">@item.Name</div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                }
             </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_2.jpg" alt="">
-                        <div class="blue_img_4_title">越南</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_3.jpg" alt="">
-                        <div class="blue_img_4_title">摩洛哥</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_4.jpg" alt="">
-                        <div class="blue_img_4_title">意大利</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_5.jpg" alt="">
-                        <div class="blue_img_4_title">秘鲁</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_6.jpg" alt="">
-                        <div class="blue_img_4_title">缅甸</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_7.jpg" alt="">
-                        <div class="blue_img_4_title">不丹</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-xs-6">
-                <a href="#">
-                    <div class="blue_img_4">
-                        <img src="img/p_img_8.jpg" alt="">
-                        <div class="blue_img_4_title">冰岛</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-xs-6 col-md-offset-5 col-xs-offset-3">
-                <a class="btn btn_more" href="#">更多国家</a>
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-md-offset-5 col-xs-offset-3">
+                    <a class="btn btn_more" href="@Url.Action("CountryList","Line")">更多国家</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 @if (recommendList != null && recommendList.Count > 0)
 {
     <div class="container-fluid blue_bg">
@@ -131,25 +82,27 @@
                 {
                     <div class="col-md-3 col-xs-12">
                         <div class="blue_img_3">
-                            <div class="blue_img_3_img">
-                                <img src="@(string.IsNullOrEmpty(item.FirstLineImg)?"https://img0.uzaicdn.com/ba/sightGallery/ATT0000815493.jpg":item.FirstLineImg)" alt="">
-                                <p>@item.Country</p>
-                            </div>
-                            <div class="blue_img_3_day">
-                                <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
-                                <span class="pull-right">RMB @(item.CustomerPrice)起</span>
-                            </div>
-                            <div class="blue_img_3_text">
-                                <p>@item.Title</p>
-                                <a class="btn btn_detail pull-right" href="/line/@(item.Id)">查看详情</a>
-                            </div>
+                            <a href="/line/@(item.Id).html" target="_blank">
+                                <div class="blue_img_3_img">
+                                    <img src="@(string.IsNullOrEmpty(item.FirstLineImg)?"https://img0.uzaicdn.com/ba/sightGallery/ATT0000815493.jpg":item.FirstLineImg)" alt="">
+                                    <p>@item.Country</p>
+                                </div>
+                                <div class="blue_img_3_day">
+                                    <span class="pull-left">@(item.NumDay)天@(item.NumNight)晚</span>
+                                    <span class="pull-right">RMB @(item.CustomerPrice)起</span>
+                                </div>
+                                <div class="blue_img_3_text">
+                                    <p>@item.Title</p>
+                                    <a class="btn btn_detail pull-right" href="/line/@(item.Id)">查看详情</a>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 }
             </div>
             <div class="row">
                 <div class="col-md-2 col-xs-6 col-md-offset-5 col-xs-offset-3">
-                    <a class="btn btn_more" href="#">更多行程</a>
+                    <a class="btn btn_more" href="@Url.Action("TypeList","Line")">更多行程</a>
                 </div>
             </div>
         </div>

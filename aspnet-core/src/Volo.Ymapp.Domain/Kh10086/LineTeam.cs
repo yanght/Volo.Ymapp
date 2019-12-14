@@ -43,11 +43,11 @@ namespace Volo.Ymapp.Kh10086
         /// <summary>
         /// 出团日期
         /// </summary>
-        public string DateStart { get; set; }
+        public DateTime DateStart { get; set; }
         /// <summary>
         /// 回团日期
         /// </summary>
-        public string DateFinish { get; set; }
+        public DateTime DateFinish { get; set; }
         /// <summary>
         /// 本团天数
         /// </summary>
@@ -99,7 +99,7 @@ namespace Volo.Ymapp.Kh10086
         /// <summary>
         /// 截止下单日期，即下架日期
         /// </summary>
-        public string DateOffline { get; set; }
+        public DateTime DateOffline { get; set; }
         public string DeptCode { get; set; }
         public string DeptName { get; set; }
         public string PostersImg { get; set; }

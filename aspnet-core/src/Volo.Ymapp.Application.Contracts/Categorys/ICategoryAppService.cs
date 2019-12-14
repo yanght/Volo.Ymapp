@@ -21,5 +21,7 @@ namespace Volo.Ymapp.Categorys
         Task<List<TreeDataDto>> GetCategoryTree(GetCategoryTreeDto input);
         CategoryDto GetCategoryByName(string categoryName);
         List<CategoryDto> GetCategoryListByType(CategoryType type);
+
+        List<CategoryDto> GetLineCountrys(bool isRecommend);
     }
 }

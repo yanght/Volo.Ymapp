@@ -32,8 +32,10 @@ namespace KH10086.WebApp.Controllers
             HomeViewModel viewModel = new HomeViewModel();
             var recommendList = _lineApp.GetLineList(new GetLineListDto() { Recommend = 1, SkipCount = 0, MaxResultCount = int.MaxValue });
             var lineTypeList = _categoryApp.GetCategoryListByType(CategoryType.LineType);
+            var countryList = _categoryApp.GetLineCountrys(true);
             viewModel.RecommendList = recommendList.Items.ToList();
             viewModel.LineTypeList = lineTypeList;
+            viewModel.LineCountryList = countryList;
             return View(viewModel);
         }
 

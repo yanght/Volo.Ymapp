@@ -30,6 +30,11 @@ namespace Volo.Ymapp.Categorys
         /// </summary>
         public string PictureUrl { get; set; }
         /// <summary>
+        /// 是否推荐
+        /// </summary>
+        [DefaultValue(0)]
+        public int IsRecommend { get; set; }
+        /// <summary>
         /// 排序
         /// </summary>
         [Required]

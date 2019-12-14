@@ -21,18 +21,21 @@ namespace KH10086.WebApp.Controllers
             _categoryApp = categoryApp;
         }
 
-        public async Task<IActionResult> TypeList(Guid lineType, int pageIndex = 1)
+        public async Task<IActionResult> TypeList(string lineType, int pageIndex = 1)
         {
-            int pageSize = 8;
+            int pageSize = 20;
             LineTypeListViewModel model = new LineTypeListViewModel();
             var result = _lineApp.GetLineList(new GetLineListDto()
             {
-                LineCategoryType = lineType.ToString(),
+                LineCategoryType = lineType,
                 SkipCount = (pageIndex - 1) * pageSize,
                 MaxResultCount = pageSize
             });
-            var category = await _categoryApp.GetAsync(lineType);
-            model.Category = category;
+            if (!string.IsNullOrWhiteSpace(lineType))
+            {
+                var category = await _categoryApp.GetAsync(Guid.Parse(lineType));
+                model.Category = category;
+            }
             model.Lines = result.Items.ToList();
             model.TotalCount = result.TotalCount;
             var usersAsIPagedList = new StaticPagedList<LineListDto>(model.Lines, pageIndex, pageSize, (int)model.TotalCount);
@@ -42,17 +45,22 @@ namespace KH10086.WebApp.Controllers
 
         public async Task<IActionResult> CountryList(Guid categoryId, int pageIndex = 1)
         {
-            int pageSize = 8;
+            int pageSize = 20;
             LineCountryListViewModel model = new LineCountryListViewModel();
             string continent = ""; string country = "";
-            var category = await _categoryApp.GetAsync(categoryId);
-            if (category.ParentId == Guid.Empty)
+            if (categoryId != Guid.Empty)
             {
-                continent = category.Name;
-            }
-            else
-            {
-                country = category.Name;
+                var category = await _categoryApp.GetAsync(categoryId);
+                if (category.ParentId == Guid.Empty)
+                {
+                    continent = category.Name;
+                }
+                else
+                {
+                    country = category.Name;
+                }
+
+                model.Category = category;
             }
             var result = _lineApp.GetLineList(new GetLineListDto()
             {
@@ -62,7 +70,6 @@ namespace KH10086.WebApp.Controllers
                 SkipCount = (pageIndex - 1) * pageSize,
                 MaxResultCount = pageSize
             });
-            model.Category = category;
             model.Lines = result.Items.ToList();
             model.TotalCount = result.TotalCount;
             var usersAsIPagedList = new StaticPagedList<LineListDto>(model.Lines, pageIndex, pageSize, (int)model.TotalCount);
