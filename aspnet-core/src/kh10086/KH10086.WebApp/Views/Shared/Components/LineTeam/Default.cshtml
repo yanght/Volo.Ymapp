@@ -1,0 +1,43 @@
+﻿@model List<Volo.Ymapp.Kh10086.LineTeamDto>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-hover table-bordered table-condensed table-trip">
+        <thead>
+            <tr>
+                <th>状态</th>
+                <th>出团日期</th>
+                <th>起止城市</th>
+                <th>线路名称</th>
+                <th>天数</th>
+                <th>总数</th>
+                <th>余数</th>
+                <th>市场成人价</th>
+                <th>在线预定</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                string state = "正常";
+                if (item.FreeNum <= 0)
+                {
+                    state = "已满";
+                }
+                <tr>
+                    <td><span class="label label-@(state=="正常"?"info":"danger")">@(state)</span></td>
+                    <td>@item.DateStart.ToString("yyyy/MM/dd")</td>
+                    <td>@item.PlaceLeave</td>
+                    <td title="@item.ProductName">@(item.ProductName.Length > 20 ? item.ProductName.Substring(0, 20) + "..." : item.ProductName)</td>
+                    <td>@item.DayNum</td>
+                    <td>@item.PlanNum</td>
+                    <td>@item.FreeNum</td>
+                    <td>@item.CustomerPrice.ToString("f0")</td>
+                    <td><button class="btn btn_country btn-block">预定</button></td>
+                    @*<td><span class="label label-danger">@item.ProductName</span></td>
+                        <td><span class="badge badge-info">70%</span></td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}

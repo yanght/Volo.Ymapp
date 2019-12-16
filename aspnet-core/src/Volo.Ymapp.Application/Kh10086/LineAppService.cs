@@ -135,6 +135,12 @@ namespace Volo.Ymapp.Kh10086
             return countrys;
         }
 
+        public List<LineTeamDto> GetLineTeams(string lineCode)
+        {
+            var teamList = _lineTeamRepository.Where(m => m.DateOnline <= DateTime.Now && m.DateOffline > DateTime.Now && m.LineCode == lineCode).ToList();
+            return teamList.MapToList<LineTeam, LineTeamDto>().ToList();
+        }
+
         #region 获取线路详情
 
         public async Task<LineDto> GetLineByLineId(long lineId)

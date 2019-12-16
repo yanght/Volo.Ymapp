@@ -121,6 +121,10 @@
         <div class="blue_trip_price">
             <p><span>最低</span></p>
             <p>￥@(line.CustomerPrice.ToString("f0")) <span>人起</span></p>
+
+        </div>
+        <div class="row">
+            @await Component.InvokeAsync("LineTeam", new { lineCode = line.LineCode })
         </div>
         <div class="blue_trip_article">
             <p>价格包含：</p>

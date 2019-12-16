@@ -13,6 +13,7 @@ namespace Volo.Ymapp.Kh10086
         void ParseLineData(ParseLineDataDto dto);
         List<string> GetContinents();
         List<string> GetCountrys();
+        List<LineTeamDto> GetLineTeams(string lineCode);
         Task<LineDto> GetLineByLineId(long lineId);
         Task<LineDto> GetLineByLineCode(string lineCode);
         Task<LineDto> GetLineByProductCode(string productCode);
