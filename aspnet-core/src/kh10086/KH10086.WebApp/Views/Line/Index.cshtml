@@ -20,8 +20,8 @@
                         <img src="@images[i]" alt="" style="height:400px;">
                         <div class="carousel-caption">
                             <div class="blue_country_title">
-                                <p>Wonders of Ancient Greece</p>
-                                <h2>神秘古希腊之旅</h2>
+                                <p>@line.Title</p>
+                                @*<h2>神秘古希腊之旅</h2>*@
                             </div>
                         </div>
                     </div>
@@ -44,27 +44,8 @@
 </section>
 
 <section class="container">
-    <div class="row">
-        <div class="col-md-9 col-xs-8">
-            <article class="blue_page_article blue_trip_article">
-                @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "行程亮点")?.Describe ?? "")
-            </article>
-        </div>
-        <div class="col-md-2 col-xs-3 col-md-offset-1 col-xs-offset-1">
-            <p>
-                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModal1">预订</button>
-            </p>
-            <p>
-                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModa2">完整行程信息</button>
-            </p>
-        </div>
-    </div>
-    <div class="row" id="1">
-        <div class="col-md-7 col-xs-12">
-            <h2 class="blue_trip_title">行程特色</h2>
-            @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "行程特色")?.Describe ?? "")
-        </div>
-        <div class="col-md-4 col-xs-8 col-md-offset-1">
+    @*<div class="row">
+        <div class="col-md-7 col-xs-8 col-md-offset-1">
             <div class="blue_trip_map">
                 <div class="col-md-4 col-xs-4">
                     <div class="blue_trip_label">
@@ -84,10 +65,41 @@
                         <p><span>@line.Country</span></p>
                     </div>
                 </div>
-                @*<div class="col-md-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
                         <img src="~/img/trip-map.jpg" alt="">
-                    </div>*@
+                    </div>
             </div>
+        </div>
+        <div class="col-md-3 col-xs-3 col-md-offset-1 col-xs-offset-1">
+            <p>
+                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModal1">预订</button>
+            </p>
+            <p>
+                <button class="btn btn_country btn-block" data-toggle="modal" data-target="#myModa2">完整行程信息</button>
+            </p>
+        </div>
+    </div>*@
+
+    <div class="row">
+        @await Component.InvokeAsync("LineTeam", new { lineCode = line.LineCode })
+    </div>
+    @{
+        var item1 = line.LineIntros.FirstOrDefault(m => m.Title == "行程亮点")?.Describe ?? "";
+    }
+    @if (!string.IsNullOrEmpty(item1))
+    {
+        <div class="row">
+            <div class="col-md-12 col-xs-8">
+                <article class="blue_page_article blue_trip_article">
+                    @Html.Raw(item1)
+                </article>
+            </div>
+        </div>
+    }
+    <div class="row" id="1">
+        <div class="col-md-10 col-xs-12">
+            <h2 class="blue_trip_title">行程特色</h2>
+            @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "行程特色")?.Describe ?? "")
         </div>
     </div>
     <div class="row" id="2">
@@ -123,9 +135,7 @@
             <p>￥@(line.CustomerPrice.ToString("f0")) <span>人起</span></p>
 
         </div>
-        <div class="row">
-            @await Component.InvokeAsync("LineTeam", new { lineCode = line.LineCode })
-        </div>
+
         <div class="blue_trip_article">
             <p>价格包含：</p>
             <ul class="blue_trip_item fz14">
