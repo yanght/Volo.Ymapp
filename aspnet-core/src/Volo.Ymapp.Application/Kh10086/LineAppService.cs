@@ -593,12 +593,13 @@ namespace Volo.Ymapp.Kh10086
             var line = _lineRepository.FirstOrDefault(m => m.LineCode == dto.LineCode);
             if (line == null)
             {
+                string firstLineImg = string.IsNullOrEmpty(dto.FirstLineImg) ? !string.IsNullOrEmpty(dto.ImgCode) ? dto.ImgCode.Split(',')[0] : "" : dto.FirstLineImg;
                 line = await _lineRepository.InsertAsync(new Line()
                 {
                     Continent = dto.Continent,
                     Country = dto.Country,
                     CustomTitle = dto.CustomTitle,
-                    FirstLineImg = dto.FirstLineImg,
+                    FirstLineImg = firstLineImg,
                     Function = dto.Function,
                     ImgCity = dto.ImgCity,
                     ImgCode = dto.ImgCode,
@@ -618,11 +619,12 @@ namespace Volo.Ymapp.Kh10086
             }
             else
             {
+                string firstLineImg = string.IsNullOrEmpty(dto.FirstLineImg) ? !string.IsNullOrEmpty(dto.ImgCode) ? dto.ImgCode.Split(',')[0] : "" : dto.FirstLineImg;
                 Log.Information($"线路【{line.LineCode}】已存在，更新线路");
                 line.Continent = dto.Continent;
                 line.Country = dto.Country;
                 line.CustomTitle = dto.CustomTitle;
-                line.FirstLineImg = dto.FirstLineImg;
+                line.FirstLineImg = firstLineImg;
                 line.Function = dto.Function;
                 line.ImgCity = dto.ImgCity;
                 line.ImgCode = dto.ImgCode;

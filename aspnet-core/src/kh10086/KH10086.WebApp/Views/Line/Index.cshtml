@@ -32,7 +32,7 @@
     <ul class="blue_nav_menu">
         <li class="col-md-2 col-xs-2"><a data-index="1" href="javascript:void(0);">行程特色</a></li>
         <li class="col-md-2 col-xs-2"><a data-index="2" href="javascript:void(0);">具体行程</a></li>
-        <li class="col-md-2 col-xs-2"><a data-index="3" href="javascript:void(0);">行程费用</a></li>
+        <li class="col-md-2 col-xs-2"><a data-index="3" href="javascript:void(0);">签证须知</a></li>
         <li class="col-md-2 col-xs-2"><a data-index="4" href="javascript:void(0);">住宿</a></li>
         <li class="col-md-2 col-xs-2"><a data-index="5" href="javascript:void(0);">图片</a></li>
         <li class="col-md-2 col-xs-2"><a data-index="6" href="javascript:void(0);">更多</a></li>
@@ -129,36 +129,9 @@
 
     </div>
     <div class="row" id="3">
-        <h2 class="blue_trip_title">行程费用</h2>
-        <div class="blue_trip_price">
-            <p><span>最低</span></p>
-            <p>￥@(line.CustomerPrice.ToString("f0")) <span>人起</span></p>
-
-        </div>
-
+        <h2 class="blue_trip_title">签证须知</h2>
         <div class="blue_trip_article">
-            <p>价格包含：</p>
-            <ul class="blue_trip_item fz14">
-                <li>各个出发城市/到达城市私人往返机场接送机/火车/轮船</li>
-                <li>往返含税国际机票</li>
-                <li>行程中所列的住宿（价格基于两人住一间房，如果需要单独的房间需补交单房差）</li>
-                <li>整个行程所提及的餐食，早-早餐，午-午餐，晚-晚餐</li>
-                <li>全程只供您单独使用的舒适旅行车，以及行程中所涉及的目的地国家国内机票，船票和火车票（如没有涉及则不包含）</li>
-                <li>专业的英文导游</li>
-                <li>行程中所涉及到的景点门票</li>
-                <li>签证费</li>
-                <li>有效期覆盖您的整个旅行的旅游保险</li>
-                <li>整个旅行期间所需要的所有旅行文件（机票行程单，酒店确认单，行程确认单）以及目的地信息，地图等</li>
-                <li>24小时的及时应答和服务</li>
-                <li>服务费和所涉及到的政府税费</li>
-            </ul>
-            <p>价格不包含：</p>
-            <ul class="blue_trip_item fz14">
-                <li>任何性质的个人花费</li>
-                <li>导游及司机的小费</li>
-                <li>行程中所提及的可选择的活动项目</li>
-                <li>行程中不包含的旅行项目</li>
-            </ul>
+            @Html.Raw(line.LineIntros.FirstOrDefault(m => m.Title == "签证须知")?.Describe ?? "")
         </div>
     </div>
     <div class="row" id="4">
