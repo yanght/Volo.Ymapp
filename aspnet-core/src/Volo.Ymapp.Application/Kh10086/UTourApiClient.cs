@@ -18,6 +18,7 @@ namespace Volo.Ymapp.Kh10086
         public static string AccpCode { get; set; }
         public UTourApiClient(string host, string visitCode, string signKey, string userCode, string token, string accpCode)
         {
+
             Host = host;
             VisitCode = visitCode;
             SignKey = signKey;
@@ -64,7 +65,7 @@ namespace Volo.Ymapp.Kh10086
         private const string getOrderInfoByOrderCodeUrl = "api/ag/agentForeignApi/getOrderInfoByOrderCode";
 
 
-        public static string getUserLoginVerification()
+        public  string getUserLoginVerification()
         {
             RequestModel request = new RequestModel();
             request.visitCode = VisitCode;
@@ -81,7 +82,7 @@ namespace Volo.Ymapp.Kh10086
         /// <param name="productCode"></param>
         /// <param name="teamId"></param>
         /// <returns></returns>
-        public static ProductDetail getTeamInfoByCodeOrId(string productCode, string teamId)
+        public  ProductDetail getTeamInfoByCodeOrId(string productCode, string teamId)
         {
             RequestModel request = new RequestModel();
             request.visitCode = VisitCode;
@@ -98,7 +99,7 @@ namespace Volo.Ymapp.Kh10086
             return null;
         }
 
-        public static LineStock getRealTimeTeamStockNum(string productCode, string teamId)
+        public  LineStock getRealTimeTeamStockNum(string productCode, string teamId)
         {
             RequestModel request = new RequestModel();
             request.visitCode = VisitCode;
@@ -115,7 +116,7 @@ namespace Volo.Ymapp.Kh10086
             return null;
         }
 
-        public static LinePrice getRealTimeTeamPrice(string productCode, string teamId)
+        public  LinePrice getRealTimeTeamPrice(string productCode, string teamId)
         {
             RequestModel request = new RequestModel();
             request.visitCode = VisitCode;
@@ -142,7 +143,7 @@ namespace Volo.Ymapp.Kh10086
         /// <param name="accpCode"></param>
         /// <param name="orderDetail"></param>
         /// <returns></returns>
-        public static string createAgentOrderApi(string teamId, string userId, string custName, string sex, string orderDetail)
+        public  string createAgentOrderApi(string teamId, string userId, string custName, string sex, string orderDetail)
         {
 
             string date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -181,7 +182,7 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         /// <param name="orderCode"></param>
         /// <returns></returns>
-        public static OrderState getOrderInfoByOrderCode(string orderCode)
+        public  OrderState getOrderInfoByOrderCode(string orderCode)
         {
             RequestModel request = new RequestModel();
             request.visitCode = VisitCode;
@@ -208,23 +209,23 @@ namespace Volo.Ymapp.Kh10086
         /// <summary>
         /// 零售价
         /// </summary>
-        public double priceRetail { get; set; }
+        public decimal priceRetail { get; set; }
         /// <summary>
         /// 同业价-零售价
         /// </summary>
-        public double tradePrice { get; set; }
+        public decimal tradePrice { get; set; }
         /// <summary>
         /// 儿童价
         /// </summary>
-        public double childPrice { get; set; }
+        public decimal childPrice { get; set; }
         /// <summary>
         /// 境外参团价-零售价
         /// </summary>
-        public double overseasTourPrice { get; set; }
+        public decimal overseasTourPrice { get; set; }
         /// <summary>
         /// 单间差
         /// </summary>
-        public double singleRoomDifference { get; set; }
+        public decimal singleRoomDifference { get; set; }
     }
 
     /// <summary>
@@ -235,11 +236,11 @@ namespace Volo.Ymapp.Kh10086
         /// <summary>
         /// 余位数 （当前余位大于9时，返回最大可收人数为9）
         /// </summary>
-        public string numFree { get; set; }
+        public int numFree { get; set; }
         /// <summary>
         /// 预收数
         /// </summary>
-        public string numPlan { get; set; }
+        public int numPlan { get; set; }
     }
 
     public class ProductDetail

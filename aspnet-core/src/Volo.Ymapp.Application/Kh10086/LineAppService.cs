@@ -1,4 +1,6 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Configuration;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Caching;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Threading;
 using Volo.Ymapp.Utils;
@@ -17,7 +20,7 @@ namespace Volo.Ymapp.Kh10086
     public class LineAppService : ApplicationService, ILineAppService
     {
         //public ILogger<MyService> Logger { get; set; }
-
+        private readonly IDistributedCache<LineDto> _cache;
         private readonly IRepository<Line, long> _lineRepository;
         private readonly IRepository<LineDay, long> _lineDayRepository;
         private readonly IRepository<LineDayImage, long> _lineDayImageRepository;
@@ -27,7 +30,9 @@ namespace Volo.Ymapp.Kh10086
         private readonly IRepository<LineIntro, long> _lineIntroRepository;
         private readonly IRepository<LineRouteDate, long> _lineRouteDateRepository;
         private readonly IRepository<LineTeam, long> _lineTeamRepository;
-        public LineAppService(IRepository<Line, long> lineRepository
+        public LineAppService(
+            IDistributedCache<LineDto> cache
+            , IRepository<Line, long> lineRepository
             , IRepository<LineDay, long> lineDayRepository
             , IRepository<LineDayImage, long> lineDayImageRepository
             , IRepository<LineDaySelf, long> lineDaySelfRepository
@@ -37,6 +42,7 @@ namespace Volo.Ymapp.Kh10086
             , IRepository<LineRouteDate, long> lineRouteDateRepository
             , IRepository<LineTeam, long> lineTeamRepository)
         {
+            _cache = cache;
             _lineRepository = lineRepository;
             _lineDayRepository = lineDayRepository;
             _lineDayImageRepository = lineDayImageRepository;
@@ -48,6 +54,10 @@ namespace Volo.Ymapp.Kh10086
             _lineTeamRepository = lineTeamRepository;
         }
 
+        /// <summary>
+        /// 解析同步线路数据
+        /// </summary>
+        /// <param name="dto"></param>
         public void ParseLineData(ParseLineDataDto dto)
         {
             Log.Information($"开始获取解析线路数据。。。");
@@ -61,14 +71,18 @@ namespace Volo.Ymapp.Kh10086
             var lineList = GetLineList(lineDetailUrl, nodeList);
             Log.Information($"结束线路数据解析");
         }
-
+        /// <summary>
+        /// 获取线路集合
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public PagedResultDto<LineListDto> GetLineList(GetLineListDto input)
         {
             var query = _lineRepository.WhereIf(!string.IsNullOrEmpty(input.Continent), m => m.Continent.Contains(input.Continent))
                 .WhereIf(!string.IsNullOrEmpty(input.Country), m => m.Country.Contains(input.Country))
                 .WhereIf(input.Recommend.HasValue, m => m.Recommend == input.Recommend.Value)
                 .WhereIf(!string.IsNullOrEmpty(input.LineCategoryType), m => m.LineCategoryType == input.LineCategoryType)
-                .Where(m => m.DateOffline > DateTime.Now && m.DateStart > DateTime.Now);
+                .Where(m => m.DateOffline > DateTime.Now && m.DateStart > DateTime.Now && m.DateOnline < DateTime.Now);
 
             var count = query.Count();
             var list = query.PageBy(input.SkipCount, input.MaxResultCount)
@@ -98,7 +112,10 @@ namespace Volo.Ymapp.Kh10086
             }
             return list;
         }
-
+        /// <summary>
+        /// 获取所有线路国家
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetCountrys()
         {
             var countryList = _lineRepository.Select(m => m.Country).Distinct().ToList();
@@ -118,7 +135,21 @@ namespace Volo.Ymapp.Kh10086
             return countrys;
         }
 
+        #region 获取线路详情
+
         public async Task<LineDto> GetLineByLineId(long lineId)
+        {
+            return await _cache.GetOrAddAsync(
+            lineId.ToString(), //Cache key
+            async () => await GetLineByLineIdFromDb(lineId),
+            () => new DistributedCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTimeOffset.Now.AddHours(1)
+            }
+        );
+        }
+
+        private async Task<LineDto> GetLineByLineIdFromDb(long lineId)
         {
             LineDto model = new LineDto();
             var line = await _lineRepository.FindAsync(lineId);
@@ -154,14 +185,31 @@ namespace Volo.Ymapp.Kh10086
         public async Task<LineDto> GetLineByLineCode(string lineCode)
         {
             var line = _lineRepository.SingleOrDefault(m => m.LineCode == lineCode);
-            return await GetLineByLineId(line.Id);
+            return await _cache.GetOrAddAsync(
+            line.Id.ToString(), //Cache key
+            async () => await GetLineByLineIdFromDb(line.Id),
+            () => new DistributedCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTimeOffset.Now.AddHours(1)
+            }
+        );
         }
 
         public async Task<LineDto> GetLineByProductCode(string productCode)
         {
             var lineTeam = _lineTeamRepository.SingleOrDefault(m => m.ProductCode == productCode);
-            return await GetLineByLineCode(lineTeam.LineCode);
+            return await _cache.GetOrAddAsync(
+           lineTeam.LineId.ToString(), //Cache key
+           async () => await GetLineByLineIdFromDb(lineTeam.LineId),
+           () => new DistributedCacheEntryOptions
+           {
+               AbsoluteExpiration = DateTimeOffset.Now.AddHours(1)
+           }
+       );
         }
+
+        #endregion 
+
         /// <summary>
         /// 同步线路的最低价格
         /// </summary>
@@ -182,7 +230,75 @@ namespace Volo.Ymapp.Kh10086
                 line.DateStart = lineTeam.DateStart;
                 lineTeam = lineTeams.OrderByDescending(m => m.DateOffline).FirstOrDefault();
                 line.DateOffline = lineTeam.DateOffline;
+                lineTeam = lineTeams.OrderBy(m => m.DateOnline).FirstOrDefault();
+                line.DateOnline = lineTeam.DateOnline;
                 await _lineRepository.UpdateAsync(line);
+            }
+        }
+
+        public async Task LineTeamAsync()
+        {
+            try
+            {
+                string host = "http://129.204.184.147:8002/";// _configuration["Utour:apiUrl"];
+                string visitCode = "HNKH";// _configuration["Utour:visitCode"];
+                string signKey = "1ey53c6a8ebbfe0dyc301cy5c010y1bx";// _configuration["Utour:signKey"];
+                string userCode = "AGENT201911151338295";// _configuration["Utour:userCode"];
+                string token = "agentApi1024";// _configuration["Utour:token"];
+                string accpCode = "530015";// _configuration["Utour:accpCode"];
+
+                UTourApiClient client = new UTourApiClient(host, visitCode, signKey, userCode, token, accpCode);
+                while (true)
+                {
+                    var teamList = _lineTeamRepository.Where(m => m.LastAsyncTime.Date < DateTime.Now.Date).Take(10).ToList();
+                    if (teamList != null && teamList.Count > 0)
+                    {
+                        foreach (var item in teamList)
+                        {
+                            var teamInfo = client.getTeamInfoByCodeOrId(item.ProductCode, item.TeamId);
+                            if (teamInfo != null)
+                            {
+                                item.ProductCode = teamInfo.productCode;
+                                item.ProductName = teamInfo.title;
+                                item.Continent = teamInfo.continent;
+                                item.PlaceLeave = teamInfo.placeLeave;
+                                item.PlaceReturn = teamInfo.placeRetrun;
+                                item.DateStart = DateTime.Parse(teamInfo.dateSart);
+                                item.DateFinish = DateTime.Parse(teamInfo.dateFinish);
+                                item.DateOnline = DateTime.Parse(teamInfo.dateOnline);
+                                item.DateOffline = DateTime.Parse(teamInfo.dateOffline);
+                                item.AirCompany = teamInfo.airlineCompany;
+                            }
+
+                            var teamPrice = client.getRealTimeTeamPrice(item.ProductCode, item.TeamId);
+                            if (teamPrice != null)
+                            {
+                                item.CustomerPrice = teamPrice.priceRetail;
+                                item.OverseasJoinPrice = teamPrice.overseasTourPrice;
+                                item.ChildPrice = teamPrice.childPrice;
+                                item.SingleRoom = teamPrice.singleRoomDifference;
+                                item.AgentPrice = teamPrice.tradePrice;
+                            }
+
+                            var teamNumber = client.getRealTimeTeamStockNum(item.ProductCode, item.TeamId);
+                            if (teamNumber != null)
+                            {
+                                item.FreeNum = teamNumber.numFree;
+                                item.PlanNum = teamNumber.numPlan;
+                            }
+
+                            await _lineTeamRepository.UpdateAsync(item);
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"同步线路最新信息失败,{ex.ToString()}");
             }
         }
 
@@ -235,7 +351,6 @@ namespace Volo.Ymapp.Kh10086
                 {
                     Log.Error($"第{index}条数据解析失败,【{lineCode}】,{ex.ToString()}");
                 }
-
             }
             return list;
         }

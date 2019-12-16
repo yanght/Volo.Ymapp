@@ -96,6 +96,10 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public DateTime DateStart { get; set; }
         /// <summary>
+        /// 最早终端售卖开始日期
+        /// </summary>
+        public DateTime DateOnline { get; set; }
+        /// <summary>
         /// 最晚截止下单日期，即下架日期
         /// </summary>
         public DateTime DateOffline { get; set; }

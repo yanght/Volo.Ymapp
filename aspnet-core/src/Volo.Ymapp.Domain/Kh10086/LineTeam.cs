@@ -97,6 +97,10 @@ namespace Volo.Ymapp.Kh10086
         /// </summary>
         public string WebsiteTags { get; set; }
         /// <summary>
+        /// 终端售卖开始日期
+        /// </summary>
+        public DateTime DateOnline { get; set; }
+        /// <summary>
         /// 截止下单日期，即下架日期
         /// </summary>
         public DateTime DateOffline { get; set; }
@@ -104,5 +108,9 @@ namespace Volo.Ymapp.Kh10086
         public string DeptName { get; set; }
         public string PostersImg { get; set; }
         public string PostersData { get; set; }
+        /// <summary>
+        /// 数据最后同步时间
+        /// </summary>
+        public DateTime LastAsyncTime { get; set; }
     }
 }

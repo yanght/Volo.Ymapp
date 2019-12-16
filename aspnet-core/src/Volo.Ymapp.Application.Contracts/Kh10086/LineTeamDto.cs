@@ -30,6 +30,10 @@ namespace Volo.Ymapp.Kh10086
         public int PlanNum { get; set; }
         public int FreeNum { get; set; }
         public string WebsiteTags { get; set; }
+        /// <summary>
+        /// 终端售卖开始日期
+        /// </summary>
+        public DateTime DateOnline { get; set; }
         public DateTime DateOffline { get; set; }
         public string DeptCode { get; set; }
         public string DeptName { get; set; }

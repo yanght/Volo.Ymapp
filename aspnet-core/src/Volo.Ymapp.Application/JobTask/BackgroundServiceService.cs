@@ -48,5 +48,10 @@ namespace Volo.Ymapp.JobTask
         {
             await _backgroundJobManager.EnqueueAsync(new LinePriceSyncJobArgs() { });
         }
+
+        public async Task AddLineRealTimeInfoSyncJob()
+        {
+            await _backgroundJobManager.EnqueueAsync(new LineRealTimeInfoSyncJobArgs() { });
+        }
     }
 }

@@ -1782,6 +1782,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<DateTime>("DateOffline")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DateOnline")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateStart")
                         .HasColumnType("datetime2");
 
@@ -2499,6 +2502,9 @@ namespace Volo.Ymapp.Migrations
                     b.Property<DateTime>("DateOffline")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DateOnline")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateStart")
                         .HasColumnType("datetime2");
 
@@ -2537,6 +2543,9 @@ namespace Volo.Ymapp.Migrations
                         .HasColumnName("IsDeleted")
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
+
+                    b.Property<DateTime>("LastAsyncTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
