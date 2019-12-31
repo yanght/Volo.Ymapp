@@ -22,6 +22,7 @@ export default class EditModal extends Component {
         data: {}, // 表单回显数据
         categorys: [],
         editorState: null,
+        fileList: [],
     };
 
     componentDidMount() {
@@ -105,7 +106,7 @@ export default class EditModal extends Component {
         const { id } = this.props;
         const { getFieldDecorator } = this.props.form;
         const isEdit = id !== null;
-        const { loading, data, categorys, editorState } = this.state;
+        const { loading, data, categorys, editorState, fileList } = this.state;
         const span = 8;
         const excludeControls = [
             'letter-spacing',
@@ -191,7 +192,7 @@ export default class EditModal extends Component {
                                 </Row>
                             </TabPane>
                             <TabPane tab="图片" key="2">
-                                <ProductPicture fileList={fileList}/>
+                                <ProductPicture fileList={fileList} />
                             </TabPane>
                             <TabPane tab="规格" key="3">
                                 Content of Tab Pane 3

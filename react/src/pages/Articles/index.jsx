@@ -66,7 +66,7 @@ export default class Index extends Component {
     componentDidMount() {
         // 获取树形分类
         this.props.ajax
-            .get('/api/app/category/categoryTree')
+            .get('/api/app/category/categoryTree', { type: 4 })
             .then(res => {
                 this.setState({ categorys: res });
             })

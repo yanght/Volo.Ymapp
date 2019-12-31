@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.OrderBy(m=>m.DateStart).ToList())
             {
                 string state = "正常";
                 if (item.FreeNum <= 0)

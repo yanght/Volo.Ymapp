@@ -227,6 +227,4 @@
     <ProjectReference Include="..\..\Volo.Ymapp.HttpApi\Volo.Ymapp.HttpApi.csproj" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
-
 </Project>

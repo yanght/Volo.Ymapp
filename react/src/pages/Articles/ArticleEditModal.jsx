@@ -45,7 +45,7 @@ export default class EditModal extends Component {
 
         // 获取树形分类
         this.props.ajax
-            .get('/api/app/category/categoryTree')
+            .get('/api/app/category/categoryTree', { Type: 4 })
             .then(res => {
                 this.setState({ categorys: res });
             })
