@@ -35,13 +35,17 @@ namespace KH10086.DataSyncTask.Jobs
 
                 //FTPClientHelper client = new FTPClientHelper(FTPAddress, FTPUsername, FTPPwd);
                 //client.FTPDownFile("c:\\ftp\\#zyzmyxhuayuweblygswzs.mdb", "/hydatabasehxwl/#zyzmyxhuayuweblygswzs.mdb");
-                FTPClient client = new FTPClient("116.255.135.162", "/KH10086DataSyncTask", "kh10086", "Fq9pmKw4XT", 212);
+                //FTPClient client = new FTPClient("116.255.135.162", "/KH10086DataSyncTask", "kh10086", "Fq9pmKw4XT", 212);
 
-                client.DownloadFile("#zyzmyxhuayuweblygswzs.mdb", "C:\\ftp", "#zyzmyxhuayuweblygswzs.mdb");
-                
+                //client.DownloadFile("#zyzmyxhuayuweblygswzs.mdb", "C:\\ftp", "#zyzmyxhuayuweblygswzs.mdb");
+
                 //client.DownloadBrokenFile("/KH10086DataSyncTask/#zyzmyxhuayuweblygswzs.mdb", "C:\\ftp", "#zyzmyxhuayuweblygswzs.mdb", 0);
-
-
+                string _host = "116.255.135.162";
+                int _port = 212;
+                string _username = "kh10086";
+                string _password = "Fq9pmKw4XT";
+                FtpHelper client = new FtpHelper(_host, _port, _username, _password);
+                client.Get(@"C:\ftp\#zyzmyxhuayuweblygswzs.mdb", "/hydatabasehxwl/#zyzmyxhuayuweblygswzs.mdb");
                 //UTourService uTourService = new UTourService();
                 //bool result = uTourService.DataSync(int.Parse(classId));
                 //if (result)
