@@ -60,6 +60,25 @@ export default [
     }
   },
   {
+    path: '/category',
+    name: 'category',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'category_page',
+        name: 'category_page',
+        meta: {
+          icon: 'ios-bug',
+          title: '分类'
+        },
+        component: () => import('@/view/components/category/index.vue')
+      }
+    ]
+  },
+  {
     path: '/join',
     name: 'join',
     component: Main,

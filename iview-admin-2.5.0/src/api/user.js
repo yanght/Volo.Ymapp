@@ -1,23 +1,23 @@
 import axios from '@/libs/api.request'
 
 export const login = ({ userName, password }) => {
-  const data = {
-    userName,
-    password
-  }
+  var params = new URLSearchParams();
+  params.append('userName', userName)
+  params.append('password', password)
+  params.append('client_id', 'Ymapp_Web')
+  params.append('client_secret', '1q2w3e*')
+  params.append('grant_type', 'password')
   return axios.request({
-    url: 'login',
-    data,
-    method: 'post'
+    url: 'connect/token',
+    data: params,
+    method: 'post',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })
 }
 
-export const getUserInfo = (token) => {
+export const getUserInfo = () => {
   return axios.request({
-    url: 'get_info',
-    params: {
-      token
-    },
+    url: 'connect/userinfo',
     method: 'get'
   })
 }
