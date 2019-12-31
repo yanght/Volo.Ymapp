@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { getCategoryTableData } from "@/api/category";
+import { getUserTableData } from "@/api/user";
 export default {
   data() {
     return {
@@ -81,6 +81,49 @@ export default {
         {
           title: "创建时间",
           key: "creationTime"
+        },
+        {
+          title: "Action",
+          key: "action",
+          width: 150,
+          align: "center",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "primary",
+                    size: "small"
+                  },
+                  style: {
+                    marginRight: "5px"
+                  },
+                  on: {
+                    click: () => {
+                      this.show(params.index);
+                    }
+                  }
+                },
+                "View"
+              ),
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "error",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.remove(params.index);
+                    }
+                  }
+                },
+                "Delete"
+              )
+            ]);
+          }
         }
       ],
       form: {
@@ -100,7 +143,7 @@ export default {
         SkipCount: (this.current - 1) * this.size,
         MaxResultCount: this.size
       };
-      getCategoryTableData(data).then(res => {
+      getUserTableData(data).then(res => {
         this.tableData = res.data.items;
         this.total = res.data.totalCount;
         this.loading = false;
@@ -117,6 +160,15 @@ export default {
     },
     handleCreate() {
       const userName = this.createUserForm.userName;
+    },
+    show(index) {
+      this.$Modal.info({
+        title: "User Info",
+        content: `Name：${this.tableData[index].userName}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
+      });
+    },
+    remove(index) {
+      this.tableData.splice(index, 1);
     }
   },
   mounted() {

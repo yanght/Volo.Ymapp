@@ -60,6 +60,25 @@ export default [
     }
   },
   {
+    path: '/user',
+    name: 'user',
+    meta: {
+      hideInBread: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'user_page',
+        name: 'user_page',
+        meta: {
+          icon: 'ios-bug',
+          title: '用户管理'
+        },
+        component: () => import('@/view/components/users/index.vue')
+      }
+    ]
+  },
+  {
     path: '/category',
     name: 'category',
     meta: {

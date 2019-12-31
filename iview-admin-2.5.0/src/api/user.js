@@ -82,3 +82,11 @@ export const restoreTrash = msg_id => {
     }
   })
 }
+
+export const getUserTableData = (data) => {
+  return axios.request({
+    url: '/api/identity/users',
+    params: data,
+    method: 'get'
+  })
+}
