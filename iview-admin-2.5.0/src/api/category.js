@@ -1,9 +1,9 @@
 import axios from '@/libs/api.request'
 
-export const getCategoryTableData = (params) => {
+export const getCategoryTableData = (data) => {
     return axios.request({
         url: '/api/identity/users',
-        params: params,
+        params: data,
         method: 'get'
     })
 }

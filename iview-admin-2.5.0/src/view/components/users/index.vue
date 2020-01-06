@@ -7,7 +7,7 @@
         </FormItem>
         <Button type="primary" @click="getData" style="margin-right:8px;">查询</Button>
         <Button @click="handleReset" style="margin-right:8px;">重置</Button>
-        <Button type="primary" icon="md-add" @click="createDialog=true">新建</Button>
+        <Button type="primary" icon="md-add" @click="edituser=true">新建</Button>
       </Form>
     </Card>
     <Table :data="tableData" :columns="columns" :loading="loading" size="small"></Table>
@@ -22,11 +22,66 @@
         @on-page-size-change="handleChangeSize"
       ></Page>
     </div>
-    <Modal v-model="createDialog" title="新建用户">
+    <Modal v-model="edituser" title="编辑用户" width="50">
       <Form>
-        <FormItem>
-          <Input v-model="createUserForm.userName" placeholder="用户名" />
-        </FormItem>
+        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+          <Row>
+            <Col span="12">
+              <FormItem label="用户名" prop="userName">
+                <Input v-model="formValidate.userName" placeholder="Enter your name"></Input>
+              </FormItem>
+            </Col>
+            <Col span="12">
+              <FormItem label="昵称" prop="name">
+                <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="12">
+              <FormItem label="邮箱" prop="email">
+                <Input v-model="formValidate.email" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+            <Col span="12">
+              <FormItem label="电话" prop="phone">
+                <Input v-model="formValidate.phone" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="12">
+              <FormItem label="真实姓名" prop="surname">
+                <Input v-model="formValidate.surname" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+            <Col span="12">
+              <FormItem label="账号状态" prop="lockoutEnabled">
+                <i-Switch v-model="formValidate.lockoutEnabled" size="large">
+                  <span slot="open">正常</span>
+                  <span slot="close">锁定</span>
+                </i-Switch>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="8">
+              <FormItem label="二次验证" prop="twoFactorEnabled">
+                <Checkbox v-model="formValidate.twoFactorEnabled">是</Checkbox>
+              </FormItem>
+            </Col>
+            <Col span="8">
+              <FormItem label="电话验证" prop="phoneNumberConfirmed">
+                <Checkbox v-model="formValidate.phoneNumberConfirmed">是</Checkbox>
+              </FormItem>
+            </Col>
+            <Col span="8">
+              <FormItem label="邮箱验证" prop="emailConfirmed">
+                <Checkbox v-model="formValidate.emailConfirmed">是</Checkbox>
+              </FormItem>
+            </Col>
+          </Row>
+        </Form>
       </Form>
       <Button slot="footer" type="primary" @click="handleCreate">创建</Button>
     </Modal>
@@ -129,9 +184,19 @@ export default {
       form: {
         userName: ""
       },
-      createDialog: false,
-      createUserForm: {
-        userName: ""
+      edituser: false,
+      formValidate: {
+        userName: "",
+        lockoutEnabled: true
+      },
+      ruleValidate: {
+        userName: [
+          {
+            required: true,
+            message: "The name cannot be empty",
+            trigger: "blur"
+          }
+        ]
       },
       isCreate: false
     };
@@ -159,13 +224,10 @@ export default {
       this.form.userName = "";
     },
     handleCreate() {
-      const userName = this.createUserForm.userName;
+      const userName = this.formValidate.userName;
     },
     show(index) {
-      this.$Modal.info({
-        title: "User Info",
-        content: `Name：${this.tableData[index].userName}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
-      });
+      this.edituser = true;
     },
     remove(index) {
       this.tableData.splice(index, 1);
