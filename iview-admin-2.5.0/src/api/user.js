@@ -90,3 +90,20 @@ export const getUserTableData = (data) => {
     method: 'get'
   })
 }
+
+export const updateUser = (data) => {
+  return axios.request({
+    url: `/api/identity/users/${data.id}`,
+    data: data,
+    method: 'put'
+  })
+}
+
+export const getUserRoles = (data) => {
+  return axios.request({
+    url: `/api/identity/users/${data.id}/roles`,
+    params: data,
+    method: 'get'
+  })
+}
+

@@ -7,7 +7,7 @@
         </FormItem>
         <Button type="primary" @click="getData" style="margin-right:8px;">查询</Button>
         <Button @click="handleReset" style="margin-right:8px;">重置</Button>
-        <Button type="primary" icon="md-add" @click="edituser=true">新建</Button>
+        <Button type="primary" icon="md-add" @click="handleCreate">新建</Button>
       </Form>
     </Card>
     <Table :data="tableData" :columns="columns" :loading="loading" size="small"></Table>
@@ -24,72 +24,75 @@
     </div>
     <Modal v-model="edituser" title="编辑用户" width="50">
       <Form>
-        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+        <Form ref="userform" :model="userModel" :rules="ruleValidate" :label-width="80">
           <Row>
             <Col span="12">
               <FormItem label="用户名" prop="userName">
-                <Input v-model="formValidate.userName" placeholder="Enter your name"></Input>
+                <Input v-model="userModel.userName" placeholder="Enter your name"></Input>
               </FormItem>
             </Col>
             <Col span="12">
               <FormItem label="昵称" prop="name">
-                <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
+                <Input v-model="userModel.name" placeholder="Enter your name"></Input>
               </FormItem>
             </Col>
           </Row>
           <Row>
             <Col span="12">
               <FormItem label="邮箱" prop="email">
-                <Input v-model="formValidate.email" placeholder="Enter your e-mail"></Input>
+                <Input v-model="userModel.email" placeholder="Enter your e-mail"></Input>
               </FormItem>
             </Col>
             <Col span="12">
-              <FormItem label="电话" prop="phone">
-                <Input v-model="formValidate.phone" placeholder="Enter your e-mail"></Input>
+              <FormItem label="电话" prop="phoneNumber">
+                <Input v-model="userModel.phoneNumber" placeholder="Enter your e-mail"></Input>
               </FormItem>
             </Col>
           </Row>
           <Row>
             <Col span="12">
               <FormItem label="真实姓名" prop="surname">
-                <Input v-model="formValidate.surname" placeholder="Enter your e-mail"></Input>
+                <Input v-model="userModel.surname" placeholder="Enter your e-mail"></Input>
               </FormItem>
             </Col>
-            <Col span="12">
-              <FormItem label="账号状态" prop="lockoutEnabled">
-                <i-Switch v-model="formValidate.lockoutEnabled" size="large">
-                  <span slot="open">正常</span>
-                  <span slot="close">锁定</span>
+            <Col span="6">
+              <FormItem label="是否锁定" prop="lockoutEnabled">
+                <i-Switch
+                  v-model="userModel.lockoutEnabled"
+                  @on-change="HandlelockoutEnabled"
+                  size="large"
+                >
+                  <span slot="open">是</span>
+                  <span slot="close">否</span>
                 </i-Switch>
+              </FormItem>
+            </Col>
+            <Col span="6">
+              <FormItem label="二次验证" prop="twoFactorEnabled">
+                <Checkbox v-model="userModel.twoFactorEnabled">是</Checkbox>
               </FormItem>
             </Col>
           </Row>
           <Row>
-            <Col span="8">
-              <FormItem label="二次验证" prop="twoFactorEnabled">
-                <Checkbox v-model="formValidate.twoFactorEnabled">是</Checkbox>
-              </FormItem>
-            </Col>
-            <Col span="8">
-              <FormItem label="电话验证" prop="phoneNumberConfirmed">
-                <Checkbox v-model="formValidate.phoneNumberConfirmed">是</Checkbox>
-              </FormItem>
-            </Col>
-            <Col span="8">
-              <FormItem label="邮箱验证" prop="emailConfirmed">
-                <Checkbox v-model="formValidate.emailConfirmed">是</Checkbox>
-              </FormItem>
+            <Col span="24">
+              <Card :bordered="false">
+                <p slot="title">角色</p>
+                <CheckboxGroup v-model="userRoles">
+                  <Checkbox v-for="item in roles" :label="item.name" :key="item.name"></Checkbox>
+                </CheckboxGroup>
+              </Card>
             </Col>
           </Row>
         </Form>
       </Form>
-      <Button slot="footer" type="primary" @click="handleCreate">创建</Button>
+      <Button slot="footer" type="primary" @click="handleSubmit('userform')">保存</Button>
     </Modal>
   </div>
 </template>
 
 <script>
-import { getUserTableData } from "@/api/user";
+import { getUserTableData, updateUser, getUserRoles } from "@/api/user";
+import { getRoles } from "@/api/role";
 export default {
   data() {
     return {
@@ -103,6 +106,10 @@ export default {
         {
           title: "用户名",
           key: "userName"
+        },
+        {
+          title: "昵称",
+          key: "name"
         },
         {
           title: "邮箱",
@@ -156,11 +163,11 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.show(params.index);
+                      this.HandleEdit(params.row);
                     }
                   }
                 },
-                "View"
+                "编辑"
               ),
               h(
                 "Button",
@@ -175,7 +182,7 @@ export default {
                     }
                   }
                 },
-                "Delete"
+                "删除"
               )
             ]);
           }
@@ -185,10 +192,9 @@ export default {
         userName: ""
       },
       edituser: false,
-      formValidate: {
-        userName: "",
-        lockoutEnabled: true
-      },
+      userModel: {},
+      roles: [],
+      userRoles: [],
       ruleValidate: {
         userName: [
           {
@@ -223,11 +229,48 @@ export default {
     handleReset() {
       this.form.userName = "";
     },
-    handleCreate() {
-      const userName = this.formValidate.userName;
+    HandlelockoutEnabled(status) {
+      this.userModel.lockoutEnabled = status;
     },
-    show(index) {
+    handleCreate() {
       this.edituser = true;
+      this.userModel = {
+        lockoutEnabled: false
+      };
+      this.userRoles = [];
+      getRoles().then(res => {
+        this.roles = res.data.items;
+      });
+    },
+    HandleEdit(row) {
+      this.edituser = true;
+      this.userModel = row;
+      getRoles().then(res => {
+        this.roles = res.data.items;
+      });
+      getUserRoles({ id: row.id }).then(res => {
+        res.data.items.forEach(item => {
+          this.userRoles.push(item.name);
+        });
+      });
+    },
+    handleSubmit(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.userModel.roleNames = this.userRoles;
+          if (this.userModel.id != "") {
+            updateUser(this.userModel).then(res => {
+              if (res.status == 200) {
+                this.$Message.success("Success!");
+                this.edituser = false;
+                this.getData();
+              }
+            });
+          }
+        } else {
+          this.$Message.error("Fail!");
+        }
+      });
     },
     remove(index) {
       this.tableData.splice(index, 1);
