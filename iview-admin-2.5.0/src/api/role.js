@@ -6,4 +6,13 @@ export const getRoles = () => {
     })
 }
 
+export const updateRole = (data) => {
+    return axios.request({
+        url: `/api/identity/roles/${data.id}`,
+        data: data,
+        method: 'put'
+    })
+}
+
+
 

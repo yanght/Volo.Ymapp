@@ -61,20 +61,30 @@ export default [
   },
   {
     path: '/user',
-    name: 'user',
+    name: '用户角色',
     meta: {
-      hideInBread: true
+      icon: 'logo-buffer',
+      title: '用户角色'
     },
     component: Main,
     children: [
       {
         path: 'user_page',
-        name: 'user_page',
+        name: '用户管理',
         meta: {
           icon: 'ios-bug',
           title: '用户管理'
         },
         component: () => import('@/view/components/users/index.vue')
+      },
+      {
+        path: 'role_page',
+        name: '角色管理',
+        meta: {
+          icon: 'ios-bug',
+          title: '角色管理'
+        },
+        component: () => import('@/view/components/roles/index.vue')
       }
     ]
   },
