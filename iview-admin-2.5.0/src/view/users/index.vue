@@ -7,7 +7,7 @@
         </FormItem>
         <Button type="primary" @click="getData" style="margin-right:8px;">查询</Button>
         <Button @click="handleReset" style="margin-right:8px;">重置</Button>
-        <Button type="primary" icon="md-add" @click="createDialog=true">新建</Button>
+        <Button type="primary" icon="md-add" @click="handleCreate">新建</Button>
       </Form>
     </Card>
     <Table :data="tableData" :columns="columns" :loading="loading" size="small"></Table>
@@ -22,11 +22,77 @@
         @on-page-size-change="handleChangeSize"
       ></Page>
     </div>
+    <Modal v-model="edituser" title="编辑用户" width="50">
+      <Form>
+        <Form ref="userform" :model="userModel" :rules="ruleValidate" :label-width="80">
+          <Row>
+            <Col span="12">
+              <FormItem label="用户名" prop="userName">
+                <Input v-model="userModel.userName" placeholder="Enter your name"></Input>
+              </FormItem>
+            </Col>
+            <Col span="12">
+              <FormItem label="昵称" prop="name">
+                <Input v-model="userModel.name" placeholder="Enter your name"></Input>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="12">
+              <FormItem label="邮箱" prop="email">
+                <Input v-model="userModel.email" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+            <Col span="12">
+              <FormItem label="电话" prop="phoneNumber">
+                <Input v-model="userModel.phoneNumber" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="12">
+              <FormItem label="真实姓名" prop="surname">
+                <Input v-model="userModel.surname" placeholder="Enter your e-mail"></Input>
+              </FormItem>
+            </Col>
+            <Col span="6">
+              <FormItem label="是否锁定" prop="lockoutEnabled">
+                <i-Switch
+                  v-model="userModel.lockoutEnabled"
+                  @on-change="HandlelockoutEnabled"
+                  size="large"
+                >
+                  <span slot="open">是</span>
+                  <span slot="close">否</span>
+                </i-Switch>
+              </FormItem>
+            </Col>
+            <Col span="6">
+              <FormItem label="二次验证" prop="twoFactorEnabled">
+                <Checkbox v-model="userModel.twoFactorEnabled">是</Checkbox>
+              </FormItem>
+            </Col>
+          </Row>
+          <Row>
+            <Col span="24">
+              <Card :bordered="false">
+                <p slot="title">角色</p>
+                <CheckboxGroup v-model="userRoles">
+                  <Checkbox v-for="item in roles" :label="item.name" :key="item.name"></Checkbox>
+                </CheckboxGroup>
+              </Card>
+            </Col>
+          </Row>
+        </Form>
+      </Form>
+      <Button slot="footer" type="primary" @click="handleSubmit('userform')">保存</Button>
+    </Modal>
   </div>
 </template>
 
 <script>
-import { getUserTableData } from "@/api/user";
+import { getUserTableData, updateUser, getUserRoles } from "@/api/user";
+import { getRoles } from "@/api/role";
 export default {
   name: "user_page",
   data() {
@@ -41,6 +107,10 @@ export default {
         {
           title: "用户名",
           key: "userName"
+        },
+        {
+          title: "昵称",
+          key: "name"
         },
         {
           title: "邮箱",
@@ -94,11 +164,11 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.show(params.index);
+                      this.HandleEdit(params.row);
                     }
                   }
                 },
-                "View"
+                "编辑"
               ),
               h(
                 "Button",
@@ -113,7 +183,7 @@ export default {
                     }
                   }
                 },
-                "Delete"
+                "删除"
               )
             ]);
           }
@@ -122,9 +192,18 @@ export default {
       form: {
         userName: ""
       },
-      createDialog: false,
-      createUserForm: {
-        userName: ""
+      edituser: false,
+      userModel: {},
+      roles: [],
+      userRoles: [],
+      ruleValidate: {
+        userName: [
+          {
+            required: true,
+            message: "The name cannot be empty",
+            trigger: "blur"
+          }
+        ]
       },
       isCreate: false
     };
@@ -151,23 +230,48 @@ export default {
     handleReset() {
       this.form.userName = "";
     },
-    handleCreate() {
-      const userName = this.createUserForm.userName;
+    HandlelockoutEnabled(status) {
+      this.userModel.lockoutEnabled = status;
     },
-    show(index) {
-      // this.$Modal.info({
-      //   title: "User Info",
-      //   content: `Name：${this.tableData[index].userName}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
-      // });
-      const id = this.tableData[index].id;
-      const route = {
-        name: "user_edit",
-        params: { id },
-        meta: {
-          title: `编辑用户`
-        }
+    handleCreate() {
+      this.edituser = true;
+      this.userModel = {
+        lockoutEnabled: false
       };
-      this.$router.push(route);
+      this.userRoles = [];
+      getRoles().then(res => {
+        this.roles = res.data.items;
+      });
+    },
+    HandleEdit(row) {
+      this.edituser = true;
+      this.userModel = row;
+      getRoles().then(res => {
+        this.roles = res.data.items;
+      });
+      getUserRoles({ id: row.id }).then(res => {
+        res.data.items.forEach(item => {
+          this.userRoles.push(item.name);
+        });
+      });
+    },
+    handleSubmit(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.userModel.roleNames = this.userRoles;
+          if (this.userModel.id != "") {
+            updateUser(this.userModel).then(res => {
+              if (res.status == 200) {
+                this.$Message.success("Success!");
+                this.edituser = false;
+                this.getData();
+              }
+            });
+          }
+        } else {
+          this.$Message.error("Fail!");
+        }
+      });
     },
     remove(index) {
       this.tableData.splice(index, 1);
