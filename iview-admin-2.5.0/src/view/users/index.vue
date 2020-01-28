@@ -22,20 +22,13 @@
         @on-page-size-change="handleChangeSize"
       ></Page>
     </div>
-    <Modal v-model="createDialog" title="新建用户">
-      <Form>
-        <FormItem>
-          <Input v-model="createUserForm.userName" placeholder="用户名" />
-        </FormItem>
-      </Form>
-      <Button slot="footer" type="primary" @click="handleCreate">创建</Button>
-    </Modal>
   </div>
 </template>
 
 <script>
 import { getUserTableData } from "@/api/user";
 export default {
+  name: "user_page",
   data() {
     return {
       total: 0,
@@ -162,10 +155,19 @@ export default {
       const userName = this.createUserForm.userName;
     },
     show(index) {
-      this.$Modal.info({
-        title: "User Info",
-        content: `Name：${this.tableData[index].userName}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
-      });
+      // this.$Modal.info({
+      //   title: "User Info",
+      //   content: `Name：${this.tableData[index].userName}<br>Age：${this.tableData[index].age}<br>Address：${this.tableData[index].address}`
+      // });
+      const id = this.tableData[index].id;
+      const route = {
+        name: "user_edit",
+        params: { id },
+        meta: {
+          title: `编辑用户`
+        }
+      };
+      this.$router.push(route);
     },
     remove(index) {
       this.tableData.splice(index, 1);

@@ -1,6 +1,9 @@
 import axios from '@/libs/api.request'
 
-export const login = ({ userName, password }) => {
+export const login = ({
+  userName,
+  password
+}) => {
   var params = new URLSearchParams();
   params.append('userName', userName)
   params.append('password', password)
@@ -11,7 +14,9 @@ export const login = ({ userName, password }) => {
     url: 'connect/token',
     data: params,
     method: 'post',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
   })
 }
 
@@ -87,6 +92,13 @@ export const getUserTableData = (data) => {
   return axios.request({
     url: '/api/identity/users',
     params: data,
+    method: 'get'
+  })
+}
+
+export const getModel = (id) => {
+  return axios.request({
+    url: `/api/identity/users/${id}`,
     method: 'get'
   })
 }

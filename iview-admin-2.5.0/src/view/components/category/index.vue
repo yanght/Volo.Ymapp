@@ -36,6 +36,7 @@
 <script>
 import { getCategoryTableData } from "@/api/category";
 export default {
+  name: "category_page",
   data() {
     return {
       total: 0,
