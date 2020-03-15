@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Ymapp.EntityFrameworkCore;
 
 namespace Volo.Ymapp.Migrations
 {
     [DbContext(typeof(YmappMigrationsDbContext))]
-    partial class YmappMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200315073605_add-product-category")]
+    partial class addproductcategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

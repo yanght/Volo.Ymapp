@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Volo.Ymapp.Products
 {
-    public class CreateProductDto : CreateUpdateProductCategoryDtoBase
+    public class CreateProductCategoryDto : CreateUpdateProductCategoryDtoBase
     {
-
     }
 }

@@ -72,7 +72,7 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.Property(x => x.ParentId).IsRequired().HasDefaultValue(Guid.Empty);
             });
 
-            
+
 
             #endregion
 
@@ -80,6 +80,11 @@ namespace Volo.Ymapp.EntityFrameworkCore
 
             #endregion
 
+            builder.Entity<ProductCategory>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "ProductCategories", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
             builder.Entity<Product>(b =>
             {
                 b.ToTable(YmappConsts.PrdouctDbTablePrefix + "Products", YmappConsts.DbSchema);
