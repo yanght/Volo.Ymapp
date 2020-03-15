@@ -30,7 +30,7 @@ export const addProductCategory = (data) => {
   })
 }
 
-export const deleteRole = (id) => {
+export const deleProductCategory = (id) => {
   return axios.request({
     url: `/api/app/productCategory/${id}`,
     method: 'delete'

@@ -1,19 +1,7 @@
 <template>
   <div>
     <Card shadow>
-      树状表格组件tree-table-vue，基于
-      <a
-        href="https://github.com/MisterTaki/vue-table-with-tree-grid"
-      >vue-table-with-tree-grid</a>进行开发，修复了一些bug，添加了一些新属性
-      <p>
-        <b>支持使用slot-scope进行自定义列渲染内容</b>
-      </p>
-      <p>
-        文档请看
-        <a
-          href="https://github.com/lison16/tree-table-vue"
-        >https://github.com/lison16/tree-table-vue</a>
-      </p>
+      <Button type="primary" icon="md-add" @click="handleCreate">新建</Button>
       <tree-table
         expand-key="title"
         :selectable="false"
@@ -21,17 +9,43 @@
         :columns="columns"
         :data="data"
       >
-        <template slot="likes" slot-scope="scope">
-          <Button type="primary" size="small" style="margin-right: 5px" @click="show(scope)">添加子节点</Button>
+        <template slot="opt" slot-scope="scope">
+          <Button type="primary" size="small" style="margin-right: 5px" @click="modify(scope)">修改</Button>
+          <Button
+            type="primary"
+            size="small"
+            style="margin-right: 5px"
+            @click="handleCreate(scope)"
+          >添加子节点</Button>
           <Button type="error" size="small" @click="remove(scope)">删除</Button>
         </template>
       </tree-table>
     </Card>
+    <Modal v-model="edit" title="编辑分类" width="30">
+      <Form
+        ref="productCategoryForm"
+        :model="productCategory"
+        :rules="ruleValidate"
+        :label-width="80"
+      >
+        <Row>
+          <FormItem label="名称" prop="title">
+            <Input v-model="productCategory.title" placeholder="Enter your name"></Input>
+          </FormItem>
+        </Row>
+      </Form>
+      <Button slot="footer" type="primary" @click="handleSubmit('productCategoryForm')">保存</Button>
+    </Modal>
   </div>
 </template>
 
 <script>
-import { getProductCategoryTree } from "@/api/product-category";
+import {
+  getProductCategoryTree,
+  updateProductCategory,
+  addProductCategory,
+  deleProductCategory
+} from "@/api/product-category";
 export default {
   name: "productcategory",
   data() {
@@ -47,33 +61,74 @@ export default {
           key: "id",
           minWidth: "200px",
           type: "template",
-          template: "likes"
+          template: "opt"
         }
       ],
-      data: []
+      data: [],
+      edit: false,
+      productCategory: {},
+      ruleValidate: {
+        title: [
+          {
+            required: true,
+            message: "请输入名称",
+            trigger: "blur"
+          }
+        ]
+      }
     };
   },
   methods: {
     getData() {
       this.loading = true;
       getProductCategoryTree().then(res => {
-        console.log(res);
         this.data = res.data;
         this.loading = false;
       });
     },
-    handle(scope) {
-      console.log(scope);
+    modify(scope) {
+      this.productCategory = scope.row;
+      this.edit = true;
     },
-    show(scope) {
-      console.log(scope);
-      this.$Modal.info({
-        title: "User Info",
-        content: `Name：${this.data[scope.rowIndex].title}<br>`
-      });
+    handleCreate(scope) {
+      this.productCategory = {};
+      this.productCategory.parentId = scope.row == undefined ? 0 : scope.row.id;
+      this.edit = true;
     },
     remove(scope) {
-      this.data.splice(scope.rowIndex, 1);
+      console.log(scope);
+      deleProductCategory(scope.row.id).then(res => {
+        if (res.status == 200) {
+          this.$Message.success("Success!");
+          this.edit = false;
+          this.getData();
+        }
+      });
+    },
+    /**提交保存 */
+    handleSubmit(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          if (this.productCategory.id == 0) {
+            console.log(this.productCategory);
+            updateProductCategory(this.productCategory).then(res => {
+              if (res.status == 200) {
+                this.$Message.success("Success!");
+                this.edit = false;
+                this.getData();
+              }
+            });
+          } else {
+            addProductCategory(this.productCategory).then(res => {
+              if (res.status == 200) {
+                this.$Message.success("Success!");
+                this.edit = false;
+                this.getData();
+              }
+            });
+          }
+        }
+      });
     }
   },
   mounted() {
