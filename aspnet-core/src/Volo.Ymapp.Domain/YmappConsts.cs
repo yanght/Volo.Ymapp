@@ -3,6 +3,7 @@
     public static class YmappConsts
     {
         public const string DbTablePrefix = "App";
+        public const string PrdouctDbTablePrefix = "P_";
 
         public const string DbSchema = null;
 

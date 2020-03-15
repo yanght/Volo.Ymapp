@@ -44,5 +44,11 @@ export default {
   drag_drawer_page: '可拖动抽屉',
   tree_select_page: '树状下拉选择器',
   category_page: '分类',
-  user_page: '用户管理'
+  userrole: '用户角色',
+  user_manage: '用户管理',
+  role_manage: '角色管理',
+  line_manage: '线路管理',
+  line_list: '线路列表',
+  line_detail: '线路详情',
+  line_edit: '编辑线路',
 }

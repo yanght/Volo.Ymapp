@@ -58,29 +58,109 @@ export default [{
   },
   {
     path: '/user',
-    name: '用户角色',
+    name: 'userrole',
     meta: {
       icon: 'logo-buffer',
-      title: '用户角色'
+      title: 'userrole'
     },
     component: Main,
     children: [{
         path: 'user_page',
-        name: '用户管理',
+        name: 'user_manage',
         meta: {
           icon: 'ios-bug',
-          title: '用户管理'
+          title: 'user_manage'
         },
-        component: () => import('@/view/components/users/index.vue')
+        component: () => import('@/view/users/index.vue')
       },
       {
         path: 'role_page',
-        name: '角色管理',
+        name: 'role_manage',
         meta: {
           icon: 'ios-bug',
-          title: '角色管理'
+          title: 'role_manage'
         },
-        component: () => import('@/view/components/roles/index.vue')
+        component: () => import('@/view/roles/index.vue')
+      }
+    ]
+  },
+  {
+    path: '/line',
+    name: 'line_manage',
+    meta: {
+      icon: 'logo-buffer',
+      title: 'line_manage'
+    },
+    component: Main,
+    children: [{
+        path: 'line_page',
+        name: 'line_list',
+        meta: {
+          icon: 'ios-bug',
+          title: 'line_list'
+        },
+        component: () => import('@/view/lines/index.vue')
+      },
+      {
+        path: 'line_detail_page',
+        name: 'line_detail',
+        meta: {
+          icon: 'ios-bug',
+          title: 'line_detail',
+          hideInMenu: true
+        },
+        component: () => import('@/view/lines/detail.vue')
+      },
+      {
+        path: 'line_dedit_page',
+        name: 'line_edit',
+        meta: {
+          icon: 'ios-bug',
+          title: 'line_edit',
+          hideInMenu: true,
+          notCache: true
+        },
+        component: () => import('@/view/lines/edit.vue')
+      }
+    ]
+  },
+  {
+    path: '/product',
+    name: 'product_manage',
+    meta: {
+      icon: 'logo-buffer',
+      title: 'product_manage'
+    },
+    component: Main,
+    children: [{
+        path: 'product_page',
+        name: 'product_list',
+        meta: {
+          icon: 'ios-bug',
+          title: 'product_list'
+        },
+        component: () => import('@/view/products/index.vue')
+      },
+      {
+        path: 'product_detail_page',
+        name: 'product_detail',
+        meta: {
+          icon: 'ios-bug',
+          title: 'product_detail',
+          hideInMenu: true
+        },
+        component: () => import('@/view/products/detail.vue')
+      },
+      {
+        path: 'product_edit_page',
+        name: 'product_edit',
+        meta: {
+          icon: 'ios-bug',
+          title: 'product_edit',
+          hideInMenu: true,
+          notCache: true
+        },
+        component: () => import('@/view/products/edit.vue')
       }
     ]
   },
@@ -98,7 +178,7 @@ export default [{
         icon: 'ios-bug',
         title: '分类'
       },
-      component: () => import('@/view/components/category/index.vue')
+      component: () => import('@/view/category/index.vue')
     }]
   },
   {

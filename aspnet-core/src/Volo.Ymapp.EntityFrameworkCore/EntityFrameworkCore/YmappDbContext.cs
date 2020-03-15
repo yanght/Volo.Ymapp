@@ -7,8 +7,8 @@ using Volo.Abp.Users.EntityFrameworkCore;
 using Volo.Ymapp.Books;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.Articles;
-using Volo.Ymapp.Products;
 using Volo.Ymapp.Kh10086;
+using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp.EntityFrameworkCore
 {
@@ -30,13 +30,16 @@ namespace Volo.Ymapp.EntityFrameworkCore
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ProductArea> ProductAreas { get; set; }
-        public DbSet<ProductPicture> ProductPictures { get; set; }
-        public DbSet<ProductSpec> ProductSpescs { get; set; }
-        public DbSet<ProductPrice> ProductPrices { get; set; }
-        public DbSet<ProductStock> ProductStocks { get; set; }
 
+        #endregion
+
+        #region Product DbSet
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductProperty> ProductProperties { get; set; }
+        public DbSet<ProductSku> ProductSkus { get; set; }
+        public DbSet<PropertyName> PropertyNames { get; set; }
+        public DbSet<PropertyValue> PropertyValues { get; set; }
         #endregion
 
         #region  Kh10086 DbSet

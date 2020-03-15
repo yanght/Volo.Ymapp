@@ -13,10 +13,10 @@ namespace Volo.Ymapp.Controllers
         }
         public ActionResult Index()
         {
-            _lineApp.GetContinents();
+            //_lineApp.GetContinents();
             //TODO: Enabled once Swagger supports ASP.NET Core 3.x
-            //return Redirect("/swagger");
-            return Content("OK: Volo.Ymapp.HttpApi.Host is running...");
+            return Redirect("/swagger");
+            //return Content("OK: Volo.Ymapp.HttpApi.Host is running...");
         }
     }
 }

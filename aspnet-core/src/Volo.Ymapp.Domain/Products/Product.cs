@@ -1,44 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.ObjectMapping;
-using Volo.Ymapp.Areas;
-using Volo.Ymapp.Categorys;
-using Volo.Ymapp.CommonEnum;
-using Volo.Ymapp.Products;
 
 namespace Volo.Ymapp.Products
 {
-    public class Product : FullAuditedAggregateRoot<Guid>
+    public class Product: FullAuditedAggregateRoot<long>
     {
-        /// <summary>
-        /// 商品名称
-        /// </summary>
-        public string Name { get; protected set; }
         /// <summary>
         /// 商品编码
         /// </summary>
-        public string Code { get; protected set; }
+        public string ProuctCode { get; set; }
         /// <summary>
-        /// 分类编码
+        /// 商品分类
         /// </summary>
-        public Guid CategoryId { get; protected set; }
+        public long CategoryId { get; set; }
         /// <summary>
-        /// 分类
+        /// 商品名称
         /// </summary>
-        public virtual Category Category { get; protected set; }
+        public string Title { get; set; }
+        /// <summary>
+        /// 商品主图
+        /// </summary>
+        public string MainPicture { get; set; }
         /// <summary>
         /// 商品状态
         /// </summary>
-        public ProductState State { get; protected set; }
-        /// <summary>
-        /// 商品描述
-        /// </summary>
-        public string Description { get; protected set; }
-
+        public int Status { get; set; }
     }
 }

@@ -72,66 +72,45 @@ namespace Volo.Ymapp.EntityFrameworkCore
                 b.Property(x => x.ParentId).IsRequired().HasDefaultValue(Guid.Empty);
             });
 
-            builder.Entity<Product>(b =>
-        {
-            b.ToTable(YmappConsts.DbTablePrefix + "Products", YmappConsts.DbSchema);
-            b.ConfigureByConvention(); //auto configure for the base class props
-            b.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            b.Property(x => x.State).IsRequired().HasDefaultValue(ProductState.Normal);
-            b.Property(x => x.CategoryId).IsRequired();
-            b.Property(x => x.Code).HasMaxLength(20);
-            b.Property(x => x.Description).HasColumnType("ntext");
-        });
-
-            builder.Entity<ProductArea>(b =>
-            {
-                b.ToTable(YmappConsts.DbTablePrefix + "ProductAreas", YmappConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                b.Property(x => x.ProductId).IsRequired();
-                b.Property(x => x.AreaId).IsRequired();
-            });
-
-            builder.Entity<ProductPicture>(b =>
-            {
-                b.ToTable(YmappConsts.DbTablePrefix + "ProductPictures", YmappConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                b.Property(x => x.PictureUrl).IsRequired().HasMaxLength(200);
-                b.Property(x => x.ProductId).IsRequired();
-            });
-
-            builder.Entity<ProductSpec>(b =>
-            {
-                b.ToTable(YmappConsts.DbTablePrefix + "ProductSpecs", YmappConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                b.Property(x => x.Name).IsRequired().HasMaxLength(20);
-                b.Property(x => x.ProductId).IsRequired();
-                b.Property(x => x.AreaId).IsRequired();
-
-            });
-
-            builder.Entity<ProductStock>(b =>
-            {
-                b.ToTable(YmappConsts.DbTablePrefix + "ProductStocks", YmappConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                b.Property(x => x.ProductSpecId).IsRequired();
-                b.Property(x => x.ProductId).IsRequired();
-                b.Property(x => x.AreaId).IsRequired();
-                b.Property(x => x.Stock).IsRequired().HasDefaultValue(0);
-            });
-
-            builder.Entity<ProductPrice>(b =>
-            {
-                b.ToTable(YmappConsts.DbTablePrefix + "ProductPrices", YmappConsts.DbSchema);
-                b.ConfigureByConvention(); //auto configure for the base class props
-                b.Property(x => x.ProductSpecId).IsRequired();
-                b.Property(x => x.ProductId).IsRequired();
-                b.Property(x => x.AreaId).IsRequired();
-                b.Property(x => x.Price).HasColumnType("decimal(18,2)").IsRequired().HasDefaultValue(0);
-                b.Property(x => x.OrignPrice).HasColumnType("decimal(18,2)").IsRequired().HasDefaultValue(0);
-            });
+            
 
             #endregion
 
+            #region Product Model Config
+
+            #endregion
+
+            builder.Entity<Product>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "Products", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<ProductImage>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "ProductImages", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<ProductProperty>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "ProductProperties", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<ProductSku>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "ProductSkus", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<PropertyName>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "PropertyNames", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            builder.Entity<PropertyValue>(b =>
+            {
+                b.ToTable(YmappConsts.PrdouctDbTablePrefix + "PropertyValues", YmappConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+            });
+            
             #region
             builder.Entity<Line>(b =>
             {

@@ -30,25 +30,6 @@ namespace Volo.Ymapp
             CreateMap<Area, AreaDto>();
             CreateMap<AreaDto, Area>();
 
-            CreateMap<Product, ProductDto>();
-            CreateMap<CreateProductDto, Product>();
-            CreateMap<UpdateProductDto, Product>();
-
-            CreateMap<ProductArea, ProductAreaDto>();
-            CreateMap<ProductAreaDto, ProductArea>();
-
-            CreateMap<ProductPicture, ProductPictureDto>();
-            CreateMap<ProductPictureDto, ProductPicture>();
-           
-            CreateMap<ProductSpec, ProductSpecDto>();
-            CreateMap<ProductSpecDto, ProductSpec>();
-
-            CreateMap<ProductPrice, ProductPriceDto>();
-            CreateMap<ProductPriceDto, ProductPrice>();
-
-            CreateMap<ProductStock, ProductStockDto>();
-            CreateMap<ProductStockDto, ProductStock>();
-
             CreateMap<LineTeam, LineTeamDto>();
             CreateMap<LineTeamDto, LineTeam>();
 
