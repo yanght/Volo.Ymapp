@@ -142,13 +142,22 @@ export default [{
     component: () => import('@/view/products/index.vue')
   },
   {
-    path: 'productcategory',
-    name: 'productcategory',
+    path: 'product-category',
+    name: 'product-category',
     meta: {
       icon: 'ios-bug',
-      title: 'productcategory'
+      title: 'product-category'
     },
-    component: () => import('@/view/products/product_category.vue')
+    component: () => import('@/view/products/product-category.vue')
+  },
+  {
+    path: 'category-property',
+    name: 'category-property',
+    meta: {
+      icon: 'ios-bug',
+      title: 'category-property'
+    },
+    component: () => import('@/view/products/category-property.vue')
   }
   ]
 },

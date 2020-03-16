@@ -56,5 +56,11 @@ namespace Volo.Ymapp.Samples
 
         }
 
+        [Fact]
+        public async Task CreatePropertyName()
+        {
+
+        }
+
     }
 }
