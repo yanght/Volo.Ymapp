@@ -31,7 +31,6 @@ namespace Volo.Ymapp.Products
             var result = await Repository.GetListAsync();
             var list = ObjectMapper.Map<List<ProductCategory>, List<ProductCategoryTreeDto>>(result);
             return GetCategoryTree(0, list);
-
         }
         private List<ProductCategoryTreeDto> GetCategoryTree(long parentId, List<ProductCategoryTreeDto> list)
         {

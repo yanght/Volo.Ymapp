@@ -16,6 +16,10 @@ namespace Volo.Ymapp.Products
            CreateProductCategoryDto, //Used to create a new book
            UpdateProductCategoryDto> //Used to update a book
     {
+        /// <summary>
+        /// 获取树形分类列表
+        /// </summary>
+        /// <returns></returns>
         Task<List<ProductCategoryTreeDto>> GetCategoryTree();
     }
 
