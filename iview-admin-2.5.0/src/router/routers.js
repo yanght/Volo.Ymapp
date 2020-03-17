@@ -148,7 +148,17 @@ export default [{
       icon: 'ios-bug',
       title: 'product-category'
     },
-    component: () => import('@/view/products/product-category.vue')
+    component: () => import('@/view/products/category/index.vue')
+  },
+  {
+    path: 'propertyname',
+    name: 'propertyname',
+    meta: {
+      icon: 'ios-bug',
+      title: 'propertyname',
+      hideInMenu: true
+    },
+    component: () => import('@/view/products/property/property-name.vue')
   },
   {
     path: 'category-property',
@@ -157,7 +167,7 @@ export default [{
       icon: 'ios-bug',
       title: 'category-property'
     },
-    component: () => import('@/view/products/category-property.vue')
+    component: () => import('@/view/products/property/index.vue')
   }
   ]
 },

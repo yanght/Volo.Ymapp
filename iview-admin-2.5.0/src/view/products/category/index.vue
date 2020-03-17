@@ -10,6 +10,12 @@
         :data="data"
       >
         <template slot="opt" slot-scope="scope">
+          <Button
+            type="primary"
+            size="small"
+            style="margin-right: 5px"
+            @click="modifyproperty(scope)"
+          >属性</Button>
           <Button type="primary" size="small" style="margin-right: 5px" @click="modify(scope)">修改</Button>
           <Button
             type="primary"
@@ -47,7 +53,7 @@ import {
   deleProductCategory
 } from "@/api/product-category";
 export default {
-  name: "productcategory",
+  name: "product-category",
   data() {
     return {
       columns: [
@@ -89,6 +95,19 @@ export default {
     modify(scope) {
       this.productCategory = scope.row;
       this.edit = true;
+    },
+    modifyproperty(scope) {
+      const route = {
+        name: "propertyname",
+        query: {
+          id: scope.row.id,
+          title: scope.row.title
+        },
+        meta: {
+          title: "编辑属性"
+        }
+      };
+      this.$router.push(route);
     },
     handleCreate(scope) {
       this.productCategory = {};

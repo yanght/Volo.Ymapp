@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Ymapp.Categorys;
 using Volo.Ymapp.CommonEnum;
+using Volo.Ymapp.Products;
 using Xunit;
 
 namespace Volo.Ymapp.Samples
@@ -12,9 +13,11 @@ namespace Volo.Ymapp.Samples
     public class CategoryAppService_Tests : YmappApplicationTestBase
     {
         private readonly ICategoryAppService _categoryAppService;
+        private readonly IProductPropertyAppService _propertyAppService;
         public CategoryAppService_Tests()
         {
             _categoryAppService = GetRequiredService<ICategoryAppService>();
+            _propertyAppService = GetRequiredService<IProductPropertyAppService>();
         }
 
         [Fact]
@@ -59,7 +62,11 @@ namespace Volo.Ymapp.Samples
         [Fact]
         public async Task CreatePropertyName()
         {
-
+            await _propertyAppService.CreatePropertyName(new CreatePropertyNameDto()
+            {
+                CategoryId = 11,
+                Title = "颜色"
+            });
         }
 
     }
