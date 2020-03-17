@@ -11,61 +11,23 @@
         <Row>
           <Col span="24">
             <FormItem label="商品名称" prop="name">
-              <Input v-model="product.name" placeholder="请输入商品名称"></Input>
+              <Input v-model="product.title" placeholder="请输入商品名称"></Input>
             </FormItem>
           </Col>
         </Row>
         <Row>
           <Col span="8">
             <FormItem label="出发地" prop="placeLeave">
-              <Input v-model="product.placeLeave" placeholder="请输入出发地"></Input>
+              <i-select placeholder="请选择" style="width:176px">
+                <i-option
+                  v-for="item of list"
+                  :value="item.id"
+                  :key="item.id"
+                  style="display: none;"
+                >{{ item.title }}</i-option>
+                <Tree :data="categorys"></Tree>
+              </i-select>
             </FormItem>
-          </Col>
-          <Col span="8">
-            <FormItem label="返回地" prop="placeReturn">
-              <Input v-model="product.placeReturn" placeholder="请输入返回地"></Input>
-            </FormItem>
-          </Col>
-          <Col span="8">
-            <FormItem>
-              <i-col span="11">
-                <Form-item prop="dayNumber">
-                  <Input v-model="product.dayNumber" number="true" placeholder="天">
-                    <span slot="append">天</span>
-                  </Input>
-                </Form-item>
-              </i-col>
-              <i-col span="2" style="text-align: center">-</i-col>
-              <i-col span="11">
-                <Form-item prop="nightNumber">
-                  <Input v-model="product.nightNumber" number="true" placeholder="晚">
-                    <span slot="append">晚</span>
-                  </Input>
-                </Form-item>
-              </i-col>
-            </FormItem>
-          </Col>
-        </Row>
-        <Row>
-          <Col span="8">
-            <FormItem label="原价" prop="orignalPrice">
-              <Input v-model="product.orignalPrice" number="true" placeholder="请输入原价"></Input>
-            </FormItem>
-          </Col>
-          <Col span="8">
-            <FormItem label="现价" prop="price">
-              <Input v-model="product.price" number="true" placeholder="请输入现价"></Input>
-            </FormItem>
-          </Col>
-          <Col span="8">
-            <FormItem label="儿童价" prop="childrenPrice">
-              <Input v-model="product.childrenPrice" number="true" placeholder="请输入儿童价"></Input>
-            </FormItem>
-          </Col>
-        </Row>
-        <Row>
-          <Col span="8">
-            <Tree :data="treeData" ref="tree" :render="renderContent"></Tree>
           </Col>
         </Row>
         <FormItem>
@@ -80,14 +42,52 @@
 <script>
 import { mapMutations } from "vuex";
 import { getProduct, addProduct } from "@/api/product";
+import { getProductCategoryTree } from "@/api/product-category";
+import { getPropertyList } from "@/api/property";
 export default {
   name: "product_edit",
   data() {
     return {
       loading: false,
       product: {},
+      propertys: [],
+      categorys: [],
+      list: [],
+      data: [
+        {
+          title: "parent 1",
+          value: "1",
+          children: [
+            {
+              title: "parent 1-1",
+              value: "11",
+              children: [
+                {
+                  title: "leaf 1-1-1",
+                  value: "111"
+                },
+                {
+                  title: "leaf 1-1-2",
+                  value: "112"
+                }
+              ]
+            },
+            {
+              title: "parent 1-2",
+              value: "12",
+              children: [
+                {
+                  title: "leaf 1-2-1",
+                  value: "121"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      model2: "",
       ruleValidate: {
-        name: [
+        title: [
           {
             required: true,
             message: "请输入角色名称",
@@ -121,29 +121,25 @@ export default {
         });
       }
     },
+    /**分类下的属性列表 */
+    propertyList(categoryId) {
+      getPropertyList({ categoryId: categoryId }).then(res => {
+        this.propertys = res.data;
+      });
+    },
+    categoryList() {
+      getProductCategoryTree().then(res => {
+        this.categorys = res.data;
+      });
+    },
     handleReset(name) {
       this.$refs[name].resetFields();
     },
-    // 子节点的option
-    renderContent(h, { root, node, data }) {
-      return h(
-        "Option",
-        {
-          style: {
-            display: "inline-block",
-            margin: "0"
-          },
-          props: {
-            value: data.value
-          }
-        },
-        data.title
-      );
-    },
+
     saveProduct(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.product.categoryId = "43C0FCCE-4BCA-34B7-CD0A-39F20592944F";
+          this.product.categoryId = 11;
           addProduct(this.product).then(res => {
             if (res.status == 200) {
               this.$Message.success("Success!");
@@ -159,6 +155,8 @@ export default {
   },
   mounted() {
     this.getData();
+    this.categoryList();
+    this.propertyList(11);
   },
   computed: {
     // 计算属性的 getter

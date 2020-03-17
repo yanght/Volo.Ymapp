@@ -128,7 +128,7 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          if (this.productCategory.id == 0) {
+          if (this.productCategory.id != 0) {
             console.log(this.productCategory);
             updateProductCategory(this.productCategory).then(res => {
               if (res.status == 200) {

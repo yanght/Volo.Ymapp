@@ -2,7 +2,7 @@ import axios from '@/libs/api.request'
 
 export const productList = (data) => {
   return axios.request({
-    url: '/api/app/product/productList',
+    url: '/api/app/product',
     params: data,
     method: 'get'
   })

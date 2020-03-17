@@ -109,7 +109,7 @@ export default {
         },
         {
           title: "名称",
-          key: "name",
+          key: "title",
           render: (h, { row }) => {
             return h("div", [
               h(
@@ -130,7 +130,7 @@ export default {
                         whiteSpace: "nowrap"
                       }
                     },
-                    row.name
+                    row.title
                   ), // 表格显示文字
                   h(
                     "div",
@@ -140,7 +140,7 @@ export default {
                         whiteSpace: "normal"
                       }
                     },
-                    row.name // 气泡内的文字
+                    row.title // 气泡内的文字
                   )
                 ]
               )

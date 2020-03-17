@@ -142,6 +142,16 @@ export default [{
     component: () => import('@/view/products/index.vue')
   },
   {
+    path: 'product_edit',
+    name: 'product_edit',
+    meta: {
+      icon: 'ios-bug',
+      title: 'product_edit',
+      hideInMenu: true
+    },
+    component: () => import('@/view/products/edit.vue')
+  },
+  {
     path: 'product-category',
     name: 'product-category',
     meta: {
