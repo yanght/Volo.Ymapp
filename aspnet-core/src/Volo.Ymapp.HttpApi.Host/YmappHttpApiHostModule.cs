@@ -22,6 +22,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace Volo.Ymapp
 {
@@ -54,7 +56,7 @@ namespace Volo.Ymapp
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
             ConfigureCors(context, configuration);
-
+           
             //Disabled swagger since it does not support ASP.NET Core 3.0 yet!
             ConfigureSwaggerServices(context);
         }
@@ -169,6 +171,11 @@ namespace Volo.Ymapp
             app.UseVirtualFiles();
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/Files")),
+                RequestPath = new PathString("/src")
+            });
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseJwtTokenMiddleware();

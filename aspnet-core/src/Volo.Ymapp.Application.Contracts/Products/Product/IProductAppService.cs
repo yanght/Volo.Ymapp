@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -13,6 +14,6 @@ namespace Volo.Ymapp.Products
             CreateProductDto, //Used to create a new book
             UpdateProductDto> //Used to update a book
     {
-
+        Task<ProductDetailDto> GetDetailAsync(long id);
     }
 }

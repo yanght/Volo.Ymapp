@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { productList } from "@/api/product";
+import { productList, deleteProduct } from "@/api/product";
 export default {
   name: "product_page",
   data() {
@@ -204,7 +204,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.remove(params.index);
+                      this.remove(params.row);
                     }
                   }
                 },
@@ -301,8 +301,13 @@ export default {
         }
       });
     },
-    remove(index) {
-      this.tableData.splice(index, 1);
+    remove(row) {
+      deleteProduct(row.id).then(res => {
+        if (res.status == 200) {
+          this.$Message.success("Success!");
+          this.getData();
+        }
+      });
     }
   },
   mounted() {

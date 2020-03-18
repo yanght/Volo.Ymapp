@@ -13,6 +13,7 @@ namespace Volo.Ymapp.AutoMapperProfile
             CreateMap<Product, ProductDto>();
             CreateMap<CreateProductDto, Product>();
             CreateMap<UpdateProductDto, Product>();
+            CreateMap<ProductDto, ProductDetailDto>();
         }
     }
 }

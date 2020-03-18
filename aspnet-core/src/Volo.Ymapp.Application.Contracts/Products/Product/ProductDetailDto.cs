@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Volo.Ymapp.Products
 {
-    public class CreateProductDto : CreateUpdateProductDtoBase
+    public class ProductDetailDto : ProductDto
     {
+        /// <summary>
+        /// 商品图片
+        /// </summary>
         public List<string> ProductImages { get; set; }
     }
 }
