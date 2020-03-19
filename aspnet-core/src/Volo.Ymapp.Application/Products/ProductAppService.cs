@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Data;
 using Volo.Abp.Domain.Repositories;
 
 namespace Volo.Ymapp.Products
@@ -15,12 +17,16 @@ namespace Volo.Ymapp.Products
            CreateProductDto, UpdateProductDto>,
            IProductAppService
     {
-        private IRepository<ProductImage, long> repository_productImage;
-        public ProductAppService(IRepository<Product, long> repository,
-            IRepository<ProductImage, long> _repository_productImage)
+        private IRepository<ProductImage, long> _repository_productImage;
+        private readonly IDataFilter _dataFilter;
+        public ProductAppService(
+              IDataFilter dataFilter,
+              IRepository<Product, long> repository,
+            IRepository<ProductImage, long> repository_productImage)
        : base(repository)
         {
-            repository_productImage = _repository_productImage;
+            _dataFilter = dataFilter;
+            _repository_productImage = repository_productImage;
         }
 
         public override async Task<ProductDto> CreateAsync(CreateProductDto input)
@@ -31,7 +37,7 @@ namespace Volo.Ymapp.Products
             {
                 foreach (var item in input.ProductImages)
                 {
-                    await repository_productImage.InsertAsync(new ProductImage()
+                    await _repository_productImage.InsertAsync(new ProductImage()
                     {
                         ImageUrl = item,
                         ProductId = product.Id
@@ -45,15 +51,15 @@ namespace Volo.Ymapp.Products
         {
             var product = ObjectMapper.Map<UpdateProductDto, Product>(input);
             var productDto = await base.UpdateAsync(id, input);
-            await repository_productImage.DeleteAsync(m => m.ProductId == id);
+            await _repository_productImage.DeleteAsync(m => m.ProductId == id);
             if (input.ProductImages.Any())
             {
                 foreach (var item in input.ProductImages)
                 {
-                    await repository_productImage.InsertAsync(new ProductImage()
+                    await _repository_productImage.InsertAsync(new ProductImage()
                     {
                         ImageUrl = item,
-                        ProductId = product.Id
+                        ProductId = id
                     });
                 }
             }
@@ -65,7 +71,7 @@ namespace Volo.Ymapp.Products
         {
             var product = await base.GetAsync(id);
             var productDetail = ObjectMapper.Map<ProductDto, ProductDetailDto>(product);
-            productDetail.ProductImages = repository_productImage.Where(m => m.ProductId == product.Id).Select(m => m.ImageUrl).ToList();
+            productDetail.ProductImages = _repository_productImage.Where(m => m.ProductId == product.Id).Select(m => m.ImageUrl).ToList();
             return productDetail;
         }
     }

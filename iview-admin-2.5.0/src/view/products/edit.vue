@@ -143,9 +143,15 @@ export default {
       if (id != "" && id != undefined) {
         getProductDetail(id).then(res => {
           this.product = res.data;
-          res.data.productImages.forEach(item => {
-            this.defaultList.push({ name: item, url: item });
-          });
+          setTimeout(() => {
+            this.product.productImages.forEach(item => {
+              this.defaultList.push({ name: item, url: item });
+            });
+            this.$nextTick(() => {
+              //赋值后马上更新
+              this.uploadList = this.$refs.upload.fileList;
+            });
+          }, 1000);
         });
       }
     },
@@ -169,11 +175,13 @@ export default {
     saveProduct(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
+          this.product.productImages = [];
+          this.uploadList.forEach(item => {
+            this.product.productImages.push(item.url);
+          });
           addOrUpdateProduct(this.product).then(res => {
             if (res.status == 200) {
               this.$Message.success("Success!");
-              this.edituser = false;
-              this.getData();
             }
           });
         } else {
