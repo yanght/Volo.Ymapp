@@ -51,6 +51,7 @@ namespace Volo.Ymapp.Products
         {
             var product = ObjectMapper.Map<UpdateProductDto, Product>(input);
             var productDto = await base.UpdateAsync(id, input);
+
             await _repository_productImage.DeleteAsync(m => m.ProductId == id);
             if (input.ProductImages.Any())
             {
